@@ -9,12 +9,12 @@ import Footer from "@/components/Footer";
 import StickyBar from "@/components/StickyBar";
 
 // Garet (Spacetype) — brand-displayfonten, self-hostet.
+// Kun Heavy lastes: alt display-uttrykk bruker vekt 800.
+// (Garet-Book.woff2 ligger i repoet om normalvekten trengs senere.)
 const display = localFont({
   variable: "--font-display",
-  src: [
-    { path: "../../public/fonts/garet/Garet-Book.woff2", weight: "400", style: "normal" },
-    { path: "../../public/fonts/garet/Garet-Heavy.woff2", weight: "800", style: "normal" },
-  ],
+  src: "../../public/fonts/garet/Garet-Heavy.woff2",
+  weight: "800",
 });
 
 const spaceMono = Space_Mono({
