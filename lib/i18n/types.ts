@@ -115,6 +115,7 @@ export interface Dictionary {
       statusBooked: string;
       statusOpen: string;
       note: string;
+      autoNote: string;
     };
     form: {
       name: string;

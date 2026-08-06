@@ -33,7 +33,7 @@ export default async function ProjectsPage({
         <h1 className="display mt-6 text-4xl sm:text-5xl lg:text-6xl">
           {page.title}
         </h1>
-        <p className="mt-8 max-w-xl text-sm leading-relaxed text-smoke sm:text-base">
+        <p className="mt-8 max-w-xl text-base leading-relaxed text-smoke sm:text-lg">
           {page.lead}
         </p>
       </section>

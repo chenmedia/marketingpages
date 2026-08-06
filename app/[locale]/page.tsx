@@ -47,7 +47,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-ink" />
               {dict.hero.badge}
             </p>
-            <h1 className="display mt-6 text-3xl sm:text-5xl lg:text-6xl">
+            <h1 className="display mt-6 text-4xl sm:text-5xl md:text-6xl">
               {dict.hero.title}{" "}
               <span className="relative inline-block">
                 {dict.hero.titleAccent}
@@ -55,7 +55,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 <Squiggle className="absolute -bottom-4 left-0 h-3.5 w-full text-ink opacity-60" />
               </span>
             </h1>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-smoke sm:text-base">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-smoke sm:text-lg">
               {dict.hero.lead}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -106,7 +106,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           <h2 className="display mt-4 text-3xl sm:text-4xl">
             {dict.services.heading}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-smoke">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-smoke">
             {dict.services.lead}
           </p>
         </div>
@@ -124,7 +124,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               />
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="display text-xl">{card.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-smoke">
+                <p className="mt-3 text-base leading-relaxed text-smoke">
                   {card.body}
                 </p>
                 <ul className="mt-4 flex-1 space-y-2">
@@ -171,7 +171,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               {dict.liveOn.heading}
             </h2>
             {dict.liveOn.body.map((paragraph) => (
-              <p key={paragraph} className="mt-4 text-sm leading-relaxed text-sand">
+              <p key={paragraph} className="mt-4 text-base leading-relaxed text-sand">
                 {paragraph}
               </p>
             ))}
@@ -226,7 +226,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <h2 className="display mt-4 max-w-2xl text-3xl sm:text-4xl">
           {dict.work.heading}
         </h2>
-        <p className="mt-4 max-w-xl text-sm leading-relaxed text-smoke">
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-smoke">
           {dict.work.lead}
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -269,7 +269,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             {dict.about.body.map((paragraph) => (
               <p
                 key={paragraph}
-                className="mt-5 max-w-xl text-sm leading-relaxed text-smoke"
+                className="mt-5 max-w-xl text-base leading-relaxed text-smoke"
               >
                 {paragraph}
               </p>
@@ -299,7 +299,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           <h2 className="display mt-4 text-3xl sm:text-4xl">
             {dict.audience.heading}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-smoke">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-smoke">
             {dict.audience.lead}
           </p>
         </div>

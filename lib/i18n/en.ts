@@ -207,6 +207,7 @@ export const en: Dictionary = {
       statusBooked: "Booked",
       statusOpen: "Open",
       note: "There is still room for your event on the open dates — and beyond them.",
+      autoNote: "Public dates through the end of the year — new confirmed bookings appear here.",
     },
     form: {
       name: "Name",

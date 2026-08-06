@@ -33,7 +33,7 @@ export default async function NewsPage({
         <h1 className="display mt-6 text-4xl sm:text-5xl lg:text-6xl">
           {page.title}
         </h1>
-        <p className="mt-8 max-w-xl text-sm leading-relaxed text-smoke sm:text-base">
+        <p className="mt-8 max-w-xl text-base leading-relaxed text-smoke sm:text-lg">
           {page.lead}
         </p>
       </section>
@@ -53,7 +53,7 @@ export default async function NewsPage({
               <div className="flex flex-col justify-center p-6 md:py-8 md:pr-8">
                 <p className="meta-label text-smoke">{entry.tag}</p>
                 <h2 className="display mt-2 text-2xl">{entry.title}</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-smoke">
+                <p className="mt-3 max-w-2xl text-base leading-relaxed text-smoke">
                   {entry.body}
                 </p>
               </div>

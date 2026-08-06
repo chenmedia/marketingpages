@@ -23,7 +23,7 @@ export default function CaseList({ items }: { items: CaseItem[] }) {
               {item.client}
               <span className="text-smoke"> — {item.project}</span>
             </h3>
-            <p className="text-sm leading-relaxed text-smoke">{item.context}</p>
+            <p className="text-base leading-relaxed text-smoke">{item.context}</p>
           </div>
         </article>
       ))}

@@ -21,14 +21,13 @@
   --color-ember: #111111;
   --color-ember-deep: #111111;
 
-  --font-display: var(--font-display), "Garet", sans-serif;
-  --font-mono: var(--font-space-mono), "Space Mono", monospace;
+  --font-sans: var(--font-jakarta), sans-serif;
 }
 
 body {
   background: var(--color-cream);
   color: var(--color-ink);
-  font-family: var(--font-mono);
+  font-family: var(--font-jakarta), sans-serif;
 }
 
 ::selection {
@@ -36,20 +35,18 @@ body {
   color: var(--color-cream);
 }
 
-/* Store Garet-versaler slik decken bruker dem */
+/* Overskrifter à la TON: Jakarta font-black, setningsform, tett kernet */
 .display {
-  font-family: var(--font-display);
   font-weight: 800;
-  text-transform: uppercase;
   letter-spacing: -0.02em;
-  line-height: 0.92;
+  line-height: 1.05;
 }
 
-/* Mono-metaetiketter à la «CHEN MEDIA — FOTO & FILM — 02» */
+/* Små etiketter à la TONs «OUR UPCOMING AGENDA»-stil */
 .meta-label {
-  font-family: var(--font-mono);
   font-size: 0.6875rem;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 

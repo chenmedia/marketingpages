@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
@@ -8,19 +7,10 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StickyBar from "@/components/StickyBar";
 
-// Garet (Spacetype) — brand-displayfonten, self-hostet.
-// Kun Heavy lastes: alt display-uttrykk bruker vekt 800.
-// (Garet-Book.woff2 ligger i repoet om normalvekten trengs senere.)
-const display = localFont({
-  variable: "--font-display",
-  src: "../../public/fonts/garet/Garet-Heavy.woff2",
-  weight: "800",
-});
-
-const spaceMono = Space_Mono({
-  variable: "--font-space-mono",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+// Samme font som tonmedia.com: Plus Jakarta Sans, hele siden.
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin", "latin-ext"],
 });
 
 export function generateStaticParams() {
@@ -53,7 +43,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale === "no" ? "nb" : "en"}
-      className={`${display.variable} ${spaceMono.variable} h-full antialiased`}
+      className={`${jakarta.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {/* Strukturerte data for søkemotorer, jf. TONs ProfessionalService-schema */}

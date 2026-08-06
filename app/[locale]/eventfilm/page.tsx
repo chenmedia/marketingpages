@@ -39,7 +39,7 @@ export default async function EventFilmPage({
           <h1 className="display mt-6 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
             {page.title}
           </h1>
-          <p className="mt-8 max-w-xl text-sm leading-relaxed text-sand sm:text-base">
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-sand sm:text-lg">
             {page.lead}
           </p>
           <PlaceholderImage
@@ -58,7 +58,7 @@ export default async function EventFilmPage({
         </h2>
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           {page.craft.body.map((paragraph) => (
-            <p key={paragraph} className="text-sm leading-relaxed text-smoke">
+            <p key={paragraph} className="text-base leading-relaxed text-smoke">
               {paragraph}
             </p>
           ))}
@@ -76,7 +76,7 @@ export default async function EventFilmPage({
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h4 className="display mt-3 text-lg">{item.title}</h4>
-                <p className="mt-3 text-sm leading-relaxed text-smoke">
+                <p className="mt-3 text-base leading-relaxed text-smoke">
                   {item.body}
                 </p>
               </div>

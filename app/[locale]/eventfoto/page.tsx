@@ -39,7 +39,7 @@ export default async function EventPhotoPage({
             <h1 className="display mt-6 text-4xl sm:text-5xl lg:text-6xl">
               {page.title}
             </h1>
-            <p className="mt-8 max-w-xl text-sm leading-relaxed text-smoke sm:text-base">
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-smoke sm:text-lg">
               {page.lead}
             </p>
           </div>
@@ -60,7 +60,7 @@ export default async function EventPhotoPage({
           </h2>
           <div className="mt-8 grid gap-8 md:grid-cols-2">
             {page.approach.body.map((paragraph) => (
-              <p key={paragraph} className="text-sm leading-relaxed text-smoke">
+              <p key={paragraph} className="text-base leading-relaxed text-smoke">
                 {paragraph}
               </p>
             ))}
@@ -76,7 +76,7 @@ export default async function EventPhotoPage({
             </div>
             <div className="space-y-4">
               {page.shotlist.body.map((paragraph) => (
-                <p key={paragraph} className="text-sm leading-relaxed text-sand">
+                <p key={paragraph} className="text-base leading-relaxed text-sand">
                   {paragraph}
                 </p>
               ))}

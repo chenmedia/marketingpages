@@ -15,7 +15,7 @@ export default function Faq({ items }: { items: FaqItem[] }) {
               +
             </span>
           </summary>
-          <p className="max-w-2xl pb-6 text-sm leading-relaxed text-smoke">
+          <p className="max-w-2xl pb-6 text-base leading-relaxed text-smoke">
             {item.a}
           </p>
         </details>

@@ -16,7 +16,7 @@ export default function ProcessTimeline({ dict }: { dict: Dictionary }) {
         <h2 className="display mt-4 max-w-xl text-3xl sm:text-4xl">
           {process.heading}
         </h2>
-        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-sand">
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-sand">
           {process.lead}
         </p>
 
@@ -25,7 +25,7 @@ export default function ProcessTimeline({ dict }: { dict: Dictionary }) {
             <li key={step.number} className="flex flex-col bg-ink p-6">
               <span className="display text-3xl text-cream">{step.number}</span>
               <h3 className="display mt-4 text-lg">{step.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-sand">
+              <p className="mt-3 flex-1 text-base leading-relaxed text-sand">
                 {step.body}
               </p>
               <p className="meta-label mt-5 border-t border-cream/15 pt-4 font-bold text-cream">
