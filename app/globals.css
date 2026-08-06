@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Chen Media design tokens — fra ChenMedia_Brand_Guideline_V1.
+  Display: Garet (self-hostes i public/fonts når filene er klare;
+  Archivo er midlertidig fallback satt opp i layout.tsx).
+  Brød/labels: Space Mono.
+*/
+@theme {
+  --color-ink: #111111;
+  --color-smoke: #55534a;
+  --color-cream: #f6f5ec;
+  --color-bone: #e4e2d4;
+  --color-butter: #fbf8d0;
+  --color-olive: #8a8875;
+  --color-sand: #b9b6a0;
+  --color-shell: #efede0;
+  --color-ember: #c25a2e;
+  /* Mørkere ember for knappflater og liten tekst — WCAG AA mot krem/hvit */
+  --color-ember-deep: #a8481f;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-display), "Archivo", sans-serif;
+  --font-mono: var(--font-space-mono), "Space Mono", monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--color-ember);
+  color: var(--color-cream);
+}
+
+/* Store Garet-versaler slik decken bruker dem */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+}
+
+/* Mono-metaetiketter à la «CHEN MEDIA — FOTO & FILM — 02» */
+.meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Rullende fototicker */
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  animation: ticker 46s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* FAQ-accordion uten JS */
+details.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+details.faq summary .faq-mark {
+  transition: transform 0.2s ease;
+}
+
+details.faq[open] summary .faq-mark {
+  transform: rotate(45deg);
 }
