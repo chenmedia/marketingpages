@@ -4,7 +4,7 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 import { isLocale } from "@/lib/i18n";
 import SectionLabel from "@/components/SectionLabel";
 import PhotoTicker from "@/components/PhotoTicker";
-import PlaceholderImage, { portfolioPhotos } from "@/components/PlaceholderImage";
+import PlaceholderImage, { photo } from "@/components/PlaceholderImage";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
 import CtaButton from "@/components/CtaButton";
@@ -26,10 +26,11 @@ export async function generateMetadata({
   };
 }
 
+// Bildetekster fra faktisk prosjektkontekst i filnavnene (KarpeWorld 2026)
 const polaroids = [
-  { label: "Snap Session", caption: "Snap Session · Oslo", tone: "butter", float: "float-a" },
-  { label: "Pitch Event", caption: "Pitch Event · Optiver", tone: "ink", float: "float-b" },
-  { label: "Varner x Levi's", caption: "Varner x Levi's", tone: "olive", float: "float-c" },
+  { label: "Karpe møter publikum", caption: "KarpeWorld · Oslo", src: photo.meetCrowd, float: "float-a" },
+  { label: "KarpeWorld — scenen", caption: "KarpeWorld · scenen", src: photo.vocalist, float: "float-b" },
+  { label: "Red Bull — aktivering", caption: "Red Bull · aktivering", src: photo.redbull, float: "float-c" },
 ] as const;
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -77,7 +78,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 >
                   <PlaceholderImage
                     label={polaroid.label}
-                    tone={polaroid.tone}
+                    src={polaroid.src}
                     className="aspect-[4/3] w-full"
                   />
                   <p className="meta-label absolute bottom-2.5 left-3 text-smoke">
@@ -119,7 +120,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             >
               <PlaceholderImage
                 label={card.title}
-                src={portfolioPhotos[i % portfolioPhotos.length]}
+                src={[photo.festivalLife, photo.lightshow, photo.ringnesImsdal][i]}
                 className="aspect-[3/2] w-full"
               />
               <div className="flex flex-1 flex-col p-6">
@@ -208,13 +209,13 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           <div className="space-y-4">
             <PlaceholderImage
               label="Leveranse — redigert utvalg"
-              tone="olive"
+              src={photo.epicStage}
               className="aspect-[4/3] w-full rounded-lg"
             />
             <div className="grid grid-cols-3 gap-4">
-              <PlaceholderImage label="SoMe 9:16" tone="bone" className="aspect-[9/16] rounded-lg" />
-              <PlaceholderImage label="Web 3:2" tone="butter" className="aspect-[9/16] rounded-lg" />
-              <PlaceholderImage label="Trykk" tone="shell" className="aspect-[9/16] rounded-lg" />
+              <PlaceholderImage label="SoMe 9:16" src={photo.vocalist} className="aspect-[9/16] rounded-lg" />
+              <PlaceholderImage label="Web 3:2" src={photo.ringnesImsdal} className="aspect-[9/16] rounded-lg" />
+              <PlaceholderImage label="Trykk" src={photo.lightshow} className="aspect-[9/16] rounded-lg" />
             </div>
           </div>
         </div>
@@ -238,7 +239,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             >
               <PlaceholderImage
                 label={card.title}
-                src={portfolioPhotos[(i + 3) % portfolioPhotos.length]}
+                src={[photo.meetCrowd, photo.epicStage, photo.redbull][i]}
                 className="aspect-[4/5] w-full transition-transform duration-300 group-hover:scale-[1.02]"
               />
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-5 pt-14 text-cream">
@@ -258,7 +259,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-20 sm:px-6 md:grid-cols-[1fr_1.3fr]">
           <PlaceholderImage
             label="Kai Chen — portrett"
-            tone="olive"
+            src={photo.vocalist}
             className="aspect-[4/5] w-full max-w-sm rounded-lg"
           />
           <div>
@@ -308,7 +309,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <div key={group.title}>
               <PlaceholderImage
                 label={group.title}
-                src={portfolioPhotos[(i + 4) % portfolioPhotos.length]}
+                src={[photo.vocalist, photo.festivalLife, photo.ringnesImsdal, photo.crewLogistics][i]}
                 className="aspect-[4/3] w-full rounded-lg"
               />
               <h3 className="display mt-4 text-lg">{group.title}</h3>

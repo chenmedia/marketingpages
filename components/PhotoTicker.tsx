@@ -1,15 +1,16 @@
-import PlaceholderImage from "./PlaceholderImage";
+import PlaceholderImage, { photo } from "./PlaceholderImage";
 
+// Rammene navngir de faktiske prosjektene bildene er fra (jf. filnavn-kontekst)
 const frames = [
-  { label: "Snap Session — Oslo", tone: "butter" },
-  { label: "Pitch Event — Optiver", tone: "ink" },
-  { label: "Varner x Levi's", tone: "bone" },
-  { label: "Nordisk Film Kino", tone: "olive" },
-  { label: "DNT", tone: "shell" },
-  { label: "OBOS", tone: "bone" },
-  { label: "Hurtigruten", tone: "ink" },
-  { label: "Av-og-til", tone: "shell" },
-] as const;
+  { label: "KarpeWorld — Oslo", src: photo.epicStage },
+  { label: "Ringnes x Imsdal — aktivering", src: photo.ringnesImsdal },
+  { label: "KarpeWorld — scenen", src: photo.vocalist },
+  { label: "Festivalområdet", src: photo.festivalLife },
+  { label: "KarpeWorld — lysshow", src: photo.lightshow },
+  { label: "Karpe møter publikum", src: photo.meetCrowd },
+  { label: "Red Bull — aktivering", src: photo.redbull },
+  { label: "Crew og produksjon", src: photo.crewLogistics },
+];
 
 // Full-bredde rullende fotostripe. Innholdet dupliseres for sømløs loop.
 export default function PhotoTicker({ alt }: { alt: string }) {
@@ -22,7 +23,7 @@ export default function PhotoTicker({ alt }: { alt: string }) {
               <PlaceholderImage
                 key={`${copy}-${frame.label}`}
                 label={frame.label}
-                tone={frame.tone}
+                src={frame.src}
                 className="h-36 w-56 shrink-0 border-r border-ink/10 sm:h-44 sm:w-72"
               />
             ))}
