@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import LocaleSwitch from "./LocaleSwitch";
+import CtaButton from "./CtaButton";
+import Squiggle from "./Squiggle";
 
 export default function Nav({
   locale,
@@ -20,8 +22,9 @@ export default function Nav({
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href={base} className="display text-lg tracking-tight">
-          Chen&nbsp;Media
+        <Link href={base} className="flex items-center gap-2">
+          <Squiggle className="w-9 text-ink" />
+          <span className="display text-lg tracking-tight">Chen&nbsp;Media</span>
         </Link>
 
         <ul className="hidden items-center gap-6 md:flex">
@@ -39,12 +42,9 @@ export default function Nav({
 
         <div className="flex items-center gap-3">
           <LocaleSwitch locale={locale} />
-          <Link
-            href={`${base}#kontakt`}
-            className="meta-label hidden rounded-full bg-ember-deep px-4 py-2 text-cream transition-colors hover:bg-ink sm:inline-block"
-          >
-            {dict.nav.cta}
-          </Link>
+          <span className="hidden sm:inline-block">
+            <CtaButton href={`${base}#kontakt`}>{dict.nav.cta}</CtaButton>
+          </span>
         </div>
       </nav>
 

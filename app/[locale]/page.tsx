@@ -8,6 +8,7 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import CaseList from "@/components/CaseList";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
+import CtaButton from "@/components/CtaButton";
 
 export async function generateMetadata({
   params,
@@ -53,18 +54,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             {dict.hero.lead}
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href={`${base}#kontakt`}
-              className="meta-label rounded-full bg-ember-deep px-6 py-3 text-cream transition-colors hover:bg-ink"
-            >
-              {dict.hero.ctaPrimary}
-            </Link>
-            <Link
-              href={`${base}#arbeid`}
-              className="meta-label rounded-full border border-ink px-6 py-3 transition-colors hover:border-ember hover:text-ember-deep"
-            >
+            <CtaButton href={`${base}#kontakt`}>{dict.hero.ctaPrimary}</CtaButton>
+            <CtaButton href={`${base}#arbeid`} variant="outline">
               {dict.hero.ctaSecondary}
-            </Link>
+            </CtaButton>
           </div>
         </div>
 
@@ -154,7 +147,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <h2 className="display text-4xl sm:text-5xl">
               {dict.cases.heading}
             </h2>
-            <Squiggle className="w-24" />
+            <Squiggle className="w-24 text-ink" />
           </div>
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-smoke">
             {dict.cases.lead}

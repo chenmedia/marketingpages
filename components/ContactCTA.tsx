@@ -24,7 +24,7 @@ export default function ContactCTA({
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-smoke">
               {lead ?? contact.lead}
             </p>
-            <Squiggle className="mt-8 w-28" />
+            <Squiggle className="mt-8 w-28 text-ink" />
           </div>
 
           <div className="rounded-lg border border-ink/15 bg-cream p-6">
@@ -37,9 +37,23 @@ export default function ContactCTA({
             </a>
             <a
               href="mailto:kai@chenmedia.no"
-              className="meta-label mt-6 inline-block rounded-full bg-ember-deep px-5 py-3 text-cream transition-colors hover:bg-ink"
+              className="meta-label group mt-6 inline-flex items-center gap-3 rounded-full bg-ink py-2 pl-6 pr-2 text-cream transition-colors hover:bg-smoke"
             >
               {contact.cta}
+              <span
+                aria-hidden
+                className="flex size-7 items-center justify-center rounded-full bg-cream text-ink transition-transform group-hover:rotate-45"
+              >
+                <svg viewBox="0 0 16 16" fill="none" className="size-3">
+                  <path
+                    d="M4 12L12 4M12 4H6M12 4V10"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
             </a>
             <p className="mt-4 text-xs leading-relaxed text-smoke">
               {contact.reply}

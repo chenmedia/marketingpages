@@ -9,9 +9,10 @@ export default function SectionLabel({
   tone?: "dark" | "light";
 }) {
   const color = tone === "dark" ? "text-smoke" : "text-sand";
+  const dot = tone === "dark" ? "bg-ink" : "bg-cream";
   return (
     <p className={`meta-label flex items-center gap-3 ${color}`}>
-      <span aria-hidden className="inline-block size-1.5 rounded-full bg-ember" />
+      <span aria-hidden className={`inline-block size-1.5 rounded-full ${dot}`} />
       <span>{children}</span>
       {number && (
         <>

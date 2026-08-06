@@ -16,14 +16,14 @@ export default function Footer({
         <div className="space-y-4">
           <p className="display text-2xl">Chen&nbsp;Media</p>
           <p className="text-sm text-sand">{dict.footer.tagline}</p>
-          <Squiggle className="w-24" />
+          <Squiggle className="w-24 text-cream" />
         </div>
 
         <div className="space-y-2">
           <p className="meta-label text-sand">{dict.contact.emailLabel}</p>
           <a
             href="mailto:kai@chenmedia.no"
-            className="text-sm underline decoration-ember underline-offset-4 hover:text-butter"
+            className="text-sm underline decoration-sand underline-offset-4 hover:text-butter"
           >
             kai@chenmedia.no
           </a>

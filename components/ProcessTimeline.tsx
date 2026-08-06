@@ -23,7 +23,7 @@ export default function ProcessTimeline({ dict }: { dict: Dictionary }) {
         <ol className="mt-14 grid gap-px overflow-hidden rounded-lg bg-cream/15 sm:grid-cols-2 lg:grid-cols-4">
           {process.steps.map((step) => (
             <li key={step.number} className="flex flex-col bg-ink p-6">
-              <span className="display text-3xl text-ember">{step.number}</span>
+              <span className="display text-3xl text-cream">{step.number}</span>
               <h3 className="display mt-4 text-lg">{step.title}</h3>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-sand">
                 {step.body}

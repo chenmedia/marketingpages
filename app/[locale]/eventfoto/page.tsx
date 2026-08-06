@@ -69,7 +69,7 @@ export default async function EventPhotoPage({
           {/* Shot listen — det konkrete tillitssignalet */}
           <div className="mt-14 grid items-center gap-8 rounded-lg bg-ink p-8 text-cream md:grid-cols-[1fr_1.4fr] md:p-12">
             <div>
-              <Squiggle className="w-20" />
+              <Squiggle className="w-20 text-cream" />
               <h3 className="display mt-4 text-2xl sm:text-3xl">
                 {page.shotlist.heading}
               </h3>
