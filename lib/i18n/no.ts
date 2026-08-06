@@ -18,77 +18,108 @@ export const no: Dictionary = {
       description:
         "Eventfilm som forsterker budskapet. Dynamiske klipp, engasjerende historiefortelling og høy produksjonskvalitet — fra pitch-eventer til lanseringer.",
     },
+    projects: {
+      title: "Prosjekter — Chen Media",
+      description:
+        "Utvalgte oppdrag innen eventfoto og eventfilm — fra Snap Session for Snapchat til pitch-eventer, butikkevents og kundearrangementer.",
+    },
+    news: {
+      title: "Nyheter — Chen Media",
+      description:
+        "Notater fra arbeidet: prosjekter, erfaringer og det som skjer hos Chen Media.",
+    },
   },
   nav: {
+    home: "Hjem",
+    services: "Våre tjenester",
     photo: "Eventfoto",
+    photoSub: "Konferanser, lanseringer og firmaevents",
     film: "Eventfilm",
+    filmSub: "Hovedfilm og korte klipp for sosiale medier",
+    projects: "Prosjekter",
+    news: "Nyheter",
     about: "Om oss",
     contact: "Kontakt",
     cta: "Be om tilbud",
   },
   hero: {
-    kicker: "Foto & film — Oslo / hele Norge",
-    title: "Vi fanger",
-    titleAccent: "øyeblikkene.",
+    badge: "Ledig for oppdrag — Oslo / hele Norge",
+    title: "Arrangementet ditt, sett med øynene til en",
+    titleAccent: "fotograf.",
     lead: "Eventfoto og film for bedrifter. Vi dokumenterer konferanser, lanseringer og firmaevents — og leverer innhold som fortsatt jobber for dere lenge etter at lokalet er ryddet.",
-    ctaPrimary: "Be om tilbud",
+    ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",
     clientsLabel: "Utvalgte oppdragsgivere",
+    polaroidBadge: "Foto + film siden 2020",
   },
   services: {
     label: "Hva vi gjør",
-    heading: "Foto og film",
-    photo: {
-      title: "Eventfoto",
-      body: [
-        "Vi jobber dokumentarisk. Kjøreplanen din blir til en shot list før vi løfter kameraet, og under arrangementet står vi der øyeblikkene skjer — på scenen, i salen og i alt som utspiller seg i pausene.",
-        "Dere får et ferdig redigert utvalg som speiler arrangementets tone og profil. Klart for nettsider, sosiale medier og internkommunikasjon.",
-      ],
-      link: "Mer om eventfoto",
-    },
-    film: {
-      title: "Eventfilm",
-      body: [
-        "Vi fanger stemningen, energien og de viktigste øyeblikkene fra arrangementet ditt. Dynamiske klipp, engasjerende historiefortelling og høy produksjonskvalitet.",
-        "Resultatet er en film som ikke bare dokumenterer, men forsterker budskapet — og skaper engasjement hos målgruppen.",
-      ],
-      link: "Mer om eventfilm",
-    },
-  },
-  cases: {
-    label: "Utvalgte oppdrag",
-    heading: "Arbeid vi står for",
-    lead: "Fra intime frokostmøter til store produksjoner. Et utvalg av arrangementene vi har dokumentert for kundene våre.",
-    items: [
+    heading: "Tjenestene våre",
+    lead: "Tre leveranser, ett mål: at arrangementet ditt når lenger enn lokalet.",
+    cards: [
       {
-        client: "Snapchat",
-        project: "Snap Session Frokostmøte",
-        kind: "Eventfoto",
-        context:
-          "Frokostmøte i Oslo for annonsører og byråer — dokumentert fra første foredrag til siste samtale over kaffen.",
+        title: "Eventfoto",
+        body: "Dokumentarisk fotografering av hele arrangementet — scenen, salen og alt som skjer i pausene.",
+        points: [
+          "Shot list av kjøreplanen din",
+          "Diskret tilstedeværelse uten blits",
+          "Redigert utvalg i høy oppløsning",
+        ],
+        linkLabel: "Mer om eventfoto",
+        slug: "eventfoto",
       },
       {
-        client: "Optiver",
-        project: "Pitch Event",
-        kind: "Eventfilm",
-        context:
-          "Pitch-event fanget på film — energien i rommet, deltakerne og øyeblikkene som definerte kvelden.",
+        title: "Eventfilm",
+        body: "Dynamiske klipp, engasjerende historiefortelling og høy produksjonskvalitet — en film som forsterker budskapet.",
+        points: [
+          "Hovedfilm på ett til tre minutter",
+          "Vertikale kutt for sosiale medier",
+          "Lisensiert musikk, klarert for kanalene",
+        ],
+        linkLabel: "Mer om eventfilm",
+        slug: "eventfilm",
       },
       {
-        client: "Varner x Levi's",
-        project: "Butikkevent",
-        kind: "Eventfilm",
-        context:
-          "Merkevareevent for Levi's i Varner-systemet — film bygget for sosiale medier og intern bruk.",
-      },
-      {
-        client: "Ignite Procurement x Hurtigruten",
-        project: "Kundearrangement",
-        kind: "Eventfilm",
-        context:
-          "Kundearrangement dokumentert med film — historiefortelling som løfter samarbeidet mellom to merkevarer.",
+        title: "Foto + film-pakke",
+        body: "Én partner for hele leveransen. Vi koordinerer foto og film i samme produksjon, konsistent i stil og tone.",
+        points: [
+          "Én kontakt, én avtale, én tidslinje",
+          "Konsistent visuelt uttrykk",
+          "Innhold klart for alle flater",
+        ],
+        linkLabel: "Se prosjektene",
+        slug: "prosjekter",
       },
     ],
+  },
+  liveOn: {
+    label: "Verdien etterpå",
+    heading: "Arrangementet lever videre, lenge etter siste bilde.",
+    body: [
+      "De fleste leverer en mappe med bilder. Vi leverer innhold som er klart til å brukes: redigert, sortert og tilpasset flatene dere faktisk publiserer på.",
+      "Dere velger det dere vil bruke, og alt er klart for nettsider, sosiale medier og internkommunikasjon — uten timer med etterarbeid.",
+    ],
+    points: [
+      "Redigert utvalg, sortert etter høydepunkter",
+      "Formater tilpasset web, SoMe og trykk",
+      "Levering etter avtalt tidslinje",
+    ],
+    cta: "Slik jobber vi",
+  },
+  work: {
+    label: "Arbeidet vårt",
+    heading: "Fra internasjonale merkevarer til intime frokostmøter",
+    lead: "Utforsk arbeidet etter tjeneste, eller se alle prosjektene samlet.",
+    cards: [
+      { title: "Eventfoto", sub: "Snapchat · DNT · OBOS · JCP", slug: "eventfoto" },
+      {
+        title: "Eventfilm",
+        sub: "Optiver · Varner x Levi's · Nordisk Film Kino",
+        slug: "eventfilm",
+      },
+      { title: "Alle prosjekter", sub: "Foto og film, samlet på ett sted", slug: "prosjekter" },
+    ],
+    linkLabel: "Se arbeidet",
   },
   process: {
     label: "Prosessen",
@@ -123,7 +154,7 @@ export const no: Dictionary = {
     note: "Det er aldri «farvel» — det er alltid «på gjensyn».",
   },
   about: {
-    label: "Om oss",
+    label: "Fotografen",
     heading: "Hei, jeg er Kai Chen.",
     body: [
       "Jeg møter deg som fotograf — bak står Chen Media AS, et fotografi-ledet innholdsbyrå spesialisert på event- og merkevarefotografering for bedrifter og arrangører.",
@@ -135,13 +166,68 @@ export const no: Dictionary = {
       { value: "AS", caption: "Ryddige avtaler og fakturering" },
     ],
   },
+  audience: {
+    label: "Hvem vi jobber for",
+    heading: "Hvem er Chen Media for?",
+    lead: "Vi jobber med organisasjoner som forstår at et godt arrangement også må kommuniseres godt.",
+    groups: [
+      {
+        title: "Konferanser og fagdager",
+        items: ["Konferansearrangører", "Bransjeforeninger", "Kurs- og seminarmiljøer"],
+      },
+      {
+        title: "Firmaevents og fester",
+        items: ["Firmafester og jubileer", "Interne samlinger", "Team- og kulturarrangementer"],
+      },
+      {
+        title: "Lanseringer og merkevarer",
+        items: ["Produktlanseringer", "Butikk- og merkevareevents", "PR- og presseeventer"],
+      },
+      {
+        title: "Byråer og organisasjoner",
+        items: ["Eventbyråer og produksjonsselskap", "Organisasjoner og foreninger", "Kulturaktører"],
+      },
+    ],
+  },
   contact: {
     label: "Kontakt",
-    heading: "Har dere et arrangement på kalenderen?",
-    lead: "Dato og sted er nok til å starte. Fortell oss kort om arrangementet, så tar vi resten i en uforpliktende prat.",
-    emailLabel: "E-post",
-    cta: "Send en melding",
+    heading: "Få et tilbud tilpasset",
+    headingAccent: "arrangementet ditt",
+    lead: "Dato, sted og tidspunkt er nok. Resten tar vi i en prat etterpå.",
+    photographerRole: "Eventfotograf · Chen Media",
+    stats: [
+      { value: "Foto + film", caption: "Én partner for hele leveransen" },
+      { value: "Oslo → Norge", caption: "Base i Oslo, oppdrag i hele landet" },
+      { value: "< 1 virkedag", caption: "Kai svarer personlig" },
+    ],
+    agenda: {
+      label: "Kommende kalender",
+      confirmedLabel: "bekreftet",
+      openLabel: "ledige datoer",
+      statusBooked: "Booket",
+      statusOpen: "Ledig",
+      note: "Det er fortsatt plass til arrangementet ditt på de ledige datoene — og flere enn dem.",
+    },
+    form: {
+      name: "Navn",
+      namePh: "Navnet ditt",
+      org: "Organisasjon",
+      orgPh: "Firmanavn",
+      email: "E-postadresse",
+      emailPh: "deg@firma.no",
+      message: "Fortell oss om arrangementet",
+      messageHint: "(dato, sted og tidspunkt er nok)",
+      messagePh: "F.eks. årskonferanse 12. mars 2027, Oslo kongressenter, 09:00–17:00",
+      points: ["Uforpliktende", "Svar innen én virkedag", "Foto + innhold for SoMe"],
+      submit: "Be om et uforpliktende tilbud",
+    },
+    direct: "Eller send e-post direkte:",
     reply: "Kai svarer personlig, vanligvis innen én virkedag.",
+    emailLabel: "E-post",
+  },
+  sticky: {
+    available: "Ledig for arrangementet ditt",
+    cta: "Be om tilbud",
   },
   footer: {
     tagline: "Eventfoto og film for bedrifter",
@@ -306,6 +392,101 @@ export const no: Dictionary = {
       heading: "Har dere en produksjon i tankene?",
       lead: "Fortell oss om arrangementet, så foreslår vi et opplegg som passer formatet og budsjettet.",
     },
+  },
+  projectsPage: {
+    kicker: "Prosjekter",
+    title: "Arbeidet, samlet.",
+    lead: "Alle oppdragene vi viser frem, på ett sted — foto og film, fra intime frokostmøter til store produksjoner.",
+    filterAll: "Alle",
+    items: [
+      {
+        client: "Snapchat",
+        project: "Snap Session Frokostmøte",
+        kind: "Eventfoto",
+        context:
+          "Frokostmøte i Oslo for annonsører og byråer — dokumentert fra første foredrag til siste samtale over kaffen.",
+      },
+      {
+        client: "Optiver",
+        project: "Pitch Event",
+        kind: "Eventfilm",
+        context:
+          "Pitch-event fanget på film — energien i rommet, deltakerne og øyeblikkene som definerte kvelden.",
+      },
+      {
+        client: "Aktiv Eiendomsmegling",
+        project: "Pitch Event",
+        kind: "Eventfilm",
+        context: "Pitch-event dokumentert med film for intern og ekstern bruk.",
+      },
+      {
+        client: "Varner x Levi's",
+        project: "Butikkevent",
+        kind: "Eventfilm",
+        context:
+          "Merkevareevent for Levi's i Varner-systemet — film bygget for sosiale medier og intern bruk.",
+      },
+      {
+        client: "Ignite Procurement x Hurtigruten",
+        project: "Kundearrangement",
+        kind: "Eventfilm",
+        context:
+          "Kundearrangement dokumentert med film — historiefortelling som løfter samarbeidet mellom to merkevarer.",
+      },
+      {
+        client: "Nordisk Film Kino",
+        project: "Eventfilm",
+        kind: "Eventfilm",
+        context: "Filmproduksjon for Nordisk Film Kino.",
+      },
+      {
+        client: "Av-og-til",
+        project: "Kampanjearrangement",
+        kind: "Eventfilm",
+        context: "Film for alkovettorganisasjonen Av-og-til.",
+      },
+      {
+        client: "DNT",
+        project: "Arrangementer",
+        kind: "Eventfoto",
+        context: "Dokumentasjon for Den Norske Turistforening.",
+      },
+      {
+        client: "OBOS",
+        project: "Arrangementer",
+        kind: "Eventfoto",
+        context: "Eventdokumentasjon for OBOS.",
+      },
+      {
+        client: "JCP",
+        project: "Eventproduksjoner",
+        kind: "Eventfoto",
+        context: "Foto for arrangementer produsert av eventbyrået JCP.",
+      },
+    ],
+  },
+  newsPage: {
+    kicker: "Nyheter",
+    title: "Notater fra arbeidet.",
+    lead: "Det som skjer hos Chen Media: nye prosjekter, erfaringer fra oppdrag og ting vi har lært underveis.",
+    readLabel: "Fra oppdraget",
+    entries: [
+      {
+        tag: "Eventfoto",
+        title: "Snap Session: å dokumentere et frokostmøte uten å forstyrre det",
+        body: "For Snapchats frokostmøte i Oslo jobbet vi langs kantene av rommet — uten blits, timet etter programmet. Resultatet: bilder der ingen poserer, og stemningen er ekte.",
+      },
+      {
+        tag: "Eventfilm",
+        title: "Pitch-eventer på film: energien er poenget",
+        body: "To pitch-eventer — Optiver og Aktiv Eiendomsmegling — lærte oss det samme: filmen skal ikke referere programmet, den skal gjenskape følelsen av å være i rommet.",
+      },
+      {
+        tag: "Bak kamera",
+        title: "Hvorfor vi alltid lager shot list",
+        body: "Kjøreplanen din blir til en konkret liste over øyeblikk som må sikres, minutt for minutt. Det gir ro til å improvisere — de planlagte bildene er allerede i boks.",
+      },
+    ],
   },
   ticker: { alt: "Utvalg fra arbeidet vårt" },
 };

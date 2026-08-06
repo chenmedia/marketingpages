@@ -18,77 +18,108 @@ export const en: Dictionary = {
       description:
         "Event films that reinforce your message. Dynamic footage, engaging storytelling and high production quality — from pitch events to launches.",
     },
+    projects: {
+      title: "Projects — Chen Media",
+      description:
+        "Selected assignments in event photography and film — from Snap Session for Snapchat to pitch events, in-store events and client gatherings.",
+    },
+    news: {
+      title: "News — Chen Media",
+      description:
+        "Notes from the work: projects, lessons learned and what's happening at Chen Media.",
+    },
   },
   nav: {
+    home: "Home",
+    services: "Our services",
     photo: "Event photo",
+    photoSub: "Conferences, launches and corporate events",
     film: "Event film",
+    filmSub: "Main film and short cuts for social media",
+    projects: "Projects",
+    news: "News",
     about: "About",
     contact: "Contact",
     cta: "Request a quote",
   },
   hero: {
-    kicker: "Photo & film — Oslo / all of Norway",
-    title: "We capture",
-    titleAccent: "the moments.",
+    badge: "Available for events — Oslo / all of Norway",
+    title: "Your event, seen through the eyes of a",
+    titleAccent: "photographer.",
     lead: "Event photography and film for businesses. We document conferences, launches and corporate events — and deliver content that keeps working for you long after the venue is cleared.",
-    ctaPrimary: "Request a quote",
+    ctaPrimary: "Request a no-obligation quote",
     ctaSecondary: "See the work",
     clientsLabel: "Selected clients",
+    polaroidBadge: "Photo + film since 2020",
   },
   services: {
     label: "What we do",
-    heading: "Photo and film",
-    photo: {
-      title: "Event photography",
-      body: [
-        "We work documentary-style. Your event schedule becomes a shot list before we lift the camera, and during the event we stand where the moments happen — on stage, in the audience, and in everything unfolding between sessions.",
-        "You receive a fully edited selection that reflects the tone and profile of your event. Ready for websites, social media and internal communication.",
-      ],
-      link: "More about event photography",
-    },
-    film: {
-      title: "Event film",
-      body: [
-        "We capture the atmosphere, the energy and the defining moments of your event. Dynamic footage, engaging storytelling and high production quality.",
-        "The result is a film that doesn't just document — it reinforces your message and creates engagement with your audience.",
-      ],
-      link: "More about event film",
-    },
-  },
-  cases: {
-    label: "Selected work",
-    heading: "Work we stand behind",
-    lead: "From intimate breakfast seminars to large productions. A selection of the events we have documented for our clients.",
-    items: [
+    heading: "Our services",
+    lead: "Three deliveries, one goal: making your event reach beyond the venue.",
+    cards: [
       {
-        client: "Snapchat",
-        project: "Snap Session Breakfast Seminar",
-        kind: "Event photo",
-        context:
-          "Breakfast seminar in Oslo for advertisers and agencies — documented from the first talk to the last conversation over coffee.",
+        title: "Event photography",
+        body: "Documentary coverage of the whole event — the stage, the audience, and everything happening between sessions.",
+        points: [
+          "A shot list built from your schedule",
+          "Discreet presence, no flash",
+          "Edited selection in high resolution",
+        ],
+        linkLabel: "More about event photography",
+        slug: "eventfoto",
       },
       {
-        client: "Optiver",
-        project: "Pitch Event",
-        kind: "Event film",
-        context:
-          "A pitch event captured on film — the energy in the room, the participants, and the moments that defined the evening.",
+        title: "Event film",
+        body: "Dynamic footage, engaging storytelling and high production quality — a film that reinforces your message.",
+        points: [
+          "Main film of one to three minutes",
+          "Vertical cuts for social media",
+          "Licensed music, cleared for your channels",
+        ],
+        linkLabel: "More about event film",
+        slug: "eventfilm",
       },
       {
-        client: "Varner x Levi's",
-        project: "In-store event",
-        kind: "Event film",
-        context:
-          "Brand event for Levi's within the Varner group — a film built for social media and internal use.",
-      },
-      {
-        client: "Ignite Procurement x Hurtigruten",
-        project: "Client event",
-        kind: "Event film",
-        context:
-          "A client event documented on film — storytelling that elevates the partnership between two brands.",
+        title: "Photo + film package",
+        body: "One partner for the full delivery. We coordinate photo and film in the same production, consistent in style and tone.",
+        points: [
+          "One contact, one agreement, one timeline",
+          "A consistent visual expression",
+          "Content ready for every surface",
+        ],
+        linkLabel: "See the projects",
+        slug: "prosjekter",
       },
     ],
+  },
+  liveOn: {
+    label: "The value afterwards",
+    heading: "Your event lives on, long after the last photo.",
+    body: [
+      "Most photographers hand over a folder of images. We deliver content that is ready to use: edited, sorted and adapted to the surfaces you actually publish on.",
+      "You pick what you want to use, and everything is ready for websites, social media and internal communication — without hours of extra work.",
+    ],
+    points: [
+      "Edited selection, sorted by highlights",
+      "Formats adapted for web, social and print",
+      "Delivery on the agreed timeline",
+    ],
+    cta: "How we work",
+  },
+  work: {
+    label: "Our work",
+    heading: "From international brands to intimate breakfast seminars",
+    lead: "Explore the work by service, or see all projects collected.",
+    cards: [
+      { title: "Event photo", sub: "Snapchat · DNT · OBOS · JCP", slug: "eventfoto" },
+      {
+        title: "Event film",
+        sub: "Optiver · Varner x Levi's · Nordisk Film Kino",
+        slug: "eventfilm",
+      },
+      { title: "All projects", sub: "Photo and film, in one place", slug: "prosjekter" },
+    ],
+    linkLabel: "See the work",
   },
   process: {
     label: "The process",
@@ -123,7 +154,7 @@ export const en: Dictionary = {
     note: "It is never “goodbye” — it is always “see you again”.",
   },
   about: {
-    label: "About",
+    label: "The photographer",
     heading: "Hi, I'm Kai Chen.",
     body: [
       "You'll meet me as the photographer — behind me stands Chen Media AS, a photography-led content agency specialising in event and brand photography for businesses and event organisers.",
@@ -135,13 +166,68 @@ export const en: Dictionary = {
       { value: "AS", caption: "Proper contracts and invoicing" },
     ],
   },
+  audience: {
+    label: "Who we work for",
+    heading: "Who is Chen Media for?",
+    lead: "We work with organisations that understand a great event also needs to be communicated well.",
+    groups: [
+      {
+        title: "Conferences and seminars",
+        items: ["Conference organisers", "Industry associations", "Course and seminar organisers"],
+      },
+      {
+        title: "Corporate events and parties",
+        items: ["Company parties and anniversaries", "Internal gatherings", "Team and culture events"],
+      },
+      {
+        title: "Launches and brands",
+        items: ["Product launches", "In-store and brand events", "PR and press events"],
+      },
+      {
+        title: "Agencies and organisations",
+        items: ["Event agencies and production companies", "Organisations and associations", "Cultural institutions"],
+      },
+    ],
+  },
   contact: {
     label: "Contact",
-    heading: "Have an event on the calendar?",
-    lead: "A date and a venue is enough to start. Tell us briefly about your event, and we'll take the rest in a no-obligation chat.",
-    emailLabel: "Email",
-    cta: "Send a message",
+    heading: "Get a quote tailored to",
+    headingAccent: "your event",
+    lead: "Date, venue and times are enough. We'll discuss the rest afterwards.",
+    photographerRole: "Event photographer · Chen Media",
+    stats: [
+      { value: "Photo + film", caption: "One partner for the full delivery" },
+      { value: "Oslo → Norway", caption: "Based in Oslo, working nationwide" },
+      { value: "< 1 business day", caption: "Kai replies personally" },
+    ],
+    agenda: {
+      label: "Upcoming agenda",
+      confirmedLabel: "confirmed",
+      openLabel: "open dates",
+      statusBooked: "Booked",
+      statusOpen: "Open",
+      note: "There is still room for your event on the open dates — and beyond them.",
+    },
+    form: {
+      name: "Name",
+      namePh: "Your name",
+      org: "Organisation",
+      orgPh: "Company name",
+      email: "Email address",
+      emailPh: "you@yourcompany.com",
+      message: "Tell us about your event",
+      messageHint: "(date, venue and times are enough)",
+      messagePh: "E.g. annual conference on 12 March 2027, Oslo, 9:00–17:00",
+      points: ["No obligation", "Reply within one business day", "Photos + social content"],
+      submit: "Request a no-obligation quote",
+    },
+    direct: "Or email directly:",
     reply: "Kai replies personally, usually within one business day.",
+    emailLabel: "Email",
+  },
+  sticky: {
+    available: "Available for your event",
+    cta: "Request a quote",
   },
   footer: {
     tagline: "Event photography and film for businesses",
@@ -306,6 +392,101 @@ export const en: Dictionary = {
       heading: "Have a production in mind?",
       lead: "Tell us about your event, and we'll suggest a setup that fits the format and the budget.",
     },
+  },
+  projectsPage: {
+    kicker: "Projects",
+    title: "The work, collected.",
+    lead: "Every assignment we show, in one place — photo and film, from intimate breakfast seminars to large productions.",
+    filterAll: "All",
+    items: [
+      {
+        client: "Snapchat",
+        project: "Snap Session Breakfast Seminar",
+        kind: "Event photo",
+        context:
+          "Breakfast seminar in Oslo for advertisers and agencies — documented from the first talk to the last conversation over coffee.",
+      },
+      {
+        client: "Optiver",
+        project: "Pitch Event",
+        kind: "Event film",
+        context:
+          "A pitch event captured on film — the energy in the room, the participants, and the moments that defined the evening.",
+      },
+      {
+        client: "Aktiv Eiendomsmegling",
+        project: "Pitch Event",
+        kind: "Event film",
+        context: "A pitch event documented on film for internal and external use.",
+      },
+      {
+        client: "Varner x Levi's",
+        project: "In-store event",
+        kind: "Event film",
+        context:
+          "Brand event for Levi's within the Varner group — a film built for social media and internal use.",
+      },
+      {
+        client: "Ignite Procurement x Hurtigruten",
+        project: "Client event",
+        kind: "Event film",
+        context:
+          "A client event documented on film — storytelling that elevates the partnership between two brands.",
+      },
+      {
+        client: "Nordisk Film Kino",
+        project: "Event film",
+        kind: "Event film",
+        context: "Film production for Nordisk Film Kino.",
+      },
+      {
+        client: "Av-og-til",
+        project: "Campaign event",
+        kind: "Event film",
+        context: "Film for the Norwegian moderation organisation Av-og-til.",
+      },
+      {
+        client: "DNT",
+        project: "Events",
+        kind: "Event photo",
+        context: "Documentation for the Norwegian Trekking Association.",
+      },
+      {
+        client: "OBOS",
+        project: "Events",
+        kind: "Event photo",
+        context: "Event documentation for OBOS.",
+      },
+      {
+        client: "JCP",
+        project: "Event productions",
+        kind: "Event photo",
+        context: "Photography for events produced by the event agency JCP.",
+      },
+    ],
+  },
+  newsPage: {
+    kicker: "News",
+    title: "Notes from the work.",
+    lead: "What's happening at Chen Media: new projects, lessons from assignments and things we've learned along the way.",
+    readLabel: "From the assignment",
+    entries: [
+      {
+        tag: "Event photo",
+        title: "Snap Session: documenting a breakfast seminar without disturbing it",
+        body: "For Snapchat's breakfast seminar in Oslo we worked along the edges of the room — no flash, timed to the programme. The result: images where nobody poses, and the atmosphere is real.",
+      },
+      {
+        tag: "Event film",
+        title: "Pitch events on film: the energy is the point",
+        body: "Two pitch events — Optiver and Aktiv Eiendomsmegling — taught us the same thing: the film shouldn't recap the programme, it should recreate the feeling of being in the room.",
+      },
+      {
+        tag: "Behind the camera",
+        title: "Why we always build a shot list",
+        body: "Your event schedule becomes a concrete list of moments that must be secured, minute by minute. That gives us room to improvise — the planned images are already in the bag.",
+      },
+    ],
   },
   ticker: { alt: "A selection of our work" },
 };

@@ -6,6 +6,7 @@ import "../globals.css";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import StickyBar from "@/components/StickyBar";
 
 // Garet (Spacetype) — brand-displayfonten, self-hostet.
 const display = localFont({
@@ -58,6 +59,7 @@ export default async function LocaleLayout({
         <Nav locale={locale} dict={dict} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} dict={dict} />
+        <StickyBar locale={locale} dict={dict} />
       </body>
     </html>
   );

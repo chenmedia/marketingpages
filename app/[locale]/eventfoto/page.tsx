@@ -107,7 +107,7 @@ export default async function EventPhotoPage({
         </div>
       </section>
 
-      <ContactCTA dict={dict} heading={page.cta.heading} lead={page.cta.lead} />
+      <ContactCTA dict={dict} locale={locale as Locale} heading={page.cta.heading} lead={page.cta.lead} />
     </>
   );
 }
