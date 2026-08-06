@@ -64,9 +64,8 @@ export default function ContactCTA({
                   key={stat.caption}
                   className="flex flex-col items-center justify-center rounded-xl border border-cream/15 bg-cream/5 px-2 py-3.5 text-center"
                 >
-                  {/* Verdiene er tekst (ikke TONs korte tall), så størrelsen
-                      tilpasses flisen: én linje, uten brekk */}
-                  <div className="whitespace-nowrap text-base font-extrabold leading-none sm:text-lg">
+                  {/* Korte tallverdier i TONs flisstil */}
+                  <div className="whitespace-nowrap text-2xl font-extrabold leading-none">
                     {stat.value}
                   </div>
                   <div className="mt-1.5 text-[10px] uppercase leading-tight tracking-wide text-sand">

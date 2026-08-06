@@ -196,9 +196,9 @@ export const en: Dictionary = {
     lead: "Date, venue and times are enough. We'll discuss the rest afterwards.",
     photographerRole: "Event photographer · Chen Media",
     stats: [
-      { value: "Photo + film", caption: "One partner for the full delivery" },
-      { value: "Oslo → Norway", caption: "Based in Oslo, working nationwide" },
-      { value: "< 1 business day", caption: "Kai replies personally" },
+      { value: "5+", caption: "years of events" },
+      { value: "10+", caption: "happy clients" },
+      { value: "< 24 h", caption: "reply time" },
     ],
     agenda: {
       label: "Upcoming agenda",

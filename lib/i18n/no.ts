@@ -196,9 +196,9 @@ export const no: Dictionary = {
     lead: "Dato, sted og tidspunkt er nok. Resten tar vi i en prat etterpå.",
     photographerRole: "Eventfotograf · Chen Media",
     stats: [
-      { value: "Foto + film", caption: "Én partner for hele leveransen" },
-      { value: "Oslo → Norge", caption: "Base i Oslo, oppdrag i hele landet" },
-      { value: "< 1 virkedag", caption: "Kai svarer personlig" },
+      { value: "5+", caption: "år med eventfoto" },
+      { value: "10+", caption: "fornøyde kunder" },
+      { value: "< 24 t", caption: "svartid" },
     ],
     agenda: {
       label: "Kommende kalender",
