@@ -1,47 +1,49 @@
+import Image from "next/image";
+
 /*
-  Bildeflate i påvente av foto fra Kai. Hele malen er bildedrevet, så alle
-  flater rendres med riktig format og en mono-label — klare til å byttes mot
-  <Image> når fotoene er levert.
+  Bildeflate med faktiske foto fra Kais portefølje (public/portfolio,
+  hentet fra Google Drive — KarpeWorld 2026). Bildet velges deterministisk
+  fra manifestet basert på label, så samme flate alltid viser samme foto.
+  Bytt til kuraterte bilder per flate ved å utvide manifestet og/eller
+  sende inn `src` direkte.
 */
-const tones = {
-  bone: "bg-bone text-smoke",
-  shell: "bg-shell text-smoke",
-  butter: "bg-butter text-smoke",
-  ink: "bg-ink text-sand",
-  olive: "bg-olive text-cream",
-} as const;
+export const portfolioPhotos = [
+  "/portfolio/karpe-stage-1.jpg",
+  "/portfolio/karpe-crowd-1.jpg",
+  "/portfolio/karpe-stage-2.jpg",
+  "/portfolio/karpe-lifestyle-1.jpg",
+  "/portfolio/karpe-brand-1.jpg",
+  "/portfolio/karpe-stage-3.jpg",
+  "/portfolio/karpe-brand-2.jpg",
+  "/portfolio/karpe-lifestyle-2.jpg",
+];
+
+function pick(label: string): string {
+  let hash = 0;
+  for (const char of label) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  return portfolioPhotos[hash % portfolioPhotos.length];
+}
 
 export default function PlaceholderImage({
   label,
-  tone = "bone",
+  src,
   className = "",
 }: {
   label: string;
-  tone?: keyof typeof tones;
+  src?: string;
+  /** Beholdt for kompatibilitet med eksisterende kall — brukes ikke lenger */
+  tone?: string;
   className?: string;
 }) {
   return (
-    <div
-      role="img"
-      aria-label={label}
-      className={`relative overflow-hidden ${tones[tone]} ${className}`}
-    >
-      <svg
-        aria-hidden
-        className="absolute inset-0 h-full w-full opacity-20"
-        preserveAspectRatio="none"
-      >
-        <line x1="0" y1="0" x2="100%" y2="100%" stroke="currentColor" />
-        <line x1="100%" y1="0" x2="0" y2="100%" stroke="currentColor" />
-      </svg>
-      {/* Hjørneprikker som i decken */}
-      <span aria-hidden className="absolute left-2 top-2 size-1 rounded-full bg-current opacity-60" />
-      <span aria-hidden className="absolute right-2 top-2 size-1 rounded-full bg-current opacity-60" />
-      <span aria-hidden className="absolute bottom-2 left-2 size-1 rounded-full bg-current opacity-60" />
-      <span aria-hidden className="absolute bottom-2 right-2 size-1 rounded-full bg-current opacity-60" />
-      <span className="meta-label absolute inset-0 flex items-center justify-center p-4 text-center">
-        {label}
-      </span>
+    <div className={`relative overflow-hidden ${className}`}>
+      <Image
+        src={src ?? pick(label)}
+        alt={label}
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover"
+      />
     </div>
   );
 }

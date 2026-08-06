@@ -4,7 +4,7 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 import { isLocale } from "@/lib/i18n";
 import SectionLabel from "@/components/SectionLabel";
 import PhotoTicker from "@/components/PhotoTicker";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import PlaceholderImage, { portfolioPhotos } from "@/components/PlaceholderImage";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
 import CtaButton from "@/components/CtaButton";
@@ -119,7 +119,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             >
               <PlaceholderImage
                 label={card.title}
-                tone={(["bone", "ink", "olive"] as const)[i % 3]}
+                src={portfolioPhotos[i % portfolioPhotos.length]}
                 className="aspect-[3/2] w-full"
               />
               <div className="flex flex-1 flex-col p-6">
@@ -238,7 +238,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             >
               <PlaceholderImage
                 label={card.title}
-                tone={(["ink", "olive", "bone"] as const)[i % 3]}
+                src={portfolioPhotos[(i + 3) % portfolioPhotos.length]}
                 className="aspect-[4/5] w-full transition-transform duration-300 group-hover:scale-[1.02]"
               />
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-5 pt-14 text-cream">
@@ -308,7 +308,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <div key={group.title}>
               <PlaceholderImage
                 label={group.title}
-                tone={(["bone", "ink", "olive", "shell"] as const)[i % 4]}
+                src={portfolioPhotos[(i + 4) % portfolioPhotos.length]}
                 className="aspect-[4/3] w-full rounded-lg"
               />
               <h3 className="display mt-4 text-lg">{group.title}</h3>
