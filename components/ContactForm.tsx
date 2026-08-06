@@ -4,8 +4,10 @@ import { useState } from "react";
 import type { Dictionary } from "@/lib/i18n";
 
 /*
-  Uten backend i v1: skjemaet komponerer en ferdig utfylt e-post og åpner
-  brukerens e-postklient. Byttes enkelt mot Formspree/API-rute senere.
+  Skjemakort à la TONs kontaktseksjon: eget kort med skygge, TON-feltstil,
+  grønne haker og fullbredde-knapp. Uten backend i v1: submit komponerer en
+  ferdig utfylt e-post og åpner brukerens e-postklient — byttes enkelt mot
+  Formspree/API-rute senere.
 */
 export default function ContactForm({ dict }: { dict: Dictionary }) {
   const { form } = dict.contact;
@@ -16,9 +18,7 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `${form.submit} — ${org || name}`.trim()
-    );
+    const subject = encodeURIComponent(`${form.submit} — ${org || name}`.trim());
     const body = encodeURIComponent(
       `${form.name}: ${name}\n${form.org}: ${org}\n${form.email}: ${email}\n\n${message}`
     );
@@ -26,13 +26,18 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
   }
 
   const field =
-    "w-full rounded-lg border border-cream/25 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-sand/60 focus:border-cream focus:outline-none";
+    "w-full rounded-lg border border-cream/20 bg-cream/10 px-4 py-3 text-sm text-cream placeholder:text-sand/70 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-cream";
 
   return (
-    <form onSubmit={submit} className="space-y-4">
+    <form
+      onSubmit={submit}
+      className="flex h-full flex-col gap-4 rounded-2xl border border-cream/15 bg-cream/5 p-8 shadow-2xl shadow-black/40"
+    >
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block">
-          <span className="meta-label mb-1.5 block text-sand">{form.name}</span>
+        <div>
+          <label className="mb-1.5 block text-sm font-medium text-sand">
+            {form.name}
+          </label>
           <input
             required
             value={name}
@@ -40,19 +45,24 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
             placeholder={form.namePh}
             className={field}
           />
-        </label>
-        <label className="block">
-          <span className="meta-label mb-1.5 block text-sand">{form.org}</span>
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-medium text-sand">
+            {form.org}
+          </label>
           <input
+            required
             value={org}
             onChange={(e) => setOrg(e.target.value)}
             placeholder={form.orgPh}
             className={field}
           />
-        </label>
+        </div>
       </div>
-      <label className="block">
-        <span className="meta-label mb-1.5 block text-sand">{form.email}</span>
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-sand">
+          {form.email}
+        </label>
         <input
           required
           type="email"
@@ -61,20 +71,20 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
           placeholder={form.emailPh}
           className={field}
         />
-      </label>
-      <label className="block">
-        <span className="meta-label mb-1.5 block text-sand">
-          {form.message} <span className="normal-case">{form.messageHint}</span>
-        </span>
+      </div>
+      <div className="flex min-h-[120px] flex-1 flex-col">
+        <label className="mb-1.5 block text-sm font-medium text-sand">
+          {form.message}{" "}
+          <span className="text-olive">{form.messageHint}</span>
+        </label>
         <textarea
           required
-          rows={5}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder={form.messagePh}
-          className={field}
+          className={`${field} flex-1 resize-none`}
         />
-      </label>
+      </div>
 
       {/* Honeypot mot spam-boter — skjult for mennesker, jf. TONs skjema */}
       <input
@@ -86,38 +96,26 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
         className="hidden"
       />
 
-      <ul className="flex flex-wrap gap-x-5 gap-y-1">
+      <div className="flex flex-wrap items-center justify-center gap-4 pt-1 text-xs text-sand">
         {form.points.map((point) => (
-          <li key={point} className="meta-label flex items-center gap-1.5 text-sand">
-            <svg viewBox="0 0 12 12" className="size-3" fill="none" aria-hidden>
-              <path
-                d="M2 6.5L4.5 9L10 3.5"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            {point}
-          </li>
+          <span key={point} className="flex items-center gap-1">
+            <span className="text-green-400">✓</span> {point}
+          </span>
         ))}
-      </ul>
+      </div>
 
       <button
         type="submit"
-        className="meta-label group inline-flex w-full items-center justify-center gap-3 rounded-full bg-cream py-3 text-ink transition-colors hover:bg-bone"
+        className="w-full rounded-lg bg-cream py-4 text-base font-bold text-ink shadow-lg shadow-black/30 transition-colors hover:bg-bone"
       >
-        {form.submit}
-        <span aria-hidden className="transition-transform group-hover:translate-x-1">
-          →
-        </span>
+        {form.submit} →
       </button>
 
-      <p className="text-center text-xs leading-relaxed text-sand">
+      <p className="text-center text-xs text-sand">
         {dict.contact.reply} {dict.contact.direct}{" "}
         <a
           href="mailto:kai@chenmedia.no"
-          className="underline decoration-sand underline-offset-4 hover:text-cream"
+          className="underline transition-colors hover:text-cream"
         >
           kai@chenmedia.no
         </a>

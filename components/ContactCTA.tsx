@@ -23,10 +23,15 @@ export default function ContactCTA({
   const open = agenda.length - confirmed;
 
   return (
-    <section id="kontakt" className="scroll-mt-24 bg-ink text-cream">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="text-center">
-          <h2 className="display text-3xl sm:text-4xl">
+    <section id="kontakt" className="scroll-mt-24 relative overflow-hidden bg-ink text-cream">
+      {/* Bakgrunnsfoto i opacity-20 med overlay, jf. TONs kontaktseksjon */}
+      <div aria-hidden className="absolute inset-0 opacity-20">
+        <PlaceholderImage label="" tone="olive" className="h-full w-full" />
+      </div>
+      <div aria-hidden className="absolute inset-0 bg-ink/80" />
+      <div className="relative mx-auto max-w-5xl px-4 py-24 sm:px-6">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-4xl font-bold leading-tight sm:text-5xl">
             {heading ?? (
               <>
                 {contact.heading}{" "}
@@ -34,25 +39,22 @@ export default function ContactCTA({
               </>
             )}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-sand">
-            {lead ?? contact.lead}
-          </p>
+          <p className="text-xl text-sand">{lead ?? contact.lead}</p>
         </div>
 
-        <div className="mt-14 grid items-start gap-8 lg:grid-cols-2">
+        <div className="grid items-stretch gap-8 md:grid-cols-2">
           {/* Venstre: portrett, stats, agenda */}
-          <div className="space-y-6">
-            <div className="overflow-hidden rounded-lg border border-cream/15">
+          <div className="flex min-w-0 flex-col gap-4">
+            <div className="relative h-52 overflow-hidden rounded-2xl sm:h-56">
               <PlaceholderImage
                 label="Kai Chen — bak kamera"
                 tone="olive"
-                className="aspect-[16/9] w-full"
+                className="h-full w-full"
               />
-              <div className="bg-cream/5 p-4">
-                <p className="display text-lg">Kai Chen</p>
-                <p className="meta-label mt-0.5 text-sand">
-                  {contact.photographerRole}
-                </p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-5">
+                <p className="text-lg font-bold leading-tight">Kai Chen</p>
+                <p className="text-sm text-sand">{contact.photographerRole}</p>
               </div>
             </div>
 
@@ -158,7 +160,7 @@ export default function ContactCTA({
           </div>
 
           {/* Høyre: skjema */}
-          <div className="rounded-lg border border-cream/15 p-6 sm:p-8">
+          <div className="h-full min-w-0">
             <ContactForm dict={dict} />
           </div>
         </div>
