@@ -62,9 +62,11 @@ export default function ContactCTA({
               {contact.stats.map((stat) => (
                 <div
                   key={stat.caption}
-                  className="rounded-xl border border-cream/15 bg-cream/5 px-2 py-3.5 text-center"
+                  className="flex flex-col items-center justify-center rounded-xl border border-cream/15 bg-cream/5 px-2 py-3.5 text-center"
                 >
-                  <div className="text-2xl font-extrabold leading-none">
+                  {/* Verdiene er tekst (ikke TONs korte tall), så størrelsen
+                      tilpasses flisen: én linje, uten brekk */}
+                  <div className="whitespace-nowrap text-base font-extrabold leading-none sm:text-lg">
                     {stat.value}
                   </div>
                   <div className="mt-1.5 text-[10px] uppercase leading-tight tracking-wide text-sand">
