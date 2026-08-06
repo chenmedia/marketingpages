@@ -195,10 +195,11 @@ export const en: Dictionary = {
     headingAccent: "your event",
     lead: "Date, venue and times are enough. We'll discuss the rest afterwards.",
     photographerRole: "Event photographer · Chen Media",
+    // NB: placeholder numbers (TON's values) — Kai swaps in his own
     stats: [
-      { value: "5+", caption: "years of events" },
-      { value: "10+", caption: "happy clients" },
-      { value: "< 24 h", caption: "reply time" },
+      { value: "90", caption: "events this year" },
+      { value: "45+", caption: "happy clients" },
+      { value: "6", caption: "countries" },
     ],
     agenda: {
       label: "Upcoming agenda",
