@@ -76,6 +76,16 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
         />
       </label>
 
+      {/* Honeypot mot spam-boter — skjult for mennesker, jf. TONs skjema */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
+
       <ul className="flex flex-wrap gap-x-5 gap-y-1">
         {form.points.map((point) => (
           <li key={point} className="meta-label flex items-center gap-1.5 text-sand">

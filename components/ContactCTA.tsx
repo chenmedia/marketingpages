@@ -77,7 +77,8 @@ export default function ContactCTA({
                   {contact.agenda.openLabel}
                 </p>
               </div>
-              <ul className="mt-4 divide-y divide-cream/10">
+              <div className="relative">
+              <ul className="mt-4 max-h-60 divide-y divide-cream/10 overflow-y-auto pr-1.5 [scrollbar-width:thin]">
                 {agenda.map((entry) => (
                   <li
                     key={`${entry.day}-${entry.month.no}-${entry.title.no}`}
@@ -113,7 +114,13 @@ export default function ContactCTA({
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 text-xs leading-relaxed text-sand">
+              {/* Fade + scroll-hint nederst, jf. TONs agenda-liste */}
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-8 rounded-b bg-gradient-to-t from-ink to-transparent" />
+              <span aria-hidden className="pointer-events-none absolute bottom-1 right-3 text-[10px] text-sand">
+                scroll ▾
+              </span>
+              </div>
+              <p className="mt-3 border-t border-cream/10 pt-3 text-xs leading-relaxed text-sand">
                 {contact.agenda.note}
               </p>
             </div>

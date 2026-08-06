@@ -56,6 +56,36 @@ export default async function LocaleLayout({
       className={`${display.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Strukturerte data for søkemotorer, jf. TONs ProfessionalService-schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "@id": "https://chenmedia.no/#organization",
+              name: "Chen Media",
+              legalName: "Chen Media AS",
+              url: "https://chenmedia.no",
+              email: "kai@chenmedia.no",
+              founder: { "@type": "Person", name: "Kai Chen" },
+              description:
+                locale === "no"
+                  ? "Eventfoto og film for bedrifter. Chen Media dokumenterer konferanser, lanseringer og firmaevents i Oslo og hele Norge."
+                  : "Event photography and film for businesses. Chen Media documents conferences, launches and corporate events in Oslo and across Norway.",
+              areaServed: [
+                { "@type": "Country", name: "Norway" },
+                { "@type": "City", name: "Oslo" },
+              ],
+              serviceType: [
+                "Event photography",
+                "Event film",
+                "Brand photography",
+                "Videography",
+              ],
+            }),
+          }}
+        />
         <Nav locale={locale} dict={dict} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} dict={dict} />

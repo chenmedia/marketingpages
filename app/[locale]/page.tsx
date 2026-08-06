@@ -9,6 +9,7 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
 import CtaButton from "@/components/CtaButton";
 import LogoWall from "@/components/LogoWall";
+import Squiggle from "@/components/Squiggle";
 
 export async function generateMetadata({
   params,
@@ -26,9 +27,9 @@ export async function generateMetadata({
 }
 
 const polaroids = [
-  { label: "Snap Session — Oslo", tone: "butter", rotate: "-rotate-3" },
-  { label: "Pitch Event — Optiver", tone: "ink", rotate: "rotate-2" },
-  { label: "Varner x Levi's", tone: "olive", rotate: "-rotate-1" },
+  { label: "Snap Session", caption: "Snap Session · Oslo", tone: "butter", float: "float-a" },
+  { label: "Pitch Event", caption: "Pitch Event · Optiver", tone: "ink", float: "float-b" },
+  { label: "Varner x Levi's", caption: "Varner x Levi's", tone: "olive", float: "float-c" },
 ] as const;
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -48,8 +49,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </p>
             <h1 className="display mt-6 text-4xl sm:text-6xl lg:text-7xl">
               {dict.hero.title}{" "}
-              <span className="underline decoration-4 underline-offset-8">
+              <span className="relative inline-block">
                 {dict.hero.titleAccent}
+                {/* Krusedullen under aksentordet, jf. TONs squiggle under «pro.» */}
+                <Squiggle className="absolute -bottom-4 left-0 h-3.5 w-full text-ink opacity-60" />
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-smoke sm:text-base">
@@ -63,13 +66,13 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </div>
           </div>
 
-          {/* Polaroid-stabel */}
-          <div className="relative mx-auto hidden w-full max-w-sm lg:block">
+          {/* Polaroid-stabel — flytende, med bildetekster som TONs */}
+          <div className="relative mx-auto hidden w-full max-w-sm lg:block" aria-hidden>
             <div className="relative h-96">
               {polaroids.map((polaroid, i) => (
                 <div
                   key={polaroid.label}
-                  className={`absolute rounded-lg border border-ink/10 bg-cream p-2 pb-8 shadow-lg ${polaroid.rotate}`}
+                  className={`absolute rounded-lg border border-ink/10 bg-cream p-2 pb-9 shadow-lg ${polaroid.float}`}
                   style={{ top: `${i * 52}px`, left: `${i * 36}px`, width: "72%" }}
                 >
                   <PlaceholderImage
@@ -77,9 +80,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                     tone={polaroid.tone}
                     className="aspect-[4/3] w-full"
                   />
+                  <p className="meta-label absolute bottom-2.5 left-3 text-smoke">
+                    {polaroid.caption}
+                  </p>
                 </div>
               ))}
-              <p className="meta-label absolute -bottom-2 right-0 rounded-full bg-ink px-4 py-2 text-cream">
+              <p className="meta-label absolute -bottom-2 right-0 rotate-3 rounded-full bg-ink px-4 py-2 text-cream shadow-lg">
                 {dict.hero.polaroidBadge}
               </p>
             </div>

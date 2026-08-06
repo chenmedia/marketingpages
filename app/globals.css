@@ -53,6 +53,51 @@ body {
   text-transform: uppercase;
 }
 
+/* Flytende polaroids i heroen, jf. TONs floatA/B/C */
+@keyframes float-a {
+  0%,
+  100% {
+    transform: rotate(-6deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-6deg) translateY(-8px);
+  }
+}
+@keyframes float-b {
+  0%,
+  100% {
+    transform: rotate(4deg) translateY(0);
+  }
+  50% {
+    transform: rotate(4deg) translateY(-12px);
+  }
+}
+@keyframes float-c {
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-2deg) translateY(-6px);
+  }
+}
+.float-a {
+  animation: float-a 7s ease-in-out infinite;
+}
+.float-b {
+  animation: float-b 8s ease-in-out infinite;
+}
+.float-c {
+  animation: float-c 6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-a,
+  .float-b,
+  .float-c {
+    animation: none;
+  }
+}
+
 /* Rullende fototicker */
 @keyframes ticker {
   from {
