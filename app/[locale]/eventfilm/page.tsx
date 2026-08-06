@@ -36,7 +36,7 @@ export default async function EventFilmPage({
           <SectionLabel tone="light" number="01">
             {page.kicker}
           </SectionLabel>
-          <h1 className="display mt-6 max-w-3xl text-5xl sm:text-6xl lg:text-7xl">
+          <h1 className="display mt-6 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
             {page.title}
           </h1>
           <p className="mt-8 max-w-xl text-sm leading-relaxed text-sand sm:text-base">
@@ -53,7 +53,7 @@ export default async function EventFilmPage({
       {/* Håndverket */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionLabel number="02">{page.craft.label}</SectionLabel>
-        <h2 className="display mt-4 max-w-2xl text-4xl sm:text-5xl">
+        <h2 className="display mt-4 max-w-2xl text-3xl sm:text-4xl">
           {page.craft.heading}
         </h2>
         <div className="mt-8 grid gap-8 md:grid-cols-2">
@@ -66,7 +66,7 @@ export default async function EventFilmPage({
 
         {/* Én produksjon, flere flater */}
         <div className="mt-14">
-          <h3 className="display text-2xl sm:text-3xl">
+          <h3 className="display text-xl sm:text-2xl">
             {page.formats.heading}
           </h3>
           <div className="mt-8 grid gap-px overflow-hidden rounded-lg border border-ink/10 bg-ink/10 md:grid-cols-3">
@@ -89,7 +89,7 @@ export default async function EventFilmPage({
       <section className="bg-shell">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <SectionLabel number="03">{page.galleryLabel}</SectionLabel>
-          <h2 className="display mt-4 text-4xl sm:text-5xl">
+          <h2 className="display mt-4 text-3xl sm:text-4xl">
             {page.galleryHeading}
           </h2>
           <div className="mt-12">
@@ -101,7 +101,7 @@ export default async function EventFilmPage({
       {/* FAQ */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionLabel number="04">{page.faq.label}</SectionLabel>
-        <h2 className="display mb-10 mt-4 text-4xl sm:text-5xl">
+        <h2 className="display mb-10 mt-4 text-3xl sm:text-4xl">
           {page.faq.heading}
         </h2>
         <Faq items={page.faq.items} />

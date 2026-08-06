@@ -36,7 +36,7 @@ export default async function EventPhotoPage({
         <div className="grid items-start gap-10 md:grid-cols-[1.4fr_1fr]">
           <div>
             <SectionLabel number="01">{page.kicker}</SectionLabel>
-            <h1 className="display mt-6 text-5xl sm:text-6xl lg:text-7xl">
+            <h1 className="display mt-6 text-4xl sm:text-5xl lg:text-6xl">
               {page.title}
             </h1>
             <p className="mt-8 max-w-xl text-sm leading-relaxed text-smoke sm:text-base">
@@ -55,7 +55,7 @@ export default async function EventPhotoPage({
       <section className="bg-shell">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <SectionLabel number="02">{page.approach.label}</SectionLabel>
-          <h2 className="display mt-4 max-w-2xl text-4xl sm:text-5xl">
+          <h2 className="display mt-4 max-w-2xl text-3xl sm:text-4xl">
             {page.approach.heading}
           </h2>
           <div className="mt-8 grid gap-8 md:grid-cols-2">
@@ -70,7 +70,7 @@ export default async function EventPhotoPage({
           <div className="mt-14 grid items-center gap-8 rounded-lg bg-ink p-8 text-cream md:grid-cols-[1fr_1.4fr] md:p-12">
             <div>
               <Squiggle className="w-20 text-cream" />
-              <h3 className="display mt-4 text-2xl sm:text-3xl">
+              <h3 className="display mt-4 text-xl sm:text-2xl">
                 {page.shotlist.heading}
               </h3>
             </div>
@@ -88,7 +88,7 @@ export default async function EventPhotoPage({
       {/* Arbeid */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionLabel number="03">{page.galleryLabel}</SectionLabel>
-        <h2 className="display mt-4 text-4xl sm:text-5xl">
+        <h2 className="display mt-4 text-3xl sm:text-4xl">
           {page.galleryHeading}
         </h2>
         <div className="mt-12">
@@ -100,7 +100,7 @@ export default async function EventPhotoPage({
       <section className="bg-shell">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <SectionLabel number="04">{page.faq.label}</SectionLabel>
-          <h2 className="display mb-10 mt-4 text-4xl sm:text-5xl">
+          <h2 className="display mb-10 mt-4 text-3xl sm:text-4xl">
             {page.faq.heading}
           </h2>
           <Faq items={page.faq.items} />

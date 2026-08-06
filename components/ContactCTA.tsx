@@ -26,7 +26,7 @@ export default function ContactCTA({
     <section id="kontakt" className="scroll-mt-24 bg-ink text-cream">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
-          <h2 className="display text-4xl sm:text-5xl">
+          <h2 className="display text-3xl sm:text-4xl">
             {heading ?? (
               <>
                 {contact.heading}{" "}

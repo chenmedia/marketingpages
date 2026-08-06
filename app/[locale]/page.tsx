@@ -47,7 +47,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-ink" />
               {dict.hero.badge}
             </p>
-            <h1 className="display mt-6 text-4xl sm:text-6xl lg:text-7xl">
+            <h1 className="display mt-6 text-3xl sm:text-5xl lg:text-6xl">
               {dict.hero.title}{" "}
               <span className="relative inline-block">
                 {dict.hero.titleAccent}
@@ -103,7 +103,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
           <SectionLabel number="02">{dict.services.label}</SectionLabel>
-          <h2 className="display mt-4 text-4xl sm:text-5xl">
+          <h2 className="display mt-4 text-3xl sm:text-4xl">
             {dict.services.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-smoke">
@@ -167,7 +167,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <SectionLabel tone="light" number="03">
               {dict.liveOn.label}
             </SectionLabel>
-            <h2 className="display mt-4 text-3xl sm:text-4xl">
+            <h2 className="display mt-4 text-2xl sm:text-3xl">
               {dict.liveOn.heading}
             </h2>
             {dict.liveOn.body.map((paragraph) => (
@@ -223,7 +223,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/* Arbeidet — kategorikort */}
       <section id="arbeid" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionLabel number="04">{dict.work.label}</SectionLabel>
-        <h2 className="display mt-4 max-w-2xl text-4xl sm:text-5xl">
+        <h2 className="display mt-4 max-w-2xl text-3xl sm:text-4xl">
           {dict.work.heading}
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-smoke">
@@ -263,7 +263,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           />
           <div>
             <SectionLabel number="05">{dict.about.label}</SectionLabel>
-            <h2 className="display mt-4 text-4xl sm:text-5xl">
+            <h2 className="display mt-4 text-3xl sm:text-4xl">
               {dict.about.heading}
             </h2>
             {dict.about.body.map((paragraph) => (
@@ -296,7 +296,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
           <SectionLabel number="06">{dict.audience.label}</SectionLabel>
-          <h2 className="display mt-4 text-4xl sm:text-5xl">
+          <h2 className="display mt-4 text-3xl sm:text-4xl">
             {dict.audience.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-smoke">

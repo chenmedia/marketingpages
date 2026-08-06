@@ -13,7 +13,7 @@ export default function ProcessTimeline({ dict }: { dict: Dictionary }) {
         <SectionLabel tone="light" number="04">
           {process.label}
         </SectionLabel>
-        <h2 className="display mt-4 max-w-xl text-4xl sm:text-5xl">
+        <h2 className="display mt-4 max-w-xl text-3xl sm:text-4xl">
           {process.heading}
         </h2>
         <p className="mt-6 max-w-2xl text-sm leading-relaxed text-sand">

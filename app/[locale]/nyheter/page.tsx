@@ -30,7 +30,7 @@ export default async function NewsPage({
     <>
       <section className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
         <SectionLabel number="01">{page.kicker}</SectionLabel>
-        <h1 className="display mt-6 text-5xl sm:text-6xl lg:text-7xl">
+        <h1 className="display mt-6 text-4xl sm:text-5xl lg:text-6xl">
           {page.title}
         </h1>
         <p className="mt-8 max-w-xl text-sm leading-relaxed text-smoke sm:text-base">
