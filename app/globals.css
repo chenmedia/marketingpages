@@ -2,8 +2,7 @@
 
 /*
   Chen Media design tokens — fra ChenMedia_Brand_Guideline_V1.
-  Display: Garet (self-hostes i public/fonts når filene er klare;
-  Archivo er midlertidig fallback satt opp i layout.tsx).
+  Display: Garet (self-hostet i public/fonts/garet, koblet i layout.tsx).
   Brød/labels: Space Mono.
 */
 @theme {
@@ -19,7 +18,7 @@
   /* Mørkere ember for knappflater og liten tekst — WCAG AA mot krem/hvit */
   --color-ember-deep: #a8481f;
 
-  --font-display: var(--font-display), "Archivo", sans-serif;
+  --font-display: var(--font-display), "Garet", sans-serif;
   --font-mono: var(--font-space-mono), "Space Mono", monospace;
 }
 

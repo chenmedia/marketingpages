@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { Archivo, Space_Mono } from "next/font/google";
+import { Space_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-// Midlertidig stand-in for Garet til woff2-filene er på plass i public/fonts.
-const display = Archivo({
+// Garet (Spacetype) — brand-displayfonten, self-hostet.
+const display = localFont({
   variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["500", "700", "800", "900"],
+  src: [
+    { path: "../../public/fonts/garet/Garet-Book.woff2", weight: "400", style: "normal" },
+    { path: "../../public/fonts/garet/Garet-Heavy.woff2", weight: "800", style: "normal" },
+  ],
 });
 
 const spaceMono = Space_Mono({
