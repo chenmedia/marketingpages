@@ -2,13 +2,13 @@ import PlaceholderImage, { photo } from "./PlaceholderImage";
 
 // Rammene navngir de faktiske prosjektene bildene er fra (jf. filnavn-kontekst)
 const frames = [
-  { label: "KarpeWorld — Oslo", src: photo.epicStage },
-  { label: "Ringnes x Imsdal — aktivering", src: photo.ringnesImsdal },
-  { label: "KarpeWorld — scenen", src: photo.vocalist },
+  { label: "KarpeWorld i Oslo", src: photo.epicStage },
+  { label: "Ringnes x Imsdal, aktivering", src: photo.ringnesImsdal },
+  { label: "KarpeWorld, scenen", src: photo.vocalist },
   { label: "Festivalområdet", src: photo.festivalLife },
-  { label: "KarpeWorld — lysshow", src: photo.lightshow },
+  { label: "KarpeWorld, lysshow", src: photo.lightshow },
   { label: "Karpe møter publikum", src: photo.meetCrowd },
-  { label: "Red Bull — aktivering", src: photo.redbull },
+  { label: "Red Bull, aktivering", src: photo.redbull },
   { label: "Crew og produksjon", src: photo.crewLogistics },
 ];
 

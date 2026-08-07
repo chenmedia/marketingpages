@@ -43,7 +43,7 @@ export default async function EventFilmPage({
             {page.lead}
           </p>
           <PlaceholderImage
-            label="Eventfilm — stillbilde 16:9"
+            label="Eventfilm, stillbilde 16:9"
             tone="olive"
             className="mt-12 aspect-video w-full rounded-lg"
           />

@@ -44,7 +44,7 @@ export default async function EventPhotoPage({
             </p>
           </div>
           <PlaceholderImage
-            label="Eventfoto — fra salen"
+            label="Eventfoto, fra salen"
             tone="bone"
             className="aspect-[4/5] w-full rounded-lg"
           />

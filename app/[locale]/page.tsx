@@ -29,8 +29,8 @@ export async function generateMetadata({
 // Bildetekster fra faktisk prosjektkontekst i filnavnene (KarpeWorld 2026)
 const polaroids = [
   { label: "Karpe møter publikum", caption: "KarpeWorld · Oslo", src: photo.meetCrowd, float: "float-a" },
-  { label: "KarpeWorld — scenen", caption: "KarpeWorld · scenen", src: photo.vocalist, float: "float-b" },
-  { label: "Red Bull — aktivering", caption: "Red Bull · aktivering", src: photo.redbull, float: "float-c" },
+  { label: "KarpeWorld, scenen", caption: "KarpeWorld · scenen", src: photo.vocalist, float: "float-b" },
+  { label: "Red Bull, aktivering", caption: "Red Bull · aktivering", src: photo.redbull, float: "float-c" },
 ] as const;
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -208,7 +208,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </div>
           <div className="space-y-4">
             <PlaceholderImage
-              label="Leveranse — redigert utvalg"
+              label="Leveranse, redigert utvalg"
               src={photo.epicStage}
               className="aspect-[4/3] w-full rounded-lg"
             />
@@ -258,7 +258,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <section id="om" className="scroll-mt-24 bg-shell">
         <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-20 sm:px-6 md:grid-cols-[1fr_1.3fr]">
           <PlaceholderImage
-            label="Kai Chen — portrett"
+            label="Kai Chen, portrett"
             src={photo.vocalist}
             className="aspect-[4/5] w-full max-w-sm rounded-lg"
           />

@@ -26,7 +26,7 @@ export async function generateMetadata({
   return {
     title: {
       default: dict.meta.home.title,
-      template: `%s — ${dict.meta.siteName}`,
+      template: `%s | ${dict.meta.siteName}`,
     },
     description: dict.meta.home.description,
   };

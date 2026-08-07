@@ -13,7 +13,7 @@ export default function CaseList({ items }: { items: CaseItem[] }) {
           className="group overflow-hidden rounded-lg border border-ink/10 bg-cream"
         >
           <PlaceholderImage
-            label={`${item.client} — ${item.project}`}
+            label={`${item.client}: ${item.project}`}
             tone={tones[i % tones.length]}
             className="aspect-[3/2] w-full"
           />
@@ -21,7 +21,7 @@ export default function CaseList({ items }: { items: CaseItem[] }) {
             <p className="meta-label text-ember-deep">{item.kind}</p>
             <h3 className="display text-xl">
               {item.client}
-              <span className="text-smoke"> — {item.project}</span>
+              <span className="text-smoke"> · {item.project}</span>
             </h3>
             <p className="text-base leading-relaxed text-smoke">{item.context}</p>
           </div>

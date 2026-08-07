@@ -47,7 +47,7 @@ export default function ContactCTA({
           <div className="flex min-w-0 flex-col gap-4">
             <div className="relative h-52 overflow-hidden rounded-2xl sm:h-56">
               <PlaceholderImage
-                label="Kai Chen — bak kamera"
+                label="Kai Chen bak kamera"
                 src={photo.meetCrowd}
                 className="h-full w-full"
               />

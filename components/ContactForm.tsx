@@ -18,7 +18,7 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(`${form.submit} — ${org || name}`.trim());
+    const subject = encodeURIComponent(`${form.submit}: ${org || name}`.trim());
     const body = encodeURIComponent(
       `${form.name}: ${name}\n${form.org}: ${org}\n${form.email}: ${email}\n\n${message}`
     );
