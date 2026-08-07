@@ -1,6 +1,6 @@
 import type { Dictionary, Locale } from "@/lib/i18n";
-import { getAgenda, getNextFreeDay } from "@/lib/agenda/queries";
-import { chipLabel, shortDate, longDate, yearOf } from "@/lib/agenda/date";
+import { getAgenda } from "@/lib/agenda/queries";
+import { chipLabel, shortDate, yearOf } from "@/lib/agenda/date";
 
 /*
   Kalenderwidgeten. Async Server Component som henter selv, slik at ingen av
@@ -17,11 +17,16 @@ export default async function AgendaWidget({
   dict: Dictionary;
   locale: Locale;
 }) {
-  const [rows, nextFree] = await Promise.all([getAgenda(), getNextFreeDay()]);
+  const rows = await getAgenda();
   const t = dict.contact.agenda;
 
-  const teamSize = rows[0]?.team_size ?? 8;
   const year = rows[0] ? yearOf(rows[0].starts_on) : new Date().getFullYear();
+  /*
+    Hvor mange av oss som faktisk er satt opp i perioden. Teamets totale
+    størrelse vises bevisst ikke: widgeten skal si hvem som er opptatt,
+    ikke hvor mange vi er.
+  */
+  const busy = new Set(rows.flatMap((r) => r.assigned.map((p) => p.initials))).size;
   return (
     <div className="rounded-2xl border border-cream/15 bg-cream/5 p-5">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -39,17 +44,10 @@ export default async function AgendaWidget({
             ✓ {rows.length} {t.confirmedLabel}
           </span>
           <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-amber-500/25 bg-amber-500/15 px-2 py-0.5 text-[10px] font-semibold text-amber-400">
-            ◔ {teamSize} {t.teamLabel}
+            ◔ {busy} {busy === 1 ? t.busyOneLabel : t.busyLabel}
           </span>
         </div>
       </div>
-
-      {/* Uten denne viser widgeten bare når vi er opptatt, aldri når det er plass */}
-      {nextFree && (
-        <p className="mb-3 rounded-lg border border-green-500/20 bg-green-500/10 px-3 py-2 text-[11px] text-green-300">
-          {t.nextFreeLabel} <strong className="font-semibold">{longDate(nextFree, locale)}</strong>
-        </p>
-      )}
 
       <div className="relative">
         <div className="max-h-[236px] divide-y divide-cream/5 overflow-y-auto pr-1.5 [scrollbar-width:thin]">
@@ -137,7 +135,7 @@ export default async function AgendaWidget({
       </div>
 
       <p className="mt-1 border-t border-cream/10 pt-3 text-[11px] leading-relaxed text-sand">
-        {t.note.replace("{n}", String(teamSize))}
+        {t.note}
       </p>
     </div>
   );

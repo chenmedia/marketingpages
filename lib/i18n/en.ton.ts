@@ -210,14 +210,13 @@ export const enTon: Dictionary = {
     agenda: {
       label: "Our upcoming agenda",
       confirmedLabel: "confirmed",
-      teamLabel: "on the team",
+      busyLabel: "photographers booked",
+      busyOneLabel: "photographer booked",
       freeLabel: "free",
       freeOneLabel: "free",
       fullLabel: "fully booked",
-      nextFreeLabel: "Next available date:",
       emptyLabel: "No dates published yet.",
-      // {n} interpoleres fra teamstørrelsen, så tallet aldri motsier widgeten
-      note: "Team of {n} photographers & videographers. There is still room for your event on these dates too.",
+      note: "There is still room for your event on these dates too.",
       autoNote:
         "All public events through December. New confirmed bookings appear here automatically.",
     },

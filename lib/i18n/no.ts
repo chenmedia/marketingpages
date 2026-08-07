@@ -206,13 +206,13 @@ export const no: Dictionary = {
     agenda: {
       label: "Kommende kalender",
       confirmedLabel: "bekreftet",
-      teamLabel: "i team",
+      busyLabel: "fotografer opptatt",
+      busyOneLabel: "fotograf opptatt",
       freeLabel: "ledige",
       freeOneLabel: "ledig",
       fullLabel: "fullbooket",
-      nextFreeLabel: "Neste ledige dato:",
       emptyLabel: "Ingen datoer publisert ennå.",
-      note: "Vi er {n} fotografer. Det er fortsatt god plass til arrangementet ditt på datoene med ledig kapasitet.",
+      note: "Tallet til høyre viser hvor mange av oss som fortsatt er ledige den datoen.",
       autoNote: "Offentlige datoer framover. Nye bookinger dukker opp her automatisk.",
     },
     form: {
