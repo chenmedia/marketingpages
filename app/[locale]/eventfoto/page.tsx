@@ -7,7 +7,7 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import CaseList from "@/components/CaseList";
 import Faq from "@/components/Faq";
 import ContactCTA from "@/components/ContactCTA";
-import Squiggle from "@/components/Squiggle";
+import Underline from "@/components/Underline";
 
 export async function generateMetadata({
   params,
@@ -70,7 +70,7 @@ export default async function EventPhotoPage({
           {/* Shot listen — det konkrete tillitssignalet */}
           <div className="mt-14 grid items-center gap-8 rounded-lg bg-ink p-8 text-cream md:grid-cols-[1fr_1.4fr] md:p-12">
             <div>
-              <Squiggle className="w-20 text-cream" />
+              <Underline className="w-20 text-cream" />
               <h3 className="display mt-4 text-xl sm:text-2xl">
                 {page.shotlist.heading}
               </h3>

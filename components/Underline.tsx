@@ -1,6 +1,11 @@
-// «Krusedullen» — placeholder til originalen fra brand-guidelinen leveres som SVG.
-// Fargen settes av kalleren via className (text-ink på lyst, text-cream på mørkt).
-export default function Squiggle({ className = "" }: { className?: string }) {
+/*
+  Dekorativ understrek. Dette er IKKE logoen.
+
+  Den strekkes med preserveAspectRatio="none" under aksentordet i heroen, og
+  brand-guidelinen forbyr uttrykkelig å strekke logoen. Derfor er de to skilt.
+  Logoen ligger i components/Logo.tsx.
+*/
+export default function Underline({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 120 28"

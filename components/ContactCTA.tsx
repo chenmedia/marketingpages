@@ -3,6 +3,7 @@ import PlaceholderImage, { photo } from "./PlaceholderImage";
 import ContactForm from "./ContactForm";
 import { Suspense } from "react";
 import AgendaWidget, { AgendaSkeleton } from "./AgendaWidget";
+import StatTiles, { StatTilesSkeleton } from "./StatTiles";
 
 /*
   Booking-seksjonen à la TON: portrettkort + stats + kommende kalender til
@@ -57,22 +58,9 @@ export default function ContactCTA({
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2.5">
-              {contact.stats.map((stat) => (
-                <div
-                  key={stat.caption}
-                  className="flex flex-col items-center justify-center rounded-xl border border-cream/15 bg-cream/5 px-2 py-3.5 text-center"
-                >
-                  {/* Korte tallverdier i TONs flisstil */}
-                  <div className="whitespace-nowrap text-2xl font-extrabold leading-none">
-                    {stat.value}
-                  </div>
-                  <div className="mt-1.5 text-[10px] uppercase leading-tight tracking-wide text-sand">
-                    {stat.caption}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Suspense fallback={<StatTilesSkeleton />}>
+              <StatTiles locale={locale} />
+            </Suspense>
 
             <Suspense fallback={<AgendaSkeleton />}>
               <AgendaWidget dict={dict} locale={locale} />

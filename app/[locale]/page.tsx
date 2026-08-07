@@ -11,7 +11,7 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
 import CtaButton from "@/components/CtaButton";
 import LogoWall from "@/components/LogoWall";
-import Squiggle from "@/components/Squiggle";
+import Underline from "@/components/Underline";
 
 export async function generateMetadata({
   params,
@@ -62,7 +62,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <span className="relative inline-block">
                 {dict.hero.titleAccent}
                 {/* Krusedullen under aksentordet, jf. TONs squiggle under «pro.» */}
-                <Squiggle className="absolute -bottom-4 left-0 h-3.5 w-full text-ink opacity-60" />
+                <Underline className="absolute -bottom-4 left-0 h-3.5 w-full text-ink opacity-60" />
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-smoke sm:text-lg">

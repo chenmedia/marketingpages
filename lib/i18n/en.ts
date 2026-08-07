@@ -197,15 +197,10 @@ export const en: Dictionary = {
     headingAccent: "your event",
     lead: "Date, venue and times are enough. We'll sort out the rest in a conversation.",
     photographerRole: "Event photographer · Chen Media",
-    // NB: placeholder numbers (TON's values), Kai swaps in his own
-    stats: [
-      { value: "90", caption: "events this year" },
-      { value: "45+", caption: "happy clients" },
-      { value: "6", caption: "countries" },
-    ],
     agenda: {
       label: "Upcoming agenda",
       confirmedLabel: "confirmed",
+      pendingLabel: "pending",
       freeLabel: "available",
       freeOneLabel: "available",
       fullLabel: "fully booked",

@@ -95,3 +95,23 @@ export async function capacityAhead(days = 30) {
   if (error) return [];
   return (data ?? []) as unknown as { day: string; free: number }[];
 }
+
+export type AdminSiteStat = {
+  id: number;
+  value: string;
+  caption_no: string;
+  caption_en: string;
+  sort_order: number;
+  is_visible: boolean;
+};
+
+/** Admin ser også skjulte fliser, jf. RLS-policyen. */
+export async function listSiteStats() {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("site_stats")
+    .select("id, value, caption_no, caption_en, sort_order, is_visible")
+    .order("sort_order");
+  if (error) throw new Error(error.message);
+  return (data ?? []) as AdminSiteStat[];
+}

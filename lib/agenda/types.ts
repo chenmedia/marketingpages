@@ -7,6 +7,8 @@ export type AgendaRow = {
   title_en: string;
   location_no: string;
   location_en: string | null;
+  /** «confirmed» eller «tentative». Avlyste returneres ikke. */
+  status: "confirmed" | "tentative";
   /** Fotografene som er satt opp, i sorteringsrekkefølge */
   assigned: { initials: string; name: string }[];
   /** Laveste antall ledige i spennet. Kan være negativ ved overbooking. */

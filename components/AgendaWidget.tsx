@@ -21,6 +21,10 @@ export default async function AgendaWidget({
   const t = dict.contact.agenda;
 
   const year = rows[0] ? yearOf(rows[0].starts_on) : new Date().getFullYear();
+  // Summen av de to badgene er antall rader i listen
+  const confirmed = rows.filter((r) => r.status === "confirmed").length;
+  const pending = rows.length - confirmed;
+
   return (
     <div className="rounded-2xl border border-cream/15 bg-cream/5 p-5">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -33,9 +37,16 @@ export default async function AgendaWidget({
             {t.label} · {year}
           </span>
         </div>
-        <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-green-500/25 bg-green-500/15 px-2 py-0.5 text-[10px] font-semibold text-green-400">
-          ✓ {rows.length} {t.confirmedLabel}
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-green-500/25 bg-green-500/15 px-2 py-0.5 text-[10px] font-semibold text-green-400">
+            ✓ {confirmed} {t.confirmedLabel}
+          </span>
+          {pending > 0 && (
+            <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-amber-500/25 bg-amber-500/15 px-2 py-0.5 text-[10px] font-semibold text-amber-400">
+              ◔ {pending} {t.pendingLabel}
+            </span>
+          )}
+        </div>
       </div>
 
       <div className="relative">

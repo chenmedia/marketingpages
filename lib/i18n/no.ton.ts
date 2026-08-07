@@ -194,14 +194,10 @@ export const noTon: Dictionary = {
     headingAccent: "tilpasset arrangementet ditt",
     lead: "Dato, sted og tidspunkt er nok. Resten tar vi i etterkant.",
     photographerRole: "Eventfotograf · Chen Media",
-    stats: [
-      { value: "90", caption: "eventer i år" },
-      { value: "45+", caption: "fornøyde kunder" },
-      { value: "6", caption: "land" },
-    ],
     agenda: {
       label: "Vår kommende agenda",
       confirmedLabel: "bekreftet",
+      pendingLabel: "avventer",
       freeLabel: "ledige",
       freeOneLabel: "ledig",
       fullLabel: "fullbooket",

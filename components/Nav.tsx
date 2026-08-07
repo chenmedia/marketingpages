@@ -2,7 +2,7 @@ import Link from "next/link";
 import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
 import LocaleSwitch from "./LocaleSwitch";
 import CtaButton from "./CtaButton";
-import Squiggle from "./Squiggle";
+import Logo from "./Logo";
 
 export default function Nav({
   locale,
@@ -25,9 +25,8 @@ export default function Nav({
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href={base} className="flex items-center gap-2">
-          <Squiggle className="w-9 text-ink" />
-          <span className="display text-lg tracking-tight">Chen&nbsp;Media</span>
+        <Link href={base} aria-label="Chen Media" className="text-ink">
+          <Logo />
         </Link>
 
         <ul className="hidden items-center gap-6 md:flex">

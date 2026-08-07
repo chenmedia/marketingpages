@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
-import Squiggle from "./Squiggle";
+import Logo from "./Logo";
 
 export default function Footer({
   locale,
@@ -14,9 +14,8 @@ export default function Footer({
     <footer className="bg-ink text-cream">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div className="space-y-4">
-          <p className="display text-2xl">Chen&nbsp;Media</p>
+          <Logo className="text-cream" />
           <p className="text-sm text-sand">{dict.footer.tagline}</p>
-          <Squiggle className="w-24 text-cream" />
         </div>
 
         <div className="space-y-2">

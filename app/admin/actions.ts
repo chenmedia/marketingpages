@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth/dal";
 import { createClient } from "@/lib/supabase/server";
 import { AGENDA_TAG } from "@/lib/agenda/queries";
+import { STATS_TAG } from "@/lib/stats/queries";
 import {
   parseEventForm,
   parsePhotographerForm,
@@ -138,4 +139,28 @@ export async function setTeamSize(form: FormData) {
 
   refreshAgenda();
   revalidatePath("/admin/innstillinger");
+}
+
+export async function saveSiteStat(form: FormData) {
+  await requireAdmin();
+
+  const id = Number(String(form.get("id") ?? ""));
+  const value = String(form.get("value") ?? "").trim();
+  const caption_no = String(form.get("caption_no") ?? "").trim();
+  const caption_en = String(form.get("caption_en") ?? "").trim();
+  if (!Number.isInteger(id) || !value || !caption_no || !caption_en) return;
+
+  const supabase = await createClient();
+  await supabase
+    .from("site_stats")
+    .update({
+      value,
+      caption_no,
+      caption_en,
+      is_visible: form.get("is_visible") === "on",
+    })
+    .eq("id", id);
+
+  revalidateTag(STATS_TAG, "max");
+  revalidatePath("/admin/statistikk");
 }

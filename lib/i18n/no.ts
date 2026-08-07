@@ -197,15 +197,10 @@ export const no: Dictionary = {
     headingAccent: "arrangementet ditt",
     lead: "Dato, sted og tidspunkt holder. Resten tar vi i en prat.",
     photographerRole: "Eventfotograf · Chen Media",
-    // NB: plassholdertall (TONs verdier), Kai bytter til egne tall
-    stats: [
-      { value: "90", caption: "eventer i år" },
-      { value: "45+", caption: "glade kunder" },
-      { value: "6", caption: "land" },
-    ],
     agenda: {
       label: "Kommende kalender",
       confirmedLabel: "bekreftet",
+      pendingLabel: "avventer",
       freeLabel: "ledige",
       freeOneLabel: "ledig",
       fullLabel: "fullbooket",

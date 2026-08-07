@@ -202,14 +202,10 @@ export const enTon: Dictionary = {
     headingAccent: "tailored to your event",
     lead: "Date, venue and times are enough. We'll discuss the rest afterwards.",
     photographerRole: "Event photographer · Chen Media",
-    stats: [
-      { value: "90", caption: "events this year" },
-      { value: "45+", caption: "happy clients" },
-      { value: "6", caption: "countries" },
-    ],
     agenda: {
       label: "Our upcoming agenda",
       confirmedLabel: "confirmed",
+      pendingLabel: "pending",
       freeLabel: "free",
       freeOneLabel: "free",
       fullLabel: "fully booked",

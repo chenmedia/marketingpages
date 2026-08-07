@@ -33,6 +33,7 @@ const nav = [
   { href: "/admin", label: "Oversikt" },
   { href: "/admin/arrangementer", label: "Arrangementer" },
   { href: "/admin/fotografer", label: "Fotografer" },
+  { href: "/admin/statistikk", label: "Statistikk" },
   { href: "/admin/innstillinger", label: "Innstillinger" },
 ];
 

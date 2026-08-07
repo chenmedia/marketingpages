@@ -107,10 +107,10 @@ export interface Dictionary {
     headingAccent: string;
     lead: string;
     photographerRole: string;
-    stats: { value: string; caption: string }[];
     agenda: {
       label: string;
       confirmedLabel: string;
+      pendingLabel: string;
       /** Radbadge i flertall, «6 ledige» */
       freeLabel: string;
       /** Radbadge i entall. Norsk skiller «1 ledig» fra «2 ledige». */

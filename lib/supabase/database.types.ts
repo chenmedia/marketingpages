@@ -164,6 +164,34 @@ export type Database = {
         };
         Relationships: [];
       };
+      site_stats: {
+        Row: {
+          id: number;
+          value: string;
+          caption_no: string;
+          caption_en: string;
+          sort_order: number;
+          is_visible: boolean;
+          updated_at: string;
+        };
+        Insert: {
+          value: string;
+          caption_no: string;
+          caption_en: string;
+          sort_order?: number;
+          is_visible?: boolean;
+          updated_at?: string;
+        };
+        Update: {
+          value?: string;
+          caption_no?: string;
+          caption_en?: string;
+          sort_order?: number;
+          is_visible?: boolean;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       profiles: {
         Row: {
           created_at: string;
@@ -202,6 +230,7 @@ export type Database = {
           location_en: string;
           location_no: string;
           starts_on: string;
+          status: string;
           team_size: number;
           title_en: string;
           title_no: string;
