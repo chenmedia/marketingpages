@@ -254,7 +254,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 src={workPhotos[i % workPhotos.length]}
                 className="aspect-[4/5] w-full transition-transform duration-300 group-hover:scale-[1.02]"
               />
-              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-5 pt-14 text-cream">
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/90 to-transparent p-5 pt-16 text-cream">
                 <span className="display block text-xl">{card.title}</span>
                 <span className="meta-label mt-1 block text-sand">{card.sub}</span>
                 <span className="meta-label mt-3 inline-block border-b border-cream pb-0.5">

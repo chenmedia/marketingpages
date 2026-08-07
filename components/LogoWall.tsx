@@ -21,7 +21,7 @@ export default function LogoWall({ label }: { label: string }) {
         {clients.map((client) => (
           <li
             key={client}
-            className="display text-base text-sand transition-colors hover:text-ink"
+            className="display text-base text-smoke transition-colors hover:text-ink"
           >
             {client}
           </li>

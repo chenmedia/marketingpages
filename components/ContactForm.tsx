@@ -26,7 +26,7 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
   }
 
   const field =
-    "w-full rounded-lg border border-cream/20 bg-cream/10 px-4 py-3 text-sm text-cream placeholder:text-sand/70 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-cream";
+    "w-full rounded-lg border border-cream/20 bg-cream/10 px-4 py-3 text-sm text-cream placeholder:text-sand focus:border-transparent focus:outline-none focus:ring-2 focus:ring-cream";
 
   return (
     <form
@@ -35,7 +35,7 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-sand">
+          <label className="mb-1.5 block text-sm font-medium text-cream">
             {form.name}
           </label>
           <input
@@ -47,7 +47,7 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
           />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-sand">
+          <label className="mb-1.5 block text-sm font-medium text-cream">
             {form.org}
           </label>
           <input
@@ -60,7 +60,7 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
         </div>
       </div>
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-sand">
+        <label className="mb-1.5 block text-sm font-medium text-cream">
           {form.email}
         </label>
         <input
@@ -73,9 +73,9 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
         />
       </div>
       <div className="flex min-h-[120px] flex-1 flex-col">
-        <label className="mb-1.5 block text-sm font-medium text-sand">
+        <label className="mb-1.5 block text-sm font-medium text-cream">
           {form.message}{" "}
-          <span className="text-olive">{form.messageHint}</span>
+          <span className="text-sand">{form.messageHint}</span>
         </label>
         <textarea
           required

@@ -15,8 +15,15 @@
   --color-cream: #ffffff;
   --color-bone: #e5e5e5;
   --color-butter: #f5f5f4;
+  /*
+    Dempet tekst har to verdier, én per bakgrunn. Kontrastene er målt mot
+    ink (#111) og cream (#fff), og begge klarer WCAG AA for brødtekst.
+      smoke  på lys bakgrunn  7.8:1
+      sand   på mørk bakgrunn 9.5:1
+    olive klarer bare 4.0:1 på mørk bakgrunn og skal derfor kun brukes lyst.
+  */
   --color-olive: #737373;
-  --color-sand: #a3a3a3;
+  --color-sand: #b8b8b8;
   --color-shell: #f7f7f6;
   --color-ember: #111111;
   --color-ember-deep: #111111;
