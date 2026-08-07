@@ -202,10 +202,14 @@ export const noTon: Dictionary = {
     agenda: {
       label: "Vår kommende agenda",
       confirmedLabel: "bekreftet",
-      openLabel: "avventer",
-      statusBooked: "booket",
-      statusOpen: "ledig",
-      note: "Team på 9 fotografer og videografer. Det er fortsatt plass til arrangementet ditt på disse datoene også.",
+      teamLabel: "i team",
+      freeLabel: "ledige",
+      freeOneLabel: "ledig",
+      fullLabel: "fullbooket",
+      nextFreeLabel: "Neste ledige dato:",
+      emptyLabel: "Ingen datoer publisert ennå.",
+      // {n} interpoleres fra teamstørrelsen, så tallet aldri motsier widgeten
+      note: "Team på {n} fotografer og videografer. Det er fortsatt plass til arrangementet ditt på disse datoene også.",
       autoNote:
         "Alle offentlige arrangementer ut desember. Nye bekreftede bookinger dukker opp her automatisk.",
     },

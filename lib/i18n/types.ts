@@ -111,9 +111,16 @@ export interface Dictionary {
     agenda: {
       label: string;
       confirmedLabel: string;
-      openLabel: string;
-      statusBooked: string;
-      statusOpen: string;
+      /** Gul badge i headeren, f.eks. «8 i team» */
+      teamLabel: string;
+      /** Radbadge i flertall, «6 ledige» */
+      freeLabel: string;
+      /** Radbadge i entall. Norsk skiller «1 ledig» fra «2 ledige». */
+      freeOneLabel: string;
+      fullLabel: string;
+      nextFreeLabel: string;
+      emptyLabel: string;
+      /** Bruker {n} som plassholder for teamstørrelsen */
       note: string;
       autoNote: string;
     };

@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { LOCALE_COOKIE } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
+import { updateSession, withSessionCookies } from "@/lib/supabase/proxy";
 
 /*
   Språkruting. Filstrukturen er app/[locale]/, men utad har norsk ingen prefiks:
@@ -51,8 +52,39 @@ function resolveLocale(request: NextRequest): Locale {
   return fromAcceptLanguage(request.headers.get("accept-language"));
 }
 
-export function proxy(request: NextRequest) {
+/** Stier som krever Supabase-session. Alt annet er offentlige, statiske sider. */
+function needsSession(pathname: string) {
+  return (
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/auth") ||
+    pathname === "/logg-inn"
+  );
+}
+
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  /*
+    Kun admin og auth trenger session. Å kjøre Supabase-klienten på de
+    offentlige sidene ville hengt Set-Cookie og no-store på dem, og dermed
+    drept CDN-cachingen for hele nettstedet.
+  */
+  if (needsSession(pathname)) {
+    const { response, user } = await updateSession(request);
+
+    if (pathname.startsWith("/admin") && !user) {
+      const target = new URL("/logg-inn", request.url);
+      target.searchParams.set("neste", pathname);
+      return withSessionCookies(NextResponse.redirect(target), response);
+    }
+    if (pathname === "/logg-inn" && user) {
+      return withSessionCookies(
+        NextResponse.redirect(new URL("/admin", request.url)),
+        response
+      );
+    }
+    return response;
+  }
 
   // /no/ finnes ikke utad
   if (pathname === "/no" || pathname.startsWith("/no/")) {
