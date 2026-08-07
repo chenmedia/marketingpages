@@ -228,6 +228,8 @@ export const en: Dictionary = {
   sticky: {
     available: "Available for your event",
     cta: "Request a quote",
+    openNow: "We are in the office right now",
+    closedNow: "Outside office hours, we reply the next working day",
   },
   footer: {
     tagline: "Event photography and film for businesses",

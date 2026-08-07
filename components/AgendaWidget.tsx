@@ -1,6 +1,7 @@
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { getAgenda } from "@/lib/agenda/queries";
 import { chipLabel, shortDate, yearOf } from "@/lib/agenda/date";
+import LiveDot from "./LiveDot";
 
 /*
   Kalenderwidgeten. Async Server Component som henter selv, slik at ingen av
@@ -29,10 +30,7 @@ export default async function AgendaWidget({
     <div className="rounded-2xl border border-cream/15 bg-cream/5 p-5">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <span className="relative flex size-2 shrink-0">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex size-2 rounded-full bg-green-500" />
-          </span>
+          <LiveDot />
           <span className="text-[11px] font-bold uppercase tracking-widest text-bone">
             {t.label} · {year}
           </span>

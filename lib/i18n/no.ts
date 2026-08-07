@@ -228,6 +228,8 @@ export const no: Dictionary = {
   sticky: {
     available: "Ledig for arrangementet ditt",
     cta: "Be om tilbud",
+    openNow: "Vi er på kontoret nå",
+    closedNow: "Utenfor kontortid, vi svarer neste virkedag",
   },
   footer: {
     tagline: "Eventfoto og film for bedrifter",

@@ -140,6 +140,9 @@ export interface Dictionary {
   sticky: {
     available: string;
     cta: string;
+    // Kun for skjermlesere. Statusprikken er dekorativ og aria-hidden.
+    openNow: string;
+    closedNow: string;
   };
   footer: {
     tagline: string;

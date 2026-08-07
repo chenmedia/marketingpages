@@ -23,6 +23,18 @@ export function localePath(locale: Locale, path = "/"): string {
   return `${base}${path}`;
 }
 
+/*
+  Stripper språkprefikset av en sti fra usePathname().
+
+  Serveren ser den interne stien etter rewriten i proxy.ts (/no/prosjekter),
+  nettleseren ser den offentlige (/prosjekter). Klientkomponenter som regner
+  på stien må bruke denne, ellers spriker server- og klientrender og
+  hydreringen feiler.
+*/
+export function publicPath(pathname: string): string {
+  return pathname.replace(/^\/(no|en)(?=\/|$)/, "") || "/";
+}
+
 /** Cookien som husker et manuelt språkvalg. Leses i proxy.ts, settes i LocaleSwitch. */
 export const LOCALE_COOKIE = "chenmedia_locale";
 

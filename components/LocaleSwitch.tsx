@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LOCALE_COOKIE, localePath, locales, type Locale } from "@/lib/i18n";
+import {
+  LOCALE_COOKIE,
+  localePath,
+  locales,
+  publicPath,
+  type Locale,
+} from "@/lib/i18n";
 
 /*
   Bytter språk og bevarer siden man står på (/eventfoto ↔ /en/eventfoto).
@@ -21,14 +27,7 @@ function rememberLocale(next: Locale) {
 }
 
 export default function LocaleSwitch({ locale }: { locale: Locale }) {
-  const pathname = usePathname() ?? "/";
-  /*
-    Serveren ser den interne stien etter rewriten (/no/eventfoto), mens
-    nettleseren ser den offentlige (/eventfoto). Vi stripper derfor begge
-    prefiks, slik at server og klient regner seg fram til samme lenke og
-    hydreringen ikke spriker.
-  */
-  const rest = pathname.replace(/^\/(no|en)(?=\/|$)/, "") || "/";
+  const rest = publicPath(usePathname() ?? "/");
 
   return (
     <div className="meta-label flex items-center gap-1 rounded-full border border-ink/20 p-1">

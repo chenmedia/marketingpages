@@ -226,6 +226,8 @@ export const noTon: Dictionary = {
   sticky: {
     available: "Ledig for arrangementet ditt",
     cta: "Be om tilbud",
+    openNow: "Vi er på kontoret nå",
+    closedNow: "Utenfor kontortid, vi svarer neste virkedag",
   },
   footer: {
     tagline: "Eventfotografi og sosialt innhold",

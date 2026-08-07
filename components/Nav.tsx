@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
+import { localePath, type Dictionary, type Locale } from "@/lib/i18n";
 import LocaleSwitch from "./LocaleSwitch";
 import CtaButton from "./CtaButton";
 import Logo from "./Logo";
+import NavLink, { NavTrigger } from "./NavLink";
 
 export default function Nav({
   locale,
@@ -11,55 +12,55 @@ export default function Nav({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const base = localeBase(locale);
+  /*
+    localePath, ikke localeBase. localeBase("no") er "" med vilje, siden norsk
+    ikke har prefiks i URL-en, men brukt rett som href blir markupen
+    <a href="">, som nettleseren tolker som «last denne siden på nytt».
+    localePath gir "/" for norsk og "/en" for engelsk.
+  */
+  const home = localePath(locale);
   const services = [
-    { href: `${base}/eventfoto`, label: dict.nav.photo, sub: dict.nav.photoSub },
-    { href: `${base}/eventfilm`, label: dict.nav.film, sub: dict.nav.filmSub },
+    {
+      href: localePath(locale, "/eventfoto"),
+      label: dict.nav.photo,
+      sub: dict.nav.photoSub,
+    },
+    {
+      href: localePath(locale, "/eventfilm"),
+      label: dict.nav.film,
+      sub: dict.nav.filmSub,
+    },
   ];
+  /*
+    Om oss må ha stien med seg. Seksjonen id="om" finnes bare på forsiden, så
+    et rent «#om» er et blindspor fra de fire andre sidene.
+
+    #kontakt under er derimot riktig som rent fragment: ContactCTA ligger på
+    alle fem sider, og skal peke på sidens egen kontaktseksjon.
+  */
   const links = [
-    { href: `${base}/prosjekter`, label: dict.nav.projects },
-    { href: `${base}#om`, label: dict.nav.about },
-    { href: `${base}/nyheter`, label: dict.nav.news },
+    { href: localePath(locale, "/prosjekter"), label: dict.nav.projects },
+    { href: `${home}#om`, label: dict.nav.about },
+    { href: localePath(locale, "/nyheter"), label: dict.nav.news },
   ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href={base} aria-label="Chen Media" className="text-ink">
+        <Link href={home} aria-label="Chen Media" className="text-ink">
           <Logo />
         </Link>
 
         <ul className="hidden items-center gap-6 md:flex">
-          <li>
-            <Link
-              href={base}
-              className="meta-label text-smoke transition-colors hover:text-ink"
-            >
-              {dict.nav.home}
-            </Link>
+          {/* Hver li er flex, så lenke og trigger får lik bokskonstruksjon */}
+          <li className="flex">
+            <NavLink href={home}>{dict.nav.home}</NavLink>
           </li>
           {/* Tjeneste-dropdown — CSS-only via group-hover/focus-within */}
-          <li className="group relative">
-            <button
-              type="button"
-              className="meta-label flex items-center gap-1 text-smoke transition-colors group-hover:text-ink"
-            >
+          <li className="group relative flex">
+            <NavTrigger matches={services.map((s) => s.href)}>
               {dict.nav.services}
-              <svg
-                viewBox="0 0 12 12"
-                className="size-2.5 transition-transform group-hover:rotate-180"
-                fill="none"
-                aria-hidden
-              >
-                <path
-                  d="M2 4L6 8L10 4"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+            </NavTrigger>
             <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
               <ul className="overflow-hidden rounded-lg border border-ink/10 bg-cream shadow-lg">
                 {services.map((service) => (
@@ -76,13 +77,8 @@ export default function Nav({
             </div>
           </li>
           {links.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="meta-label text-smoke transition-colors hover:text-ink"
-              >
-                {link.label}
-              </Link>
+            <li key={link.href} className="flex">
+              <NavLink href={link.href}>{link.label}</NavLink>
             </li>
           ))}
         </ul>
@@ -90,7 +86,8 @@ export default function Nav({
         <div className="flex items-center gap-3">
           <LocaleSwitch locale={locale} />
           <span className="hidden sm:inline-block">
-            <CtaButton href={`${base}#kontakt`}>{dict.nav.cta}</CtaButton>
+            {/* Rent fragment med vilje, jf. kommentaren over links */}
+            <CtaButton href="#kontakt">{dict.nav.cta}</CtaButton>
           </span>
         </div>
       </nav>
@@ -99,13 +96,8 @@ export default function Nav({
       <div className="border-t border-ink/10 md:hidden">
         <ul className="mx-auto flex max-w-6xl items-center gap-5 overflow-x-auto px-4 py-2 sm:px-6">
           {[...services, ...links].map((link) => (
-            <li key={link.href} className="shrink-0">
-              <Link
-                href={link.href}
-                className="meta-label text-smoke transition-colors hover:text-ink"
-              >
-                {link.label}
-              </Link>
+            <li key={link.href} className="flex shrink-0">
+              <NavLink href={link.href}>{link.label}</NavLink>
             </li>
           ))}
         </ul>
