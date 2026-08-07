@@ -21,12 +21,6 @@ export default async function AgendaWidget({
   const t = dict.contact.agenda;
 
   const year = rows[0] ? yearOf(rows[0].starts_on) : new Date().getFullYear();
-  /*
-    Hvor mange av oss som faktisk er satt opp i perioden. Teamets totale
-    størrelse vises bevisst ikke: widgeten skal si hvem som er opptatt,
-    ikke hvor mange vi er.
-  */
-  const busy = new Set(rows.flatMap((r) => r.assigned.map((p) => p.initials))).size;
   return (
     <div className="rounded-2xl border border-cream/15 bg-cream/5 p-5">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -39,14 +33,9 @@ export default async function AgendaWidget({
             {t.label} · {year}
           </span>
         </div>
-        <div className="flex items-center gap-1.5">
-          <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-green-500/25 bg-green-500/15 px-2 py-0.5 text-[10px] font-semibold text-green-400">
-            ✓ {rows.length} {t.confirmedLabel}
-          </span>
-          <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-amber-500/25 bg-amber-500/15 px-2 py-0.5 text-[10px] font-semibold text-amber-400">
-            ◔ {busy} {busy === 1 ? t.busyOneLabel : t.busyLabel}
-          </span>
-        </div>
+        <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-green-500/25 bg-green-500/15 px-2 py-0.5 text-[10px] font-semibold text-green-400">
+          ✓ {rows.length} {t.confirmedLabel}
+        </span>
       </div>
 
       <div className="relative">

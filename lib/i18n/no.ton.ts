@@ -202,8 +202,6 @@ export const noTon: Dictionary = {
     agenda: {
       label: "Vår kommende agenda",
       confirmedLabel: "bekreftet",
-      busyLabel: "fotografer opptatt",
-      busyOneLabel: "fotograf opptatt",
       freeLabel: "ledige",
       freeOneLabel: "ledig",
       fullLabel: "fullbooket",

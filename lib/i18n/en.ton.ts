@@ -210,8 +210,6 @@ export const enTon: Dictionary = {
     agenda: {
       label: "Our upcoming agenda",
       confirmedLabel: "confirmed",
-      busyLabel: "photographers booked",
-      busyOneLabel: "photographer booked",
       freeLabel: "free",
       freeOneLabel: "free",
       fullLabel: "fully booked",

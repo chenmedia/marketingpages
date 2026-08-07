@@ -206,8 +206,6 @@ export const en: Dictionary = {
     agenda: {
       label: "Upcoming agenda",
       confirmedLabel: "confirmed",
-      busyLabel: "photographers booked",
-      busyOneLabel: "photographer booked",
       freeLabel: "available",
       freeOneLabel: "available",
       fullLabel: "fully booked",

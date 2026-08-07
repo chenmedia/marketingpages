@@ -206,8 +206,6 @@ export const no: Dictionary = {
     agenda: {
       label: "Kommende kalender",
       confirmedLabel: "bekreftet",
-      busyLabel: "fotografer opptatt",
-      busyOneLabel: "fotograf opptatt",
       freeLabel: "ledige",
       freeOneLabel: "ledig",
       fullLabel: "fullbooket",
