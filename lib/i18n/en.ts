@@ -46,20 +46,20 @@ export const en: Dictionary = {
     badge: "Available for events in Oslo and across Norway",
     title: "Your event, seen through the eyes of a",
     titleAccent: "photographer.",
-    lead: "We shoot photo and film at conferences, launches and company events. The content keeps working for you long after the venue is cleared.",
+    lead: "Event photographer for conferences, launches and company events. Photo and film since 2020. An edited first selection in your hands the next day.",
     ctaPrimary: "Request a no obligation quote",
     ctaSecondary: "See the work",
-    clientsLabel: "Selected clients",
+    clientsLabel: "Solo, or with a full crew when the event calls for it",
     polaroidBadge: "Photo + film since 2020",
   },
   services: {
     label: "What we do",
     heading: "Our services",
-    lead: "Everything we do comes down to one thing: your event should reach further than the venue.",
+    lead: "Three services, one goal: your event should reach further than the venue.",
     cards: [
       {
         title: "Event photography",
-        body: "We cover the whole event, from the stage and the audience to everything happening between sessions.",
+        body: "Sharp, atmospheric images of the whole event. The stage, the audience and everything happening between sessions. No highlight is missed.",
         points: [
           "A shot list built from your schedule",
           "Discreet presence, no flash",
@@ -70,7 +70,7 @@ export const en: Dictionary = {
       },
       {
         title: "Event film",
-        body: "A film that captures the atmosphere and carries your message, with dynamic footage and proper production quality.",
+        body: "A film that captures the atmosphere and carries your message. Dynamic footage, proper sound and production quality that holds up on a big screen.",
         points: [
           "Main film of one to three minutes",
           "Vertical cuts for social media",
@@ -81,11 +81,11 @@ export const en: Dictionary = {
       },
       {
         title: "Photo and film together",
-        body: "One partner for the whole delivery. We shoot photo and film in the same production, so everything shares the same style and tone.",
+        body: "Big event? Then we shoot photo and film in the same production, with one briefing and one timeline. The preparation comes off your plate.",
         points: [
+          "Photo and film under one roof",
           "One contact, one agreement, one timeline",
           "The same look across all content",
-          "Ready for every channel",
         ],
         linkLabel: "See the projects",
         slug: "prosjekter",
@@ -94,10 +94,10 @@ export const en: Dictionary = {
   },
   liveOn: {
     label: "The value afterwards",
-    heading: "Your event lives on long after the last photo.",
+    heading: "Your event lives on long after the last photo is taken.",
     body: [
-      "Most photographers hand over a folder of images and call it a day. We deliver content that is ready to use, fully edited and adapted to the channels you publish in.",
-      "You pick what you want to use. Everything is ready for websites, social media and internal communication, without hours of extra work.",
+      "Most photographers hand over a folder of images and call it a day. We deliver content that is already usable, sorted by highlight and adapted to the channels you actually publish in.",
+      "You pick what you want. Everything is ready for websites, social media and internal communication, without hours of extra work.",
     ],
     points: [
       "Edited selection, sorted by highlights",
@@ -109,7 +109,7 @@ export const en: Dictionary = {
   work: {
     label: "Our work",
     heading: "From big brands to small breakfast seminars",
-    lead: "Browse the work by service, or see all projects in one place.",
+    lead: "Browse the work by event type, or see every project in one place.",
     cards: [
       { title: "Event photo", sub: "Snapchat · DNT · OBOS · JCP", slug: "eventfoto" },
       {
@@ -124,30 +124,31 @@ export const en: Dictionary = {
   process: {
     label: "The process",
     heading: "How we work",
-    lead: "We prepare properly for every job, shot list included, so you can trust that everything important gets captured.",
+    // NB: the timings below are a starting point. Kai adjusts them to what he actually promises.
+    lead: "Our promise is simple: every step should be easier for you than the one before it.",
     steps: [
       {
         number: "01",
-        title: "Onboarding",
-        body: "Tell us about your event: date, venue and what it needs to achieve. Then we set the framework together.",
+        title: "Request",
+        body: "Give us the date, venue and times. Then we'll tell you what we would do with it, and what it costs.",
         promise: "Kai replies personally within one business day",
       },
       {
         number: "02",
         title: "Planning",
-        body: "About a month before, we go through your schedule and build a shot list of the moments, details and images that must be secured.",
+        body: "About a month ahead we go through your schedule and build a shot list of the moments, people and details that must be secured.",
         promise: "Shot list ready before the event",
       },
       {
         number: "03",
-        title: "Production",
-        body: "We document the event as it happens. Planned highlights, reactions in the room and the spontaneous moments in between.",
-        promise: "On site well before the doors open",
+        title: "On site",
+        body: "We arrive in good time and are set up before the doors open. Then we document the event as it happens, without getting in its way.",
+        promise: "Set up and ready before the first guest",
       },
       {
         number: "04",
         title: "Delivery and evaluation",
-        body: "We select and edit the best images and footage, deliver on time and catch up for an evaluation the week after.",
+        body: "We select and edit the best of it, deliver in a private album you can easily share, and catch up for an evaluation the week after.",
         promise: "Delivery on time, every time",
       },
     ],
@@ -157,8 +158,9 @@ export const en: Dictionary = {
     label: "The photographer",
     heading: "Hi, I'm Kai Chen.",
     body: [
-      "I'm the one you'll meet behind the camera. Behind me is Chen Media AS, an agency specialising in event and brand photography for businesses and organisers.",
-      "We care as much about the strategy as the images. Your event should become content that keeps doing a job long after it ends, in marketing, communication and storytelling.",
+      "I'm the one you'll meet behind the camera. Behind me is Chen Media AS, doing event and brand photography for businesses and organisers.",
+      "I believe a good event deserves more than a folder full of photos. That's why I'm building Chen Media around two things at once: the craft in front of the camera, and the content you're left with afterwards.",
+      "When the event is at its busiest, I'm already in place. When everyone is waiting for the highlight, I already have it.",
     ],
     facts: [
       { value: "Photo + film", caption: "One partner for the whole delivery" },
@@ -169,7 +171,7 @@ export const en: Dictionary = {
   audience: {
     label: "Who we work for",
     heading: "Who is Chen Media for?",
-    lead: "We work with people who know a great event also needs to be communicated well.",
+    lead: "We work with people who know a good event also needs to be told well afterwards.",
     groups: [
       {
         title: "Conferences and seminars",
@@ -193,7 +195,7 @@ export const en: Dictionary = {
     label: "Contact",
     heading: "Get a quote tailored to",
     headingAccent: "your event",
-    lead: "Date, venue and times are enough. We'll sort out the rest afterwards.",
+    lead: "Date, venue and times are enough. We'll sort out the rest in a conversation.",
     photographerRole: "Event photographer · Chen Media",
     // NB: placeholder numbers (TON's values), Kai swaps in his own
     stats: [
@@ -207,8 +209,8 @@ export const en: Dictionary = {
       openLabel: "open dates",
       statusBooked: "Booked",
       statusOpen: "Open",
-      note: "There is plenty of room for your event on the open dates.",
-      autoNote: "Public dates through the end of the year. New bookings show up here.",
+      note: "There is still plenty of room for your event on the open dates.",
+      autoNote: "Public dates through the end of the year. New bookings show up here automatically.",
     },
     form: {
       name: "Name",
@@ -220,7 +222,7 @@ export const en: Dictionary = {
       message: "Tell us about your event",
       messageHint: "(date, venue and times are enough)",
       messagePh: "E.g. annual conference on 12 March 2027, Oslo, 9am to 5pm",
-      points: ["No obligation", "Reply within one business day", "Photos and social media content"],
+      points: ["No obligation", "Reply within one business day", "Photo and film together"],
       submit: "Request a no obligation quote",
     },
     direct: "Or email directly:",

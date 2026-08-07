@@ -35,7 +35,9 @@ export default function ProcessTimeline({ dict }: { dict: Dictionary }) {
           ))}
         </ol>
 
-        <p className="meta-label mt-8 text-sand">{process.note}</p>
+        {process.note ? (
+          <p className="meta-label mt-8 text-sand">{process.note}</p>
+        ) : null}
       </div>
     </section>
   );

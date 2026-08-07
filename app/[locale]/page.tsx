@@ -33,6 +33,14 @@ const polaroids = [
   { label: "Red Bull, aktivering", caption: "Red Bull · aktivering", src: photo.redbull, float: "float-c" },
 ] as const;
 
+// Kortbilder for «Arbeidet vårt». Roteres, så antall kort kan variere.
+const workPhotos = [
+  photo.meetCrowd,
+  photo.epicStage,
+  photo.redbull,
+  photo.festivalLife,
+] as const;
+
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   const dict = getDictionary(locale as Locale);
@@ -230,16 +238,20 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <p className="mt-4 max-w-xl text-base leading-relaxed text-smoke">
           {dict.work.lead}
         </p>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div
+          className={`mt-10 grid gap-6 sm:grid-cols-2 ${
+            dict.work.cards.length % 4 === 0 ? "lg:grid-cols-4" : "md:grid-cols-3"
+          }`}
+        >
           {dict.work.cards.map((card, i) => (
             <Link
-              key={card.slug}
+              key={card.title}
               href={`${base}/${card.slug}`}
               className="group relative block overflow-hidden rounded-lg"
             >
               <PlaceholderImage
                 label={card.title}
-                src={[photo.meetCrowd, photo.epicStage, photo.redbull][i]}
+                src={workPhotos[i % workPhotos.length]}
                 className="aspect-[4/5] w-full transition-transform duration-300 group-hover:scale-[1.02]"
               />
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-5 pt-14 text-cream">

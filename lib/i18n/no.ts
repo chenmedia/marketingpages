@@ -43,25 +43,25 @@ export const no: Dictionary = {
     cta: "Be om tilbud",
   },
   hero: {
-    badge: "Ledig for oppdrag i Oslo og hele Norge",
+    badge: "Ledig for arrangementer i Oslo og resten av Norge",
     title: "Arrangementet ditt, sett med øynene til en",
     titleAccent: "fotograf.",
-    lead: "Vi tar bilder og film på konferanser, lanseringer og firmaevents. Innholdet fortsetter å jobbe for dere lenge etter at lokalet er ryddet.",
+    lead: "Eventfotograf for konferanser, lanseringer og firmafester. Foto og film siden 2020. Et redigert førsteutvalg i hendene deres dagen etter.",
     ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",
-    clientsLabel: "Utvalgte oppdragsgivere",
+    clientsLabel: "Alene, eller med et komplett crew når arrangementet krever det",
     polaroidBadge: "Foto + film siden 2020",
   },
   services: {
     label: "Hva vi gjør",
     heading: "Tjenestene våre",
-    lead: "Alt vi gjør handler om det samme: at arrangementet ditt skal nå lenger enn lokalet.",
+    lead: "Tre tjenester, ett mål: at arrangementet ditt skal nå lenger enn lokalet.",
     cards: [
       {
         title: "Eventfoto",
-        body: "Vi dokumenterer hele arrangementet, fra scenen og salen til alt som skjer i pausene.",
+        body: "Skarpe, stemningsfulle bilder av hele arrangementet. Scenen, salen og alt som skjer i pausene. Ingen høydepunkter går tapt.",
         points: [
-          "Shot list av kjøreplanen din",
+          "Shot list bygget på kjøreplanen din",
           "Diskret tilstedeværelse uten blits",
           "Redigert utvalg i høy oppløsning",
         ],
@@ -70,7 +70,7 @@ export const no: Dictionary = {
       },
       {
         title: "Eventfilm",
-        body: "En film som får frem stemningen og forsterker budskapet, med dynamiske klipp og skikkelig produksjonskvalitet.",
+        body: "En film som får frem stemningen og bærer budskapet. Dynamiske klipp, ordentlig lyd og produksjonskvalitet som tåler å bli vist frem.",
         points: [
           "Hovedfilm på ett til tre minutter",
           "Vertikale kutt til sosiale medier",
@@ -81,11 +81,11 @@ export const no: Dictionary = {
       },
       {
         title: "Foto og film samlet",
-        body: "Én partner for hele leveransen. Vi koordinerer foto og film i samme produksjon, så alt henger sammen i stil og tone.",
+        body: "Stort arrangement? Da tar vi foto og film i samme produksjon, med én briefing og én tidslinje. Forberedelsene går bort fra ditt bord.",
         points: [
+          "Foto og film under samme tak",
           "Én kontakt, én avtale, én tidslinje",
           "Samme uttrykk i alt innhold",
-          "Klart for alle flater",
         ],
         linkLabel: "Se prosjektene",
         slug: "prosjekter",
@@ -94,14 +94,14 @@ export const no: Dictionary = {
   },
   liveOn: {
     label: "Verdien etterpå",
-    heading: "Arrangementet lever videre lenge etter siste bilde.",
+    heading: "Arrangementet lever videre lenge etter at siste bilde er tatt.",
     body: [
-      "De fleste leverer en mappe med bilder og sier takk for seg. Vi leverer innhold som er klart til bruk, ferdig redigert og tilpasset kanalene dere publiserer i.",
-      "Dere velger det dere vil bruke. Alt er klart for nettsider, sosiale medier og internkommunikasjon, uten timer med etterarbeid.",
+      "De fleste leverer en mappe med bilder og sier takk for seg. Vi leverer innhold som allerede er klart til bruk, sortert etter høydepunkter og tilpasset kanalene dere faktisk publiserer i.",
+      "Dere plukker det dere vil ha ut. Alt ligger klart for nettsider, sosiale medier og internkommunikasjon, uten timer med etterarbeid.",
     ],
     points: [
       "Redigert utvalg, sortert etter høydepunkter",
-      "Formater tilpasset web, sosiale medier og trykk",
+      "Formater for web, sosiale medier og trykk",
       "Levering til avtalt tid",
     ],
     cta: "Slik jobber vi",
@@ -109,7 +109,7 @@ export const no: Dictionary = {
   work: {
     label: "Arbeidet vårt",
     heading: "Fra store merkevarer til små frokostmøter",
-    lead: "Se arbeidet sortert på tjeneste, eller bla gjennom alle prosjektene.",
+    lead: "Bla gjennom arbeidet etter type arrangement, eller se alle prosjektene samlet.",
     cards: [
       { title: "Eventfoto", sub: "Snapchat · DNT · OBOS · JCP", slug: "eventfoto" },
       {
@@ -124,30 +124,31 @@ export const no: Dictionary = {
   process: {
     label: "Prosessen",
     heading: "Slik jobber vi",
-    lead: "Vi forbereder oss grundig til hvert oppdrag, med detaljert shot list, så du kan være trygg på at alt viktig blir fanget.",
+    // NB: fristene under er utgangspunkt. Kai justerer dem til det han faktisk lover.
+    lead: "Løftet vårt er enkelt: hvert steg skal være lettere for deg enn det forrige.",
     steps: [
       {
         number: "01",
-        title: "Onboarding",
-        body: "Fortell oss om arrangementet: dato, sted og hva det skal oppnå. Så setter vi rammene sammen.",
+        title: "Forespørsel",
+        body: "Gi oss dato, sted og tidspunkt. Så sier vi hva vi ville gjort med det, og hva det koster.",
         promise: "Kai svarer personlig innen én virkedag",
       },
       {
         number: "02",
         title: "Planlegging",
-        body: "Cirka en måned før går vi gjennom kjøreplanen og lager en shot list over øyeblikkene, detaljene og bildene som må sikres.",
+        body: "Cirka en måned før går vi gjennom kjøreplanen og lager en shot list over øyeblikkene, personene og detaljene som må sikres.",
         promise: "Shot list på plass før arrangementet",
       },
       {
         number: "03",
-        title: "Produksjon",
-        body: "Vi dokumenterer arrangementet mens det skjer. Planlagte høydepunkter, reaksjonene i salen og de spontane øyeblikkene imellom.",
-        promise: "På plass i god tid før dørene åpner",
+        title: "På stedet",
+        body: "Vi er på plass i god tid, ferdig rigget før dørene åpner. Så dokumenterer vi arrangementet mens det skjer, uten å komme i veien for det.",
+        promise: "Rigget og klar før første gjest",
       },
       {
         number: "04",
         title: "Levering og evaluering",
-        body: "Vi velger ut og redigerer de beste bildene og klippene, leverer til avtalt tid og tar en evaluering uken etter.",
+        body: "Vi velger ut og redigerer det beste, leverer i et privat album dere enkelt kan dele videre, og tar en evaluering uken etter.",
         promise: "Levering til avtalt tid, hver gang",
       },
     ],
@@ -157,8 +158,9 @@ export const no: Dictionary = {
     label: "Fotografen",
     heading: "Hei, jeg er Kai Chen.",
     body: [
-      "Det er meg du møter som fotograf. Bak meg står Chen Media AS, et byrå som er spesialisert på eventfoto og merkevarefotografering for bedrifter og arrangører.",
-      "Vi er like opptatt av strategien som av bildene. Arrangementet ditt skal bli til innhold som gjør en jobb lenge etter at det er over, i markedsføring, kommunikasjon og historiefortelling.",
+      "Det er meg du møter bak kameraet. Bak meg står Chen Media AS, som gjør eventfoto og merkevarefoto for bedrifter og arrangører.",
+      "Jeg mener et godt arrangement fortjener mer enn en mappe full av bilder. Derfor bygger jeg Chen Media rundt to ting samtidig: håndverket foran kamera, og innholdet dere sitter igjen med etterpå.",
+      "Når det er som travlest, er jeg allerede på plass. Når alle venter på høydepunktet, har jeg det allerede.",
     ],
     facts: [
       { value: "Foto + film", caption: "Én partner for hele leveransen" },
@@ -169,7 +171,7 @@ export const no: Dictionary = {
   audience: {
     label: "Hvem vi jobber for",
     heading: "Hvem er Chen Media for?",
-    lead: "Vi jobber med folk som vet at et godt arrangement også må kommuniseres godt.",
+    lead: "Vi jobber med folk som vet at et godt arrangement også må fortelles godt videre.",
     groups: [
       {
         title: "Konferanser og fagdager",
@@ -193,7 +195,7 @@ export const no: Dictionary = {
     label: "Kontakt",
     heading: "Få et tilbud tilpasset",
     headingAccent: "arrangementet ditt",
-    lead: "Dato, sted og tidspunkt er nok. Resten tar vi i en prat etterpå.",
+    lead: "Dato, sted og tidspunkt holder. Resten tar vi i en prat.",
     photographerRole: "Eventfotograf · Chen Media",
     // NB: plassholdertall (TONs verdier), Kai bytter til egne tall
     stats: [
@@ -207,8 +209,8 @@ export const no: Dictionary = {
       openLabel: "ledige datoer",
       statusBooked: "Booket",
       statusOpen: "Ledig",
-      note: "Det er god plass til arrangementet ditt på de ledige datoene.",
-      autoNote: "Offentlige datoer ut året. Nye bookinger dukker opp her.",
+      note: "Det er fortsatt god plass til arrangementet ditt på de ledige datoene.",
+      autoNote: "Offentlige datoer ut året. Nye bookinger dukker opp her automatisk.",
     },
     form: {
       name: "Navn",
@@ -220,7 +222,7 @@ export const no: Dictionary = {
       message: "Fortell oss om arrangementet",
       messageHint: "(dato, sted og tidspunkt er nok)",
       messagePh: "F.eks. årskonferanse 12. mars 2027, Oslo kongressenter, kl. 09 til 17",
-      points: ["Uforpliktende", "Svar innen én virkedag", "Foto og innhold til sosiale medier"],
+      points: ["Uforpliktende", "Svar innen én virkedag", "Foto og film samlet"],
       submit: "Be om et uforpliktende tilbud",
     },
     direct: "Eller send e-post direkte:",
