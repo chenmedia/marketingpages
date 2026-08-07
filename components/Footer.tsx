@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Dictionary, Locale } from "@/lib/i18n";
+import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
 import Squiggle from "./Squiggle";
 
 export default function Footer({
@@ -9,7 +9,7 @@ export default function Footer({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const base = `/${locale}`;
+  const base = localeBase(locale);
   return (
     <footer className="bg-ink text-cream">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">

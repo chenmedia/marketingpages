@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Dictionary, Locale } from "@/lib/i18n";
+import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
 import LocaleSwitch from "./LocaleSwitch";
 import CtaButton from "./CtaButton";
 import Squiggle from "./Squiggle";
@@ -11,7 +11,7 @@ export default function Nav({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const base = `/${locale}`;
+  const base = localeBase(locale);
   const services = [
     { href: `${base}/eventfoto`, label: dict.nav.photo, sub: dict.nav.photoSub },
     { href: `${base}/eventfilm`, label: dict.nav.film, sub: dict.nav.filmSub },

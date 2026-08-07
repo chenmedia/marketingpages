@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getDictionary, type Locale } from "@/lib/i18n";
+import { getDictionary, localeBase } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/site";
 import { isLocale } from "@/lib/i18n";
 import SectionLabel from "@/components/SectionLabel";
 import PhotoTicker from "@/components/PhotoTicker";
@@ -20,9 +22,7 @@ export async function generateMetadata({
   return {
     title: { absolute: dict.meta.home.title },
     description: dict.meta.home.description,
-    alternates: {
-      languages: { nb: "/no", en: "/en" },
-    },
+    alternates: alternatesFor(locale, "/"),
   };
 }
 
@@ -43,8 +43,9 @@ const workPhotos = [
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
-  const dict = getDictionary(locale as Locale);
-  const base = `/${locale}`;
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
+  const base = localeBase(locale);
 
   return (
     <>
@@ -354,7 +355,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </section>
 
-      <ContactCTA dict={dict} locale={locale as Locale} />
+      <ContactCTA dict={dict} locale={locale} />
     </>
   );
 }

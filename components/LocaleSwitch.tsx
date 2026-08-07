@@ -2,24 +2,44 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { Locale } from "@/lib/i18n";
+import { LOCALE_COOKIE, localePath, locales, type Locale } from "@/lib/i18n";
 
-// Bytter språk og bevarer siden man står på (/no/eventfoto ↔ /en/eventfoto).
+/*
+  Bytter språk og bevarer siden man står på (/eventfoto ↔ /en/eventfoto).
+
+  Norsk har ingen prefiks utad, så pathname er allerede den rene stien.
+  Klikket setter også en cookie, slik at proxy.ts ikke sender brukeren
+  tilbake til nettleserspråket ved neste besøk.
+*/
+/*
+  Ligger utenfor komponenten med vilje: React Compiler tillater ikke at en
+  komponent skriver til noe som er definert utenfor den.
+*/
+function rememberLocale(next: Locale) {
+  // Ett år, hele nettstedet. Ingen persondata, så ingen samtykke kreves.
+  document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
+}
+
 export default function LocaleSwitch({ locale }: { locale: Locale }) {
-  const pathname = usePathname() ?? `/${locale}`;
-  const rest = pathname.replace(/^\/(no|en)(?=\/|$)/, "");
+  const pathname = usePathname() ?? "/";
+  /*
+    Serveren ser den interne stien etter rewriten (/no/eventfoto), mens
+    nettleseren ser den offentlige (/eventfoto). Vi stripper derfor begge
+    prefiks, slik at server og klient regner seg fram til samme lenke og
+    hydreringen ikke spriker.
+  */
+  const rest = pathname.replace(/^\/(no|en)(?=\/|$)/, "") || "/";
 
   return (
     <div className="meta-label flex items-center gap-1 rounded-full border border-ink/20 p-1">
-      {(["no", "en"] as const).map((l) => (
+      {locales.map((l) => (
         <Link
           key={l}
-          href={`/${l}${rest}`}
+          href={localePath(l, rest)}
+          onClick={() => rememberLocale(l)}
           aria-current={l === locale ? "true" : undefined}
           className={`rounded-full px-2.5 py-1 transition-colors ${
-            l === locale
-              ? "bg-ink text-cream"
-              : "text-smoke hover:text-ink"
+            l === locale ? "bg-ink text-cream" : "text-smoke hover:text-ink"
           }`}
         >
           {l.toUpperCase()}

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
+import { notFound } from "next/navigation";
+import { getDictionary, isLocale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/site";
 import SectionLabel from "@/components/SectionLabel";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import CaseList from "@/components/CaseList";
@@ -15,9 +17,7 @@ export async function generateMetadata({
   return {
     title: { absolute: dict.meta.film.title },
     description: dict.meta.film.description,
-    alternates: {
-      languages: { nb: "/no/eventfilm", en: "/en/eventfilm" },
-    },
+    alternates: alternatesFor(locale, "/eventfilm"),
   };
 }
 
@@ -25,7 +25,8 @@ export default async function EventFilmPage({
   params,
 }: PageProps<"/[locale]/eventfilm">) {
   const { locale } = await params;
-  const dict = getDictionary(locale as Locale);
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
   const page = dict.filmPage;
 
   return (
@@ -107,7 +108,7 @@ export default async function EventFilmPage({
         <Faq items={page.faq.items} />
       </section>
 
-      <ContactCTA dict={dict} locale={locale as Locale} heading={page.cta.heading} lead={page.cta.lead} />
+      <ContactCTA dict={dict} locale={locale} heading={page.cta.heading} lead={page.cta.lead} />
     </>
   );
 }

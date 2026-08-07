@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
+import { notFound } from "next/navigation";
+import { getDictionary, isLocale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/site";
 import SectionLabel from "@/components/SectionLabel";
 import CaseList from "@/components/CaseList";
 import ContactCTA from "@/components/ContactCTA";
@@ -13,9 +15,7 @@ export async function generateMetadata({
   return {
     title: { absolute: dict.meta.projects.title },
     description: dict.meta.projects.description,
-    alternates: {
-      languages: { nb: "/no/prosjekter", en: "/en/prosjekter" },
-    },
+    alternates: alternatesFor(locale, "/prosjekter"),
   };
 }
 
@@ -23,7 +23,8 @@ export default async function ProjectsPage({
   params,
 }: PageProps<"/[locale]/prosjekter">) {
   const { locale } = await params;
-  const dict = getDictionary(locale as Locale);
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
   const page = dict.projectsPage;
 
   return (
@@ -44,7 +45,7 @@ export default async function ProjectsPage({
         </div>
       </section>
 
-      <ContactCTA dict={dict} locale={locale as Locale} />
+      <ContactCTA dict={dict} locale={locale} />
     </>
   );
 }

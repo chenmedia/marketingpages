@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
+import { notFound } from "next/navigation";
+import { getDictionary, isLocale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/site";
 import SectionLabel from "@/components/SectionLabel";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import ContactCTA from "@/components/ContactCTA";
@@ -13,9 +15,7 @@ export async function generateMetadata({
   return {
     title: { absolute: dict.meta.news.title },
     description: dict.meta.news.description,
-    alternates: {
-      languages: { nb: "/no/nyheter", en: "/en/nyheter" },
-    },
+    alternates: alternatesFor(locale, "/nyheter"),
   };
 }
 
@@ -23,7 +23,8 @@ export default async function NewsPage({
   params,
 }: PageProps<"/[locale]/nyheter">) {
   const { locale } = await params;
-  const dict = getDictionary(locale as Locale);
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
   const page = dict.newsPage;
 
   return (
@@ -62,7 +63,7 @@ export default async function NewsPage({
         </div>
       </section>
 
-      <ContactCTA dict={dict} locale={locale as Locale} />
+      <ContactCTA dict={dict} locale={locale} />
     </>
   );
 }

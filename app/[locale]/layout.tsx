@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
+import { siteUrl } from "@/lib/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StickyBar from "@/components/StickyBar";
@@ -24,6 +25,7 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const dict = getDictionary(locale);
   return {
+    metadataBase: siteUrl,
     title: {
       default: dict.meta.home.title,
       template: `%s | ${dict.meta.siteName}`,

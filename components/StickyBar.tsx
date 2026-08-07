@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Dictionary, Locale } from "@/lib/i18n";
+import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
 
 // Sticky bunnbar à la TON: tilgjengelighetssignal + CTA, nede til høyre.
 export default function StickyBar({
@@ -16,7 +16,7 @@ export default function StickyBar({
         {dict.sticky.available}
       </span>
       <Link
-        href={`/${locale}#kontakt`}
+        href={`${localeBase(locale)}#kontakt`}
         className="meta-label rounded-full bg-cream px-4 py-2 text-ink transition-colors hover:bg-bone"
       >
         {dict.sticky.cta} →

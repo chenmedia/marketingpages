@@ -2,10 +2,29 @@ import { no } from "./no";
 import { en } from "./en";
 import { noTon } from "./no.ton";
 import { enTon } from "./en.ton";
-import type { Dictionary, Locale } from "./types";
+import { defaultLocale, type Dictionary, type Locale } from "./types";
 
 export { locales, defaultLocale } from "./types";
 export type { Dictionary, Locale } from "./types";
+
+/*
+  Norsk har ingen prefiks i URL-en, engelsk har /en. Filstrukturen bruker
+  fortsatt app/[locale]/, så proxy.ts rewriter /eventfoto til /no/eventfoto.
+  Alle interne lenker må bygges herfra, ellers lekker /no/ ut i markup.
+*/
+export function localeBase(locale: Locale): string {
+  return locale === defaultLocale ? "" : `/${locale}`;
+}
+
+/** Bygger en intern sti for et gitt språk. localePath("no", "/eventfoto") -> "/eventfoto" */
+export function localePath(locale: Locale, path = "/"): string {
+  const base = localeBase(locale);
+  if (path === "/") return base || "/";
+  return `${base}${path}`;
+}
+
+/** Cookien som husker et manuelt språkvalg. Leses i proxy.ts, settes i LocaleSwitch. */
+export const LOCALE_COOKIE = "chenmedia_locale";
 
 /*
   To tekstvarianter av samme nettsted:
