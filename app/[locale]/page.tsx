@@ -247,7 +247,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <Link
               key={card.title}
               href={`${base}/${card.slug}`}
-              className="group relative block overflow-hidden rounded-lg"
+              /* bg-ink er kortets grunnfarge under fotoet. Den holder teksten
+                 lesbar hvis bildet ikke laster, og gjør at kontrastverktøy
+                 finner en faktisk bakgrunnsfarge i stedet for å anta hvit. */
+              className="group relative block overflow-hidden rounded-lg bg-ink"
             >
               <PlaceholderImage
                 label={card.title}
