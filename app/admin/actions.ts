@@ -9,6 +9,7 @@ import { STATS_TAG } from "@/lib/stats/queries";
 import { IMAGES_TAG } from "@/lib/images/queries";
 import { SLOT_BY_KEY } from "@/lib/images/slots";
 import { forwardToHubspot } from "@/lib/hubspot/forms";
+import { getDictionary, isLocale } from "@/lib/i18n";
 import {
   parseEventForm,
   parsePhotographerForm,
@@ -345,11 +346,15 @@ export async function retryHubspotForward(form: FormData) {
   const supabase = await createClient();
   const { data: enquiry } = await supabase
     .from("enquiries")
-    .select("name, email, message, org, marketing_consent, source_path, ip")
+    .select(
+      "name, email, message, org, marketing_consent, consent_text, source_path, ip, locale"
+    )
     .eq("id", id)
     .maybeSingle();
 
   if (!enquiry) return;
+
+  const dict = getDictionary(isLocale(enquiry.locale) ? enquiry.locale : "no");
 
   const result = await forwardToHubspot({
     name: enquiry.name,
@@ -360,13 +365,25 @@ export async function retryHubspotForward(form: FormData) {
     pageUri: enquiry.source_path,
     // Null på rader eldre enn 30 dager. Da sendes den bare ikke med.
     ip: enquiry.ip,
+    /*
+      Ordlyden slik den sto da vedkommende huket av, ikke dagens tekst. Er
+      teksten endret siden, skal HubSpot få det som faktisk ble samtykket i.
+    */
+    consentText: enquiry.consent_text ?? dict.contact.form.consent,
+    privacyText: dict.contact.form.privacy,
   });
 
+  /*
+    Her er et vanlig update riktig: admin er innlogget, og RLS slipper
+    gjennom på private.is_admin(). mark_enquiry_delivery er for besøkende,
+    og ville uansett ikke tatt denne raden, siden den bare rører ferske
+    rader som fortsatt står som «pending».
+  */
   await supabase
     .from("enquiries")
     .update(
       result.ok
-        ? { hubspot_state: "sent", hubspot_error: null }
+        ? { hubspot_state: "sent", hubspot_error: result.note ?? null }
         : { hubspot_state: "failed", hubspot_error: result.error }
     )
     .eq("id", id);

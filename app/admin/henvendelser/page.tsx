@@ -117,6 +117,19 @@ function EnquiryCard({ enquiry: e }: { enquiry: Enquiry }) {
               Samtykke til e-post
             </span>
           )}
+          {/*
+            Uteblitt varsel er verdt en egen markering. Da vet Kai at han fant
+            henvendelsen selv, og at han ikke kan stole på at neste dukker opp
+            i innboksen.
+          */}
+          {!e.notified_at && (
+            <span
+              className="rounded-full bg-amber-500/20 px-2 py-0.5 text-amber-900"
+              title="Varsel på e-post ble ikke sendt for denne henvendelsen."
+            >
+              Ikke varslet
+            </span>
+          )}
           <HubspotBadge state={e.hubspot_state} />
           <time
             dateTime={e.created_at}
@@ -130,8 +143,19 @@ function EnquiryCard({ enquiry: e }: { enquiry: Enquiry }) {
 
       <p className="whitespace-pre-wrap px-4 py-3 text-sm">{e.message}</p>
 
-      {e.hubspot_state === "failed" && e.hubspot_error && (
-        <p className="mx-4 mb-3 rounded-lg bg-red-500/10 px-3 py-2 text-xs text-red-800">
+      {/*
+        Teksten vises også når tilstanden er «sent». Da er den en advarsel om
+        at innsendingen gikk gjennom uten samtykket, og det er nettopp det
+        som ikke må gå upåaktet hen.
+      */}
+      {e.hubspot_error && (
+        <p
+          className={`mx-4 mb-3 rounded-lg px-3 py-2 text-xs ${
+            e.hubspot_state === "sent"
+              ? "bg-amber-500/10 text-amber-900"
+              : "bg-red-500/10 text-red-800"
+          }`}
+        >
           {e.hubspot_error}
         </p>
       )}

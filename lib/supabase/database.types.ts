@@ -38,6 +38,7 @@ export type Database = {
           marketing_consent: boolean;
           message: string;
           name: string;
+          notified_at: string | null;
           org: string | null;
           source_path: string | null;
           status: string;
@@ -72,6 +73,7 @@ export type Database = {
           marketing_consent?: boolean;
           message?: string;
           name?: string;
+          notified_at?: string | null;
           org?: string | null;
           source_path?: string | null;
           status?: string;
@@ -339,6 +341,19 @@ export type Database = {
       next_free_days: {
         Args: { p_days?: number; p_from?: string };
         Returns: { day: string; free: number }[];
+      };
+      /*
+        Setter leveringsstatus rett etter en innsending. Egen funksjon fordi
+        anon ikke har update på tabellen; se migrasjonen for skrankene.
+      */
+      mark_enquiry_delivery: {
+        Args: {
+          p_hubspot_error?: string;
+          p_hubspot_state?: string;
+          p_id: string;
+          p_notified?: boolean;
+        };
+        Returns: undefined;
       };
       /*
         Eneste veien inn i enquiries for en besøkende. Anon har execute her og

@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { forwardToHubspot } from "@/lib/hubspot/forms";
+import { notifyNewEnquiry } from "@/lib/notify/email";
 import { parseEnquiryForm, type EnquiryError } from "@/lib/enquiries/validate";
 import { getDictionary, isLocale } from "@/lib/i18n";
 
@@ -68,28 +69,57 @@ export async function submitEnquiry(
   const id = data as string | null;
   if (!id) return { error: "server" };
 
-  /*
-    Videresendingen skjer etter lagringen og kan ikke velte innsendingen.
-    Resultatet noteres på raden, så admin ser hva som faktisk skjedde.
-  */
-  const forwarded = await forwardToHubspot({
-    name: parsed.value.name,
-    email: parsed.value.email,
-    message: parsed.value.message,
-    org: parsed.value.org,
-    marketingConsent: parsed.value.marketingConsent,
-    pageUri: String(form.get("sourcePath") ?? "") || null,
-    ip: ip ?? null,
-  });
+  const sourcePath = String(form.get("sourcePath") ?? "") || null;
 
-  await supabase
-    .from("enquiries")
-    .update(
-      forwarded.ok
-        ? { hubspot_state: "sent", hubspot_error: null }
-        : { hubspot_state: "failed", hubspot_error: forwarded.error }
-    )
-    .eq("id", id);
+  /*
+    Varsel og videresending er uavhengige av hverandre og gjøres samtidig.
+    Sekvensielt ville den besøkende ventet på summen av to nettverkskall.
+
+    Begge skjer etter lagringen og kan ikke velte innsendingen. Varselet er
+    det viktigste av de to: det er slik Kai får vite at noen har tatt
+    kontakt, og det skal ikke henge på at HubSpot svarer.
+  */
+  const [notified, forwarded] = await Promise.all([
+    notifyNewEnquiry({
+      id,
+      name: parsed.value.name,
+      org: parsed.value.org,
+      email: parsed.value.email,
+      message: parsed.value.message,
+      marketingConsent: parsed.value.marketingConsent,
+      locale,
+      sourcePath,
+      ip: ip ?? null,
+    }),
+    forwardToHubspot({
+      name: parsed.value.name,
+      email: parsed.value.email,
+      message: parsed.value.message,
+      org: parsed.value.org,
+      marketingConsent: parsed.value.marketingConsent,
+      pageUri: sourcePath,
+      ip: ip ?? null,
+      consentText: dict.contact.form.consent,
+      privacyText: dict.contact.form.privacy,
+    }),
+  ]);
+
+  if (!notified.ok) console.error("Varsel ikke sendt:", notified.error);
+
+  /*
+    Statusen settes gjennom mark_enquiry_delivery, ikke med et update mot
+    tabellen. En besøkende kjører som anon, som ikke har og ikke skal ha
+    rettigheter her; et vanlig update feilet stille og lot enhver ekte
+    henvendelse stå som «pending» selv når HubSpot hadde fått den.
+  */
+  await supabase.rpc("mark_enquiry_delivery", {
+    p_id: id,
+    p_hubspot_state: forwarded.ok ? "sent" : "failed",
+    p_hubspot_error: forwarded.ok
+      ? (forwarded.note ?? undefined)
+      : forwarded.error,
+    p_notified: notified.ok,
+  });
 
   revalidatePath("/admin/henvendelser");
   revalidatePath("/admin");

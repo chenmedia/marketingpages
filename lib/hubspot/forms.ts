@@ -18,7 +18,10 @@ import "server-only";
 
 const TIMEOUT_MS = 5000;
 
-export type ForwardResult = { ok: true } | { ok: false; error: string };
+export type ForwardResult =
+  /* note settes når innsendingen gikk gjennom, men ikke slik den skulle. */
+  | { ok: true; note?: string }
+  | { ok: false; error: string };
 
 export type EnquiryPayload = {
   name: string;
@@ -28,6 +31,9 @@ export type EnquiryPayload = {
   marketingConsent: boolean;
   pageUri: string | null;
   ip: string | null;
+  /* Ordlyden som faktisk sto i skjemaet. Sendes med samtykket til HubSpot. */
+  consentText?: string | null;
+  privacyText?: string | null;
 };
 
 export function hubspotConfig() {
@@ -35,6 +41,21 @@ export function hubspotConfig() {
   const formGuid = process.env.HUBSPOT_FORM_GUID?.trim();
   if (!portalId || !formGuid) return null;
   return { portalId, formGuid };
+}
+
+/*
+  ID-en til abonnementstypen samtykket gjelder, fra Settings → Marketing →
+  Email → Subscription Types i HubSpot.
+
+  Uten den sendes ingen legalConsentOptions, og alt virker som før. Det er
+  med vilje: et samtykke uten abonnementstype har ingen steder å havne i
+  HubSpot, og da er det bedre å la være enn å sende noe som ser riktig ut.
+*/
+function subscriptionTypeId(): number | null {
+  const raw = process.env.HUBSPOT_SUBSCRIPTION_TYPE_ID?.trim();
+  if (!raw) return null;
+  const id = Number(raw);
+  return Number.isInteger(id) && id > 0 ? id : null;
 }
 
 /*
@@ -82,11 +103,6 @@ export async function forwardToHubspot(
   ].filter((f) => f.value !== "");
 
   /*
-    Legal consent er skrudd av på skjemaet i HubSpot, så payloaden skal IKKE
-    inneholde legalConsentOptions. Er det på der uten å sendes med her,
-    avvises hver eneste innsending. Samtykket vårt lagres i enquiries.
-  */
-  /*
     context.ipAddress er HubSpots eget felt for avsenderens IP. HubSpot slår
     den opp mot geodata og fyller land og region på kontakten, noe et vanlig
     tekstfelt ikke ville gjort.
@@ -95,26 +111,60 @@ export async function forwardToHubspot(
     med 400 på en ugyldig verdi, og en henvendelse skal ikke gå tapt fordi en
     proxy sendte noe rart i x-forwarded-for.
   */
-  const body = {
-    fields,
-    context: {
-      pageUri: enquiry.pageUri ?? undefined,
-      pageName: "Kontaktskjema · chenmedia.no",
-      ipAddress: isPlausibleIp(enquiry.ip) ? enquiry.ip! : undefined,
-    },
+  const context = {
+    pageUri: enquiry.pageUri ?? undefined,
+    pageName: "Kontaktskjema · chenmedia.no",
+    ipAddress: isPlausibleIp(enquiry.ip) ? enquiry.ip! : undefined,
   };
+
+  /*
+    Samtykket, slik HubSpot vil ha det.
+
+    En egenskap på kontakten hadde ikke holdt: HubSpot avgjør hvem som lovlig
+    kan motta markedsføring gjennom abonnementssystemet, ikke gjennom et
+    felt. legalConsentOptions skriver dit, og rir på det samme kallet, så det
+    trengs fortsatt ingen API-nøkkel.
+
+    consentToProcess gjelder å behandle henvendelsen og følger av at skjemaet
+    ble sendt inn. communications gjelder markedsføring senere og følger
+    avkryssingsboksen, som står uhuket fra start. Teksten som lagres er den
+    som faktisk sto i skjemaet.
+  */
+  const subscriptionId = subscriptionTypeId();
+  const legalConsentOptions = subscriptionId
+    ? {
+        consent: {
+          consentToProcess: true,
+          text: enquiry.privacyText ?? "Samtykke til behandling av henvendelsen.",
+          communications: [
+            {
+              value: enquiry.marketingConsent,
+              subscriptionTypeId: subscriptionId,
+              text: enquiry.consentText ?? "Markedsføring fra Chen Media.",
+            },
+          ],
+        },
+      }
+    : undefined;
 
   // Region na1 gir api.hsforms.com. EU-regionen ville vært api-eu1.hsforms.com.
   const url = `https://api.hsforms.com/submissions/v3/integration/submit/${config.portalId}/${config.formGuid}`;
 
-  try {
-    const res = await fetch(url, {
+  const send = (withConsent: boolean) =>
+    fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        fields,
+        context,
+        ...(withConsent && legalConsentOptions ? { legalConsentOptions } : {}),
+      }),
       signal: AbortSignal.timeout(TIMEOUT_MS),
       cache: "no-store",
     });
+
+  try {
+    const res = await send(true);
 
     if (res.ok) return { ok: true };
 
@@ -123,7 +173,27 @@ export async function forwardToHubspot(
       feiltilfellene. Statuskoden alene sier lite, så vi tar med det som
       måtte stå der; det er dette teksten i admin skal hjelpe med å tolke.
     */
-    const detail = (await res.text().catch(() => "")).slice(0, 500);
+    const detail = (await res.text().catch(() => "")).slice(0, 300);
+
+    /*
+      Krever skjemaet i HubSpot et annet consent-oppsett enn det vi sender,
+      avvises hele innsendingen. Henvendelsen skal ikke gå tapt av den grunn,
+      så vi prøver én gang til uten samtykket — og noterer at det skjedde.
+      Uten notatet ville et feil oppsett stått og gjæret i stillhet.
+    */
+    if (legalConsentOptions) {
+      const retry = await send(false);
+      if (retry.ok) {
+        return {
+          ok: true,
+          note:
+            `Sendt, men UTEN samtykket. HubSpot avviste legalConsentOptions (${res.status}` +
+            `${detail ? `: ${detail}` : ""}). Sjekk at consent er slått på for ` +
+            "skjemaet, og at HUBSPOT_SUBSCRIPTION_TYPE_ID peker på riktig type.",
+        };
+      }
+    }
+
     return {
       ok: false,
       error: `HubSpot svarte ${res.status}${detail ? `: ${detail}` : ""}`,

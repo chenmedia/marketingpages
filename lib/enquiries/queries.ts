@@ -27,11 +27,12 @@ export type Enquiry = {
   hubspot_state: string;
   hubspot_error: string | null;
   ip: string | null;
+  notified_at: string | null;
   created_at: string;
 };
 
 const FIELDS =
-  "id, name, org, email, message, locale, source_path, marketing_consent, consent_text, status, hubspot_state, hubspot_error, ip, created_at";
+  "id, name, org, email, message, locale, source_path, marketing_consent, consent_text, status, hubspot_state, hubspot_error, ip, notified_at, created_at";
 
 export async function listEnquiries(
   scope: "open" | "archived" = "open"
