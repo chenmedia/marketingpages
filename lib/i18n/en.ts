@@ -220,6 +220,20 @@ export const en: Dictionary = {
       messagePh: "E.g. annual conference on 12 March 2027, Oslo, 9am to 5pm",
       points: ["No obligation", "Reply within one business day", "Photo and film together"],
       submit: "Request a no obligation quote",
+      sending: "Sending …",
+      consent:
+        "I'd like to receive emails from Chen Media about services and relevant content. You can unsubscribe at any time.",
+      privacy:
+        "When you submit, we store your details so we can reply to your enquiry.",
+      successTitle: "Thanks, we have your enquiry.",
+      successBody:
+        "Kai will look at it and usually replies within one business day. If it is urgent, feel free to call.",
+      errors: {
+        invalid: "Please check that your name, email and message are filled in correctly.",
+        rate: "You have sent several enquiries just now. Please try again in a few minutes.",
+        server:
+          "Something went wrong on our end and the enquiry was not sent. Please try again, or email us directly.",
+      },
     },
     direct: "Or email directly:",
     reply: "Kai replies personally, usually within one business day.",

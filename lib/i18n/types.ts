@@ -132,6 +132,25 @@ export interface Dictionary {
       messagePh: string;
       points: string[];
       submit: string;
+      /** Knappen mens innsendingen pågår. */
+      sending: string;
+      /*
+        Samtykke til markedsføring. Valgfritt og uhuket fra start: det gjelder
+        e-post Chen Media sender uoppfordret senere, ikke svaret på selve
+        henvendelsen. Ordlyden lagres på raden i enquiries, så den kan ikke
+        endres uten at gamle samtykker fortsatt viser hva de gjaldt.
+      */
+      consent: string;
+      /** Hva som skjer med opplysningene. Står under knappen, ingen boks. */
+      privacy: string;
+      successTitle: string;
+      successBody: string;
+      /** Nøklene svarer til EnquiryError i lib/enquiries/validate.ts. */
+      errors: {
+        invalid: string;
+        rate: string;
+        server: string;
+      };
     };
     direct: string;
     reply: string;

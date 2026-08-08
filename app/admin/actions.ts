@@ -8,6 +8,7 @@ import { AGENDA_TAG } from "@/lib/agenda/queries";
 import { STATS_TAG } from "@/lib/stats/queries";
 import { IMAGES_TAG } from "@/lib/images/queries";
 import { SLOT_BY_KEY } from "@/lib/images/slots";
+import { forwardToHubspot } from "@/lib/hubspot/forms";
 import {
   parseEventForm,
   parsePhotographerForm,
@@ -300,4 +301,73 @@ function clamp01(n: number) {
 function refreshImages() {
   revalidateTag(IMAGES_TAG, "max");
   revalidatePath("/admin/bilder");
+}
+
+/*
+  Henvendelser fra kontaktskjemaet.
+
+  Ingenting her rører de offentlige sidene, så det holder med revalidatePath
+  på selve innboksen og oversikten.
+*/
+function refreshEnquiries() {
+  revalidatePath("/admin/henvendelser");
+  revalidatePath("/admin");
+}
+
+export async function setEnquiryStatus(form: FormData) {
+  await requireAdmin();
+
+  const id = String(form.get("id") ?? "");
+  const status = String(form.get("status") ?? "");
+  if (!id || !["new", "read", "archived"].includes(status)) return;
+
+  const supabase = await createClient();
+  await supabase.from("enquiries").update({ status }).eq("id", id);
+
+  refreshEnquiries();
+}
+
+/*
+  Send til HubSpot på nytt.
+
+  Dette er grunnen til at henvendelsen lagres hos oss først: feiler
+  videresendingen, er den ikke tapt, og et nytt forsøk er ett klikk. Typisk
+  årsak er at HUBSPOT_FORM_GUID mangler eller er feil, eller at skjemaet i
+  HubSpot har reCAPTCHA eller legal consent slått på — API-innsending virker
+  ikke med noen av delene.
+*/
+export async function retryHubspotForward(form: FormData) {
+  await requireAdmin();
+
+  const id = String(form.get("id") ?? "");
+  if (!id) return;
+
+  const supabase = await createClient();
+  const { data: enquiry } = await supabase
+    .from("enquiries")
+    .select("name, email, message, org, marketing_consent, source_path")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (!enquiry) return;
+
+  const result = await forwardToHubspot({
+    name: enquiry.name,
+    email: enquiry.email,
+    message: enquiry.message,
+    org: enquiry.org,
+    marketingConsent: enquiry.marketing_consent,
+    pageUri: enquiry.source_path,
+  });
+
+  await supabase
+    .from("enquiries")
+    .update(
+      result.ok
+        ? { hubspot_state: "sent", hubspot_error: null }
+        : { hubspot_state: "failed", hubspot_error: result.error }
+    )
+    .eq("id", id);
+
+  refreshEnquiries();
 }

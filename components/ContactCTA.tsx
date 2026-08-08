@@ -77,7 +77,7 @@ export default function ContactCTA({
 
           {/* Høyre: skjema */}
           <div className="h-full min-w-0">
-            <ContactForm dict={dict} />
+            <ContactForm dict={dict} locale={locale} />
           </div>
         </div>
       </div>

@@ -24,6 +24,57 @@ export type Database = {
         Update: { id?: number; team_size?: number; updated_at?: string };
         Relationships: [];
       };
+      enquiries: {
+        Row: {
+          consent_text: string | null;
+          created_at: string;
+          email: string;
+          hubspot_error: string | null;
+          hubspot_state: string;
+          id: string;
+          ip_hash: string | null;
+          locale: string;
+          marketing_consent: boolean;
+          message: string;
+          name: string;
+          org: string | null;
+          source_path: string | null;
+          status: string;
+        };
+        Insert: {
+          consent_text?: string | null;
+          created_at?: string;
+          email: string;
+          hubspot_error?: string | null;
+          hubspot_state?: string;
+          id?: string;
+          ip_hash?: string | null;
+          locale?: string;
+          marketing_consent?: boolean;
+          message: string;
+          name: string;
+          org?: string | null;
+          source_path?: string | null;
+          status?: string;
+        };
+        Update: {
+          consent_text?: string | null;
+          created_at?: string;
+          email?: string;
+          hubspot_error?: string | null;
+          hubspot_state?: string;
+          id?: string;
+          ip_hash?: string | null;
+          locale?: string;
+          marketing_consent?: boolean;
+          message?: string;
+          name?: string;
+          org?: string | null;
+          source_path?: string | null;
+          status?: string;
+        };
+        Relationships: [];
+      };
       event_internal: {
         Row: {
           client: string | null;
@@ -285,6 +336,24 @@ export type Database = {
       next_free_days: {
         Args: { p_days?: number; p_from?: string };
         Returns: { day: string; free: number }[];
+      };
+      /*
+        Eneste veien inn i enquiries for en besøkende. Anon har execute her og
+        ingenting på selve tabellen.
+      */
+      submit_enquiry: {
+        Args: {
+          p_consent_text?: string;
+          p_email: string;
+          p_ip_hash?: string;
+          p_locale?: string;
+          p_marketing_consent?: boolean;
+          p_message: string;
+          p_name: string;
+          p_org?: string;
+          p_source_path?: string;
+        };
+        Returns: string;
       };
     };
     Enums: { [_ in never]: never };

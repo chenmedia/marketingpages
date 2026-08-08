@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
 import { requireAdmin } from "@/lib/auth/dal";
+import { countUnreadEnquiries } from "@/lib/enquiries/queries";
 import { signOut } from "../logg-inn/actions";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -32,6 +33,7 @@ export const dynamic = "force-dynamic";
 const nav = [
   { href: "/admin", label: "Oversikt" },
   { href: "/admin/arrangementer", label: "Arrangementer" },
+  { href: "/admin/henvendelser", label: "Henvendelser" },
   { href: "/admin/fotografer", label: "Fotografer" },
   { href: "/admin/bilder", label: "Bilder" },
   { href: "/admin/statistikk", label: "Statistikk" },
@@ -46,6 +48,9 @@ export default async function AdminLayout({
   // Den egentlige tilgangskontrollen. Proxyen er bare en optimistisk sjekk.
   const profile = await requireAdmin();
 
+  // Uleste henvendelser er det eneste her som haster, så tallet står i navet.
+  const unread = await countUnreadEnquiries();
+
   return (
     <html lang="nb" className={`${jakarta.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-shell">
@@ -59,9 +64,14 @@ export default async function AdminLayout({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="meta-label text-smoke transition-colors hover:text-ink"
+                  className="meta-label flex items-center gap-1.5 text-smoke transition-colors hover:text-ink"
                 >
                   {item.label}
+                  {item.href === "/admin/henvendelser" && unread > 0 && (
+                    <span className="inline-flex min-w-4 items-center justify-center rounded-full bg-ink px-1.5 py-0.5 text-[10px] leading-none text-cream">
+                      {unread}
+                    </span>
+                  )}
                 </Link>
               ))}
             </nav>

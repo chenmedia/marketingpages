@@ -218,6 +218,20 @@ export const noTon: Dictionary = {
       messagePh: "dato, sted og tidspunkt er nok",
       points: ["Uforpliktende", "Svar vanligvis innen 4 timer", "Bilder + sosialt innhold"],
       submit: "Be om et uforpliktende tilbud",
+      sending: "Sender …",
+      consent:
+        "Jeg vil gjerne motta e-post fra Chen Media om tjenester og relevant innhold. Du kan melde deg av når som helst.",
+      privacy:
+        "Når du sender inn, lagrer vi opplysningene dine for å kunne svare på henvendelsen.",
+      successTitle: "Takk, vi har fått henvendelsen din.",
+      successBody:
+        "Kai ser på den og svarer deg vanligvis innen 4 timer. Haster det, ring gjerne.",
+      errors: {
+        invalid: "Sjekk at navn, e-post og melding er fylt ut riktig.",
+        rate: "Du har sendt inn flere henvendelser nå nettopp. Prøv igjen om noen minutter.",
+        server:
+          "Noe gikk galt hos oss, og henvendelsen ble ikke sendt. Prøv igjen, eller send en e-post direkte.",
+      },
     },
     direct: "Eller send e-post direkte:",
     reply: "Kai svarer personlig, vanligvis innen 4 timer.",
