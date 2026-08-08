@@ -231,12 +231,15 @@ export type Database = {
           location_no: string;
           starts_on: string;
           status: string;
-          team_size: number;
           title_en: string;
           title_no: string;
         }[];
       };
-      is_admin: { Args: never; Returns: boolean };
+      /*
+        is_admin() er flyttet til skjemaet private, som PostgREST ikke
+        eksponerer. Den brukes kun av RLS-policyene og skal ikke kalles
+        herfra, så den står ikke lenger i typene.
+      */
       next_free_days: {
         Args: { p_days?: number; p_from?: string };
         Returns: { day: string; free: number }[];

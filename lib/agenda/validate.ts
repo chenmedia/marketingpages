@@ -23,6 +23,17 @@ export type FieldErrors = Partial<Record<keyof EventInput | "_", string>>;
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
+/*
+  Speiler check-constraintene i databasen. Grensene finnes begge steder med
+  vilje: databasen er garantien, denne gir en lesbar feilmelding i skjemaet i
+  stedet for en rå Postgres-feil.
+*/
+const MAX = { title: 200, location: 200, name: 100, client: 200, notes: 4000 };
+
+function tooLong(value: string | null, limit: number) {
+  return value !== null && value.length > limit;
+}
+
 function text(form: FormData, key: string): string {
   return String(form.get(key) ?? "").trim();
 }
@@ -51,9 +62,28 @@ export function parseEventForm(
   const title_en = text(form, "title_en");
   const location_no = text(form, "location_no");
 
+  const location_en = optional(form, "location_en");
+  const client = optional(form, "client");
+  const notes = optional(form, "notes");
+
   if (!title_no) errors.title_no = "Tittel på norsk må fylles ut.";
+  else if (title_no.length > MAX.title)
+    errors.title_no = `Tittelen kan være maks ${MAX.title} tegn.`;
+
   if (!title_en) errors.title_en = "Tittel på engelsk må fylles ut.";
+  else if (title_en.length > MAX.title)
+    errors.title_en = `Tittelen kan være maks ${MAX.title} tegn.`;
+
   if (!location_no) errors.location_no = "Sted må fylles ut.";
+  else if (location_no.length > MAX.location)
+    errors.location_no = `Stedet kan være maks ${MAX.location} tegn.`;
+
+  if (tooLong(location_en, MAX.location))
+    errors.location_en = `Stedet kan være maks ${MAX.location} tegn.`;
+  if (tooLong(client, MAX.client))
+    errors.client = `Kunde kan være maks ${MAX.client} tegn.`;
+  if (tooLong(notes, MAX.notes))
+    errors.notes = `Notatet kan være maks ${MAX.notes} tegn.`;
 
   const kind = text(form, "kind") as EventKind;
   const status = text(form, "status") as EventStatus;
@@ -70,13 +100,13 @@ export function parseEventForm(
       title_no,
       title_en,
       location_no,
-      location_en: optional(form, "location_en"),
+      location_en,
       kind,
       status,
       // Interne arrangementer skal aldri publiseres
       is_published: kind !== "internal" && form.get("is_published") === "on",
-      client: optional(form, "client"),
-      notes: optional(form, "notes"),
+      client,
+      notes,
       photographerIds: form.getAll("photographers").map(String).filter(Boolean),
     },
   };
@@ -100,6 +130,9 @@ export function parsePhotographerForm(
   const initials = text(form, "initials").toUpperCase();
 
   if (!display_name) errors.title_no = "Navn må fylles ut.";
+  else if (display_name.length > MAX.name) {
+    errors.title_no = `Navnet kan være maks ${MAX.name} tegn.`;
+  }
   if (initials.length < 1 || initials.length > 3) {
     errors._ = "Initialer må være mellom én og tre tegn.";
   }

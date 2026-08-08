@@ -6,6 +6,20 @@ import { createClient } from "@/lib/supabase/server";
 export type LoginState = { error?: string };
 
 /*
+  ?neste= må peke innenfor vårt eget nettsted, ellers kan lenken brukes til å
+  sende folk til et fremmed domene rett etter en vellykket innlogging.
+
+  Det holder ikke å sjekke «starter med / men ikke med //». I URL-standarden
+  er omvendt skråstrek likeverdig med skråstrek for http og https, så
+  nettleseren leser «/\evil.com» som «//evil.com» og går dit. Kravet er
+  derfor én skråstrek etterfulgt av noe som verken er skråstrek eller
+  omvendt skråstrek.
+*/
+function isInternalPath(value: string): boolean {
+  return /^\/(?![/\\])/.test(value);
+}
+
+/*
   Innlogging med e-post og passord.
 
   Det finnes bevisst ingen registrering. Selvregistrering er i tillegg slått
@@ -33,8 +47,7 @@ export async function signIn(
     return { error: "Feil e-post eller passord." };
   }
 
-  // Bare interne stier, ellers kan ?neste= brukes til å sende folk ut av siden
-  redirect(next.startsWith("/") && !next.startsWith("//") ? next : "/admin");
+  redirect(isInternalPath(next) ? next : "/admin");
 }
 
 export async function signOut() {

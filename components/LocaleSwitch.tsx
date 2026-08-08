@@ -22,8 +22,14 @@ import {
   komponent skriver til noe som er definert utenfor den.
 */
 function rememberLocale(next: Locale) {
-  // Ett år, hele nettstedet. Ingen persondata, så ingen samtykke kreves.
-  document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
+  /*
+    Ett år, hele nettstedet. Ingen persondata, så ingen samtykke kreves.
+
+    secure utelates på localhost, der protokollen er http og nettleseren
+    ellers ville forkastet cookien uten et ord.
+  */
+  const secure = location.protocol === "https:" ? "; secure" : "";
+  document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax${secure}`;
 }
 
 export default function LocaleSwitch({ locale }: { locale: Locale }) {

@@ -86,7 +86,12 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
         />
       </div>
 
-      {/* Honeypot mot spam-boter — skjult for mennesker, jf. TONs skjema */}
+      {/*
+        Honeypot mot spam-boter, skjult for mennesker. Merk at den ikke gjør
+        noe ennå: skjemaet åpner brukerens e-postklient og har ingen backend
+        som kan avvise en innsending. Feltet står klart til skjemaet får en
+        faktisk innsendingsrute, som er der sjekken må gjøres.
+      */}
       <input
         type="text"
         name="website"

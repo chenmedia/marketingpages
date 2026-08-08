@@ -15,7 +15,11 @@ export type AgendaRow = {
   free_min: number;
   /** { "2026-10-04": 7, "2026-10-05": 6 } */
   free_by_day: Record<string, number>;
-  team_size: number;
+  /*
+    Ingen team_size her med vilje. Funksjonen returnerte den før, og siden
+    RPC-en er åpen for anon var teamets størrelse dermed lesbar for hvem som
+    helst. free_min og free_by_day er relative tall og røper ikke totalen.
+  */
 };
 
 export type Photographer = {
