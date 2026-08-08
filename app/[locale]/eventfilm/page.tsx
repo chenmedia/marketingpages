@@ -44,8 +44,10 @@ export default async function EventFilmPage({
             {page.lead}
           </p>
           <PlaceholderImage
-            label="Eventfilm, stillbilde 16:9"
-            tone="olive"
+            slot="eventfilm-hero"
+            locale={locale}
+            label="Eventfilm, stillbilde"
+            sizes="100vw"
             className="mt-12 aspect-video w-full rounded-lg"
           />
         </div>

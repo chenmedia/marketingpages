@@ -50,16 +50,18 @@ SELECT-policyen eksponert dem via PostgREST. `event_internal` har ingen anon-pol
 
 ## Hva anon faktisk får lese
 
-Anon-rollen har **kun** to ting, og listen er bevisst kort:
+Anon-rollen har **kun** disse, og listen er bevisst kort:
 
 | Tilgang | Hvorfor |
 |---|---|
 | `select` på `site_stats` | statistikkflisene over kalenderen |
+| `select` på `site_images` | filstier og alt-tekster til bildeflatene |
+| `select` på `storage.objects` i `site-images` | selve bildefilene |
 | `execute` på `agenda_public()` | selve kalenderen |
 
 Alt annet er trukket tilbake, både policy og `grant`: `app_settings`, `events`,
 `event_photographers`, `photographers`, `event_internal`, `profiles` og
-`next_free_days()`.
+`next_free_days()`. Skriving til `site_images` og til bøtta er kun admin.
 
 **Grunnen er teamstørrelsen.** Den skal ikke vises på nettsiden, og lakk tidligere
 gjennom fire uavhengige veier: direkte `select` på `app_settings`, maks ledige fra

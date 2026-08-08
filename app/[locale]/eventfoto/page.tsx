@@ -45,8 +45,10 @@ export default async function EventPhotoPage({
             </p>
           </div>
           <PlaceholderImage
+            slot="eventfoto-hero"
+            locale={locale}
             label="Eventfoto, fra salen"
-            tone="bone"
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="aspect-[4/5] w-full rounded-lg"
           />
         </div>

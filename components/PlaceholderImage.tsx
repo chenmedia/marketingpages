@@ -1,89 +1,87 @@
 import Image from "next/image";
+import type { Locale } from "@/lib/i18n";
+import { fallbackFor } from "@/lib/images/defaults";
+import { getSiteImages } from "@/lib/images/queries";
+import { SLOT_BY_KEY } from "@/lib/images/slots";
 
 /*
-  Bildeflate med faktiske foto fra Kais portefølje (public/portfolio,
-  hentet fra Google Drive). Filnavnene bevarer konteksten fra
-  originalfilene (DATO_TID_Event_Motiv), f.eks.
-  «20260703_1911_KarpeWorld_Ringnes_Imsdal_03436» → karpeworld-ringnes-imsdal.
-  Kuratering: `src` fra kallstedet vinner; ellers matches label mot
-  nøkkelord-kartet under; ellers deterministisk hash-valg.
+  Én bildeflate på nettsiden.
+
+  Async server-komponent som slår opp selv, samme grep som AgendaWidget.
+  getSiteImages er unstable_cache, så de 22 flatene deler ett oppslag i
+  stedet for at bildene må tres gjennom hele komponenttreet.
+
+  Tre måter å bestemme bildet, i denne rekkefølgen:
+    slot   flaten har et navn og kan styres fra /admin/bilder
+    src    kallstedet bestemmer selv
+    label  deterministisk valg blant standardbildene, for nyheter og case
+           som ikke har egne flater ennå
 */
-export const photo = {
-  // KarpeWorld_Karpe — publikum mot scenen, lysstråler (stående)
-  lightshow: "/portfolio/karpeworld-karpe-lightshow.jpg",
-  // KarpeWorld_Karpe — artist møter publikum, TV-kameraer i bildet
-  meetCrowd: "/portfolio/karpeworld-karpe-meet-crowd.jpg",
-  // KarpeWorld_Karpe — vokalist på scenen, nærbilde (stående)
-  vocalist: "/portfolio/karpeworld-karpe-vocalist.jpg",
-  // KarpeWorld_Mikeithappen — hele produksjonen i skumring
-  epicStage: "/portfolio/karpeworld-mikeithappen-stage.jpg",
-  // KarpeWorld_Lifestyle — logistikk, vakter og shuttlebuss
-  crewLogistics: "/portfolio/karpeworld-lifestyle-shuttle.jpg",
-  // KarpeWorld_Lifestyle — festivalområdet, folk ved bordene
-  festivalLife: "/portfolio/karpeworld-lifestyle-area.jpg",
-  // KarpeWorld_Ringnes_Imsdal — merkevareaktivering, produkt i hånd (stående)
-  ringnesImsdal: "/portfolio/karpeworld-ringnes-imsdal.jpg",
-  // KarpeWorld_Redbull — aktivering med hai i skumbasseng
-  redbull: "/portfolio/karpeworld-redbull-shark.jpg",
-} as const;
-
-export const portfolioPhotos = Object.values(photo);
-
-// Kontekst-kuratering: første regel som treffer label vinner
-const curation: [RegExp, string][] = [
-  [/karpe/i, photo.lightshow],
-  [/ringnes|imsdal/i, photo.ringnesImsdal],
-  [/red ?bull/i, photo.redbull],
-  [/snap session/i, photo.festivalLife],
-  [/optiver|aktiv|pitch event/i, photo.vocalist],
-  [/varner|levi/i, photo.redbull],
-  [/hurtigruten|ignite/i, photo.epicStage],
-  [/dnt/i, photo.crewLogistics],
-  [/obos/i, photo.lightshow],
-  [/jcp/i, photo.meetCrowd],
-  [/nordisk film/i, photo.lightshow],
-  [/av-og-til/i, photo.ringnesImsdal],
-  [/portrett|portrait/i, photo.vocalist],
-  [/bak kamera|behind/i, photo.meetCrowd],
-  [/fra salen|from the/i, photo.lightshow],
-  [/stillbilde|still/i, photo.epicStage],
-  [/leveranse|redigert|edited|delivery/i, photo.epicStage],
-  [/some/i, photo.vocalist],
-  [/web/i, photo.ringnesImsdal],
-  [/trykk|print/i, photo.lightshow],
-  [/eventfilm|event film/i, photo.epicStage],
-  [/eventfoto|event photo/i, photo.meetCrowd],
-] as [RegExp, string][];
-
-function pick(label: string): string {
-  for (const [pattern, src] of curation) {
-    if (pattern.test(label)) return src;
-  }
-  let hash = 0;
-  for (const char of label) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
-  return portfolioPhotos[hash % portfolioPhotos.length];
-}
-
-export default function PlaceholderImage({
+export default async function PlaceholderImage({
+  slot,
   label,
   src,
+  locale = "no",
   className = "",
+  sizes = "(max-width: 768px) 100vw, 50vw",
+  priority,
 }: {
+  slot?: string;
+  /** Brukes som alt-tekst når flaten ikke har eget bilde */
   label: string;
   src?: string;
-  /** Beholdt for kompatibilitet med eksisterende kall — brukes ikke lenger */
-  tone?: string;
+  locale?: Locale;
   className?: string;
+  sizes?: string;
+  priority?: boolean;
 }) {
+  const def = slot ? SLOT_BY_KEY.get(slot) : undefined;
+  const images = slot ? await getSiteImages() : null;
+  const image = slot ? images?.get(slot) : undefined;
+
+  const resolvedSrc = image?.url ?? src ?? def?.fallback ?? fallbackFor(label);
+
+  /*
+    Alt-teksten kommer fra bildet når flaten har ett, ellers fra slotens
+    beskrivelse av standardbildet, ellers fra label. Dekorative flater får
+    tom alt, som er det riktige for et bakgrunnsbilde bak et overlegg.
+  */
+  const alt = def?.decorative
+    ? ""
+    : image
+      ? locale === "no"
+        ? image.alt_no
+        : image.alt_en
+      : (def?.fallbackAlt ?? label);
+
+  /*
+    Fokuspunktet er poenget med hele oppsettet: det samme bildet beskjæres
+    til seks ulike forhold, og uten dette kutter 9:16-utsnittet hodet av folk
+    som ikke står midt i bildet.
+  */
+  const objectPosition = image
+    ? `${image.focal_x * 100}% ${image.focal_y * 100}%`
+    : undefined;
+
   return (
     <div className={`relative overflow-hidden ${className}`}>
       <Image
-        src={src ?? pick(label)}
-        alt={label}
+        src={resolvedSrc}
+        alt={alt}
         fill
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes={sizes}
+        priority={priority}
+        placeholder={image?.blur_data_url ? "blur" : "empty"}
+        blurDataURL={image?.blur_data_url ?? undefined}
+        style={objectPosition ? { objectPosition } : undefined}
         className="object-cover"
       />
     </div>
   );
+}
+
+/** Bildeteksten under hero-polaroidene, som redigeres sammen med bildet. */
+export async function slotCaption(slot: string, fallback: string) {
+  const images = await getSiteImages();
+  return images.get(slot)?.caption ?? fallback;
 }

@@ -6,6 +6,8 @@ import { requireAdmin } from "@/lib/auth/dal";
 import { createClient } from "@/lib/supabase/server";
 import { AGENDA_TAG } from "@/lib/agenda/queries";
 import { STATS_TAG } from "@/lib/stats/queries";
+import { IMAGES_TAG } from "@/lib/images/queries";
+import { SLOT_BY_KEY } from "@/lib/images/slots";
 import {
   parseEventForm,
   parsePhotographerForm,
@@ -163,4 +165,139 @@ export async function saveSiteStat(form: FormData) {
 
   revalidateTag(STATS_TAG, "max");
   revalidatePath("/admin/statistikk");
+}
+
+/*
+  Bilde til én bildeflate.
+
+  Klienten har allerede krympet filen, men den valideres på nytt her. En
+  Server Action er et POST-endepunkt som kan kalles med hva som helst, så
+  det klienten påstår om type og størrelse teller ikke.
+
+  Selve filen lagres med tidsstempel i navnet, aldri overskrevet. Da kan en
+  gammel versjon ligge igjen i CDN-cachen uten å blande seg med den nye.
+*/
+const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
+const ALLOWED_TYPES = ["image/webp", "image/jpeg", "image/png", "image/avif"];
+
+export async function uploadSiteImage(
+  form: FormData
+): Promise<{ error?: string } | void> {
+  await requireAdmin();
+
+  const slot = String(form.get("slot") ?? "");
+  const def = SLOT_BY_KEY.get(slot);
+  if (!def) return { error: "Ukjent bildeflate." };
+
+  const supabase = await createClient();
+
+  if (form.get("reset") === "1") {
+    const { data: existing } = await supabase
+      .from("site_images")
+      .select("path")
+      .eq("slot", slot)
+      .maybeSingle();
+
+    await supabase.from("site_images").delete().eq("slot", slot);
+    if (existing?.path) {
+      await supabase.storage.from("site-images").remove([existing.path]);
+    }
+    refreshImages();
+    return;
+  }
+
+  const alt_no = String(form.get("alt_no") ?? "").trim();
+  const alt_en = String(form.get("alt_en") ?? "").trim();
+  const caption = String(form.get("caption") ?? "").trim() || null;
+
+  // Dekorative flater ligger bak et overlegg og trenger ingen alt-tekst
+  if (!def.decorative && (!alt_no || !alt_en)) {
+    return { error: "Alt-tekst må fylles ut på begge språk." };
+  }
+
+  const focal_x = clamp01(Number(form.get("focal_x")));
+  const focal_y = clamp01(Number(form.get("focal_y")));
+
+  const file = form.get("file");
+  const hasNewFile = file instanceof File && file.size > 0;
+
+  if (hasNewFile) {
+    if (file.size > MAX_UPLOAD_BYTES) {
+      return { error: "Bildet er for stort. Grensen er 5 MB etter krymping." };
+    }
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      return { error: "Filtypen støttes ikke." };
+    }
+  }
+
+  const { data: existing } = await supabase
+    .from("site_images")
+    .select("path")
+    .eq("slot", slot)
+    .maybeSingle();
+
+  if (!hasNewFile && !existing) {
+    return { error: "Velg en bildefil først." };
+  }
+
+  let path = existing?.path ?? "";
+
+  if (hasNewFile) {
+    // Tidsstempel i navnet, så en ny opplasting aldri kolliderer med CDN-cachen
+    const stamp = Date.now();
+    path = `${slot}-${stamp}.webp`;
+
+    const { error } = await supabase.storage
+      .from("site-images")
+      .upload(path, file, { contentType: file.type, upsert: false });
+    if (error) return { error: `Opplastingen feilet: ${error.message}` };
+  }
+
+  const common = {
+    path,
+    alt_no: alt_no || def.fallbackAlt || def.label,
+    alt_en: alt_en || def.fallbackAlt || def.label,
+    caption: def.hasCaption ? caption : null,
+    focal_x,
+    focal_y,
+    updated_at: new Date().toISOString(),
+  };
+
+  /*
+    Uten ny fil er dette bare en redigering av alt-tekst eller fokuspunkt, og
+    da skal width, height og blur stå urørt. Derfor update her og insert der,
+    i stedet for en upsert som må oppgi alt.
+  */
+  const { error } = hasNewFile
+    ? await supabase.from("site_images").upsert(
+        {
+          slot,
+          ...common,
+          width: Math.max(1, Number(form.get("width")) || 1),
+          height: Math.max(1, Number(form.get("height")) || 1),
+          blur_data_url:
+            String(form.get("blur_data_url") ?? "").slice(0, 4000) || null,
+        },
+        { onConflict: "slot" }
+      )
+    : await supabase.from("site_images").update(common).eq("slot", slot);
+
+  if (error) return { error: error.message };
+
+  // Den gamle filen ryddes først når den nye ligger trygt i basen
+  if (hasNewFile && existing?.path && existing.path !== path) {
+    await supabase.storage.from("site-images").remove([existing.path]);
+  }
+
+  refreshImages();
+}
+
+function clamp01(n: number) {
+  return Number.isFinite(n) ? Math.min(1, Math.max(0, n)) : 0.5;
+}
+
+/* Bildene ligger på alle fem offentlige sidene, så hele taggen friskes opp. */
+function refreshImages() {
+  revalidateTag(IMAGES_TAG, "max");
+  revalidatePath("/admin/bilder");
 }

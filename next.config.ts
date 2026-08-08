@@ -49,7 +49,28 @@ const securityHeaders = [
   },
 ];
 
+/*
+  Bildene fra Supabase Storage må godkjennes eksplisitt, ellers nekter
+  next/image å ta URL-en.
+
+  Merk samspillet med CSP-en over: img-src er 'self', og det holder kun fordi
+  next/image serverer gjennom /_next/image på vårt eget domene. Settes
+  `unoptimized`, går nettleseren rett til Supabase og CSP-en blokkerer bildet.
+*/
+const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
+  : "*.supabase.co";
+
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: supabaseHost,
+        pathname: "/storage/v1/object/public/site-images/**",
+      },
+    ],
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

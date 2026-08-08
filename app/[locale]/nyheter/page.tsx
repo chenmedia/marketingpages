@@ -41,14 +41,14 @@ export default async function NewsPage({
 
       <section className="bg-shell">
         <div className="mx-auto max-w-6xl space-y-6 px-4 py-16 sm:px-6">
-          {page.entries.map((entry, i) => (
+          {page.entries.map((entry) => (
             <article
               key={entry.title}
               className="grid gap-6 overflow-hidden rounded-lg border border-ink/10 bg-cream md:grid-cols-[1fr_2fr]"
             >
               <PlaceholderImage
-                label={entry.tag}
-                tone={(["bone", "ink", "olive"] as const)[i % 3]}
+                label={entry.title}
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="aspect-[3/2] w-full md:h-full"
               />
               <div className="flex flex-col justify-center p-6 md:py-8 md:pr-8">

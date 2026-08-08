@@ -6,7 +6,8 @@ import { alternatesFor } from "@/lib/site";
 import { isLocale } from "@/lib/i18n";
 import SectionLabel from "@/components/SectionLabel";
 import PhotoTicker from "@/components/PhotoTicker";
-import PlaceholderImage, { photo } from "@/components/PlaceholderImage";
+import PlaceholderImage from "@/components/PlaceholderImage";
+import { slotCaption } from "@/components/PlaceholderImage";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
 import CtaButton from "@/components/CtaButton";
@@ -28,17 +29,9 @@ export async function generateMetadata({
 
 // Bildetekster fra faktisk prosjektkontekst i filnavnene (KarpeWorld 2026)
 const polaroids = [
-  { label: "Karpe møter publikum", caption: "KarpeWorld · Oslo", src: photo.meetCrowd, float: "float-a" },
-  { label: "KarpeWorld, scenen", caption: "KarpeWorld · scenen", src: photo.vocalist, float: "float-b" },
-  { label: "Red Bull, aktivering", caption: "Red Bull · aktivering", src: photo.redbull, float: "float-c" },
-] as const;
-
-// Kortbilder for «Arbeidet vårt». Roteres, så antall kort kan variere.
-const workPhotos = [
-  photo.meetCrowd,
-  photo.epicStage,
-  photo.redbull,
-  photo.festivalLife,
+  { slot: "hero-1", caption: "KarpeWorld · Oslo", float: "float-a" },
+  { slot: "hero-2", caption: "KarpeWorld · scenen", float: "float-b" },
+  { slot: "hero-3", caption: "Red Bull · aktivering", float: "float-c" },
 ] as const;
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -46,6 +39,14 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
   const base = localeBase(locale);
+
+  /*
+    Bildetekstene hentes her, ikke inne i map-callbacken. En callback kan ikke
+    være async, og oppslaget er uansett cachet, så alle tre deler ett kall.
+  */
+  const captions = await Promise.all(
+    polaroids.map((p) => slotCaption(p.slot, p.caption))
+  );
 
   return (
     <>
@@ -81,17 +82,19 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <div className="relative h-96">
               {polaroids.map((polaroid, i) => (
                 <div
-                  key={polaroid.label}
+                  key={polaroid.slot}
                   className={`absolute rounded-lg border border-ink/10 bg-cream p-2 pb-9 shadow-lg ${polaroid.float}`}
                   style={{ top: `${i * 52}px`, left: `${i * 36}px`, width: "72%" }}
                 >
                   <PlaceholderImage
-                    label={polaroid.label}
-                    src={polaroid.src}
+                    slot={polaroid.slot}
+                    locale={locale}
+                    label=""
+                    sizes="(max-width: 1024px) 0px, 20vw"
                     className="aspect-[4/3] w-full"
                   />
                   <p className="meta-label absolute bottom-2.5 left-3 text-smoke">
-                    {polaroid.caption}
+                    {captions[i]}
                   </p>
                 </div>
               ))}
@@ -107,7 +110,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </section>
 
-      <PhotoTicker alt={dict.ticker.alt} />
+      <PhotoTicker alt={dict.ticker.alt} locale={locale} />
 
       {/* Tjenester — 3 kort med sjekklister, à la TONs «What we do» */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
@@ -128,8 +131,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               className="flex flex-col overflow-hidden rounded-lg border border-ink/10 bg-cream"
             >
               <PlaceholderImage
+                slot={`tjeneste-${i + 1}`}
+                locale={locale}
                 label={card.title}
-                src={[photo.festivalLife, photo.lightshow, photo.ringnesImsdal][i]}
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="aspect-[3/2] w-full"
               />
               <div className="flex flex-1 flex-col p-6">
@@ -217,14 +222,17 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </div>
           <div className="space-y-4">
             <PlaceholderImage
+              slot="leveranse-hoved"
+              locale={locale}
               label="Leveranse, redigert utvalg"
-              src={photo.epicStage}
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="aspect-[4/3] w-full rounded-lg"
             />
             <div className="grid grid-cols-3 gap-4">
-              <PlaceholderImage label="SoMe 9:16" src={photo.vocalist} className="aspect-[9/16] rounded-lg" />
-              <PlaceholderImage label="Web 3:2" src={photo.ringnesImsdal} className="aspect-[9/16] rounded-lg" />
-              <PlaceholderImage label="Trykk" src={photo.lightshow} className="aspect-[9/16] rounded-lg" />
+              {/* Tre stående utsnitt av samme oppdrag: sosiale medier, web og trykk */}
+              <PlaceholderImage slot="leveranse-some" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
+              <PlaceholderImage slot="leveranse-web" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
+              <PlaceholderImage slot="leveranse-trykk" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
             </div>
           </div>
         </div>
@@ -254,8 +262,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               className="group relative block overflow-hidden rounded-lg bg-ink"
             >
               <PlaceholderImage
+                slot={`arbeid-${(i % 4) + 1}`}
+                locale={locale}
                 label={card.title}
-                src={workPhotos[i % workPhotos.length]}
+                sizes="(max-width: 768px) 100vw, 25vw"
                 className="aspect-[4/5] w-full transition-transform duration-300 group-hover:scale-[1.02]"
               />
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/90 to-transparent p-5 pt-16 text-cream">
@@ -274,8 +284,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <section id="om" className="scroll-mt-24 bg-shell">
         <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-20 sm:px-6 md:grid-cols-[1fr_1.3fr]">
           <PlaceholderImage
+            slot="om-portrett"
+            locale={locale}
             label="Kai Chen, portrett"
-            src={photo.vocalist}
+            sizes="(max-width: 768px) 100vw, 33vw"
             className="aspect-[4/5] w-full max-w-sm rounded-lg"
           />
           <div>
@@ -324,8 +336,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           {dict.audience.groups.map((group, i) => (
             <div key={group.title}>
               <PlaceholderImage
+                slot={`publikum-${i + 1}`}
+                locale={locale}
                 label={group.title}
-                src={[photo.vocalist, photo.festivalLife, photo.ringnesImsdal, photo.crewLogistics][i]}
+                sizes="(max-width: 768px) 100vw, 25vw"
                 className="aspect-[4/3] w-full rounded-lg"
               />
               <h3 className="display mt-4 text-lg">{group.title}</h3>

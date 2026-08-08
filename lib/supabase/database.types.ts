@@ -192,6 +192,48 @@ export type Database = {
         };
         Relationships: [];
       };
+      site_images: {
+        Row: {
+          slot: string;
+          path: string;
+          alt_no: string;
+          alt_en: string;
+          caption: string | null;
+          focal_x: number;
+          focal_y: number;
+          width: number;
+          height: number;
+          blur_data_url: string | null;
+          updated_at: string;
+        };
+        Insert: {
+          slot: string;
+          path: string;
+          alt_no: string;
+          alt_en: string;
+          caption?: string | null;
+          focal_x?: number;
+          focal_y?: number;
+          width: number;
+          height: number;
+          blur_data_url?: string | null;
+          updated_at?: string;
+        };
+        Update: {
+          slot?: string;
+          path?: string;
+          alt_no?: string;
+          alt_en?: string;
+          caption?: string | null;
+          focal_x?: number;
+          focal_y?: number;
+          width?: number;
+          height?: number;
+          blur_data_url?: string | null;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       profiles: {
         Row: {
           created_at: string;

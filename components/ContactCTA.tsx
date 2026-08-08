@@ -1,5 +1,5 @@
 import type { Dictionary, Locale } from "@/lib/i18n";
-import PlaceholderImage, { photo } from "./PlaceholderImage";
+import PlaceholderImage from "./PlaceholderImage";
 import ContactForm from "./ContactForm";
 import { Suspense } from "react";
 import AgendaWidget, { AgendaSkeleton } from "./AgendaWidget";
@@ -26,7 +26,13 @@ export default function ContactCTA({
     <section id="kontakt" className="scroll-mt-24 relative overflow-hidden bg-ink text-cream">
       {/* Bakgrunnsfoto i opacity-20 med overlay, jf. TONs kontaktseksjon */}
       <div aria-hidden className="absolute inset-0 opacity-20">
-        <PlaceholderImage label="" src={photo.epicStage} className="h-full w-full" />
+        <PlaceholderImage
+          slot="kontakt-bakgrunn"
+          locale={locale}
+          label=""
+          sizes="100vw"
+          className="h-full w-full"
+        />
       </div>
       <div aria-hidden className="absolute inset-0 bg-ink/80" />
       <div className="relative mx-auto max-w-5xl px-4 py-24 sm:px-6">
@@ -47,8 +53,10 @@ export default function ContactCTA({
           <div className="flex min-w-0 flex-col gap-4">
             <div className="relative h-52 overflow-hidden rounded-2xl sm:h-56">
               <PlaceholderImage
+                slot="kontakt-portrett"
+                locale={locale}
                 label="Kai Chen bak kamera"
-                src={photo.meetCrowd}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="h-full w-full"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
