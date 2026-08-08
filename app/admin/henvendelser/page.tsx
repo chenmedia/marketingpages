@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { listEnquiries, type Enquiry } from "@/lib/enquiries/queries";
 import { hubspotConfig } from "@/lib/hubspot/forms";
+import { notifyConfig } from "@/lib/notify/slack";
 import { setEnquiryStatus, retryHubspotForward } from "../actions";
 
 /*
@@ -18,6 +19,7 @@ export default async function EnquiriesPage({
   const scope = vis === "arkiv" ? "archived" : "open";
   const enquiries = await listEnquiries(scope);
   const configured = hubspotConfig() !== null;
+  const notifies = notifyConfig() !== null;
 
   return (
     <>
@@ -42,6 +44,18 @@ export default async function EnquiriesPage({
           ventende til <code className="text-xs">HUBSPOT_PORTAL_ID</code> og{" "}
           <code className="text-xs">HUBSPOT_FORM_GUID</code> er satt. Da kan de
           sendes videre med knappen på hver rad.
+        </p>
+      )}
+
+      {!notifies && (
+        <p className="mb-5 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-smoke">
+          <strong className="font-semibold text-ink">
+            Ingen varsling er satt opp.
+          </strong>{" "}
+          Henvendelser lagres og vises her, men du får ingen beskjed når de
+          kommer inn — du må selv huske å se etter. Sett{" "}
+          <code className="text-xs">SLACK_WEBHOOK_URL</code> for å få varsel i
+          Slack.
         </p>
       )}
 

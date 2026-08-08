@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { forwardToHubspot } from "@/lib/hubspot/forms";
-import { notifyNewEnquiry } from "@/lib/notify/email";
+import { notifyNewEnquiry } from "@/lib/notify/slack";
 import { parseEnquiryForm, type EnquiryError } from "@/lib/enquiries/validate";
 import { getDictionary, isLocale } from "@/lib/i18n";
 
@@ -81,7 +81,6 @@ export async function submitEnquiry(
   */
   const [notified, forwarded] = await Promise.all([
     notifyNewEnquiry({
-      id,
       name: parsed.value.name,
       org: parsed.value.org,
       email: parsed.value.email,
