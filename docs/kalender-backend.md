@@ -48,20 +48,49 @@ SELECT-policyen eksponert dem via PostgREST. `event_internal` har ingen anon-pol
 `unstable_cache` kan ikke lese cookies. Bruker du den cookie-bundne klienten inne i
 `getAgenda`, knekker enten build-en eller de fem offentlige sidene blir dynamiske.
 
+## Hva anon faktisk får lese
+
+Anon-rollen har **kun** to ting, og listen er bevisst kort:
+
+| Tilgang | Hvorfor |
+|---|---|
+| `select` på `site_stats` | statistikkflisene over kalenderen |
+| `execute` på `agenda_public()` | selve kalenderen |
+
+Alt annet er trukket tilbake, både policy og `grant`: `app_settings`, `events`,
+`event_photographers`, `photographers`, `event_internal`, `profiles` og
+`next_free_days()`.
+
+**Grunnen er teamstørrelsen.** Den skal ikke vises på nettsiden, og lakk tidligere
+gjennom fire uavhengige veier: direkte `select` på `app_settings`, maks ledige fra
+`next_free_days()`, en `team_size`-kolonne i `agenda_public()`, og fotograflisten med
+navn. `free_min` og `free_by_day` er relative tall og røper ikke totalen; det er derfor
+de er de eneste kapasitetstallene som forlater databasen.
+
+**Trenger den offentlige siden et nytt felt, legg det i `agenda_public()`** i stedet for
+å gi anon `select` på en tabell igjen. Funksjonen er `security definer` og ser alt
+uansett.
+
+**To feller når rettigheter trekkes:**
+
+- `revoke execute ... from anon` alene gjør ingenting. Postgres gir `execute` til
+  pseudorollen `PUBLIC`, som anon arver. Den må med: `from public, anon`.
+- `is_admin()` ligger i skjemaet `private` fordi PostgREST bare eksponerer `public`.
+  Den kan ikke bare `revoke`-es, siden RLS-policyene evalueres som den kallende rollen
+  og trenger `execute`. `site_stats` har derfor to lesepolicyer: anon får `is_visible`
+  alene, innloggede får `is_visible or private.is_admin()`.
+
 ## Brukere
 
 Selvregistrering er slått av i Supabase-dashbordet. Nye brukere opprettes under
 Authentication → Users → Invite user, får rollen `viewer` av triggeren, og må settes
 til `admin` i `profiles` før de får tilgang til `/admin`.
 
-## Testdata som må erstattes
+## Testdata
 
-- **De fem bookingene** er plassholdere fra en TON-inspirert demo. De må bekreftes
-  eller slettes før lansering, ellers publiserer nettstedet oppdiktede oppdrag.
-- **Fotografen «Ola Nordmann»** og **messa 15.–18. september** er testdata jeg la inn
-  for å verifisere flerdagsspenn og kapasitet. Slett dem i admin.
-- **Ferien 17. september** er et internt arrangement, også testdata.
-- **Statistikkflisene** (90 / 45+ / 6) i `lib/i18n/*.ts` er fortsatt TONs tall.
+Ryddet. Alle testradene er borte, og kalenderen inneholder kun Kais faktiske oppdrag.
+Statistikkflisene ligger i `site_stats` med hans egne tall og redigeres på
+`/admin/statistikk`, ikke i ordbøkene.
 
 ## Neste steg
 
