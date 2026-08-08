@@ -32,6 +32,7 @@ export type Database = {
           hubspot_error: string | null;
           hubspot_state: string;
           id: string;
+          ip: string | null;
           ip_hash: string | null;
           locale: string;
           marketing_consent: boolean;
@@ -48,6 +49,7 @@ export type Database = {
           hubspot_error?: string | null;
           hubspot_state?: string;
           id?: string;
+          ip?: string | null;
           ip_hash?: string | null;
           locale?: string;
           marketing_consent?: boolean;
@@ -64,6 +66,7 @@ export type Database = {
           hubspot_error?: string | null;
           hubspot_state?: string;
           id?: string;
+          ip?: string | null;
           ip_hash?: string | null;
           locale?: string;
           marketing_consent?: boolean;
@@ -345,6 +348,7 @@ export type Database = {
         Args: {
           p_consent_text?: string;
           p_email: string;
+          p_ip?: string;
           p_ip_hash?: string;
           p_locale?: string;
           p_marketing_consent?: boolean;

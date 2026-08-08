@@ -345,7 +345,7 @@ export async function retryHubspotForward(form: FormData) {
   const supabase = await createClient();
   const { data: enquiry } = await supabase
     .from("enquiries")
-    .select("name, email, message, org, marketing_consent, source_path")
+    .select("name, email, message, org, marketing_consent, source_path, ip")
     .eq("id", id)
     .maybeSingle();
 
@@ -358,6 +358,8 @@ export async function retryHubspotForward(form: FormData) {
     org: enquiry.org,
     marketingConsent: enquiry.marketing_consent,
     pageUri: enquiry.source_path,
+    // Null på rader eldre enn 30 dager. Da sendes den bare ikke med.
+    ip: enquiry.ip,
   });
 
   await supabase

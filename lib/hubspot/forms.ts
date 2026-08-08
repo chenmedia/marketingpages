@@ -27,6 +27,7 @@ export type EnquiryPayload = {
   org: string | null;
   marketingConsent: boolean;
   pageUri: string | null;
+  ip: string | null;
 };
 
 export function hubspotConfig() {
@@ -50,6 +51,20 @@ function splitName(full: string) {
   };
 }
 
+/*
+  Grov formsjekk, ikke full validering. Poenget er kun å luke bort verdier
+  som garantert gir 400 fra HubSpot; presis IP-validering er deres jobb.
+*/
+function isPlausibleIp(ip: string | null): boolean {
+  if (!ip) return false;
+  const v4 = /^(\d{1,3}\.){3}\d{1,3}$/;
+  const v6 = /^[0-9a-fA-F:]+$/;
+  if (v4.test(ip)) {
+    return ip.split(".").every((part) => Number(part) <= 255);
+  }
+  return v6.test(ip) && ip.includes(":");
+}
+
 export async function forwardToHubspot(
   enquiry: EnquiryPayload
 ): Promise<ForwardResult> {
@@ -71,11 +86,21 @@ export async function forwardToHubspot(
     inneholde legalConsentOptions. Er det på der uten å sendes med her,
     avvises hver eneste innsending. Samtykket vårt lagres i enquiries.
   */
+  /*
+    context.ipAddress er HubSpots eget felt for avsenderens IP. HubSpot slår
+    den opp mot geodata og fyller land og region på kontakten, noe et vanlig
+    tekstfelt ikke ville gjort.
+
+    Bare IP-er som ser gyldige ut sendes. HubSpot avviser hele innsendingen
+    med 400 på en ugyldig verdi, og en henvendelse skal ikke gå tapt fordi en
+    proxy sendte noe rart i x-forwarded-for.
+  */
   const body = {
     fields,
     context: {
       pageUri: enquiry.pageUri ?? undefined,
       pageName: "Kontaktskjema · chenmedia.no",
+      ipAddress: isPlausibleIp(enquiry.ip) ? enquiry.ip! : undefined,
     },
   };
 

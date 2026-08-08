@@ -37,6 +37,7 @@ export async function submitEnquiry(
   const dict = getDictionary(locale);
 
   const supabase = await createClient();
+  const { ip, hash } = await clientIp();
 
   const { data, error } = await supabase.rpc("submit_enquiry", {
     p_name: parsed.value.name,
@@ -54,7 +55,8 @@ export async function submitEnquiry(
     p_consent_text: parsed.value.marketingConsent
       ? dict.contact.form.consent
       : undefined,
-    p_ip_hash: await ipHash(),
+    p_ip_hash: hash,
+    p_ip: ip,
   });
 
   if (error) {
@@ -77,6 +79,7 @@ export async function submitEnquiry(
     org: parsed.value.org,
     marketingConsent: parsed.value.marketingConsent,
     pageUri: String(form.get("sourcePath") ?? "") || null,
+    ip: ip ?? null,
   });
 
   await supabase
@@ -95,19 +98,29 @@ export async function submitEnquiry(
 }
 
 /*
-  IP-en lagres aldri rå. Hashen brukes bare til å telle innsendinger per ti
-  minutter, og nulles etter 30 dager.
+  Avsenderens IP, både rå og hashet.
 
-  Pepperet gjør hashen ubrukelig til oppslag. IPv4-rommet er lite nok til at
-  en usaltet SHA-256 kan reverseres med en full tabell, så uten
-  ENQUIRY_IP_PEPPER er dette obfuskering og ikke beskyttelse. Sett den.
+  Hashen driver rate limit. Den kan telle uten å identifisere, og pepperet
+  gjør den ubrukelig til oppslag: IPv4-rommet er lite nok til at en usaltet
+  SHA-256 kan reverseres med en full tabell, så uten ENQUIRY_IP_PEPPER er
+  den obfuskering og ikke beskyttelse.
+
+  Den rå adressen lagres på raden og sendes til HubSpot som
+  context.ipAddress. Begge nulles etter 30 dager av submit_enquiry.
+
+  x-forwarded-for er en liste der klienten står først og hver proxy legger
+  seg bakerst. På Vercel settes den av plattformen, så første ledd er den
+  faktiske besøkende.
 */
-async function ipHash(): Promise<string | undefined> {
+async function clientIp(): Promise<{ ip?: string; hash?: string }> {
   const head = await headers();
   const forwarded = head.get("x-forwarded-for");
   const ip = forwarded?.split(",")[0]?.trim() || head.get("x-real-ip")?.trim();
-  if (!ip) return undefined;
+  if (!ip) return {};
 
   const pepper = process.env.ENQUIRY_IP_PEPPER ?? "chenmedia-enquiries";
-  return createHash("sha256").update(`${ip}${pepper}`).digest("hex");
+  return {
+    ip,
+    hash: createHash("sha256").update(`${ip}${pepper}`).digest("hex"),
+  };
 }

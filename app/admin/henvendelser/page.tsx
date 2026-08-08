@@ -164,11 +164,17 @@ function EnquiryCard({ enquiry: e }: { enquiry: Enquiry }) {
           </form>
         )}
 
-        {e.source_path && (
-          <span className="ml-auto text-[10px] text-smoke">
-            Sendt fra {e.source_path} · {e.locale}
-          </span>
-        )}
+        <span className="ml-auto text-[10px] text-smoke">
+          {e.source_path && `Sendt fra ${e.source_path} · ${e.locale}`}
+          {e.ip && (
+            <>
+              {e.source_path && " · "}
+              <code title="Sendt til HubSpot som context.ipAddress. Slettes etter 30 dager.">
+                {e.ip}
+              </code>
+            </>
+          )}
+        </span>
       </div>
     </li>
   );

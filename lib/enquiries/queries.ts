@@ -6,8 +6,11 @@ import { createClient } from "@/lib/supabase/server";
   rolle. På enquiries er alle policyene admin-only, og anon har ingen
   rettigheter på tabellen i det hele tatt.
 
-  Ingen caching: en innboks skal alltid vise ferskeste tilstand. ip_hash
-  hentes aldri ut, den har ingen verdi utenfor rate limit i databasen.
+  Ingen caching: en innboks skal alltid vise ferskeste tilstand.
+
+  ip hentes ut og vises i admin. ip_hash gjør ikke: den er kun rate limit
+  internt i databasen og sier ingenting en menneskelig leser kan bruke.
+  Begge nulles etter 30 dager, så eldre rader viser tomt her.
 */
 
 export type Enquiry = {
@@ -23,11 +26,12 @@ export type Enquiry = {
   status: string;
   hubspot_state: string;
   hubspot_error: string | null;
+  ip: string | null;
   created_at: string;
 };
 
 const FIELDS =
-  "id, name, org, email, message, locale, source_path, marketing_consent, consent_text, status, hubspot_state, hubspot_error, created_at";
+  "id, name, org, email, message, locale, source_path, marketing_consent, consent_text, status, hubspot_state, hubspot_error, ip, created_at";
 
 export async function listEnquiries(
   scope: "open" | "archived" = "open"
