@@ -53,12 +53,20 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/* Hero à la TON: tekst venstre, polaroid-stabel høyre */}
       <section className="mx-auto max-w-6xl px-4 pb-14 pt-12 sm:px-6 sm:pt-16">
         <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <div>
+          <div className="@container">
             <p className="meta-label inline-flex items-center gap-2 rounded-full border border-ink/15 px-3 py-1.5 text-smoke">
               <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-ink" />
               {dict.hero.badge}
             </p>
-            <h1 className="display mt-6 text-4xl sm:text-5xl md:text-6xl">
+            {/*
+              Tittelen måles mot tekstkolonnen, ikke mot vindusbredden. Kolonnen
+              er ikke monoton: 720px på nettbrett i én kolonne, 506px når lg
+              deler heroen i to, 576px fra xl. Faste br-punkter blir derfor for
+              store akkurat der kolonnen er smalest, og overskriften brekker i
+              fire linjer med «øyne.» alene. 10.5cqw holder lengste linje på ~90%
+              av kolonnen hele veien. text-balance jevner ut linjelengdene.
+            */}
+            <h1 className="display mt-6 text-[clamp(2rem,10.5cqw,4.5rem)] text-balance">
               {dict.hero.title}{" "}
               <span className="relative inline-block">
                 {dict.hero.titleAccent}
