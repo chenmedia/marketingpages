@@ -19,10 +19,30 @@ med et komplett crew». Teksten der er `hero.clientsLabel`, etiketten over logov
 Ingen annen kode skal røres.
 
 ```
-lib/logos/clients.ts   kundelisten: navn, filnavn, rekkefølge på veggen
-lib/logos/files.ts     leser public/logos og finner filene som faktisk finnes
-components/LogoWall.tsx  cellene, gråtonen og tekstfallbacken
+lib/logos/clients.ts     kundelisten: navn, filnavn, skala, rekkefølge i stripen
+lib/logos/files.ts       leser public/logos og finner filene som faktisk finnes
+components/LogoWall.tsx  stripen, gråtonen og tekstfallbacken
+app/globals.css          .logo-ticker, farten og pause-på-hover
 ```
+
+## Stripen ruller
+
+Logoene ligger i en rullende stripe fra kant til kant, samme grep som `PhotoTicker`:
+innholdet står to ganger etter hverandre, og sporet flyttes 50 % til venstre. Da er kopi to
+kommet nøyaktig dit kopi én startet når animasjonen looper, og skjøten er usynlig. Legger du
+til en logo, følger begge kopiene automatisk — det er samme liste som rendres to ganger.
+
+Kopi to er `aria-hidden` og har tom alt-tekst. Uten det ville en skjermleser lest opp hele
+kundelisten to ganger.
+
+Farten er 40 s per runde, satt i `.logo-ticker`. Fotostripen bruker 46 s på et lengre spor, så
+tallene skal ikke være like — det er piksler per sekund som skal ligne, ikke rundetiden.
+Stripen stopper under musepekeren, ellers er fargen på hover et blinkskudd mot et mål som
+flytter seg. Ved `prefers-reduced-motion` står den stille.
+
+Luften over og under stripen (`py-2`) er ikke pynt: `overflow-hidden` klipper i padding-kanten,
+og en logo med `scale` over 1 er høyere enn cellen sin. Uten den ble Nordisk Film og Oslo
+Business Forum kappet på topp og bunn.
 
 ## Endelsen er ikke med i listen
 
@@ -50,12 +70,13 @@ eneste fargesprakende på forsiden. Skal logoene stå i farge hele tiden, fjerne
 
 ## Størrelse og optisk balanse
 
-Hver logo får en like høy celle, og legges inn med `object-contain`. Brede ordmerker (OBOS,
-Bergans) begrenses av cellebredden, kvadratiske merker (DNT, Snapchat) av høyden. Derfor kan
-filene ha helt ulike proporsjoner uten at noen av dem dverger de andre.
+Hver logo får en like høy celle med fast bredde, og legges inn med `object-contain`. Den faste
+bredden er det som holder avstanden mellom logoene jevn uansett hvor brede filene er. Brede
+ordmerker (OBOS, Bergans) begrenses av cellebredden, kvadratiske merker (DNT, Snapchat) av
+høyden, så filene kan ha helt ulike proporsjoner uten at noen av dem dverger de andre.
 
 Lik høyde er likevel ikke lik visuell vekt. OBOS er 4,5 ganger så bredt som DNT på samme
-høyde og tar over hele raden, mens en stablet logo med luft rundt teksten forsvinner. Derfor
+høyde og tar over hele stripen, mens en stablet logo med luft rundt teksten forsvinner. Derfor
 har `CLIENT_LOGOS` et `scale`-felt: 1 er full cellehøyde, `0.82` krymper, `1.15` forstørrer.
 Tallene er øyemål mot de faktiske filene, ikke en formel — legger du inn en ny logo som
 stikker seg ut, er det den knappen du skrur på.

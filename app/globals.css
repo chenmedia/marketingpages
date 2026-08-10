@@ -116,8 +116,23 @@ body {
   animation: ticker 46s linear infinite;
 }
 
+/*
+  Logoveggen ruller på samme keyframes, men egen fart: sporet er kortere enn
+  fotostripens, og 46s ville gjort logoene merkbart tregere enn bildene over.
+  Den stopper under musepekeren, ellers er fargen på hover et blinkskudd mot
+  et mål som flytter seg.
+*/
+.logo-ticker {
+  animation: ticker 40s linear infinite;
+}
+
+.logo-ticker:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track {
+  .ticker-track,
+  .logo-ticker {
     animation: none;
   }
 }

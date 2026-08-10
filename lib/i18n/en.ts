@@ -53,7 +53,7 @@ export const en: Dictionary = {
     polaroidBadge: "Photo + film since 2020",
   },
   clients: {
-    label: "Brands and organisations I have worked with",
+    label: "We work with a wide range of clients",
   },
   services: {
     label: "What we do",

@@ -308,7 +308,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         det ble laget for. Den egne toppstreken skiller den fra kortene over,
         og «Om Kai» under har egen bakgrunn og skiller seg selv.
       */}
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+      <section className="pb-20">
         <LogoWall label={dict.clients.label} />
       </section>
 
