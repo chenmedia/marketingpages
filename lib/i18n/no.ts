@@ -44,8 +44,8 @@ export const no: Dictionary = {
   },
   hero: {
     badge: "Ledig for arrangementer i Oslo og resten av Norge",
-    title: "Arrangementet ditt, sett med øynene til en",
-    titleAccent: "fotograf.",
+    title: "Arrangementet ditt, sett gjennom fotografens",
+    titleAccent: "øyne.",
     lead: "Eventfotograf for konferanser, lanseringer og firmafester. Foto og film siden 2020. Et redigert førsteutvalg i hendene deres dagen etter.",
     ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",
