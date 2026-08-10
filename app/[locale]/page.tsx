@@ -27,11 +27,18 @@ export async function generateMetadata({
   };
 }
 
-// Bildetekster fra faktisk prosjektkontekst i filnavnene (KarpeWorld 2026)
+/*
+  Bildetekster fra faktisk prosjektkontekst i filnavnene (KarpeWorld 2026).
+
+  left/top plasserer polaroidene ved siden av hverandre i stedet for oppå
+  hverandre. De faller nedover mot høyre, og hvert kort ligger under naboen
+  til venstre. Begge deler er der for bildetekstene: de sitter nede til
+  venstre på kortet, så et nabokort som lå over ville dekket dem.
+*/
 const polaroids = [
-  { slot: "hero-1", caption: "KarpeWorld · Oslo", float: "float-a" },
-  { slot: "hero-2", caption: "KarpeWorld · scenen", float: "float-b" },
-  { slot: "hero-3", caption: "Red Bull · aktivering", float: "float-c" },
+  { slot: "hero-1", caption: "KarpeWorld · Oslo", float: "float-a", left: "0%", top: 0 },
+  { slot: "hero-2", caption: "KarpeWorld · scenen", float: "float-b", left: "29%", top: 34 },
+  { slot: "hero-3", caption: "Red Bull · aktivering", float: "float-c", left: "58%", top: 68 },
 ] as const;
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -85,20 +92,25 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </div>
           </div>
 
-          {/* Polaroid-stabel — flytende, med bildetekster som TONs */}
-          <div className="relative mx-auto hidden w-full max-w-sm lg:block" aria-hidden>
-            <div className="relative h-96">
+          {/* Polaroider på rad — flytende, med bildetekster som TONs */}
+          <div className="relative mx-auto hidden w-full lg:block" aria-hidden>
+            <div className="relative h-[300px]">
               {polaroids.map((polaroid, i) => (
                 <div
                   key={polaroid.slot}
                   className={`absolute rounded-lg border border-ink/10 bg-cream p-2 pb-9 shadow-lg ${polaroid.float}`}
-                  style={{ top: `${i * 52}px`, left: `${i * 36}px`, width: "72%" }}
+                  style={{
+                    top: `${polaroid.top}px`,
+                    left: polaroid.left,
+                    width: "42%",
+                    zIndex: polaroids.length - i,
+                  }}
                 >
                   <PlaceholderImage
                     slot={polaroid.slot}
                     locale={locale}
                     label=""
-                    sizes="(max-width: 1024px) 0px, 20vw"
+                    sizes="(max-width: 1024px) 0px, 210px"
                     className="aspect-[4/3] w-full"
                   />
                   <p className="meta-label absolute bottom-2.5 left-3 text-smoke">
