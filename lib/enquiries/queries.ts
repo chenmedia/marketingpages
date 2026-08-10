@@ -28,11 +28,17 @@ export type Enquiry = {
   hubspot_error: string | null;
   ip: string | null;
   notified_at: string | null;
+  form_key: string;
+  referrer: string | null;
+  landing_path: string | null;
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
   created_at: string;
 };
 
 const FIELDS =
-  "id, name, org, email, message, locale, source_path, marketing_consent, consent_text, status, hubspot_state, hubspot_error, ip, notified_at, created_at";
+  "id, name, org, email, message, locale, source_path, marketing_consent, consent_text, status, hubspot_state, hubspot_error, ip, notified_at, form_key, referrer, landing_path, utm_source, utm_medium, utm_campaign, created_at";
 
 export async function listEnquiries(
   scope: "open" | "archived" = "open"

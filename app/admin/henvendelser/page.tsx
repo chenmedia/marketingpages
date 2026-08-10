@@ -2,6 +2,7 @@ import Link from "next/link";
 import { listEnquiries, type Enquiry } from "@/lib/enquiries/queries";
 import { hubspotConfig } from "@/lib/hubspot/forms";
 import { notifyConfig } from "@/lib/notify/slack";
+import { arrivalLabel, originLabel } from "@/lib/enquiries/sources";
 import { setEnquiryStatus, retryHubspotForward } from "../actions";
 
 /*
@@ -202,11 +203,21 @@ function EnquiryCard({ enquiry: e }: { enquiry: Enquiry }) {
           </form>
         )}
 
-        <span className="ml-auto text-[10px] text-smoke">
-          {e.source_path && `Sendt fra ${e.source_path} · ${e.locale}`}
+        <span className="ml-auto text-right text-[10px] text-smoke">
+          {originLabel(e.form_key, e.source_path)} · {e.locale}
+          {" · "}
+          <span title={e.referrer ?? undefined}>
+            {arrivalLabel({
+              referrer: e.referrer,
+              landingPath: e.landing_path,
+              utmSource: e.utm_source,
+              utmMedium: e.utm_medium,
+              utmCampaign: e.utm_campaign,
+            })}
+          </span>
           {e.ip && (
             <>
-              {e.source_path && " · "}
+              {" · "}
               <code title="Sendt til HubSpot som context.ipAddress. Slettes etter 30 dager.">
                 {e.ip}
               </code>

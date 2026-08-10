@@ -1,4 +1,9 @@
 import "server-only";
+import {
+  EMPTY_ATTRIBUTION,
+  FORM_LABELS,
+  type Attribution,
+} from "./sources";
 
 /*
   Validering av kontaktskjemaet.
@@ -29,7 +34,42 @@ export type ParsedEnquiry = {
   message: string;
   org: string | null;
   marketingConsent: boolean;
+  formKey: string;
+  attribution: Attribution;
 };
+
+/*
+  Attribusjonen kommer som JSON fra klienten og er dermed like upålitelig som
+  resten av skjemaet. Den plukkes fra hverandre felt for felt, alt annet
+  kastes, og lengdene kuttes. En ugyldig kropp gir tomt, ikke feil: en
+  besøkende skal ikke miste henvendelsen sin fordi sessionStorage inneholdt
+  rusk.
+*/
+function parseAttribution(raw: string): Attribution {
+  if (!raw) return EMPTY_ATTRIBUTION;
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return EMPTY_ATTRIBUTION;
+    const o = parsed as Record<string, unknown>;
+
+    const take = (key: string, max: number) => {
+      const value = o[key];
+      if (typeof value !== "string") return null;
+      const trimmed = value.trim();
+      return trimmed ? trimmed.slice(0, max) : null;
+    };
+
+    return {
+      referrer: take("referrer", 500),
+      landingPath: take("landingPath", 500),
+      utmSource: take("utmSource", 120),
+      utmMedium: take("utmMedium", 120),
+      utmCampaign: take("utmCampaign", 200),
+    };
+  } catch {
+    return EMPTY_ATTRIBUTION;
+  }
+}
 
 export type ParseResult =
   | { ok: true; value: ParsedEnquiry }
@@ -74,6 +114,15 @@ export function parseEnquiryForm(form: FormData): ParseResult {
       message,
       org: org || null,
       marketingConsent: form.get("marketingConsent") === "on",
+      /*
+        Bare kjente skjemanøkler godtas. Ellers kunne hvem som helst fylt
+        kolonnen med hva som helst og gjort den ubrukelig til rapportering.
+      */
+      formKey:
+        String(form.get("formKey") ?? "") in FORM_LABELS
+          ? String(form.get("formKey"))
+          : "contact",
+      attribution: parseAttribution(String(form.get("attribution") ?? "")),
     },
   };
 }

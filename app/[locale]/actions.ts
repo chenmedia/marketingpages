@@ -58,6 +58,12 @@ export async function submitEnquiry(
       : undefined,
     p_ip_hash: hash,
     p_ip: ip,
+    p_form_key: parsed.value.formKey,
+    p_referrer: parsed.value.attribution.referrer ?? undefined,
+    p_landing_path: parsed.value.attribution.landingPath ?? undefined,
+    p_utm_source: parsed.value.attribution.utmSource ?? undefined,
+    p_utm_medium: parsed.value.attribution.utmMedium ?? undefined,
+    p_utm_campaign: parsed.value.attribution.utmCampaign ?? undefined,
   });
 
   if (error) {
@@ -89,6 +95,8 @@ export async function submitEnquiry(
       locale,
       sourcePath,
       ip: ip ?? null,
+      formKey: parsed.value.formKey,
+      attribution: parsed.value.attribution,
     }),
     forwardToHubspot({
       name: parsed.value.name,
@@ -100,6 +108,8 @@ export async function submitEnquiry(
       ip: ip ?? null,
       consentText: dict.contact.form.consent,
       privacyText: dict.contact.form.privacy,
+      formKey: parsed.value.formKey,
+      attribution: parsed.value.attribution,
     }),
   ]);
 

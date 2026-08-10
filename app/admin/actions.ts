@@ -347,7 +347,7 @@ export async function retryHubspotForward(form: FormData) {
   const { data: enquiry } = await supabase
     .from("enquiries")
     .select(
-      "name, email, message, org, marketing_consent, consent_text, source_path, ip, locale"
+      "name, email, message, org, marketing_consent, consent_text, source_path, ip, locale, form_key, referrer, landing_path, utm_source, utm_medium, utm_campaign"
     )
     .eq("id", id)
     .maybeSingle();
@@ -371,6 +371,14 @@ export async function retryHubspotForward(form: FormData) {
     */
     consentText: enquiry.consent_text ?? dict.contact.form.consent,
     privacyText: dict.contact.form.privacy,
+    formKey: enquiry.form_key,
+    attribution: {
+      referrer: enquiry.referrer,
+      landingPath: enquiry.landing_path,
+      utmSource: enquiry.utm_source,
+      utmMedium: enquiry.utm_medium,
+      utmCampaign: enquiry.utm_campaign,
+    },
   });
 
   /*

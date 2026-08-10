@@ -17,6 +17,45 @@ import { submitEnquiry, type EnquiryState } from "@/app/[locale]/actions";
 
   Vanlig <form action>, så skjemaet virker også uten JavaScript.
 */
+/*
+  Hvor besøket startet, fanget ved første sidevisning i fanen.
+
+  Førstetreff, ikke sistetreff: kommer noen fra en annonselenke til
+  /eventfoto og deretter klikker seg til forsiden før de sender inn, er det
+  annonsen som skaffet henvendelsen. Uten sessionStorage ville vi bare sett
+  at de kom fra vår egen forside, altså ingenting.
+
+  Leses her og ikke med useSearchParams(): den hooken tvinger siden ut av
+  statisk render, og de fem offentlige sidene skal forbli prerendret.
+
+  sessionStorage er førsteparts, tømmes når fanen lukkes, og brukes kun til å
+  tilskrive en henvendelse den besøkende selv sender. Den følger ingen på
+  tvers av nettsteder. Kaster i privat modus i enkelte nettlesere, derfor
+  try/catch: attribusjon skal aldri stå i veien for en innsending.
+*/
+const TOUCH_KEY = "chenmedia_attribution";
+
+function firstTouch(): string {
+  try {
+    const stored = sessionStorage.getItem(TOUCH_KEY);
+    if (stored) return stored;
+
+    const params = new URLSearchParams(window.location.search);
+    const data = {
+      referrer: document.referrer || null,
+      landingPath: window.location.pathname || null,
+      utmSource: params.get("utm_source"),
+      utmMedium: params.get("utm_medium"),
+      utmCampaign: params.get("utm_campaign"),
+    };
+    const json = JSON.stringify(data);
+    sessionStorage.setItem(TOUCH_KEY, json);
+    return json;
+  } catch {
+    return "";
+  }
+}
+
 export default function ContactForm({
   dict,
   locale,
@@ -40,8 +79,10 @@ export default function ContactForm({
     Uten JavaScript står feltet tomt, og sjekken hoppes over.
   */
   const renderedAt = useRef<HTMLInputElement>(null);
+  const attribution = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (renderedAt.current) renderedAt.current.value = String(Date.now());
+    if (attribution.current) attribution.current.value = firstTouch();
   }, []);
 
   // Serveren ser den interne stien etter rewriten i proxy.ts, ikke den offentlige.
@@ -70,6 +111,8 @@ export default function ContactForm({
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="sourcePath" value={sourcePath} />
       <input type="hidden" name="renderedAt" ref={renderedAt} defaultValue="" />
+      <input type="hidden" name="formKey" value="contact" />
+      <input type="hidden" name="attribution" ref={attribution} defaultValue="" />
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>

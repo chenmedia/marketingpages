@@ -1,4 +1,5 @@
 import "server-only";
+import { originLabel, type Attribution } from "@/lib/enquiries/sources";
 
 /*
   Videresending til HubSpot Forms.
@@ -34,6 +35,8 @@ export type EnquiryPayload = {
   /* Ordlyden som faktisk sto i skjemaet. Sendes med samtykket til HubSpot. */
   consentText?: string | null;
   privacyText?: string | null;
+  formKey?: string;
+  attribution?: Attribution;
 };
 
 export function hubspotConfig() {
@@ -111,9 +114,30 @@ export async function forwardToHubspot(
     med 400 på en ugyldig verdi, og en henvendelse skal ikke gå tapt fordi en
     proxy sendte noe rart i x-forwarded-for.
   */
+  /*
+    pageUri sendes med UTM-parametrene på. HubSpot leser kampanjen ut av
+    nettopp den strengen, så attribusjonen havner i HubSpots egen
+    rapportering uten at vi trenger å lage egne kontaktegenskaper.
+
+    pageName er nå det samme navnet som står i Slack og i admin. Da heter
+    henvendelsen det samme uansett hvor Kai ser den.
+  */
+  const a = enquiry.attribution;
+  const utm = new URLSearchParams();
+  if (a?.utmSource) utm.set("utm_source", a.utmSource);
+  if (a?.utmMedium) utm.set("utm_medium", a.utmMedium);
+  if (a?.utmCampaign) utm.set("utm_campaign", a.utmCampaign);
+
+  const base = process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "";
+  const path = enquiry.pageUri ?? "";
+  const query = utm.toString();
+  const pageUri = path
+    ? `${base}${path}${query ? `?${query}` : ""}`
+    : undefined;
+
   const context = {
-    pageUri: enquiry.pageUri ?? undefined,
-    pageName: "Kontaktskjema · chenmedia.no",
+    pageUri,
+    pageName: originLabel(enquiry.formKey ?? "contact", enquiry.pageUri),
     ipAddress: isPlausibleIp(enquiry.ip) ? enquiry.ip! : undefined,
   };
 

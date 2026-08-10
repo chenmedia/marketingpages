@@ -1,4 +1,9 @@
 import "server-only";
+import {
+  arrivalLabel,
+  originLabel,
+  type Attribution,
+} from "@/lib/enquiries/sources";
 
 /*
   Varsel til Slack når en henvendelse kommer inn.
@@ -32,6 +37,8 @@ export type EnquiryNotice = {
   locale: string;
   sourcePath: string | null;
   ip: string | null;
+  formKey: string;
+  attribution: Attribution;
 };
 
 /*
@@ -68,11 +75,19 @@ export async function notifyNewEnquiry(
 
   const site = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
+  /*
+    «Sendt fra: /» sa ingenting. Nå står skjemaet og siden med navn, og
+    hvordan de kom dit på egen linje, siden det er den som forteller hva som
+    faktisk skaffer henvendelser.
+  */
   const facts = [
     `*E-post:* ${escapeSlack(enquiry.email)}`,
+    `*Sendt fra:* ${escapeSlack(
+      originLabel(enquiry.formKey, enquiry.sourcePath)
+    )}`,
+    `*Kom via:* ${escapeSlack(arrivalLabel(enquiry.attribution))}`,
     `*Markedsføring:* ${enquiry.marketingConsent ? "samtykket" : "nei"}`,
     `*Språk:* ${escapeSlack(enquiry.locale)}`,
-    enquiry.sourcePath ? `*Sendt fra:* ${escapeSlack(enquiry.sourcePath)}` : null,
     enquiry.ip ? `*IP:* ${escapeSlack(enquiry.ip)}` : null,
   ].filter(Boolean);
 

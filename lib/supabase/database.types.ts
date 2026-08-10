@@ -29,10 +29,12 @@ export type Database = {
           consent_text: string | null;
           created_at: string;
           email: string;
+          form_key: string;
           hubspot_error: string | null;
           hubspot_state: string;
           id: string;
           ip: string | null;
+          landing_path: string | null;
           ip_hash: string | null;
           locale: string;
           marketing_consent: boolean;
@@ -40,8 +42,12 @@ export type Database = {
           name: string;
           notified_at: string | null;
           org: string | null;
+          referrer: string | null;
           source_path: string | null;
           status: string;
+          utm_campaign: string | null;
+          utm_medium: string | null;
+          utm_source: string | null;
         };
         Insert: {
           consent_text?: string | null;
@@ -57,17 +63,23 @@ export type Database = {
           message: string;
           name: string;
           org?: string | null;
+          referrer?: string | null;
           source_path?: string | null;
           status?: string;
+          utm_campaign?: string | null;
+          utm_medium?: string | null;
+          utm_source?: string | null;
         };
         Update: {
           consent_text?: string | null;
           created_at?: string;
           email?: string;
+          form_key?: string;
           hubspot_error?: string | null;
           hubspot_state?: string;
           id?: string;
           ip?: string | null;
+          landing_path?: string | null;
           ip_hash?: string | null;
           locale?: string;
           marketing_consent?: boolean;
@@ -75,8 +87,12 @@ export type Database = {
           name?: string;
           notified_at?: string | null;
           org?: string | null;
+          referrer?: string | null;
           source_path?: string | null;
           status?: string;
+          utm_campaign?: string | null;
+          utm_medium?: string | null;
+          utm_source?: string | null;
         };
         Relationships: [];
       };
@@ -363,14 +379,20 @@ export type Database = {
         Args: {
           p_consent_text?: string;
           p_email: string;
+          p_form_key?: string;
           p_ip?: string;
           p_ip_hash?: string;
+          p_landing_path?: string;
           p_locale?: string;
           p_marketing_consent?: boolean;
           p_message: string;
           p_name: string;
           p_org?: string;
+          p_referrer?: string;
           p_source_path?: string;
+          p_utm_campaign?: string;
+          p_utm_medium?: string;
+          p_utm_source?: string;
         };
         Returns: string;
       };
