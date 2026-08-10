@@ -43,15 +43,23 @@ har kommet inn.
 
 ## Gråtone
 
-Logoene vises i gråtone på 60 % og får farge og full dekkevne når musepekeren er over.
+Logoene vises i gråtone på 70 % og får farge og full dekkevne når musepekeren er over.
 Paletten på nettsiden er monokrom, og ni logoer i hver sin merkevarefarge ville vært det
 eneste fargesprakende på forsiden. Skal logoene stå i farge hele tiden, fjernes `grayscale` og
-`opacity-60` i `components/LogoWall.tsx`.
+`opacity-70` i `components/LogoWall.tsx`.
 
-## Størrelse
+## Størrelse og optisk balanse
 
 Hver logo får en like høy celle, og legges inn med `object-contain`. Brede ordmerker (OBOS,
 Bergans) begrenses av cellebredden, kvadratiske merker (DNT, Snapchat) av høyden. Derfor kan
-filene ha helt ulike proporsjoner uten at noen av dem dverger de andre — det eneste kravet er
-at logoen ikke har store tomme marger bakt inn i filen, for de teller som en del av bildet og
-gjør logoen visuelt mindre enn naboene.
+filene ha helt ulike proporsjoner uten at noen av dem dverger de andre.
+
+Lik høyde er likevel ikke lik visuell vekt. OBOS er 4,5 ganger så bredt som DNT på samme
+høyde og tar over hele raden, mens en stablet logo med luft rundt teksten forsvinner. Derfor
+har `CLIENT_LOGOS` et `scale`-felt: 1 er full cellehøyde, `0.82` krymper, `1.15` forstørrer.
+Tallene er øyemål mot de faktiske filene, ikke en formel — legger du inn en ny logo som
+stikker seg ut, er det den knappen du skrur på.
+
+Be om filer der logoen fyller flaten. Tomme marger bakt inn i filen teller som en del av
+bildet, og gjør logoen visuelt mindre enn naboene uten at `scale` er noe annet enn en
+kompensasjon for det.

@@ -28,15 +28,33 @@ export default async function LogoWall({ label }: { label: string }) {
           const src = files.get(client.file);
 
           return (
-            <li key={client.file} className="relative h-9 w-full sm:h-10">
+            <li
+              key={client.file}
+              className="flex h-9 w-full items-center justify-center sm:h-10"
+            >
               {src ? (
-                <Image
-                  src={src}
-                  alt={client.name}
-                  fill
-                  sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 210px"
-                  className="object-contain opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-                />
+                /*
+                  Skalaen settes på boksen, ikke på bildet. object-contain
+                  legger logoen inn i boksen den får, så en lavere boks gir
+                  en mindre logo — uten transform, som ville flyttet den ut
+                  av linje med naboene.
+                */
+                <div
+                  className="relative h-full w-full"
+                  style={
+                    client.scale
+                      ? { height: `${client.scale * 100}%` }
+                      : undefined
+                  }
+                >
+                  <Image
+                    src={src}
+                    alt={client.name}
+                    fill
+                    sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 210px"
+                    className="object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                  />
+                </div>
               ) : (
                 <span className="display flex h-full items-center justify-center text-center text-sm text-smoke transition-colors hover:text-ink">
                   {client.name}

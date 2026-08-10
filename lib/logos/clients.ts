@@ -20,16 +20,25 @@ export type ClientLogo = {
   name: string;
   /** Filnavn uten endelse, i public/logos */
   file: string;
+  /**
+   * Optisk justering, 1 er full cellehøyde.
+   *
+   * Lik høyde er ikke lik visuell vekt. Et bredt ordmerke som OBOS blir
+   * 4,5 ganger så bredt som et kvadratisk merke på samme høyde og tar over
+   * hele raden, mens en stablet logo med luft rundt teksten forsvinner.
+   * Tallene under er øyemål mot de faktiske filene, ikke en formel.
+   */
+  scale?: number;
 };
 
 export const CLIENT_LOGOS: ClientLogo[] = [
   { name: "Snapchat", file: "snapchat" },
-  { name: "OBOS", file: "obos" },
-  { name: "DNT", file: "dnt" },
-  { name: "Bergans of Norway", file: "bergans" },
+  { name: "OBOS", file: "obos", scale: 0.82 },
+  { name: "DNT", file: "dnt", scale: 1.05 },
+  { name: "Bergans of Norway", file: "bergans", scale: 0.92 },
   { name: "TINE", file: "tine" },
-  { name: "Nordisk Film", file: "nordisk-film" },
-  { name: "Oslo Business Forum", file: "oslo-business-forum" },
+  { name: "Nordisk Film", file: "nordisk-film", scale: 1.15 },
+  { name: "Oslo Business Forum", file: "oslo-business-forum", scale: 1.12 },
   { name: "Oslo Business Region", file: "oslo-business-region" },
   { name: "Kampsport", file: "kampsport" },
 ];
