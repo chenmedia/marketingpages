@@ -62,6 +62,10 @@ export interface Dictionary {
     clientsLabel: string;
     polaroidBadge: string;
   };
+  /** Logoveggen, som står som eget bånd etter «Arbeidet vårt» */
+  clients: {
+    label: string;
+  };
   services: {
     label: string;
     heading: string;

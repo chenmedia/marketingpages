@@ -52,6 +52,9 @@ export const no: Dictionary = {
     clientsLabel: "Alene, eller med et komplett crew når arrangementet krever det",
     polaroidBadge: "Foto + film siden 2020",
   },
+  clients: {
+    label: "Merkevarer og organisasjoner jeg har jobbet med",
+  },
   services: {
     label: "Hva vi gjør",
     heading: "Tjenestene våre",

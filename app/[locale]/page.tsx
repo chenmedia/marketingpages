@@ -12,6 +12,7 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
 import CtaButton from "@/components/CtaButton";
 import LogoWall from "@/components/LogoWall";
+import CrewLine from "@/components/CrewLine";
 import Underline from "@/components/Underline";
 
 export async function generateMetadata({
@@ -90,6 +91,11 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 {dict.hero.ctaSecondary}
               </CtaButton>
             </div>
+
+            {/* Crewet rett under knappene, der sosialt bevis hører hjemme */}
+            <div className="mt-8">
+              <CrewLine label={dict.hero.clientsLabel} locale={locale} />
+            </div>
           </div>
 
           {/* Polaroider på rad — flytende, med bildetekster som TONs */}
@@ -123,10 +129,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               </p>
             </div>
           </div>
-        </div>
-
-        <div className="mt-12">
-          <LogoWall label={dict.hero.clientsLabel} />
         </div>
       </section>
 
@@ -298,6 +300,16 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </Link>
           ))}
         </div>
+      </section>
+
+      {/*
+        Logoveggen står her, ikke i heroen. Den sier ingenting før man vet hva
+        Kai leverer, og alt rett etter at man har sett arbeidet: dette er hvem
+        det ble laget for. Den egne toppstreken skiller den fra kortene over,
+        og «Om Kai» under har egen bakgrunn og skiller seg selv.
+      */}
+      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <LogoWall label={dict.clients.label} />
       </section>
 
       {/* Om Kai */}

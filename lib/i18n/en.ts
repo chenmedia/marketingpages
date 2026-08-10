@@ -52,6 +52,9 @@ export const en: Dictionary = {
     clientsLabel: "Solo, or with a full crew when the event calls for it",
     polaroidBadge: "Photo + film since 2020",
   },
+  clients: {
+    label: "Brands and organisations I have worked with",
+  },
   services: {
     label: "What we do",
     heading: "Our services",

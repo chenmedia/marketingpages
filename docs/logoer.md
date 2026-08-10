@@ -4,6 +4,12 @@ Logoveggen på forsiden viser merkene Kai har levert for. I motsetning til bilde
 `/admin/bilder` ligger logoene i repoet: de byttes sjelden, de skal se like ut hver gang,
 og de er små nok til at de ikke hører hjemme i Supabase Storage.
 
+Veggen står som eget bånd rett etter «Arbeidet vårt», ikke i heroen. Den sier ingenting før
+man vet hva Kai leverer, og alt rett etter at man har sett arbeidet. Plassen under
+CTA-knappene i heroen har i stedet `components/CrewLine.tsx`: tre sirkler og «alene, eller
+med et komplett crew». Teksten der er `hero.clientsLabel`, etiketten over logoveggen er
+`clients.label`.
+
 ## Slik legger du til en logo
 
 1. Legg filen i `public/logos`. Filnavnet er kundens slug: `obos.svg`, `tine.png`.

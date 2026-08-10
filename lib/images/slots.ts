@@ -62,6 +62,42 @@ export const SLOTS: SlotDef[] = [
     hasCaption: true,
   },
 
+  /*
+    De tre små sirklene ved «alene eller med et komplett crew» i heroen.
+
+    Dekorative med vilje: teksten ved siden av sier hva de viser, og tre
+    alt-tekster til på rad ville bare vært støy for en skjermleser. De er
+    også bittesmå — velg bilder der motivet er stort nok til å bære en
+    beskjæring til 44 piksler.
+  */
+  {
+    slot: "crew-1",
+    group: "Forsiden, crew",
+    label: "Crew-sirkel 1",
+    ratio: "1:1",
+    fallback: photo.crewLogistics,
+    fallbackAlt: "",
+    decorative: true,
+  },
+  {
+    slot: "crew-2",
+    group: "Forsiden, crew",
+    label: "Crew-sirkel 2",
+    ratio: "1:1",
+    fallback: photo.festivalLife,
+    fallbackAlt: "",
+    decorative: true,
+  },
+  {
+    slot: "crew-3",
+    group: "Forsiden, crew",
+    label: "Crew-sirkel 3",
+    ratio: "1:1",
+    fallback: photo.epicStage,
+    fallbackAlt: "",
+    decorative: true,
+  },
+
   // Forsiden, tjenestekort
   {
     slot: "tjeneste-1",
