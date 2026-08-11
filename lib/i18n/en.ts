@@ -49,7 +49,7 @@ export const en: Dictionary = {
     lead: "Event photographer for conferences, launches and company events. Photo and film since 2020. An edited first selection in your hands the next day.",
     ctaPrimary: "Request a no obligation quote",
     ctaSecondary: "See the work",
-    clientsLabel: "Solo, or with a full crew when the event calls for it",
+    clientsLabel: "A photographer/videographer, or a full team when your event calls for it.",
     polaroidBadge: "Photo + film since 2020",
   },
   clients: {

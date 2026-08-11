@@ -2,8 +2,8 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import type { Locale } from "@/lib/i18n";
 
 /*
-  «Alene, eller med et komplett crew» — tre overlappende sirkler og en linje
-  tekst, rett under CTA-knappene i heroen.
+  «En fotograf/videograf, eller med et komplett team» — tre overlappende
+  sirkler og en linje tekst, rett under CTA-knappene i heroen.
 
   Sirklene overlapper med -space-x-3 og har en ring i bakgrunnsfargen, som er
   det som gjør at de leses som en gruppe mennesker og ikke tre løse bilder.

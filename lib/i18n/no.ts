@@ -49,7 +49,7 @@ export const no: Dictionary = {
     lead: "Eventfotograf for konferanser, lanseringer og firmafester. Foto og film siden 2020. Et redigert førsteutvalg i hendene deres dagen etter.",
     ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",
-    clientsLabel: "Alene, eller med et komplett crew når arrangementet krever det",
+    clientsLabel: "En fotograf/videograf, eller med et komplett team når arrangementet ditt krever det.",
     polaroidBadge: "Foto + film siden 2020",
   },
   clients: {
