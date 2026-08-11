@@ -50,7 +50,7 @@ export const en: Dictionary = {
     ctaPrimary: "Request a no obligation quote",
     ctaSecondary: "See the work",
     clientsLabel: "A photographer/videographer, or a full team when your event calls for it.",
-    polaroidBadge: "Photo + film since 2020",
+    polaroidBadge: "10+ years of experience",
   },
   clients: {
     label: "We work with a wide range of clients",

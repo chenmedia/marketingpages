@@ -50,7 +50,7 @@ export const no: Dictionary = {
     ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",
     clientsLabel: "En fotograf/videograf, eller med et komplett team når arrangementet ditt krever det.",
-    polaroidBadge: "Foto + film siden 2020",
+    polaroidBadge: "10+ års erfaring",
   },
   clients: {
     label: "Vi jobber med et bredt spekter av kunder",
