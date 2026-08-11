@@ -46,7 +46,7 @@ export const en: Dictionary = {
     badge: "Available for events in Oslo and across Norway",
     title: "Your event, seen through the eyes of a",
     titleAccent: "photographer.",
-    lead: "Event photographer for conferences, launches and company events. Photo and film since 2020. An edited first selection in your hands the next day.",
+    lead: "Professional photo and film for conferences, trade shows and corporate events. Get edited images ready to use the very next day.",
     ctaPrimary: "Request a no obligation quote",
     ctaSecondary: "See the work",
     clientsLabel: "A photographer/videographer, or a full team when your event calls for it.",

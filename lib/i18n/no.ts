@@ -46,7 +46,7 @@ export const no: Dictionary = {
     badge: "Ledig for arrangementer i Oslo og resten av Norge",
     title: "Arrangementet ditt, sett gjennom fotografens",
     titleAccent: "øyne.",
-    lead: "Eventfotograf for konferanser, lanseringer og firmafester. Foto og film siden 2020. Et redigert førsteutvalg i hendene deres dagen etter.",
+    lead: "Profesjonell foto og film for konferanser, messer og bedriftsarrangementer. Få redigerte bilder klare til bruk allerede dagen etter.",
     ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",
     clientsLabel: "En fotograf/videograf, eller med et komplett team når arrangementet ditt krever det.",
