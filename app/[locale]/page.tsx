@@ -82,7 +82,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 <Underline className="absolute -bottom-4 left-0 h-3.5 w-full text-ink opacity-60" />
               </span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-smoke sm:text-lg">
+            {/* whitespace-pre-line: ingressen har et bevisst linjeskift mellom
+                de to setningene. Teksten brytes fortsatt fritt ellers. */}
+            <p className="mt-6 max-w-xl text-balance whitespace-pre-line text-base leading-relaxed text-smoke sm:text-lg">
               {dict.hero.lead}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
