@@ -261,15 +261,17 @@ export const SLOTS: SlotDef[] = [
     fallbackAlt: "Produkt holdt fram foran publikum under en aktivering",
   },
   ...[
-    { n: 1, label: "Fotografering" },
-    { n: 2, label: "Videoproduksjon" },
-    { n: 3, label: "Merkevare og innhold" },
-    { n: 4, label: "Kreativ produksjon" },
+    { n: 1, label: "Foto" },
+    { n: 2, label: "Film" },
+    { n: 3, label: "Innhold" },
+    { n: 4, label: "Produksjon" },
   ].map(({ n, label }) => ({
     slot: `alt-omrade-${n}`,
     group: "Alternativ forside",
-    label: `Fagområde ${n}: ${label}`,
-    ratio: "4:5",
+    label: `${n}. ${label}`,
+    // Samme bilde brukes to steder: stående i oversiktskortet, liggende i
+    // seksjonen under. Sett fokuspunktet så motivet tåler begge.
+    ratio: "4:5 og 4:3",
     fallback: [photo.vocalist, photo.epicStage, photo.festivalLife, photo.crewLogistics][n - 1],
     fallbackAlt: [
       "Fotografering under et oppdrag",
@@ -278,14 +280,6 @@ export const SLOTS: SlotDef[] = [
       "Crew og produksjon i arbeid bak kulissene",
     ][n - 1],
   })),
-  {
-    slot: "alt-abonnement",
-    group: "Alternativ forside",
-    label: "Fast innholdspartner",
-    ratio: "4:3",
-    fallback: photo.lightshow,
-    fallbackAlt: "Publikum mot scenen mens lysstrålene står ut i salen",
-  },
 
   // Tjenestesidene
   {
