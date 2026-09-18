@@ -245,6 +245,48 @@ export const SLOTS: SlotDef[] = [
     fallbackAlt: "Kai Chen bak kamera under et oppdrag",
   },
 
+  /*
+    Alternativ forside (app/[locale]/alternativ).
+
+    Egen gruppe, så utforskningen ikke blander seg inn i flatene på dagens
+    forside i admin. Blir den alternative forsiden den faktiske, arver den
+    disse slotene og «Forsiden, …»-gruppene kan slås sammen med dem.
+  */
+  {
+    slot: "alt-hero",
+    group: "Alternativ forside",
+    label: "Toppbilde",
+    ratio: "4:5",
+    fallback: photo.ringnesImsdal,
+    fallbackAlt: "Produkt holdt fram foran publikum under en aktivering",
+  },
+  ...[
+    { n: 1, label: "Fotografering" },
+    { n: 2, label: "Videoproduksjon" },
+    { n: 3, label: "Merkevare og innhold" },
+    { n: 4, label: "Kreativ produksjon" },
+  ].map(({ n, label }) => ({
+    slot: `alt-omrade-${n}`,
+    group: "Alternativ forside",
+    label: `Fagområde ${n}: ${label}`,
+    ratio: "4:5",
+    fallback: [photo.vocalist, photo.epicStage, photo.festivalLife, photo.crewLogistics][n - 1],
+    fallbackAlt: [
+      "Fotografering under et oppdrag",
+      "Filmopptak av scene og publikum",
+      "Innhold fra et arrangement, klart til publisering",
+      "Crew og produksjon i arbeid bak kulissene",
+    ][n - 1],
+  })),
+  {
+    slot: "alt-abonnement",
+    group: "Alternativ forside",
+    label: "Fast innholdspartner",
+    ratio: "4:3",
+    fallback: photo.lightshow,
+    fallbackAlt: "Publikum mot scenen mens lysstrålene står ut i salen",
+  },
+
   // Tjenestesidene
   {
     slot: "eventfoto-hero",
