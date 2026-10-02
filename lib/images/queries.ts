@@ -53,8 +53,11 @@ const fetchSiteImages = unstable_cache(
 
     return (data ?? []).map((row) => ({ ...row, url: publicUrlFor(row.path) }));
   },
-  ["site-images-v1"],
-  { tags: [IMAGES_TAG], revalidate: 3600 }
+  // Ny nøkkel tømmer den gamle timecachen ved neste deploy. Ett minutt er
+  // dessuten et sikkerhetsnett for endringer som skjer utenom admin, der
+  // Server Action-en normalt invaliderer taggen umiddelbart.
+  ["site-images-v2"],
+  { tags: [IMAGES_TAG], revalidate: 60 }
 );
 
 /*

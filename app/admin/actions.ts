@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth/dal";
 import { createClient } from "@/lib/supabase/server";
@@ -300,7 +300,11 @@ function clamp01(n: number) {
 
 /* Bildene ligger på alle fem offentlige sidene, så hele taggen friskes opp. */
 function refreshImages() {
-  revalidateTag(IMAGES_TAG, "max");
+  // Bilder må være synlige på første sidevisning etter lagring. updateTag
+  // utløper dataene umiddelbart, mens revalidateTag(..., "max") ville vist
+  // gammel cache én gang til mens nye data ble hentet i bakgrunnen.
+  updateTag(IMAGES_TAG);
+  revalidatePath("/", "layout");
   revalidatePath("/admin/bilder");
 }
 
