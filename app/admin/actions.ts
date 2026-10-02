@@ -216,6 +216,9 @@ export async function uploadSiteImage(
   if (!def.decorative && (!alt_no || !alt_en)) {
     return { error: "Alt-tekst må fylles ut på begge språk." };
   }
+  if (def.hasCaption && caption && caption.length > 48) {
+    return { error: "Bildeteksten kan være maks 48 tegn." };
+  }
 
   const focal_x = clamp01(Number(form.get("focal_x")));
   const focal_y = clamp01(Number(form.get("focal_y")));

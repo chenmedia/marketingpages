@@ -51,10 +51,14 @@ export default async function NewsPage({
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="aspect-[3/2] w-full md:h-full"
               />
-              <div className="flex flex-col justify-center p-6 md:py-8 md:pr-8">
-                <p className="meta-label text-smoke">{entry.tag}</p>
-                <h2 className="display mt-2 text-2xl">{entry.title}</h2>
-                <p className="mt-3 max-w-2xl text-base leading-relaxed text-smoke">
+              <div className="flex min-w-0 flex-col justify-center p-6 md:py-8 md:pr-8">
+                <p className="meta-label [overflow-wrap:anywhere] text-smoke">
+                  {entry.tag}
+                </p>
+                <h2 className="display mt-2 text-2xl [overflow-wrap:anywhere]">
+                  {entry.title}
+                </h2>
+                <p className="mt-3 max-w-2xl text-base leading-relaxed [overflow-wrap:anywhere] text-smoke">
                   {entry.body}
                 </p>
               </div>

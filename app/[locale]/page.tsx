@@ -121,7 +121,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                     sizes="(max-width: 1024px) 0px, 210px"
                     className="aspect-[4/3] w-full"
                   />
-                  <p className="meta-label absolute bottom-2.5 left-3 text-smoke">
+                  <p className="meta-label absolute inset-x-3 bottom-2.5 truncate text-smoke">
                     {captions[i]}
                   </p>
                 </div>
@@ -292,10 +292,14 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 sizes="(max-width: 768px) 100vw, 25vw"
                 className="aspect-[4/5] w-full transition-transform duration-300 group-hover:scale-[1.02]"
               />
-              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/90 to-transparent p-5 pt-16 text-cream">
-                <span className="display block text-xl">{card.title}</span>
-                <span className="meta-label mt-1 block text-sand">{card.sub}</span>
-                <span className="meta-label mt-3 inline-block border-b border-cream pb-0.5">
+              <span className="absolute inset-x-0 bottom-0 min-w-0 bg-gradient-to-t from-ink via-ink/90 to-transparent p-5 pt-16 text-cream">
+                <span className="display block text-xl [overflow-wrap:anywhere]">
+                  {card.title}
+                </span>
+                <span className="meta-label mt-1 block [overflow-wrap:anywhere] text-sand">
+                  {card.sub}
+                </span>
+                <span className="meta-label mt-3 inline-block max-w-full border-b border-cream pb-0.5 [overflow-wrap:anywhere]">
                   {dict.work.linkLabel} →
                 </span>
               </span>

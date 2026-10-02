@@ -209,9 +209,12 @@ export default function ImageUploader({
             <input
               name="caption"
               defaultValue={currentCaption ?? ""}
-              maxLength={120}
+              maxLength={48}
               className="mt-1 w-full rounded-lg border border-ink/15 px-3 py-2 text-sm"
             />
+            <span className="mt-1 block text-xs text-smoke">
+              Maks 48 tegn. Lange tekster avkortes i polaroidene.
+            </span>
           </label>
         )}
       </div>

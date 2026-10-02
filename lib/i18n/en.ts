@@ -419,68 +419,53 @@ export const en: Dictionary = {
     filterAll: "All",
     items: [
       {
+        client: "Oslo Business Forum",
+        project: "Oslo Business Forum 2026",
+        kind: "Event photo",
+        context:
+          "The conference documented from the main stage to the networking areas and the meetings between attendees.",
+      },
+      {
+        client: "Startuplab",
+        project: "CEO Lunch Roundtable",
+        kind: "Event photo",
+        context:
+          "An intimate leadership gathering documented through the conversations, people and setting around the table.",
+      },
+      {
         client: "Snapchat",
         project: "Snap Session Breakfast Seminar",
         kind: "Event photo",
         context:
-          "Breakfast seminar in Oslo for advertisers and agencies, documented from the first talk to the last cup of coffee.",
+          "A breakfast seminar in Oslo for advertisers and agencies, documented from the first talk to the last cup of coffee.",
       },
       {
-        client: "Optiver",
-        project: "Pitch Event",
-        kind: "Event film",
+        client: "Slottsfjell",
+        project: "Slottsfjell 2026",
+        kind: "Festival photo",
         context:
-          "A pitch night on film, with the energy in the room and the moments that defined the evening.",
+          "The festival documented through the artists, audience, lights and atmosphere in front of the stage.",
       },
       {
-        client: "Aktiv Eiendomsmegling",
-        project: "Pitch Event",
-        kind: "Event film",
-        context: "A pitch night documented on film for internal and external use.",
-      },
-      {
-        client: "Varner x Levi's",
-        project: "In store event",
-        kind: "Event film",
+        client: "Startuplab",
+        project: "Summer Pitch Party",
+        kind: "Event photo",
         context:
-          "Brand event for Levi's at Varner, with a film made for social media and internal use.",
+          "The pitches and summer party captured in a series covering both the presentations and the life between them.",
       },
       {
-        client: "Ignite Procurement x Hurtigruten",
-        project: "Client event",
-        kind: "Event film",
+        client: "Oslo Business Forum",
+        project: "Partner Kick-off 2026",
+        kind: "Event photo",
         context:
-          "A client event documented on film, celebrating the partnership between two brands.",
+          "A partner event documented through the talks, relationships and atmosphere in the room.",
       },
       {
         client: "Nordisk Film Kino",
-        project: "Event film",
-        kind: "Event film",
-        context: "Film production for Nordisk Film Kino.",
-      },
-      {
-        client: "Av-og-til",
-        project: "Campaign event",
-        kind: "Event film",
-        context: "Film for the Norwegian moderation organisation Av-og-til.",
-      },
-      {
-        client: "DNT",
-        project: "Events",
-        kind: "Event photo",
-        context: "Documentation for the Norwegian Trekking Association.",
-      },
-      {
-        client: "OBOS",
-        project: "Events",
-        kind: "Event photo",
-        context: "Event documentation for OBOS.",
-      },
-      {
-        client: "JCP",
-        project: "Event productions",
-        kind: "Event photo",
-        context: "Photography for events produced by the event agency JCP.",
+        project: "Colosseum and Gimle cinemas",
+        kind: "Interior photo",
+        context:
+          "The cinemas’ character documented through the architecture, auditoriums and details at Colosseum and Gimle.",
       },
     ],
   },

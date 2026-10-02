@@ -6,6 +6,20 @@ import SectionLabel from "@/components/SectionLabel";
 import CaseList from "@/components/CaseList";
 import ContactCTA from "@/components/ContactCTA";
 
+/*
+  Hvert prosjekt peker på en bildeflate fra det samme dokumenterte oppdraget.
+  Rekkefølgen følger projectsPage.items i begge språkfilene.
+*/
+const PROJECT_IMAGE_SLOTS = [
+  "hero-1", // Oslo Business Forum 2026
+  "arbeid-2", // Startuplab CEO Lunch Roundtable
+  "arbeid-3", // Snapchat-frokostmøte
+  "arbeid-4", // Slottsfjell 2026
+  "stripe-2", // Startuplab Summer Pitch Party
+  "stripe-5", // Oslo Business Forum Partner kick-off
+  "stripe-8", // Nordisk Film Kino, Gimle kino
+] as const;
+
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/prosjekter">): Promise<Metadata> {
@@ -41,7 +55,11 @@ export default async function ProjectsPage({
 
       <section className="bg-shell">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <CaseList items={page.items} />
+          <CaseList
+            items={page.items}
+            imageSlots={PROJECT_IMAGE_SLOTS}
+            locale={locale}
+          />
         </div>
       </section>
 

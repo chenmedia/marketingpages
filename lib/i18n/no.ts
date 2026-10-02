@@ -419,6 +419,20 @@ export const no: Dictionary = {
     filterAll: "Alle",
     items: [
       {
+        client: "Oslo Business Forum",
+        project: "Oslo Business Forum 2026",
+        kind: "Eventfoto",
+        context:
+          "Konferansen dokumentert fra hovedscenen til nettverksområdene og møtene mellom deltakerne.",
+      },
+      {
+        client: "Startuplab",
+        project: "CEO Lunch Roundtable",
+        kind: "Eventfoto",
+        context:
+          "En tett ledersamling dokumentert med samtalene, menneskene og miljøet rundt bordet.",
+      },
+      {
         client: "Snapchat",
         project: "Snap Session Frokostmøte",
         kind: "Eventfoto",
@@ -426,61 +440,32 @@ export const no: Dictionary = {
           "Frokostmøte i Oslo for annonsører og byråer, dokumentert fra første foredrag til siste kaffekopp.",
       },
       {
-        client: "Optiver",
-        project: "Pitch Event",
-        kind: "Eventfilm",
+        client: "Slottsfjell",
+        project: "Slottsfjell 2026",
+        kind: "Festivalfoto",
         context:
-          "Pitchkveld fanget på film, med energien i rommet og øyeblikkene som definerte kvelden.",
+          "Festivaldagene dokumentert med artistene, publikum, lysene og stemningen foran scenen.",
       },
       {
-        client: "Aktiv Eiendomsmegling",
-        project: "Pitch Event",
-        kind: "Eventfilm",
-        context: "Pitchkveld dokumentert med film til intern og ekstern bruk.",
+        client: "Startuplab",
+        project: "Summer Pitch Party",
+        kind: "Eventfoto",
+        context:
+          "Pitchene og sommerfesten fanget i en serie som viser både presentasjonene og livet mellom dem.",
       },
       {
-        client: "Varner x Levi's",
-        project: "Butikkevent",
-        kind: "Eventfilm",
+        client: "Oslo Business Forum",
+        project: "Partner kick-off 2026",
+        kind: "Eventfoto",
         context:
-          "Merkevareevent for Levi's hos Varner, med film laget for sosiale medier og intern bruk.",
-      },
-      {
-        client: "Ignite Procurement x Hurtigruten",
-        project: "Kundearrangement",
-        kind: "Eventfilm",
-        context:
-          "Kundearrangement dokumentert med film som løfter samarbeidet mellom to merkevarer.",
+          "Partnerarrangement dokumentert med foredrag, relasjoner og stemningen i rommet.",
       },
       {
         client: "Nordisk Film Kino",
-        project: "Eventfilm",
-        kind: "Eventfilm",
-        context: "Filmproduksjon for Nordisk Film Kino.",
-      },
-      {
-        client: "Av-og-til",
-        project: "Kampanjearrangement",
-        kind: "Eventfilm",
-        context: "Film for alkovettorganisasjonen Av-og-til.",
-      },
-      {
-        client: "DNT",
-        project: "Arrangementer",
-        kind: "Eventfoto",
-        context: "Dokumentasjon for Den Norske Turistforening.",
-      },
-      {
-        client: "OBOS",
-        project: "Arrangementer",
-        kind: "Eventfoto",
-        context: "Eventdokumentasjon for OBOS.",
-      },
-      {
-        client: "JCP",
-        project: "Eventproduksjoner",
-        kind: "Eventfoto",
-        context: "Foto for arrangementer produsert av eventbyrået JCP.",
+        project: "Colosseum og Gimle kino",
+        kind: "Interiørfoto",
+        context:
+          "Kinoenes særpreg dokumentert gjennom arkitektur, saler og detaljer fra Colosseum og Gimle.",
       },
     ],
   },
