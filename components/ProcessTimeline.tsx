@@ -10,7 +10,7 @@ export default function ProcessTimeline({ dict }: { dict: Dictionary }) {
   return (
     <section className="bg-ink text-cream">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <SectionLabel tone="light" number="04">
+        <SectionLabel tone="light" number="05">
           {process.label}
         </SectionLabel>
         <h2 className="display mt-4 max-w-xl text-3xl sm:text-4xl">
