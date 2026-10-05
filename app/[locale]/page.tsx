@@ -139,7 +139,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/* Tjenester — 3 kort med sjekklister, à la TONs «What we do» */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
-          <SectionLabel number="02">{dict.services.label}</SectionLabel>
+          <SectionLabel>{dict.services.label}</SectionLabel>
           <h2 className="display mt-4 text-3xl sm:text-4xl">
             {dict.services.heading}
           </h2>
@@ -203,7 +203,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <section className="bg-ink text-cream">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-2">
           <div>
-            <SectionLabel tone="light" number="03">
+            <SectionLabel tone="light">
               {dict.liveOn.label}
             </SectionLabel>
             <h2 className="display mt-4 text-2xl sm:text-3xl">
@@ -264,7 +264,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       {/* Arbeidet — kategorikort */}
       <section id="arbeid" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <SectionLabel number="04">{dict.work.label}</SectionLabel>
+        <SectionLabel>{dict.work.label}</SectionLabel>
         <h2 className="display mt-4 max-w-2xl text-3xl sm:text-4xl">
           {dict.work.heading}
         </h2>
@@ -329,7 +329,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             className="aspect-[4/5] w-full max-w-sm rounded-lg"
           />
           <div>
-            <SectionLabel number="05">{dict.about.label}</SectionLabel>
+            <SectionLabel>{dict.about.label}</SectionLabel>
             <h2 className="display mt-4 text-3xl sm:text-4xl">
               {dict.about.heading}
             </h2>
@@ -362,7 +362,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/* Hvem er Chen Media for? */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
-          <SectionLabel number="06">{dict.audience.label}</SectionLabel>
+          <SectionLabel>{dict.audience.label}</SectionLabel>
           <h2 className="display mt-4 text-3xl sm:text-4xl">
             {dict.audience.heading}
           </h2>
