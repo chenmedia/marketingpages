@@ -61,7 +61,9 @@ export default async function PlaceholderImage({
   */
   const objectPosition = image
     ? `${image.focal_x * 100}% ${image.focal_y * 100}%`
-    : undefined;
+    : def?.fallbackFocal && resolvedSrc === def.fallback
+      ? `${def.fallbackFocal[0] * 100}% ${def.fallbackFocal[1] * 100}%`
+      : undefined;
 
   return (
     <div className={`relative overflow-hidden ${className}`}>

@@ -1,4 +1,14 @@
 import { photo } from "@/lib/images/defaults";
+import {
+  HUB_IMAGES,
+  PHOTO_CATEGORIES,
+  PHOTO_PROJECTS,
+  categorySlot,
+  imageRef,
+  projectImages,
+  projectSlot,
+  projectsIn,
+} from "@/lib/photography";
 
 /*
   Hver bildeflate på nettsiden har et navn. Navnet er kontrakten mellom
@@ -30,7 +40,59 @@ export type SlotDef = {
   hasCaption?: boolean;
   /** Rent dekorativ flate: alt="" og aria-hidden */
   decorative?: boolean;
+  /** Fokuspunkt [x, y] for standardbildet, til databasen har sitt eget */
+  fallbackFocal?: readonly [number, number];
 };
+
+/*
+  Fotograferingssidene. Hvert prosjektbilde får sin egen slot, med bildet
+  fra Dropbox-utvalget som standard. Kategoriflisene og toppbildene låner
+  standardbildet fra et prosjekt, men er egne flater, så de kan byttes
+  uten at prosjektet endrer seg.
+*/
+function fromImage(ref: ReturnType<typeof imageRef>) {
+  return ref
+    ? { fallback: ref.src, fallbackAlt: ref.alt.no, fallbackFocal: ref.focal }
+    : { fallback: photo.lightshow, fallbackAlt: "Bilde fra et oppdrag" };
+}
+
+const PHOTO_SLOTS: SlotDef[] = [
+  {
+    slot: "fotografering-hero",
+    group: "Fotografering, oversikt",
+    label: "Toppbilde",
+    ratio: "bred",
+    ...fromImage(imageRef(HUB_IMAGES.hero[0], HUB_IMAGES.hero[1])),
+  },
+  ...HUB_IMAGES.combo.map((ref, i) => ({
+    slot: `fotografering-kombi-${i + 1}`,
+    group: "Fotografering, oversikt",
+    label: `Foto og video, bilde ${i + 1}`,
+    ratio: "4:5",
+    ...fromImage(imageRef(ref[0], ref[1])),
+  })),
+  ...PHOTO_CATEGORIES.map((category) => {
+    const first = projectsIn(category.key)[0];
+    return {
+      slot: categorySlot(category),
+      group: "Fotografering, kategorier",
+      label: category.title.no,
+      ratio: "3:2",
+      ...fromImage(first ? imageRef(first.id, 1) : undefined),
+    };
+  }),
+  ...PHOTO_PROJECTS.flatMap((project) =>
+    projectImages(project).map((image, i) => ({
+      slot: projectSlot(project, i + 1),
+      group: `Prosjekter, ${PHOTO_CATEGORIES.find((c) => c.key === project.category)?.title.no}`,
+      label: `${project.client}, ${project.project.no}${i === 0 ? " (cover)" : `, bilde ${i + 1}`}`,
+      ratio: i === 0 ? "3:2" : "fri",
+      fallback: image.src,
+      fallbackAlt: image.alt.no,
+      fallbackFocal: image.focal,
+    }))
+  ),
+];
 
 export const SLOTS: SlotDef[] = [
   // Forsiden, hero
@@ -262,6 +324,8 @@ export const SLOTS: SlotDef[] = [
     fallback: photo.epicStage,
     fallbackAlt: "Stillbilde fra eventfilm, scene og publikum",
   },
+
+  ...PHOTO_SLOTS,
 ];
 
 export const SLOT_BY_KEY = new Map(SLOTS.map((s) => [s.slot, s]));

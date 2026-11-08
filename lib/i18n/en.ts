@@ -415,7 +415,7 @@ export const en: Dictionary = {
   projectsPage: {
     kicker: "Projects",
     title: "The work, collected.",
-    lead: "Every assignment we show, in one place. Photo and film, from small breakfast seminars to big productions.",
+    lead: "A selection of our work, sorted by type of photography. From studio and runway to conferences, cars and sport.",
     filterAll: "All",
     items: [
       {

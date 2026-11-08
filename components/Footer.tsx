@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
+import { PHOTO_BASE_PATH, PHOTO_UI } from "@/lib/photography";
 import Logo from "./Logo";
 
 export default function Footer({
@@ -31,6 +32,11 @@ export default function Footer({
         <div className="space-y-2">
           <p className="meta-label text-sand">{dict.services.label}</p>
           <ul className="space-y-1 text-sm">
+            <li>
+              <Link href={`${base}${PHOTO_BASE_PATH}`} className="hover:text-butter">
+                {PHOTO_UI.nav[locale]}
+              </Link>
+            </li>
             <li>
               <Link href={`${base}/eventfoto`} className="hover:text-butter">
                 {dict.nav.photo}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { localePath, type Dictionary, type Locale } from "@/lib/i18n";
+import { PHOTO_BASE_PATH, PHOTO_UI } from "@/lib/photography";
 import LocaleSwitch from "./LocaleSwitch";
 import CtaButton from "./CtaButton";
 import Logo from "./Logo";
@@ -20,6 +21,11 @@ export default function Nav({
   */
   const home = localePath(locale);
   const services = [
+    {
+      href: localePath(locale, PHOTO_BASE_PATH),
+      label: PHOTO_UI.nav[locale],
+      sub: PHOTO_UI.navSub[locale],
+    },
     {
       href: localePath(locale, "/eventfoto"),
       label: dict.nav.photo,
