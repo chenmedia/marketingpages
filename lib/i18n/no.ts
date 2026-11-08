@@ -53,7 +53,7 @@ export const no: Dictionary = {
   services: {
     label: "Hva vi gjør",
     heading: "Tjenestene våre",
-    lead: "Foto er kjernen i det vi gjør. Video er i vekst, og digital markedsføring er på vei.",
+    lead: "Foto, video og digital markedsføring. Innhold som får merkevaren din sett, og kanalene som når ut med det.",
     cards: [
       {
         title: "Fotografering",
@@ -86,8 +86,7 @@ export const no: Dictionary = {
       },
       {
         title: "Digital markedsføring",
-        badge: "Kommer",
-        body: "Ikke en fast tjeneste ennå, men vi har allerede gitt råd til kunder om nettside, nyhetsbrev, CRM og strategi.",
+        body: "Innhold og kanaler som jobber sammen. Vi hjelper med nettside, nyhetsbrev, CRM og strategien som binder det sammen.",
         points: [
           "Sosiale medier og innholdsstrategi",
           "Nettside",

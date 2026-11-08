@@ -207,26 +207,26 @@ export const SLOTS: SlotDef[] = [
   {
     slot: "tjeneste-1",
     group: "Forsiden, tjenester",
-    label: "Tjenestekort 1",
+    label: "Tjenestekort 1, Fotografering",
     ratio: "3:2",
-    fallback: photo.festivalLife,
-    fallbackAlt: "Gjester samlet på festivalområdet",
+    // Studiokampanje: viser kampanje, studio og sport i ett bilde
+    ...fromImage(imageRef("nkf-studio", 2)),
   },
   {
     slot: "tjeneste-2",
     group: "Forsiden, tjenester",
-    label: "Tjenestekort 2",
+    label: "Tjenestekort 2, Videoproduksjon",
     ratio: "3:2",
-    fallback: photo.lightshow,
-    fallbackAlt: "Publikum mot scenen mens lysstrålene står ut i salen",
+    // Laser og bevegelse i salen, det mest filmatiske bildet i utvalget
+    ...fromImage(imageRef("slottsfjell", 1)),
   },
   {
     slot: "tjeneste-3",
     group: "Forsiden, tjenester",
-    label: "Tjenestekort 3",
+    label: "Tjenestekort 3, Digital markedsføring",
     ratio: "3:2",
-    fallback: photo.ringnesImsdal,
-    fallbackAlt: "Produkt holdt fram foran publikum under en aktivering",
+    // Livsstilsinnhold av typen som brukes i sosiale medier og kampanjer
+    ...fromImage(imageRef("via-vika", 3)),
   },
 
   // Forsiden, leveranse

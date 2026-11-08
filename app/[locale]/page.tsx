@@ -157,14 +157,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 className="aspect-[3/2] w-full"
               />
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="display flex flex-wrap items-center gap-x-3 gap-y-1 text-xl">
-                  {card.title}
-                  {card.badge && (
-                    <span className="meta-label rounded-full border border-ink/20 px-2.5 py-1 text-smoke">
-                      {card.badge}
-                    </span>
-                  )}
-                </h3>
+                <h3 className="display text-xl">{card.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-smoke">
                   {card.body}
                 </p>

@@ -28,10 +28,7 @@ export interface ServiceCard {
   points: string[];
   linkLabel: string;
   /** Undersiden kortet lenker til. «#kontakt» lenker til skjemaet på forsiden. */
-  slug: "fotografering" | "videoproduksjon" | "prosjekter" | "#kontakt";
-  /** Liten merkelapp over tittelen, f.eks. for en tjeneste som ikke tilbys aktivt ennå */
-  badge?: string;
-}
+  slug: "fotografering" | "videoproduksjon" | "prosjekter" | "#kontakt";}
 
 export interface Dictionary {
   meta: {

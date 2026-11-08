@@ -53,7 +53,7 @@ export const en: Dictionary = {
   services: {
     label: "What we do",
     heading: "Our services",
-    lead: "Photography is at the core of what we do. Video is growing, and digital marketing is on its way.",
+    lead: "Photography, video and digital marketing. Content that gets your brand seen, and the channels that carry it.",
     cards: [
       {
         title: "Photography",
@@ -86,8 +86,7 @@ export const en: Dictionary = {
       },
       {
         title: "Digital marketing",
-        badge: "Coming soon",
-        body: "Not a regular service yet, but we have already advised clients on websites, newsletters, CRM and strategy.",
+        body: "Content and channels that work together. We help with websites, newsletters, CRM and the strategy that ties it all together.",
         points: [
           "Social media and content strategy",
           "Websites",
