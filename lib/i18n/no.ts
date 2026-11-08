@@ -415,7 +415,7 @@ export const no: Dictionary = {
   projectsPage: {
     kicker: "Prosjekter",
     title: "Arbeidet, samlet.",
-    lead: "Alle oppdragene vi viser frem, på ett sted. Foto og film, fra små frokostmøter til store produksjoner.",
+    lead: "Et utvalg av oppdragene våre, sortert etter type fotografering. Fra studio og runway til konferanser, biler og sport.",
     filterAll: "Alle",
     items: [
       {

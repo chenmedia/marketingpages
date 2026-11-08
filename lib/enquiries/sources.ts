@@ -1,3 +1,5 @@
+import { PHOTO_BASE_PATH, PHOTO_CATEGORIES, categoryPath } from "@/lib/photography";
+
 /*
   Hvor en henvendelse kom fra, i lesbar form.
 
@@ -23,6 +25,10 @@ const PAGE_LABELS: Record<string, string> = {
   "/eventfilm": "Eventfilm",
   "/prosjekter": "Prosjekter",
   "/nyheter": "Nyheter",
+  [PHOTO_BASE_PATH]: "Fotografering",
+  ...Object.fromEntries(
+    PHOTO_CATEGORIES.map((c) => [categoryPath(c), `Fotografering, ${c.title.no}`])
+  ),
 };
 
 export function pageLabel(path: string | null): string {
