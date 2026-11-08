@@ -27,14 +27,13 @@ export interface ServiceCard {
   body: string;
   points: string[];
   linkLabel: string;
-  slug: "eventfoto" | "eventfilm" | "prosjekter";
+  slug: "fotografering" | "videoproduksjon" | "prosjekter";
 }
 
 export interface Dictionary {
   meta: {
     siteName: string;
     home: { title: string; description: string };
-    photo: { title: string; description: string };
     film: { title: string; description: string };
     projects: { title: string; description: string };
     news: { title: string; description: string };
@@ -83,7 +82,7 @@ export interface Dictionary {
     label: string;
     heading: string;
     lead: string;
-    cards: { title: string; sub: string; slug: "eventfoto" | "eventfilm" | "prosjekter" }[];
+    cards: { title: string; sub: string; slug: "fotografering" | "videoproduksjon" | "prosjekter" }[];
     linkLabel: string;
   };
   process: {
@@ -171,18 +170,6 @@ export interface Dictionary {
     tagline: string;
     rights: string;
     orgLabel: string;
-  };
-  photoPage: {
-    kicker: string;
-    title: string;
-    lead: string;
-    approach: { label: string; heading: string; body: string[] };
-    shotlist: { heading: string; body: string[] };
-    galleryLabel: string;
-    galleryHeading: string;
-    caseHighlights: CaseItem[];
-    faq: { label: string; heading: string; items: FaqItem[] };
-    cta: { heading: string; lead: string };
   };
   filmPage: {
     kicker: string;

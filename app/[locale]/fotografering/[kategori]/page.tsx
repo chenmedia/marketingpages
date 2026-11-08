@@ -10,12 +10,13 @@ import {
   categoryBySlug,
   categoryHeroSlot,
   categoryPath,
+  photoTiles,
   projectsIn,
 } from "@/lib/photography";
 import SectionLabel from "@/components/SectionLabel";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import PhotoProject from "@/components/PhotoProject";
-import PhotoCategoryGrid from "@/components/PhotoCategoryGrid";
+import CategoryGrid from "@/components/CategoryGrid";
 import ContactCTA from "@/components/ContactCTA";
 
 /*
@@ -83,16 +84,6 @@ export default async function PhotoCategoryPage({
                 ))}
               </ul>
             </div>
-            {category.key === "event" && (
-              <p className="mt-8">
-                <Link
-                  href={localePath(locale, "/eventfoto")}
-                  className="text-base underline underline-offset-4 hover:text-smoke"
-                >
-                  {ui.eventLink[locale]}
-                </Link>
-              </p>
-            )}
           </div>
           <PlaceholderImage
             slot={categoryHeroSlot(category)}
@@ -126,7 +117,12 @@ export default async function PhotoCategoryPage({
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionLabel number="02">{ui.more[locale]}</SectionLabel>
         <div className="mt-8">
-          <PhotoCategoryGrid categories={others} locale={locale} compact />
+          <CategoryGrid
+            tiles={photoTiles(locale, others)}
+            locale={locale}
+            seeMore={PHOTO_UI.hub.seeMore[locale]}
+            compact
+          />
         </div>
       </section>
 

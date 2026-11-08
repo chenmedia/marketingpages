@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, localePath } from "@/lib/i18n";
 import { alternatesFor } from "@/lib/site";
-import { PHOTO_BASE_PATH, PHOTO_CATEGORIES, PHOTO_UI } from "@/lib/photography";
+import { PHOTO_BASE_PATH, PHOTO_UI, photoTiles } from "@/lib/photography";
+import { VIDEO_BASE_PATH } from "@/lib/video";
 import SectionLabel from "@/components/SectionLabel";
 import PlaceholderImage from "@/components/PlaceholderImage";
-import PhotoCategoryGrid from "@/components/PhotoCategoryGrid";
+import CategoryGrid from "@/components/CategoryGrid";
 import ContactCTA from "@/components/ContactCTA";
 
 /*
@@ -86,7 +87,7 @@ export default async function PhotographyPage({
 
       {/* Kategoriene */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <PhotoCategoryGrid categories={PHOTO_CATEGORIES} locale={locale} />
+        <CategoryGrid tiles={photoTiles(locale)} locale={locale} seeMore={ui.seeMore[locale]} />
       </section>
 
       {/* Foto og video samme dag */}
@@ -110,7 +111,7 @@ export default async function PhotographyPage({
                 {ui.comboCta[locale]}
               </a>
               <a
-                href={localePath(locale, "/eventfilm")}
+                href={localePath(locale, VIDEO_BASE_PATH)}
                 className="meta-label inline-flex items-center rounded-full border border-cream px-6 py-3 transition-colors hover:bg-cream hover:text-ink"
               >
                 {ui.comboFilm[locale]}
