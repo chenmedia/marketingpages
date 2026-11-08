@@ -227,8 +227,8 @@ export const SLOTS: SlotDef[] = [
     group: "Forsiden, tjenester",
     label: "Tjenestekort 3, Digital markedsføring",
     ratio: "3:2",
-    // Mat og drikke på bordet, typisk innhold for sosiale medier
-    ...fromImage(imageRef("via-vika", 4)),
+    // Matbilde i reklamestil, slik innhold for sosiale medier ser ut
+    ...fromImage(imageRef("via-vika", 1)),
   },
 
   // Forsiden, leveranse
