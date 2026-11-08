@@ -217,8 +217,10 @@ export const SLOTS: SlotDef[] = [
     group: "Forsiden, tjenester",
     label: "Tjenestekort 2, Videoproduksjon",
     ratio: "3:2",
-    // Laser og bevegelse i salen, det mest filmatiske bildet i utvalget
-    ...fromImage(imageRef("slottsfjell", 1)),
+    // Bak kamera under et intervjuopptak: viser crewet i arbeid
+    fallback: "/portfolio/video/intervju-opptak.webp",
+    fallbackAlt: "Videokamera på stativ foran et intervju med tre personer i et opplyst studio",
+    fallbackFocal: [0.55, 0.6],
   },
   {
     slot: "tjeneste-3",
