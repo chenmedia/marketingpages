@@ -8,11 +8,6 @@ export const en: Dictionary = {
       description:
         "Chen Media shoots photo and film at conferences, launches and company events. You get content you will actually use.",
     },
-    photo: {
-      title: "Event photography | Chen Media",
-      description:
-        "Event photographer for businesses. We build a shot list from your schedule, work discreetly and deliver a fully edited selection.",
-    },
     film: {
       title: "Event film | Chen Media",
       description:
@@ -68,8 +63,8 @@ export const en: Dictionary = {
           "Discreet presence, no flash",
           "Edited selection in high resolution",
         ],
-        linkLabel: "More about event photography",
-        slug: "eventfoto",
+        linkLabel: "More about photography",
+        slug: "fotografering",
       },
       {
         title: "Event film",
@@ -79,8 +74,8 @@ export const en: Dictionary = {
           "Vertical cuts for social media",
           "Licensed music, cleared for your channels",
         ],
-        linkLabel: "More about event film",
-        slug: "eventfilm",
+        linkLabel: "More about video production",
+        slug: "videoproduksjon",
       },
       {
         title: "Photo and film together",
@@ -114,11 +109,11 @@ export const en: Dictionary = {
     heading: "From big brands to small breakfast seminars",
     lead: "Browse the work by event type, or see every project in one place.",
     cards: [
-      { title: "Event photo", sub: "Snapchat · DNT · OBOS · JCP", slug: "eventfoto" },
+      { title: "Event photo", sub: "Snapchat · DNT · OBOS · JCP", slug: "fotografering" },
       {
         title: "Event film",
         sub: "Optiver · Varner x Levi's · Nordisk Film Kino",
-        slug: "eventfilm",
+        slug: "videoproduksjon",
       },
       { title: "All projects", sub: "Photo and film in one place", slug: "prosjekter" },
     ],
@@ -252,81 +247,6 @@ export const en: Dictionary = {
     tagline: "Event photography and film for businesses",
     rights: "All rights reserved.",
     orgLabel: "Chen Media AS",
-  },
-  photoPage: {
-    kicker: "Event photography",
-    title: "The moments, documented.",
-    lead: "An event lasts a few hours. The images should last much longer and do a job in marketing, recruitment and internal communication.",
-    approach: {
-      label: "The approach",
-      heading: "Documentary, not staged",
-      body: [
-        "Good event photography is rarely about asking people to smile at the camera. We work documentary style, close enough to catch what actually happens and discreet enough that nobody notices us.",
-        "That means the stage and the speakers, but just as much the reactions in the room, the conversations between sessions and the details that make the event yours.",
-      ],
-    },
-    shotlist: {
-      heading: "The shot list is our insurance against chance",
-      body: [
-        "Before every job we turn your schedule into a concrete shot list: which moments, people and details must be secured, minute by minute. We build it with you about a month ahead.",
-        "During the event it gives us room to improvise. The planned images are secured, so we can spend the rest of the time on the moments nobody could have planned.",
-      ],
-    },
-    galleryLabel: "Work",
-    galleryHeading: "From the assignments",
-    caseHighlights: [
-      {
-        client: "Snapchat",
-        project: "Snap Session Breakfast Seminar",
-        kind: "Event photo",
-        context:
-          "Breakfast seminar for advertisers and agencies, from the first talk to the last cup of coffee.",
-      },
-      {
-        client: "DNT",
-        project: "Events",
-        kind: "Event photo",
-        context: "Documentation for the Norwegian Trekking Association.",
-      },
-      {
-        client: "OBOS",
-        project: "Events",
-        kind: "Event photo",
-        context: "Event documentation for OBOS.",
-      },
-      {
-        client: "JCP",
-        project: "Event productions",
-        kind: "Event photo",
-        context: "Photography for events produced by the event agency JCP.",
-      },
-    ],
-    faq: {
-      label: "Questions we often get",
-      heading: "Before you ask",
-      items: [
-        {
-          q: "How discreetly do you work during dinners and speeches?",
-          a: "We shoot without flash wherever we can, move along the edges of the room and time our movements to the programme. The goal is for guests to forget we're there. That's when the best images happen.",
-        },
-        {
-          q: "What about employees who prefer not to be photographed?",
-          a: "We sort that out in advance. We agree on a practical solution, like separate zones or discreet marking, and stick to it throughout the event.",
-        },
-        {
-          q: "What formats are the images delivered in?",
-          a: "Fully edited images in high resolution for print and web, in the formats you need. We agree on formats and delivery time before the event, not after.",
-        },
-        {
-          q: "Who owns the images, and what can we use them for?",
-          a: "The usage rights are spelled out in the quote: channels, duration and scope. So you know exactly what the images can be used for.",
-        },
-      ],
-    },
-    cta: {
-      heading: "Planning an event?",
-      lead: "Tell us the date and venue and we'll have a quick chat about what the images should do for you.",
-    },
   },
   filmPage: {
     kicker: "Event film",

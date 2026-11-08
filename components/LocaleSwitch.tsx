@@ -11,7 +11,7 @@ import {
 } from "@/lib/i18n";
 
 /*
-  Bytter språk og bevarer siden man står på (/eventfoto ↔ /en/eventfoto).
+  Bytter språk og bevarer siden man står på (/fotografering ↔ /en/fotografering).
 
   Norsk har ingen prefiks utad, så pathname er allerede den rene stien.
   Klikket setter også en cookie, slik at proxy.ts ikke sender brukeren

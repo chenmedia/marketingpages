@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
 import { PHOTO_BASE_PATH, PHOTO_UI } from "@/lib/photography";
+import { VIDEO_BASE_PATH, VIDEO_UI } from "@/lib/video";
 import Logo from "./Logo";
 
 export default function Footer({
@@ -38,13 +39,8 @@ export default function Footer({
               </Link>
             </li>
             <li>
-              <Link href={`${base}/eventfoto`} className="hover:text-butter">
-                {dict.nav.photo}
-              </Link>
-            </li>
-            <li>
-              <Link href={`${base}/eventfilm`} className="hover:text-butter">
-                {dict.nav.film}
+              <Link href={`${base}${VIDEO_BASE_PATH}`} className="hover:text-butter">
+                {VIDEO_UI.nav[locale]}
               </Link>
             </li>
           </ul>

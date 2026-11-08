@@ -63,7 +63,7 @@ export const enTon: Dictionary = {
         body: "Sharp, atmospheric images of every moment, keynotes, networking, workshops. No highlight is missed.",
         points: ["Full event coverage", "Fast editing", "Same-day delivery"],
         linkLabel: "More info",
-        slug: "eventfoto",
+        slug: "fotografering",
       },
       {
         title: "Content · Teams · Coordination",
@@ -74,7 +74,7 @@ export const enTon: Dictionary = {
           "Smooth collaboration",
         ],
         linkLabel: "More info",
-        slug: "eventfilm",
+        slug: "videoproduksjon",
       },
       {
         title: "Social content",
@@ -104,8 +104,8 @@ export const enTon: Dictionary = {
     heading: "Our work",
     lead: "From international trade shows to intimate company parties, explore the work by event type.",
     cards: [
-      { title: "Trade Shows & Expos", sub: "Trade shows · Exhibitions", slug: "eventfoto" },
-      { title: "Conferences", sub: "Congresses · Keynotes", slug: "eventfilm" },
+      { title: "Trade Shows & Expos", sub: "Trade shows · Exhibitions", slug: "fotografering" },
+      { title: "Conferences", sub: "Congresses · Keynotes", slug: "videoproduksjon" },
       { title: "Corporate Events", sub: "Company parties · Galas", slug: "prosjekter" },
       { title: "Festivals", sub: "Tomorrowland · Defqon.1 · more", slug: "prosjekter" },
     ],

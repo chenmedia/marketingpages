@@ -6,9 +6,9 @@ import { updateSession, withSessionCookies } from "@/lib/supabase/proxy";
 /*
   Språkruting. Filstrukturen er app/[locale]/, men utad har norsk ingen prefiks:
 
-    /eventfoto      -> rewrite til /no/eventfoto, adressefeltet står stille
-    /en/eventfoto   -> slipper rett gjennom
-    /no/eventfoto   -> 308 til /eventfoto, ellers svarer to URL-er likt og
+    /fotografering     -> rewrite til /no/fotografering, adressefeltet står stille
+    /en/fotografering  -> slipper rett gjennom
+    /no/fotografering  -> 308 til /fotografering, ellers svarer to URL-er likt og
                        Google teller duplisert innhold
 
   Rewrite, ikke redirect, er poenget: proxyen velger hvilken ferdigbygde side

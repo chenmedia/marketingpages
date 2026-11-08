@@ -1,4 +1,5 @@
 import { PHOTO_BASE_PATH, PHOTO_CATEGORIES, categoryPath } from "@/lib/photography";
+import { VIDEO_BASE_PATH, VIDEO_CATEGORIES, videoCategoryPath } from "@/lib/video";
 
 /*
   Hvor en henvendelse kom fra, i lesbar form.
@@ -21,11 +22,16 @@ export const FORM_LABELS: Record<string, string> = {
 */
 const PAGE_LABELS: Record<string, string> = {
   "/": "Forsiden",
+  // Gamle sider, beholdt så eldre henvendelser fortsatt leses riktig
   "/eventfoto": "Eventfoto",
   "/eventfilm": "Eventfilm",
   "/prosjekter": "Prosjekter",
   "/nyheter": "Nyheter",
   [PHOTO_BASE_PATH]: "Fotografering",
+  [VIDEO_BASE_PATH]: "Videoproduksjon",
+  ...Object.fromEntries(
+    VIDEO_CATEGORIES.map((c) => [videoCategoryPath(c), `Videoproduksjon, ${c.title.no}`])
+  ),
   ...Object.fromEntries(
     PHOTO_CATEGORIES.map((c) => [categoryPath(c), `Fotografering, ${c.title.no}`])
   ),

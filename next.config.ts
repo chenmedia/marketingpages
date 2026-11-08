@@ -16,6 +16,7 @@ import type { NextConfig } from "next";
     form-action      hindrer at et skjema postes til et fremmed domene
     connect-src      låser fetch/XHR til vårt eget og Supabase
     object-src       stenger <object> og <embed> helt
+    frame-src        kun Vimeo-spilleren, som lastes først når noen trykker play
 
   blob: og data: på img-src trengs av next/image.
 */
@@ -25,6 +26,7 @@ const csp = [
   "form-action 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
+  "frame-src https://player.vimeo.com",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
@@ -73,6 +75,19 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
+  },
+  /*
+    Eventfoto og eventfilm ble slått sammen i /fotografering og
+    /videoproduksjon. Gamle lenker og søkeresultater sendes videre. Disse
+    kjøres før proxy.ts, så språk-rewriten ser bare den nye adressen.
+  */
+  async redirects() {
+    return [
+      { source: "/eventfoto", destination: "/fotografering/event", permanent: true },
+      { source: "/en/eventfoto", destination: "/en/fotografering/event", permanent: true },
+      { source: "/eventfilm", destination: "/videoproduksjon", permanent: true },
+      { source: "/en/eventfilm", destination: "/en/videoproduksjon", permanent: true },
+    ];
   },
 };
 

@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/i18n";
+import { localePath, type Locale } from "@/lib/i18n";
 import { PROJECT_IMAGES, type ProjectImage } from "@/lib/photography-images";
 
 /*
@@ -26,7 +26,7 @@ export type CategoryKey =
 
 export interface PhotoCategory {
   key: CategoryKey;
-  /** URL-delen under /fotografering. Lik på begge språk, som /eventfoto. */
+  /** URL-delen under /fotografering. Lik på begge språk. */
   slug: string;
   title: Text;
   /** Én linje under flisen på oversiktssiden */
@@ -392,6 +392,17 @@ export function categoryHeroImage(key: CategoryKey): ProjectImage | undefined {
   )?.image;
 }
 
+/** Kategoriene som fliser, klare for CategoryGrid. */
+export function photoTiles(locale: Locale, categories = PHOTO_CATEGORIES) {
+  return categories.map((c) => ({
+    key: c.key,
+    title: c.title[locale],
+    teaser: c.teaser[locale],
+    href: localePath(locale, categoryPath(c)),
+    slot: categorySlot(c),
+  }));
+}
+
 /** Overskrifter og knapper som går igjen på fotosidene. */
 export const PHOTO_UI = {
   nav: { no: "Fotografering", en: "Photography" },
@@ -440,17 +451,13 @@ export const PHOTO_UI = {
       en: "If you need both photos and film, we deliver both from the same production day. You get a photo and video library that hangs together visually, without coordinating two separate productions.",
     },
     comboCta: { no: "Be om kombinert tilbud", en: "Ask for a combined quote" },
-    comboFilm: { no: "Se eventfilm", en: "See event film" },
+    comboFilm: { no: "Se videoproduksjon", en: "See video production" },
   },
   category: {
     breadcrumb: { no: "Fotografering", en: "Photography" },
     deliver: { no: "Dette leverer vi", en: "What we deliver" },
     projects: { no: "Utvalgte prosjekter", en: "Selected projects" },
     more: { no: "Andre kategorier", en: "Other categories" },
-    eventLink: {
-      no: "Les mer om hvordan vi jobber med eventfoto",
-      en: "Read more about how we work with event photography",
-    },
     cta: {
       heading: {
         no: "Fortell oss om prosjektet deres",

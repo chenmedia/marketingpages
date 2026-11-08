@@ -63,7 +63,7 @@ export const noTon: Dictionary = {
         body: "Skarpe, stemningsfulle bilder av hvert øyeblikk, keynotes, nettverking, workshops. Ingen høydepunkter går tapt.",
         points: ["Full dekning av arrangementet", "Rask redigering", "Levering samme dag"],
         linkLabel: "Mer info",
-        slug: "eventfoto",
+        slug: "fotografering",
       },
       {
         title: "Innhold · Team · Koordinering",
@@ -74,7 +74,7 @@ export const noTon: Dictionary = {
           "Sømløst samarbeid",
         ],
         linkLabel: "Mer info",
-        slug: "eventfilm",
+        slug: "videoproduksjon",
       },
       {
         title: "Sosialt innhold",
@@ -104,8 +104,8 @@ export const noTon: Dictionary = {
     heading: "Arbeidet vårt",
     lead: "Fra internasjonale messer til intime firmafester, utforsk arbeidet etter type arrangement.",
     cards: [
-      { title: "Messer og utstillinger", sub: "Messer · Utstillinger", slug: "eventfoto" },
-      { title: "Konferanser", sub: "Kongresser · Keynotes", slug: "eventfilm" },
+      { title: "Messer og utstillinger", sub: "Messer · Utstillinger", slug: "fotografering" },
+      { title: "Konferanser", sub: "Kongresser · Keynotes", slug: "videoproduksjon" },
       { title: "Firmaarrangementer", sub: "Firmafester · Galla", slug: "prosjekter" },
       { title: "Festivaler", sub: "Tomorrowland · Defqon.1 · flere", slug: "prosjekter" },
     ],

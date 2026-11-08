@@ -9,14 +9,14 @@ export type { Dictionary, Locale } from "./types";
 
 /*
   Norsk har ingen prefiks i URL-en, engelsk har /en. Filstrukturen bruker
-  fortsatt app/[locale]/, så proxy.ts rewriter /eventfoto til /no/eventfoto.
+  fortsatt app/[locale]/, så proxy.ts rewriter /fotografering til /no/fotografering.
   Alle interne lenker må bygges herfra, ellers lekker /no/ ut i markup.
 */
 export function localeBase(locale: Locale): string {
   return locale === defaultLocale ? "" : `/${locale}`;
 }
 
-/** Bygger en intern sti for et gitt språk. localePath("no", "/eventfoto") -> "/eventfoto" */
+/** Bygger en intern sti for et gitt språk. localePath("no", "/fotografering") -> "/fotografering" */
 export function localePath(locale: Locale, path = "/"): string {
   const base = localeBase(locale);
   if (path === "/") return base || "/";

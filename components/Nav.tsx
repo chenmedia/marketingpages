@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { localePath, type Dictionary, type Locale } from "@/lib/i18n";
 import { PHOTO_BASE_PATH, PHOTO_UI } from "@/lib/photography";
+import { VIDEO_BASE_PATH, VIDEO_UI } from "@/lib/video";
 import LocaleSwitch from "./LocaleSwitch";
 import CtaButton from "./CtaButton";
 import Logo from "./Logo";
@@ -27,14 +28,9 @@ export default function Nav({
       sub: PHOTO_UI.navSub[locale],
     },
     {
-      href: localePath(locale, "/eventfoto"),
-      label: dict.nav.photo,
-      sub: dict.nav.photoSub,
-    },
-    {
-      href: localePath(locale, "/eventfilm"),
-      label: dict.nav.film,
-      sub: dict.nav.filmSub,
+      href: localePath(locale, VIDEO_BASE_PATH),
+      label: VIDEO_UI.nav[locale],
+      sub: VIDEO_UI.navSub[locale],
     },
   ];
   /*

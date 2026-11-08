@@ -8,11 +8,6 @@ export const no: Dictionary = {
       description:
         "Chen Media tar bilder og film på konferanser, lanseringer og firmaevents. Du får innhold du faktisk får brukt.",
     },
-    photo: {
-      title: "Eventfoto | Chen Media",
-      description:
-        "Eventfotograf for bedrifter. Vi lager shot list av kjøreplanen din, jobber diskret og leverer et ferdig redigert utvalg.",
-    },
     film: {
       title: "Eventfilm | Chen Media",
       description:
@@ -68,8 +63,8 @@ export const no: Dictionary = {
           "Diskret tilstedeværelse uten blits",
           "Redigert utvalg i høy oppløsning",
         ],
-        linkLabel: "Mer om eventfoto",
-        slug: "eventfoto",
+        linkLabel: "Mer om fotografering",
+        slug: "fotografering",
       },
       {
         title: "Eventfilm",
@@ -79,8 +74,8 @@ export const no: Dictionary = {
           "Vertikale kutt til sosiale medier",
           "Lisensiert musikk, klarert for kanalene",
         ],
-        linkLabel: "Mer om eventfilm",
-        slug: "eventfilm",
+        linkLabel: "Mer om videoproduksjon",
+        slug: "videoproduksjon",
       },
       {
         title: "Foto og film samlet",
@@ -114,11 +109,11 @@ export const no: Dictionary = {
     heading: "Fra store merkevarer til små frokostmøter",
     lead: "Bla gjennom arbeidet etter type arrangement, eller se alle prosjektene samlet.",
     cards: [
-      { title: "Eventfoto", sub: "Snapchat · DNT · OBOS · JCP", slug: "eventfoto" },
+      { title: "Eventfoto", sub: "Snapchat · DNT · OBOS · JCP", slug: "fotografering" },
       {
         title: "Eventfilm",
         sub: "Optiver · Varner x Levi's · Nordisk Film Kino",
-        slug: "eventfilm",
+        slug: "videoproduksjon",
       },
       { title: "Alle prosjekter", sub: "Foto og film på ett sted", slug: "prosjekter" },
     ],
@@ -252,81 +247,6 @@ export const no: Dictionary = {
     tagline: "Eventfoto og film for bedrifter",
     rights: "Alle rettigheter forbeholdt.",
     orgLabel: "Chen Media AS",
-  },
-  photoPage: {
-    kicker: "Eventfoto",
-    title: "Øyeblikkene, dokumentert.",
-    lead: "Et arrangement varer noen timer. Bildene skal vare mye lenger og gjøre en jobb i markedsføring, rekruttering og internkommunikasjon.",
-    approach: {
-      label: "Tilnærmingen",
-      heading: "Dokumentarisk, ikke oppstilt",
-      body: [
-        "Gode eventbilder handler sjelden om å be folk smile til kameraet. Vi jobber dokumentarisk, tett nok på til å fange det som faktisk skjer og diskret nok til at ingen legger merke til oss.",
-        "Det betyr scenen og foredragsholderne, men like mye reaksjonene i salen, samtalene i pausene og detaljene som gjør arrangementet til deres.",
-      ],
-    },
-    shotlist: {
-      heading: "Shot listen er forsikringen vår mot tilfeldigheter",
-      body: [
-        "Før hvert oppdrag gjør vi kjøreplanen din om til en konkret shot list: hvilke øyeblikk, personer og detaljer som må sikres, minutt for minutt. Den lager vi sammen med deg cirka en måned før.",
-        "Under arrangementet gir den oss ro til å improvisere. De planlagte bildene er sikret, så vi kan bruke resten av tiden på øyeblikkene ingen kunne planlagt.",
-      ],
-    },
-    galleryLabel: "Arbeid",
-    galleryHeading: "Fra oppdragene",
-    caseHighlights: [
-      {
-        client: "Snapchat",
-        project: "Snap Session Frokostmøte",
-        kind: "Eventfoto",
-        context:
-          "Frokostmøte for annonsører og byråer, fra første foredrag til siste kaffekopp.",
-      },
-      {
-        client: "DNT",
-        project: "Arrangementer",
-        kind: "Eventfoto",
-        context: "Dokumentasjon for Den Norske Turistforening.",
-      },
-      {
-        client: "OBOS",
-        project: "Arrangementer",
-        kind: "Eventfoto",
-        context: "Eventdokumentasjon for OBOS.",
-      },
-      {
-        client: "JCP",
-        project: "Eventproduksjoner",
-        kind: "Eventfoto",
-        context: "Foto for arrangementer produsert av eventbyrået JCP.",
-      },
-    ],
-    faq: {
-      label: "Spørsmål vi ofte får",
-      heading: "Før du spør",
-      items: [
-        {
-          q: "Hvor diskret jobber dere under middager og taler?",
-          a: "Vi fotograferer uten blits der det går, beveger oss langs kantene av rommet og timer bevegelsene etter programmet. Målet er at gjestene glemmer at vi er der. Det er da de beste bildene oppstår.",
-        },
-        {
-          q: "Hva med ansatte som ikke vil bli fotografert?",
-          a: "Det avklarer vi på forhånd. Vi blir enige om en praktisk løsning, for eksempel egne soner eller diskret markering, og respekterer den gjennom hele arrangementet.",
-        },
-        {
-          q: "Hvilke formater leveres bildene i?",
-          a: "Ferdig redigerte bilder i høy oppløsning for trykk og web, i de formatene dere trenger. Formater og leveringstid avtaler vi før arrangementet, ikke etterpå.",
-        },
-        {
-          q: "Hvem eier bildene, og hva kan vi bruke dem til?",
-          a: "Bruksrettighetene står tydelig i tilbudet: kanaler, varighet og omfang. Da vet dere nøyaktig hva bildene kan brukes til.",
-        },
-      ],
-    },
-    cta: {
-      heading: "Planlegger dere et arrangement?",
-      lead: "Fortell oss dato og sted, så tar vi en kort prat om hva bildene skal gjøre for dere.",
-    },
   },
   filmPage: {
     kicker: "Eventfilm",

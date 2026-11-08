@@ -19,7 +19,7 @@ const hreflang: Record<Locale, string> = { no: "nb", en: "en" };
 
 /*
   Bygger canonical + hreflang for én side. `path` er den språknøytrale stien,
-  altså "/eventfoto" eller "/" for forsiden.
+  altså "/fotografering" eller "/" for forsiden.
 
   x-default peker på norsk, som er det Google serverer når ingen språk matcher.
 */

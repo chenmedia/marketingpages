@@ -11,6 +11,14 @@ import {
   projectSlot,
   projectsIn,
 } from "@/lib/photography";
+import {
+  VIDEO_CATEGORIES,
+  VIDEO_PROJECTS,
+  videoCategorySlot,
+  videoPosterFallback,
+  videoPosterSlot,
+  videoProjectsIn,
+} from "@/lib/video";
 
 /*
   Hver bildeflate på nettsiden har et navn. Navnet er kontrakten mellom
@@ -57,6 +65,30 @@ function fromImage(ref: ReturnType<typeof imageRef>) {
     ? { fallback: ref.src, fallbackAlt: ref.alt.no, fallbackFocal: ref.focal }
     : { fallback: photo.lightshow, fallbackAlt: "Bilde fra et oppdrag" };
 }
+
+/*
+  Plakatene til filmene. Standardbildet er lånt fra et fotooppdrag, derfor
+  «midlertidig» i etiketten, til et ekte stillbilde fra filmen er lastet opp.
+*/
+const VIDEO_SLOTS: SlotDef[] = [
+  ...VIDEO_CATEGORIES.map((category) => {
+    const first = videoProjectsIn(category.key)[0];
+    return {
+      slot: videoCategorySlot(category),
+      group: "Videoproduksjon, kategorier",
+      label: category.title.no,
+      ratio: "3:2",
+      ...fromImage(first ? videoPosterFallback(first) : undefined),
+    };
+  }),
+  ...VIDEO_PROJECTS.map((project) => ({
+    slot: videoPosterSlot(project),
+    group: "Videoproduksjon, filmplakater",
+    label: `${project.client}, ${project.project.no} (midlertidig bilde)`,
+    ratio: "16:9",
+    ...fromImage(videoPosterFallback(project)),
+  })),
+];
 
 const PHOTO_SLOTS: SlotDef[] = [
   {
@@ -316,25 +348,21 @@ export const SLOTS: SlotDef[] = [
     fallbackAlt: "Kai Chen bak kamera under et oppdrag",
   },
 
-  // Tjenestesidene
-  {
-    slot: "eventfoto-hero",
-    group: "Tjenestesider",
-    label: "Eventfoto, toppbilde",
-    ratio: "4:5",
-    fallback: photo.lightshow,
-    fallbackAlt: "Publikum og scene sett fra salen",
-  },
+  /*
+    Videoproduksjon. Slot-navnet eventfilm-hero er beholdt fra den gamle
+    eventfilmsiden, så et bilde som allerede er lastet opp blir stående.
+  */
   {
     slot: "eventfilm-hero",
-    group: "Tjenestesider",
-    label: "Eventfilm, toppbilde",
-    ratio: "16:9",
+    group: "Videoproduksjon, oversikt",
+    label: "Toppbilde",
+    ratio: "bred",
     fallback: photo.epicStage,
     fallbackAlt: "Stillbilde fra eventfilm, scene og publikum",
   },
 
   ...PHOTO_SLOTS,
+  ...VIDEO_SLOTS,
 ];
 
 export const SLOT_BY_KEY = new Map(SLOTS.map((s) => [s.slot, s]));
