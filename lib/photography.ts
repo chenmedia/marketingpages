@@ -161,8 +161,8 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     client: "Norges Kampsportforbund",
     project: { no: "Pressebilder i studio", en: "Studio press images" },
     context: {
-      no: "Pressebilder av forbundets utøvere, fotografert i studio med kontrollert lys.",
-      en: "Press images of the federation's athletes, photographed in a studio with controlled light.",
+      no: "Pressebilder av utøvere fra flere kampsporter, med spark, kast og rød stoffbakgrunn i studio.",
+      en: "Press images of athletes from several martial arts, with kicks, throws and a red fabric backdrop in the studio.",
     },
   },
   {
@@ -213,8 +213,8 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     client: "Handmade Dresses Oslo",
     project: { no: "Kolleksjon", en: "Collection" },
     context: {
-      no: "Kjoler fotografert for nettbutikk og sosiale medier.",
-      en: "Dresses photographed for the online store and social media.",
+      no: "Brudekjoler og selskapskjoler fotografert ute i byen, i blonder, tyll, perler og sateng.",
+      en: "Bridal and evening dresses photographed around the city, in lace, tulle, pearls and satin.",
     },
   },
   {
@@ -223,8 +223,8 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     client: "AWAN",
     project: { no: "Runway-visning", en: "Runway show" },
     context: {
-      no: "Visningen fra catwalken, med modeller, antrekk og stemningen rundt.",
-      en: "The show from the catwalk, with models, outfits and the atmosphere around it.",
+      no: "Modeller og antrekk fra visningen, fotografert i en rå industrihall.",
+      en: "Models and outfits from the show, photographed in a raw industrial hall.",
     },
   },
   {
@@ -242,20 +242,20 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     id: "wineandbarrels",
     category: "interior",
     client: "Wine and Barrels",
-    project: { no: "Vinskap på Sommerro og Hotel Continental", en: "Wine cabinets at Sommerro and Hotel Continental" },
+    project: { no: "Vinvegger og vinrom", en: "Wine walls and wine rooms" },
     context: {
-      no: "Vinskapene fotografert der de står, i to av Oslos mest kjente hotell.",
-      en: "The wine cabinets photographed where they stand, in two of Oslo's best-known hotels.",
+      no: "Vinvegger og vinrom fotografert der de står, blant annet på Sommerro og Hotel Continental.",
+      en: "Wine walls and wine rooms photographed where they stand, including at Sommerro and Hotel Continental.",
     },
   },
   {
     id: "via-vika",
     category: "interior",
-    client: "Via Vika",
-    project: { no: "Mathall og restaurant", en: "Food hall and restaurant" },
+    client: "Via Village",
+    project: { no: "Mathall og bar", en: "Food hall and bar" },
     context: {
-      no: "Lokalet, servering og atmosfære i Via Vika.",
-      en: "The space, the food and the atmosphere at Via Vika.",
+      no: "Baren, de lange bordene under lysslyngene og stemningen når mathallen er full.",
+      en: "The bar, the long tables under the string lights and the buzz when the food hall is full.",
     },
   },
   // Bil
@@ -286,8 +286,8 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     client: "OBOS",
     project: { no: "Summer League Finals 3x3", en: "Summer League Finals 3x3" },
     context: {
-      no: "Finalene i 3x3-basket, med kamp, publikum og premieutdeling.",
-      en: "The 3x3 basketball finals, with games, crowd and the prize ceremony.",
+      no: "Finalene i 3x3-basket, med drivs mot kurven, returkamper og jubel på banen.",
+      en: "The 3x3 basketball finals, with drives to the basket, rebounds and celebrations on court.",
     },
   },
   {
@@ -296,18 +296,18 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     client: "Norges Kampsportforbund",
     project: { no: "Talentsamlinger", en: "Talent camps" },
     context: {
-      no: "Trening og utøvere på forbundets samlinger for unge talenter.",
-      en: "Training and athletes at the federation's camps for young talents.",
+      no: "Unge utøvere på matta, med sparring, drill og trenere på forbundets talentsamlinger.",
+      en: "Young athletes on the mats, with sparring, drills and coaches at the federation's talent camps.",
     },
   },
   {
     id: "vpt",
     category: "sport",
     client: "VPT",
-    project: { no: "Trening", en: "Training" },
+    project: { no: "Padelturnering", en: "Padel tournament" },
     context: {
-      no: "Trening og bevegelse, fotografert for bruk i sosiale medier og på nett.",
-      en: "Training and movement, photographed for social media and the web.",
+      no: "Kamper, jubel og lagbilde fra en innendørs padelturnering.",
+      en: "Matches, celebrations and a group photo from an indoor padel tournament.",
     },
   },
 ];
