@@ -209,8 +209,8 @@ export const SLOTS: SlotDef[] = [
     group: "Forsiden, tjenester",
     label: "Tjenestekort 1, Fotografering",
     ratio: "3:2",
-    // Studiokampanje: viser kampanje, studio og sport i ett bilde
-    ...fromImage(imageRef("nkf-studio", 2)),
+    // Snap Focus i Vulkan Arena: scene, lys og publikum i ett bilde
+    ...fromImage(imageRef("snap-focus", 1)),
   },
   {
     slot: "tjeneste-2",
@@ -225,8 +225,8 @@ export const SLOTS: SlotDef[] = [
     group: "Forsiden, tjenester",
     label: "Tjenestekort 3, Digital markedsføring",
     ratio: "3:2",
-    // Livsstilsinnhold av typen som brukes i sosiale medier og kampanjer
-    ...fromImage(imageRef("via-vika", 3)),
+    // Mat og drikke på bordet, typisk innhold for sosiale medier
+    ...fromImage(imageRef("via-vika", 4)),
   },
 
   // Forsiden, leveranse
