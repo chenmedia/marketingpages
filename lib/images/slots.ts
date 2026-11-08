@@ -3,6 +3,8 @@ import {
   HUB_IMAGES,
   PHOTO_CATEGORIES,
   PHOTO_PROJECTS,
+  categoryHeroImage,
+  categoryHeroSlot,
   categorySlot,
   imageRef,
   projectImages,
@@ -81,6 +83,13 @@ const PHOTO_SLOTS: SlotDef[] = [
       ...fromImage(first ? imageRef(first.id, 1) : undefined),
     };
   }),
+  ...PHOTO_CATEGORIES.map((category) => ({
+    slot: categoryHeroSlot(category),
+    group: "Fotografering, kategorier",
+    label: `${category.title.no}, toppbilde`,
+    ratio: "4:5",
+    ...fromImage(categoryHeroImage(category.key)),
+  })),
   ...PHOTO_PROJECTS.flatMap((project) =>
     projectImages(project).map((image, i) => ({
       slot: projectSlot(project, i + 1),

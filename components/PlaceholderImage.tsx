@@ -72,7 +72,9 @@ export default async function PlaceholderImage({
         alt={alt}
         fill
         sizes={sizes}
-        priority={priority}
+        /* priority er deprecated i Next 16; eager + høy prioritet er erstatningen */
+        loading={priority ? "eager" : undefined}
+        fetchPriority={priority ? "high" : undefined}
         placeholder={image?.blur_data_url ? "blur" : "empty"}
         blurDataURL={image?.blur_data_url ?? undefined}
         style={objectPosition ? { objectPosition } : undefined}

@@ -8,8 +8,8 @@ import {
   PHOTO_CATEGORIES,
   PHOTO_UI,
   categoryBySlug,
+  categoryHeroSlot,
   categoryPath,
-  categorySlot,
   projectsIn,
 } from "@/lib/photography";
 import SectionLabel from "@/components/SectionLabel";
@@ -95,7 +95,7 @@ export default async function PhotoCategoryPage({
             )}
           </div>
           <PlaceholderImage
-            slot={categorySlot(category)}
+            slot={categoryHeroSlot(category)}
             locale={locale}
             label={category.title[locale]}
             sizes="(max-width: 768px) 100vw, 45vw"

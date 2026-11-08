@@ -127,6 +127,114 @@ export const PROJECT_IMAGES: Record<string, ProjectImage[]> = {
       }
     }
   ],
+  "hongqi": [
+    {
+      "src": "/portfolio/bil/hongqi-1.webp",
+      "width": 2400,
+      "height": 1600,
+      "focal": [
+        0.55,
+        0.6
+      ],
+      "alt": {
+        "no": "Hvit Hongqi EHS7 elbil parkert på brostein foran mørk bygning med trær",
+        "en": "White Hongqi EHS7 electric SUV parked on cobblestones in front of a dark building with trees"
+      }
+    },
+    {
+      "src": "/portfolio/bil/hongqi-2.webp",
+      "width": 2400,
+      "height": 1600,
+      "focal": [
+        0.74,
+        0.62
+      ],
+      "alt": {
+        "no": "Hongqi EHS7 sett bakfra på en gate omgitt av moderne boligblokker i Oslo",
+        "en": "Hongqi EHS7 seen from the rear on a street surrounded by modern Oslo apartment blocks"
+      }
+    },
+    {
+      "src": "/portfolio/bil/hongqi-3.webp",
+      "width": 1600,
+      "height": 2400,
+      "focal": [
+        0.4,
+        0.5
+      ],
+      "alt": {
+        "no": "Nærbilde av Hongqi-logoen og rødt baklys med regndråper på hvit lakk",
+        "en": "Close-up of the Hongqi badge and red tail light with raindrops on white paint"
+      }
+    },
+    {
+      "src": "/portfolio/bil/hongqi-4.webp",
+      "width": 1600,
+      "height": 2400,
+      "focal": [
+        0.5,
+        0.62
+      ],
+      "alt": {
+        "no": "Ratt og digitalt dashbord i interiøret til Hongqi EHS7",
+        "en": "Steering wheel and digital dashboard inside the Hongqi EHS7"
+      }
+    }
+  ],
+  "nio-foma": [
+    {
+      "src": "/portfolio/bil/nio-foma-1.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.33,
+        0.58
+      ],
+      "alt": {
+        "no": "Blå NIO EL7 elbil utstilt i lyst showroom i NIO House mens gjester snakker i bakgrunnen",
+        "en": "Blue NIO EL7 electric SUV on display in the bright NIO House showroom as guests talk in the background"
+      }
+    },
+    {
+      "src": "/portfolio/bil/nio-foma-2.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.6,
+        0.5
+      ],
+      "alt": {
+        "no": "Tre gjester i samtale ved et ståbord foran en blå NIO-bil i showroomet",
+        "en": "Three guests talking at a cocktail table in front of a blue NIO car in the showroom"
+      }
+    },
+    {
+      "src": "/portfolio/bil/nio-foma-3.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.45,
+        0.6
+      ],
+      "alt": {
+        "no": "Inngangen til NIO House på Karl Johans gate pyntet med rosa ballongsøyler",
+        "en": "Entrance to NIO House on Karl Johans gate decorated with pink balloon columns"
+      }
+    },
+    {
+      "src": "/portfolio/bil/nio-foma-4.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.6,
+        0.6
+      ],
+      "alt": {
+        "no": "Publikum sitter på trappen under NIO-logoen og følger med på foredrag",
+        "en": "Audience seated on the staircase beneath the NIO logo listening to a talk"
+      }
+    }
+  ],
   "nkf-studio": [
     {
       "src": "/portfolio/studio/nkf-studio-1.webp",
@@ -235,6 +343,60 @@ export const PROJECT_IMAGES: Record<string, ProjectImage[]> = {
       }
     }
   ],
+  "obf": [
+    {
+      "src": "/portfolio/event/obf-1.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.35,
+        0.55
+      ],
+      "alt": {
+        "no": "Panelsamtale på scenen under Oslo Business Forum foran en fullsatt sal i blått lys",
+        "en": "Panel discussion on stage at Oslo Business Forum in front of a packed, blue-lit hall"
+      }
+    },
+    {
+      "src": "/portfolio/event/obf-2.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.47,
+        0.6
+      ],
+      "alt": {
+        "no": "Kvinnelig foredragsholder gestikulerer på hovedscenen med ordet «Leadership» på skjermen bak",
+        "en": "Female speaker gesturing on the main stage with the word “Leadership” on the screen behind her"
+      }
+    },
+    {
+      "src": "/portfolio/event/obf-3.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.6,
+        0.6
+      ],
+      "alt": {
+        "no": "Tusenvis av deltakere strømmer gjennom konferansehallen sett ovenfra",
+        "en": "Thousands of attendees streaming through the conference concourse, seen from above"
+      }
+    },
+    {
+      "src": "/portfolio/event/obf-4.webp",
+      "width": 2400,
+      "height": 1600,
+      "focal": [
+        0.62,
+        0.6
+      ],
+      "alt": {
+        "no": "Deltakere med navneskilt i samtale ved en utstillerstand på messeområdet",
+        "en": "Attendees with name badges chatting at an exhibitor stand in the expo area"
+      }
+    }
+  ],
   "obos-3x3": [
     {
       "src": "/portfolio/sport/obos-3x3-1.webp",
@@ -314,6 +476,114 @@ export const PROJECT_IMAGES: Record<string, ProjectImage[]> = {
       "alt": {
         "no": "Mann i grønn genser og mørke bukser går ned trappen foran store steinsøyler",
         "en": "Man in a green top and dark trousers walking down steps in front of large stone columns"
+      }
+    }
+  ],
+  "slottsfjell": [
+    {
+      "src": "/portfolio/event/slottsfjell-1.webp",
+      "width": 2400,
+      "height": 1600,
+      "focal": [
+        0.5,
+        0.55
+      ],
+      "alt": {
+        "no": "Grønne laserstråler over et tettpakket publikum under Broiler-konserten på Slottsfjell 2025",
+        "en": "Green laser beams over a packed crowd during Broiler's show at Slottsfjell 2025"
+      }
+    },
+    {
+      "src": "/portfolio/event/slottsfjell-2.webp",
+      "width": 1600,
+      "height": 2400,
+      "focal": [
+        0.45,
+        0.45
+      ],
+      "alt": {
+        "no": "Tyla opptrer på Slottsfjell-scenen foran en knallrød skjerm",
+        "en": "Tyla performing on the Slottsfjell stage in front of a bright red screen"
+      }
+    },
+    {
+      "src": "/portfolio/event/slottsfjell-3.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.6,
+        0.55
+      ],
+      "alt": {
+        "no": "Stort festivalpublikum foran Slottsfjell-skiltet med grønne trær bak",
+        "en": "Large festival crowd in front of the Slottsfjell sign with green trees behind"
+      }
+    },
+    {
+      "src": "/portfolio/event/slottsfjell-4.webp",
+      "width": 1365,
+      "height": 2048,
+      "focal": [
+        0.5,
+        0.4
+      ],
+      "alt": {
+        "no": "Glad festivalgjest med armene i været på festivalområdet",
+        "en": "Joyful festival-goer with arms raised on the festival grounds"
+      }
+    }
+  ],
+  "snap-focus": [
+    {
+      "src": "/portfolio/event/snap-focus-1.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.52,
+        0.45
+      ],
+      "alt": {
+        "no": "Snapchat-scene med gule lyskastere og statistikk på storskjerm foran fullt publikum på Vulkan Arena",
+        "en": "Snapchat stage with yellow light beams and stats on the big screen in front of a full audience at Vulkan Arena"
+      }
+    },
+    {
+      "src": "/portfolio/event/snap-focus-2.webp",
+      "width": 2048,
+      "height": 1365,
+      "focal": [
+        0.48,
+        0.4
+      ],
+      "alt": {
+        "no": "Snap Focus-banner under Vulkan Arena-skiltet, fotografert gjennom grønne blader",
+        "en": "Snap Focus banner below the Vulkan Arena sign, photographed through green leaves"
+      }
+    },
+    {
+      "src": "/portfolio/event/snap-focus-3.webp",
+      "width": 1365,
+      "height": 2048,
+      "focal": [
+        0.5,
+        0.55
+      ],
+      "alt": {
+        "no": "Foredragsholder presenterer en skaperprofil på Snapchat under Snap School",
+        "en": "Speaker presenting a creator's Snapchat profile at Snap School"
+      }
+    },
+    {
+      "src": "/portfolio/event/snap-focus-4.webp",
+      "width": 1365,
+      "height": 2048,
+      "focal": [
+        0.48,
+        0.5
+      ],
+      "alt": {
+        "no": "Smilende kvinne i publikum stiller spørsmål med mikrofon under Q&A",
+        "en": "Smiling woman in the audience asking a question with a microphone during the Q&A"
       }
     }
   ],

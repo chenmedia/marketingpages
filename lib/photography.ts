@@ -192,8 +192,8 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     client: "Snapchat",
     project: { no: "Snap Focus, Oslo og Stockholm", en: "Snap Focus, Oslo and Stockholm" },
     context: {
-      no: "Snapchats konferanse for annonsører, fotografert på Vulkan i Oslo og i Stockholm.",
-      en: "Snapchat's conference for advertisers, photographed at Vulkan in Oslo and in Stockholm.",
+      no: "Snapchats konferanse for annonsører og skapere, med scene, workshops og spørsmål fra salen.",
+      en: "Snapchat's conference for advertisers and creators, with stage, workshops and questions from the floor.",
     },
   },
   {
@@ -265,8 +265,8 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     client: "Hongqi",
     project: { no: "Innhold til sosiale medier", en: "Social media content" },
     context: {
-      no: "Bilbilder på lokasjon for Hongqi i Norge, laget for sosiale medier.",
-      en: "Cars on location for Hongqi in Norway, made for social media.",
+      no: "Hongqi EHS7 fotografert på lokasjon i Oslo, med helhet, linjer og detaljer til sosiale medier.",
+      en: "The Hongqi EHS7 photographed on location in Oslo, with the full car, its lines and details for social media.",
     },
   },
   {
@@ -275,8 +275,8 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     client: "NIO",
     project: { no: "Partnerkveld med FOMA", en: "Partner evening with FOMA" },
     context: {
-      no: "Bilene og gjestene på NIOs partnerkveld sammen med FOMA.",
-      en: "The cars and guests at NIO's partner evening with FOMA.",
+      no: "Bilene og gjestene i NIO House på Karl Johan, under partnerkvelden sammen med FOMA.",
+      en: "The cars and guests at NIO House on Karl Johan, during the partner evening with FOMA.",
     },
   },
   // Sport
@@ -357,16 +357,39 @@ export const HUB_IMAGES = {
   hero: ["obf", 1],
   combo: [
     ["slottsfjell", 2],
-    ["snap-focus", 2],
+    ["snap-focus", 3],
   ],
 } as const satisfies {
   hero: readonly [string, number];
   combo: readonly (readonly [string, number])[];
 };
 
-/** Flisen på oversiktssiden og toppbildet på kategorisiden. */
+/** Flisen på oversiktssiden. */
 export function categorySlot(category: PhotoCategory): string {
   return `foto-kategori-${category.key}`;
+}
+
+/** Det høye toppbildet på kategorisiden. */
+export function categoryHeroSlot(category: PhotoCategory): string {
+  return `foto-kategori-${category.key}-topp`;
+}
+
+/*
+  Standardbildet til toppen av kategorisiden. Første stående bilde som ikke
+  er et cover, så toppen ikke viser det samme bildet som første prosjekt
+  rett under. Finnes ikke det, tas første stående bilde, ellers bilde to.
+*/
+export function categoryHeroImage(key: CategoryKey): ProjectImage | undefined {
+  const all = projectsIn(key).flatMap((p) =>
+    projectImages(p).map((image, i) => ({ image, isCover: i === 0 }))
+  );
+  const portrait = (x: { image: ProjectImage }) => x.image.height > x.image.width;
+  return (
+    all.find((x) => portrait(x) && !x.isCover) ??
+    all.find(portrait) ??
+    all.find((x) => !x.isCover) ??
+    all[0]
+  )?.image;
 }
 
 /** Overskrifter og knapper som går igjen på fotosidene. */

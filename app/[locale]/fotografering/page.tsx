@@ -37,14 +37,16 @@ export default async function PhotographyPage({
     <>
       {/* Toppbilde med tekst oppå */}
       <section className="relative isolate overflow-hidden bg-ink text-cream">
-        <PlaceholderImage
-          slot="fotografering-hero"
-          locale={locale}
-          label={ui.title[locale]}
-          sizes="100vw"
-          priority
-          className="absolute inset-0 -z-10 h-full w-full"
-        />
+        <div className="absolute inset-0 -z-10">
+          <PlaceholderImage
+            slot="fotografering-hero"
+            locale={locale}
+            label={ui.title[locale]}
+            sizes="100vw"
+            priority
+            className="h-full w-full"
+          />
+        </div>
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/85 via-ink/50 to-ink/30" />
         <div className="mx-auto flex min-h-[70svh] max-w-6xl flex-col justify-end px-4 pb-16 pt-32 sm:px-6 sm:pb-20">
           <SectionLabel tone="light">{ui.kicker[locale]}</SectionLabel>
