@@ -150,9 +150,11 @@ export const SLOTS: SlotDef[] = [
     slot: "hero-2",
     group: "Forsiden, hero",
     label: "Polaroid 2",
-    ratio: "4:5",
-    fallback: photo.vocalist,
-    fallbackAlt: "Vokalist i nærbilde på opplyst scene",
+    ratio: "4:3",
+    // Oslo Proptech Summit, Glasshallen sett ovenfra
+    fallback: "/portfolio/event/ops-hero.webp",
+    fallbackAlt: "Fullsatt Glasshallen under Oslo Proptech Summit, sett ovenfra mot scenen",
+    fallbackFocal: [0.5, 0.55],
     hasCaption: true,
   },
   {
