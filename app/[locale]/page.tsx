@@ -29,17 +29,17 @@ export async function generateMetadata({
 }
 
 /*
-  Bildetekster fra faktisk prosjektkontekst i filnavnene (KarpeWorld 2026).
+  Bildetekstene er standard; en bildetekst lagt inn i /admin/bilder vinner.
 
-  left/top plasserer polaroidene ved siden av hverandre i stedet for oppå
-  hverandre. De faller nedover mot høyre, og hvert kort ligger under naboen
-  til venstre. Begge deler er der for bildetekstene: de sitter nede til
-  venstre på kortet, så et nabokort som lå over ville dekket dem.
+  Plasseringen er målt fra tonmedia.com: en klynge av tre kort i stedet for
+  en rad. Stort kort oppe til venstre, ett til høyre litt ned, og ett nederst
+  midt mellom dem. Midtkortet ligger øverst, så bildeteksten («Oslo Proptech
+  Summit») ikke dekkes av kortet under.
 */
 const polaroids = [
-  { slot: "hero-1", caption: "KarpeWorld · Oslo", float: "float-a", left: "0%", top: 0 },
-  { slot: "hero-2", caption: "Oslo Proptech Summit", float: "float-b", left: "25%", top: 44 },
-  { slot: "hero-3", caption: "Red Bull · aktivering", float: "float-c", left: "50%", top: 88 },
+  { slot: "hero-1", caption: "KarpeWorld · Oslo", float: "float-a", place: "left-0 top-0 w-[62%]" },
+  { slot: "hero-2", caption: "Oslo Proptech Summit", float: "float-b", place: "right-0 top-[22%] z-20 w-[56%]" },
+  { slot: "hero-3", caption: "Red Bull · aktivering", float: "float-c", place: "bottom-0 left-[14%] z-10 w-[58%]" },
 ] as const;
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -60,7 +60,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     <>
       {/* Hero à la TON: tekst venstre, polaroid-stabel høyre */}
       <section className="mx-auto max-w-6xl px-4 pb-14 pt-12 sm:px-6 sm:pt-16">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="@container">
             <p className="meta-label inline-flex items-center gap-2 rounded-full border border-ink/15 px-3 py-1.5 text-smoke">
               <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-ink" />
@@ -100,26 +100,21 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </div>
           </div>
 
-          {/* Polaroider på rad — flytende, med bildetekster som TONs */}
-          <div className="relative mx-auto hidden w-full lg:block" aria-hidden>
-            <div className="relative h-[400px]">
+          {/* Polaroid-klynge som TONs, også på mobil (under teksten) */}
+          <div className="relative mx-auto w-full" aria-hidden>
+            <div className="relative h-[460px] lg:h-[600px]">
               {polaroids.map((polaroid, i) => (
                 <div
                   key={polaroid.slot}
-                  className={`absolute rounded-lg border border-ink/10 bg-cream p-2 pb-9 shadow-lg ${polaroid.float}`}
-                  style={{
-                    top: `${polaroid.top}px`,
-                    left: polaroid.left,
-                    width: "50%",
-                    zIndex: polaroids.length - i,
-                  }}
+                  className={`absolute rounded-lg border border-ink/10 bg-cream p-2.5 pb-9 shadow-2xl shadow-ink/25 ${polaroid.place} ${polaroid.float}`}
                 >
                   <PlaceholderImage
                     slot={polaroid.slot}
                     locale={locale}
                     label=""
-                    sizes="(max-width: 1024px) 0px, 340px"
-                    className="aspect-[4/3] w-full"
+                    sizes="(max-width: 1024px) 60vw, 380px"
+                    priority={i === 0}
+                    className="aspect-[4/3] w-full rounded-sm"
                   />
                   <p className="meta-label absolute inset-x-3 bottom-2.5 truncate text-smoke">
                     {captions[i]}
