@@ -38,8 +38,8 @@ export async function generateMetadata({
 */
 const polaroids = [
   { slot: "hero-1", caption: "KarpeWorld · Oslo", float: "float-a", left: "0%", top: 0 },
-  { slot: "hero-2", caption: "KarpeWorld · scenen", float: "float-b", left: "29%", top: 34 },
-  { slot: "hero-3", caption: "Red Bull · aktivering", float: "float-c", left: "58%", top: 68 },
+  { slot: "hero-2", caption: "Oslo Proptech Summit", float: "float-b", left: "25%", top: 44 },
+  { slot: "hero-3", caption: "Red Bull · aktivering", float: "float-c", left: "50%", top: 88 },
 ] as const;
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -60,7 +60,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     <>
       {/* Hero à la TON: tekst venstre, polaroid-stabel høyre */}
       <section className="mx-auto max-w-6xl px-4 pb-14 pt-12 sm:px-6 sm:pt-16">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div className="@container">
             <p className="meta-label inline-flex items-center gap-2 rounded-full border border-ink/15 px-3 py-1.5 text-smoke">
               <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-ink" />
@@ -102,7 +102,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
           {/* Polaroider på rad — flytende, med bildetekster som TONs */}
           <div className="relative mx-auto hidden w-full lg:block" aria-hidden>
-            <div className="relative h-[300px]">
+            <div className="relative h-[400px]">
               {polaroids.map((polaroid, i) => (
                 <div
                   key={polaroid.slot}
@@ -110,7 +110,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                   style={{
                     top: `${polaroid.top}px`,
                     left: polaroid.left,
-                    width: "42%",
+                    width: "50%",
                     zIndex: polaroids.length - i,
                   }}
                 >
@@ -118,7 +118,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                     slot={polaroid.slot}
                     locale={locale}
                     label=""
-                    sizes="(max-width: 1024px) 0px, 210px"
+                    sizes="(max-width: 1024px) 0px, 340px"
                     className="aspect-[4/3] w-full"
                   />
                   <p className="meta-label absolute inset-x-3 bottom-2.5 truncate text-smoke">
