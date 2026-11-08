@@ -131,7 +131,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       <PhotoTicker alt={dict.ticker.alt} locale={locale} />
 
-      {/* Tjenester — 3 kort med sjekklister, à la TONs «What we do» */}
+      {/* Tjenester: foto, video og digital markedsføring (kommer), med sjekklister */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
           <SectionLabel number="02">{dict.services.label}</SectionLabel>
@@ -157,7 +157,14 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 className="aspect-[3/2] w-full"
               />
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="display text-xl">{card.title}</h3>
+                <h3 className="display flex flex-wrap items-center gap-x-3 gap-y-1 text-xl">
+                  {card.title}
+                  {card.badge && (
+                    <span className="meta-label rounded-full border border-ink/20 px-2.5 py-1 text-smoke">
+                      {card.badge}
+                    </span>
+                  )}
+                </h3>
                 <p className="mt-3 text-base leading-relaxed text-smoke">
                   {card.body}
                 </p>
@@ -183,7 +190,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                   ))}
                 </ul>
                 <Link
-                  href={`${base}/${card.slug}`}
+                  href={card.slug.startsWith("#") ? `${base}${card.slug}` : `${base}/${card.slug}`}
                   className="meta-label mt-5 inline-block border-b-2 border-ink pb-1 transition-colors hover:text-smoke"
                 >
                   {card.linkLabel} →
