@@ -38,7 +38,7 @@ export const no: Dictionary = {
     cta: "Be om tilbud",
   },
   hero: {
-    badge: "Ledig for arrangementer i Oslo og resten av Norge",
+    badge: "Ledig i Norge, Europa og resten av verden",
     title: "Arrangementet ditt, sett gjennom fotografens",
     titleAccent: "øyne.",
     lead: "Profesjonell foto og film for konferanser, messer og firmaevents.\nFå redigerte bilder klare til bruk allerede dagen etter",
@@ -111,6 +111,12 @@ export const no: Dictionary = {
       "Levering til avtalt tid",
     ],
     cta: "Slik jobber vi",
+    formatMain: "Redigert utvalg",
+    formats: [
+      { name: "Sosiale medier", ratio: "9:16" },
+      { name: "Web", ratio: "16:9" },
+      { name: "Trykk", ratio: "A4" },
+    ],
   },
   work: {
     label: "Arbeidet vårt",
@@ -166,13 +172,15 @@ export const no: Dictionary = {
     body: [
       "Det er meg du møter bak kameraet. Bak meg står Chen Media AS, som gjør eventfoto og merkevarefoto for bedrifter og arrangører.",
       "Jeg mener et godt arrangement fortjener mer enn en mappe full av bilder. Derfor bygger jeg Chen Media rundt to ting samtidig: håndverket foran kamera, og innholdet dere sitter igjen med etterpå.",
-      "Når det er som travlest, er jeg allerede på plass. Når alle venter på høydepunktet, har jeg det allerede.",
     ],
+    quote: "Når det er som travlest, er jeg allerede på plass. Når alle venter på høydepunktet, har jeg det allerede.",
     facts: [
-      { value: "Foto + film", caption: "Én partner for hele leveransen" },
-      { value: "Oslo", caption: "Base i Oslo, oppdrag i hele Norge" },
-      { value: "AS", caption: "Ryddige avtaler og fakturering" },
+      { value: "10+ år", caption: "Erfaring bak kameraet" },
+      { value: "Ett team", caption: "Foto og film under ett tak" },
+      { value: "Oslo", caption: "Base i Oslo, oppdrag i Norge, Europa og resten av verden" },
     ],
+    portraitCaption: "Kai Chen · Grunnlegger av Chen Media",
+    cta: "Ta en prat med Kai",
   },
   audience: {
     label: "Hvem vi jobber for",
@@ -196,6 +204,7 @@ export const no: Dictionary = {
         items: ["Eventbyråer og produksjonsselskap", "Organisasjoner og foreninger", "Kulturaktører"],
       },
     ],
+    cta: "Kjenner du deg igjen? Ta kontakt",
   },
   contact: {
     label: "Kontakt",

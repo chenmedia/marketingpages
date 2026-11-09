@@ -98,6 +98,8 @@ export const noTon: Dictionary = {
     ],
     points: ["AI analyserer", "Skriver innlegg", "7 innlegg · 3 plattformer · 4 toner"],
     cta: "Les mer",
+    formatMain: no.liveOn.formatMain,
+    formats: no.liveOn.formats,
   },
   work: {
     label: "Arbeidet vårt",
@@ -149,13 +151,15 @@ export const noTon: Dictionary = {
     body: [
       "I mer enn 14 år har jeg fotografert arrangementer, fra små firmafester til internasjonale messer i København, Berlin og Amsterdam.",
       "Jeg mener et godt arrangement fortjener mer enn en mappe full av bilder. Derfor bygger jeg Chen Media: en kombinasjon av profesjonell fotografering og smarte innholdsverktøy som virkelig gir arrangementet ditt liv.",
-      "Når arrangementet er på sitt travleste, er jeg allerede der. Når alle venter på høydepunktet, har jeg allerede fanget det.",
     ],
+    quote: "Når arrangementet er på sitt travleste, er jeg allerede der. Når alle venter på høydepunktet, har jeg allerede fanget det.",
     facts: [
       { value: "2000+", caption: "Eventer" },
       { value: "14", caption: "Års erfaring" },
       { value: "NO + EU", caption: "Steder" },
     ],
+    portraitCaption: no.about.portraitCaption,
+    cta: no.about.cta,
   },
   audience: {
     label: "Hvem vi jobber for",
@@ -187,6 +191,7 @@ export const noTon: Dictionary = {
         ],
       },
     ],
+    cta: no.audience.cta,
   },
   contact: {
     label: "Kontakt",

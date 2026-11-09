@@ -38,7 +38,7 @@ export const en: Dictionary = {
     cta: "Request a quote",
   },
   hero: {
-    badge: "Available for events in Oslo and across Norway",
+    badge: "Available in Norway, Europe and beyond",
     title: "Your event, seen through the eyes of a",
     titleAccent: "photographer.",
     lead: "Photo and film for conferences, trade shows and corporate events.\nGet edited images ready to use the very next day",
@@ -111,6 +111,12 @@ export const en: Dictionary = {
       "Delivery on time",
     ],
     cta: "How we work",
+    formatMain: "Edited selection",
+    formats: [
+      { name: "Social media", ratio: "9:16" },
+      { name: "Web", ratio: "16:9" },
+      { name: "Print", ratio: "A4" },
+    ],
   },
   work: {
     label: "Our work",
@@ -166,13 +172,15 @@ export const en: Dictionary = {
     body: [
       "I'm the one you'll meet behind the camera. Behind me is Chen Media AS, doing event and brand photography for businesses and organisers.",
       "I believe a good event deserves more than a folder full of photos. That's why I'm building Chen Media around two things at once: the craft in front of the camera, and the content you're left with afterwards.",
-      "When the event is at its busiest, I'm already in place. When everyone is waiting for the highlight, I already have it.",
     ],
+    quote: "When the event is at its busiest, I'm already in place. When everyone is waiting for the highlight, I already have it.",
     facts: [
-      { value: "Photo + film", caption: "One partner for the whole delivery" },
-      { value: "Oslo", caption: "Based in Oslo, working across Norway" },
-      { value: "AS", caption: "Proper contracts and invoicing" },
+      { value: "10+ yrs", caption: "Experience behind the camera" },
+      { value: "One team", caption: "Photo and film under one roof" },
+      { value: "Oslo", caption: "Based in Oslo, working across Norway, Europe and beyond" },
     ],
+    portraitCaption: "Kai Chen · Founder of Chen Media",
+    cta: "Talk to Kai",
   },
   audience: {
     label: "Who we work for",
@@ -196,6 +204,7 @@ export const en: Dictionary = {
         items: ["Event agencies and production companies", "Organisations and associations", "Cultural institutions"],
       },
     ],
+    cta: "Sound familiar? Get in touch",
   },
   contact: {
     label: "Contact",

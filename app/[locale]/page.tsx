@@ -131,7 +131,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       <PhotoTicker alt={dict.ticker.alt} locale={locale} />
 
-      {/* Tjenester: foto, video og digital markedsføring (kommer), med sjekklister */}
+      {/* Tjenester: foto, video og digital markedsføring */}
       <section className="mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6">
         {/* Overskrift venstre, ingress høyre: samme venstrekant som resten av siden */}
         <div className="grid gap-x-12 gap-y-4 md:grid-cols-[1fr_1fr] md:items-end">
@@ -212,64 +212,102 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </section>
 
-      {/* Mørk differensiator — «arrangementet lever videre» */}
+      {/*
+        Mørk differensiator: «arrangementet lever videre».
+
+        Bildene viser påstanden i teksten: ett oppdrag, levert i flere formater.
+        Formatrammene har ekte sideforhold (9:16, 16:9, A4) og samme høyde.
+        Kolonnebreddene er sideforholdet ganget med 16, så høyden blir lik
+        uten at noe må regnes ut i JavaScript.
+      */}
       <section className="bg-ink text-cream">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-2">
-          <div>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-24 pt-20 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:pb-28 lg:pt-24">
+          <div className="lg:col-span-5">
             <SectionLabel tone="light" number="03">
               {dict.liveOn.label}
             </SectionLabel>
-            <h2 className="display mt-4 text-2xl sm:text-3xl">
+            <h2 className="display mt-4 text-3xl text-balance sm:text-4xl">
               {dict.liveOn.heading}
             </h2>
-            {dict.liveOn.body.map((paragraph) => (
-              <p key={paragraph} className="mt-4 text-base leading-relaxed text-sand">
+            {dict.liveOn.body.map((paragraph, i) => (
+              <p
+                key={paragraph}
+                className={`mt-5 max-w-lg leading-relaxed text-pretty text-sand ${
+                  i === 0 ? "text-base sm:text-lg" : "text-base"
+                }`}
+              >
                 {paragraph}
               </p>
             ))}
-            <ul className="mt-6 space-y-2">
-              {dict.liveOn.points.map((point) => (
-                <li key={point} className="flex items-start gap-2 text-sm">
-                  <svg
-                    viewBox="0 0 12 12"
-                    className="mt-1 size-3 shrink-0"
-                    fill="none"
-                    aria-hidden
-                  >
-                    <path
-                      d="M2 6.5L4.5 9L10 3.5"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  {point}
+
+            {/* Leveransen som nummerert liste, ikke enda en sjekkliste */}
+            <ol className="mt-8 max-w-lg border-t border-cream/15">
+              {dict.liveOn.points.map((point, i) => (
+                <li
+                  key={point}
+                  className="flex items-baseline gap-5 border-b border-cream/15 py-4"
+                >
+                  <span className="meta-label tabular-nums text-sand">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-base">{point}</span>
                 </li>
               ))}
-            </ul>
-            <div className="mt-8">
+            </ol>
+
+            <div className="mt-10">
               <Link
                 href={`${base}#prosess`}
-                className="meta-label inline-block rounded-full border border-cream px-6 py-3 transition-colors hover:bg-cream hover:text-ink"
+                className="meta-label group inline-flex items-center gap-2 rounded-full border border-cream px-6 py-3 transition duration-200 hover:bg-cream hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream active:scale-[0.98]"
               >
-                {dict.liveOn.cta} →
+                {dict.liveOn.cta}
+                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             </div>
           </div>
-          <div className="space-y-4">
-            <PlaceholderImage
-              slot="leveranse-hoved"
-              locale={locale}
-              label="Leveranse, redigert utvalg"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="aspect-[4/3] w-full rounded-lg"
-            />
-            <div className="grid grid-cols-3 gap-4">
-              {/* Tre stående utsnitt av samme oppdrag: sosiale medier, web og trykk */}
-              <PlaceholderImage slot="leveranse-some" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
-              <PlaceholderImage slot="leveranse-web" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
-              <PlaceholderImage slot="leveranse-trykk" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
+
+          <div className="lg:col-span-7">
+            <figure className="relative">
+              <PlaceholderImage
+                slot="leveranse-hoved"
+                locale={locale}
+                label="Leveranse, redigert utvalg"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className="aspect-[4/3] w-full rounded-2xl"
+              />
+              <figcaption className="meta-label absolute left-3 top-3 rounded-full bg-ink/75 px-3 py-1.5 text-cream backdrop-blur-sm">
+                {dict.liveOn.formatMain}
+              </figcaption>
+            </figure>
+
+            <div className="mt-4 grid grid-cols-[9fr_28.4fr_11.3fr] items-start gap-3 sm:gap-4">
+              {(
+                [
+                  { slot: "leveranse-some", aspect: "aspect-[9/16]" },
+                  { slot: "leveranse-web", aspect: "aspect-[16/9]" },
+                  { slot: "leveranse-trykk", aspect: "aspect-[1/1.414]" },
+                ] as const
+              ).map((frame, i) => (
+                <figure key={frame.slot} className="min-w-0">
+                  <PlaceholderImage
+                    slot={frame.slot}
+                    locale={locale}
+                    label=""
+                    sizes="(max-width: 1024px) 50vw, 30vw"
+                    className={`${frame.aspect} w-full rounded-lg`}
+                  />
+                  <figcaption className="mt-2.5 leading-tight">
+                    <span className="meta-label block [overflow-wrap:anywhere] text-cream">
+                      {dict.liveOn.formats[i]?.name}
+                    </span>
+                    <span className="meta-label mt-0.5 block tabular-nums text-sand">
+                      {dict.liveOn.formats[i]?.ratio}
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </div>
         </div>
@@ -331,92 +369,133 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <LogoWall label={dict.clients.label} />
       </section>
 
-      {/* Om Kai */}
+      {/*
+        Om Kai. Portrettet får bildetekst, den sterkeste setningen løftes ut
+        som sitat, og seksjonen ender med en personlig vei til kontaktskjemaet.
+      */}
       <section id="om" className="scroll-mt-24 bg-shell">
-        <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-20 sm:px-6 md:grid-cols-[1fr_1.3fr]">
-          <PlaceholderImage
-            slot="om-portrett"
-            locale={locale}
-            label="Kai Chen, portrett"
-            sizes="(max-width: 768px) 100vw, 33vw"
-            className="aspect-[4/5] w-full max-w-sm rounded-lg"
-          />
-          <div>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-24 pt-20 sm:px-6 lg:grid-cols-12 lg:gap-16">
+          <figure className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
+            <PlaceholderImage
+              slot="om-portrett"
+              locale={locale}
+              label="Kai Chen, portrett"
+              sizes="(max-width: 1024px) 28rem, 40vw"
+              className="aspect-[4/5] w-full rounded-2xl"
+            />
+            <figcaption className="meta-label absolute bottom-3 left-3 right-3 w-fit rounded-full bg-ink/75 px-3 py-1.5 text-cream backdrop-blur-sm">
+              {dict.about.portraitCaption}
+            </figcaption>
+          </figure>
+
+          <div className="lg:col-span-7">
             <SectionLabel number="05">{dict.about.label}</SectionLabel>
-            <h2 className="display mt-4 text-3xl sm:text-4xl">
+            <h2 className="display mt-4 text-4xl text-balance sm:text-5xl">
               {dict.about.heading}
             </h2>
-            {dict.about.body.map((paragraph) => (
+            {dict.about.body.map((paragraph, i) => (
               <p
                 key={paragraph}
-                className="mt-5 max-w-xl text-base leading-relaxed text-smoke"
+                className={`max-w-xl leading-relaxed text-pretty ${
+                  i === 0 ? "mt-6 text-lg text-ink" : "mt-4 text-base text-smoke"
+                }`}
               >
                 {paragraph}
               </p>
             ))}
-            <dl className="mt-10 grid gap-6 sm:grid-cols-3">
+
+            <blockquote className="mt-8 max-w-xl border-l-2 border-ink pl-5">
+              <p className="text-xl font-semibold leading-snug tracking-tight text-balance sm:text-2xl">
+                {dict.about.quote}
+              </p>
+            </blockquote>
+
+            <dl className="mt-10 grid max-w-xl gap-4 sm:grid-cols-3 sm:gap-6">
               {dict.about.facts.map((fact) => (
-                <div key={fact.caption} className="border-t-2 border-ink pt-3">
-                  <dt className="display text-xl">{fact.value}</dt>
-                  <dd className="mt-1 text-xs leading-relaxed text-smoke">
+                <div
+                  key={fact.caption}
+                  className="flex items-baseline justify-between gap-6 border-t border-ink/15 pt-4 sm:block"
+                >
+                  <dt className="display shrink-0 text-2xl tabular-nums sm:text-3xl">{fact.value}</dt>
+                  <dd className="text-right text-sm leading-relaxed text-smoke sm:mt-1.5 sm:text-left">
                     {fact.caption}
                   </dd>
                 </div>
               ))}
             </dl>
+
+            <Link
+              href={`${base}#kontakt`}
+              className="meta-label group mt-10 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-cream transition duration-200 hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink active:scale-[0.98]"
+            >
+              {dict.about.cta}
+              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
           </div>
         </div>
       </section>
 
       <div id="prosess" className="scroll-mt-24">
-        <ProcessTimeline dict={dict} />
+        <ProcessTimeline dict={dict} number="06" />
       </div>
 
-      {/* Hvem er Chen Media for? */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="text-center">
-          <SectionLabel number="06">{dict.audience.label}</SectionLabel>
-          <h2 className="display mt-4 text-3xl sm:text-4xl">
-            {dict.audience.heading}
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-smoke">
-            {dict.audience.lead}
-          </p>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {dict.audience.groups.map((group, i) => (
-            <div key={group.title}>
-              <PlaceholderImage
-                slot={`publikum-${i + 1}`}
-                locale={locale}
-                label={group.title}
-                sizes="(max-width: 768px) 100vw, 25vw"
-                className="aspect-[4/3] w-full rounded-lg"
-              />
-              <h3 className="display mt-4 text-lg">{group.title}</h3>
-              <ul className="mt-3 space-y-1.5">
-                {group.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-smoke">
-                    <svg
-                      viewBox="0 0 12 12"
-                      className="mt-1 size-3 shrink-0"
-                      fill="none"
-                      aria-hidden
-                    >
-                      <path
-                        d="M2 6.5L4.5 9L10 3.5"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+      {/*
+        Hvem er Chen Media for? Overskriften står fast i venstre kolonne mens
+        de fire målgruppene scroller forbi på desktop. Undergruppene vises som
+        etiketter, ikke som enda en sjekkliste.
+      */}
+      <section className="mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28">
+              <SectionLabel number="07">{dict.audience.label}</SectionLabel>
+              <h2 className="display mt-4 text-3xl text-balance sm:text-4xl">
+                {dict.audience.heading}
+              </h2>
+              <p className="mt-5 max-w-sm text-base leading-relaxed text-pretty text-smoke">
+                {dict.audience.lead}
+              </p>
+              <Link
+                href={`${base}#kontakt`}
+                className="meta-label group mt-8 inline-flex items-center gap-2 border-b-2 border-ink pb-1 transition-colors hover:text-smoke focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+              >
+                {dict.audience.cta}
+                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
             </div>
-          ))}
+          </div>
+
+          <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:col-span-8">
+            {dict.audience.groups.map((group, i) => (
+              <li key={group.title}>
+                <PlaceholderImage
+                  slot={`publikum-${i + 1}`}
+                  locale={locale}
+                  label={group.title}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
+                  className="aspect-[4/3] w-full rounded-xl"
+                />
+                <p className="meta-label mt-5 tabular-nums text-olive">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="display mt-1.5 text-xl text-balance">{group.title}</h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-md bg-shell px-2.5 py-1.5 text-sm text-smoke"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

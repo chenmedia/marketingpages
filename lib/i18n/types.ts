@@ -77,6 +77,9 @@ export interface Dictionary {
     body: string[];
     points: string[];
     cta: string;
+    /** Merkelapp på hovedbildet og formatene under, i samme rekkefølge som bildeflatene */
+    formatMain: string;
+    formats: { name: string; ratio: string }[];
   };
   work: {
     label: string;
@@ -96,13 +99,21 @@ export interface Dictionary {
     label: string;
     heading: string;
     body: string[];
+    /** Den sterkeste setningen, vist som sitat under brødteksten */
+    quote: string;
     facts: { value: string; caption: string }[];
+    /** Bildetekst på portrettet */
+    portraitCaption: string;
+    /** Lenke til kontaktskjemaet */
+    cta: string;
   };
   audience: {
     label: string;
     heading: string;
     lead: string;
     groups: { title: string; items: string[] }[];
+    /** Lenke til kontaktskjemaet under overskriften */
+    cta: string;
   };
   contact: {
     label: string;

@@ -253,15 +253,15 @@ export const SLOTS: SlotDef[] = [
     slot: "leveranse-web",
     group: "Forsiden, leveranse",
     label: "Utsnitt til web",
-    ratio: "9:16",
+    ratio: "16:9",
     fallback: photo.ringnesImsdal,
-    fallbackAlt: "Stående utsnitt fra merkevareaktivering",
+    fallbackAlt: "Liggende utsnitt fra merkevareaktivering",
   },
   {
     slot: "leveranse-trykk",
     group: "Forsiden, leveranse",
     label: "Utsnitt til trykk",
-    ratio: "9:16",
+    ratio: "A4 (1:1,41)",
     fallback: photo.lightshow,
     fallbackAlt: "Stående utsnitt av lysshow over publikum",
   },
@@ -291,20 +291,36 @@ export const SLOTS: SlotDef[] = [
     fallbackAlt: "Kai Chen, portrett",
   },
 
-  // Forsiden, publikum
-  ...[1, 2, 3, 4].map((n) => ({
-    slot: `publikum-${n}`,
+  // Forsiden, publikum: ett bilde per målgruppe, valgt så bildet viser det tittelen sier
+  {
+    slot: "publikum-1",
     group: "Forsiden, publikum",
-    label: `Målgruppe ${n}`,
+    label: "Målgruppe 1, Konferanser og fagdager",
     ratio: "4:3",
-    fallback: [photo.vocalist, photo.festivalLife, photo.ringnesImsdal, photo.crewLogistics][n - 1],
-    fallbackAlt: [
-      "Foredragsholder på scenen",
-      "Gjester i samtale under et arrangement",
-      "Merkevareaktivering under et arrangement",
-      "Crew og logistikk bak kulissene",
-    ][n - 1],
-  })),
+    ...fromImage(imageRef("obf", 1)),
+  },
+  {
+    slot: "publikum-2",
+    group: "Forsiden, publikum",
+    label: "Målgruppe 2, Firmaevents og fester",
+    ratio: "4:3",
+    ...fromImage(imageRef("via-vika", 3)),
+  },
+  {
+    slot: "publikum-3",
+    group: "Forsiden, publikum",
+    label: "Målgruppe 3, Lanseringer og merkevarer",
+    ratio: "4:3",
+    ...fromImage(imageRef("nio-foma", 1)),
+  },
+  {
+    slot: "publikum-4",
+    group: "Forsiden, publikum",
+    label: "Målgruppe 4, Byråer og organisasjoner",
+    ratio: "4:3",
+    fallback: "/portfolio/event/ops-hero.webp",
+    fallbackAlt: "Oslo Proptech Summit sett ovenfra, med scene, skjermer og fullt atrium",
+  },
 
   // Fotostripen
   ...[1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({
