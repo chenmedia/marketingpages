@@ -6,8 +6,8 @@ og de er små nok til at de ikke hører hjemme i Supabase Storage.
 
 Veggen står som eget bånd rett etter «Arbeidet vårt», ikke i heroen. Den sier ingenting før
 man vet hva Kai leverer, og alt rett etter at man har sett arbeidet. Plassen under
-CTA-knappene i heroen har i stedet `components/CrewLine.tsx`: tre sirkler og «alene, eller
-med et komplett crew». Teksten der er `hero.clientsLabel`, etiketten over logoveggen er
+CTA-knappene i heroen har i stedet en linje tekst: «alene, eller med et komplett crew».
+Teksten der er `hero.clientsLabel`, etiketten over logoveggen er
 `clients.label`.
 
 ## Slik legger du til en logo

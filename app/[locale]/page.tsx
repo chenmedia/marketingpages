@@ -12,7 +12,6 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactCTA from "@/components/ContactCTA";
 import CtaButton from "@/components/CtaButton";
 import LogoWall from "@/components/LogoWall";
-import CrewLine from "@/components/CrewLine";
 import Underline from "@/components/Underline";
 
 export async function generateMetadata({
@@ -94,10 +93,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               </CtaButton>
             </div>
 
-            {/* Crewet rett under knappene, der sosialt bevis hører hjemme */}
-            <div className="mt-8">
-              <CrewLine label={dict.hero.clientsLabel} locale={locale} />
-            </div>
+            <p className="mt-8 max-w-xs text-sm leading-snug text-smoke">
+              {dict.hero.clientsLabel}
+            </p>
           </div>
 
           {/* Polaroid-klynge som TONs, også på mobil (under teksten) */}
