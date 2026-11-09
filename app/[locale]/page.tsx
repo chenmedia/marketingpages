@@ -136,7 +136,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         {/* Overskrift venstre, ingress høyre: samme venstrekant som resten av siden */}
         <div className="grid gap-x-12 gap-y-4 md:grid-cols-[1fr_1fr] md:items-end">
           <div>
-            <SectionLabel number="01">{dict.services.label}</SectionLabel>
+            <SectionLabel number="02">{dict.services.label}</SectionLabel>
             <h2 className="display mt-4 text-3xl sm:text-4xl">
               {dict.services.heading}
             </h2>
@@ -223,7 +223,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <section className="bg-ink text-cream">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-24 pt-20 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:pb-28 lg:pt-24">
           <div className="lg:col-span-5">
-            <SectionLabel tone="light" number="02">
+            <SectionLabel tone="light" number="03">
               {dict.liveOn.label}
             </SectionLabel>
             <h2 className="display mt-4 text-3xl text-balance sm:text-4xl">
@@ -315,7 +315,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       {/* Arbeidet — kategorikort */}
       <section id="arbeid" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <SectionLabel number="03">{dict.work.label}</SectionLabel>
+        <SectionLabel number="04">{dict.work.label}</SectionLabel>
         <h2 className="display mt-4 max-w-2xl text-3xl sm:text-4xl">
           {dict.work.heading}
         </h2>
@@ -380,7 +380,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             className="aspect-[4/5] w-full max-w-sm rounded-lg"
           />
           <div>
-            <SectionLabel number="04">{dict.about.label}</SectionLabel>
+            <SectionLabel number="05">{dict.about.label}</SectionLabel>
             <h2 className="display mt-4 text-3xl sm:text-4xl">
               {dict.about.heading}
             </h2>
@@ -407,7 +407,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       </section>
 
       <div id="prosess" className="scroll-mt-24">
-        <ProcessTimeline dict={dict} number="05" />
+        <ProcessTimeline dict={dict} number="06" />
       </div>
 
       {/*
@@ -419,7 +419,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-28">
-              <SectionLabel number="06">{dict.audience.label}</SectionLabel>
+              <SectionLabel number="07">{dict.audience.label}</SectionLabel>
               <h2 className="display mt-4 text-3xl text-balance sm:text-4xl">
                 {dict.audience.heading}
               </h2>
