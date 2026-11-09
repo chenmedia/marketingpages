@@ -63,8 +63,8 @@ export default async function LocaleLayout({
               founder: { "@type": "Person", name: "Kai Chen" },
               description:
                 locale === "no"
-                  ? "Eventfoto og film for bedrifter. Chen Media dokumenterer konferanser, lanseringer og firmaevents i Oslo og hele Norge."
-                  : "Event photography and film for businesses. Chen Media documents conferences, launches and corporate events in Oslo and across Norway.",
+                  ? "Eventfoto og film for bedrifter. Chen Media dokumenterer konferanser, lanseringer og firmaevents i Norge, Europa og resten av verden."
+                  : "Event photography and film for businesses. Chen Media documents conferences, launches and corporate events across Norway, Europe and beyond.",
               areaServed: [
                 { "@type": "Country", name: "Norway" },
                 { "@type": "City", name: "Oslo" },

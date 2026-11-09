@@ -38,7 +38,7 @@ export const en: Dictionary = {
     cta: "Request a quote",
   },
   hero: {
-    badge: "Available for events in Oslo and across Norway",
+    badge: "Available in Norway, Europe and beyond",
     title: "Your event, seen through the eyes of a",
     titleAccent: "photographer.",
     lead: "Photo and film for conferences, trade shows and corporate events.\nGet edited images ready to use the very next day",
@@ -176,8 +176,8 @@ export const en: Dictionary = {
     quote: "When the event is at its busiest, I'm already in place. When everyone is waiting for the highlight, I already have it.",
     facts: [
       { value: "10+ yrs", caption: "Experience behind the camera" },
-      { value: "Photo + film", caption: "One partner for the whole delivery" },
-      { value: "Oslo", caption: "Based in Oslo, working across Norway" },
+      { value: "One team", caption: "Photo and film under one roof" },
+      { value: "Oslo", caption: "Based in Oslo, working across Norway, Europe and beyond" },
     ],
     portraitCaption: "Kai Chen · Founder of Chen Media",
     cta: "Talk to Kai",

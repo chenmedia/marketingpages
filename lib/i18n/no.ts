@@ -38,7 +38,7 @@ export const no: Dictionary = {
     cta: "Be om tilbud",
   },
   hero: {
-    badge: "Ledig for arrangementer i Oslo og resten av Norge",
+    badge: "Ledig i Norge, Europa og resten av verden",
     title: "Arrangementet ditt, sett gjennom fotografens",
     titleAccent: "øyne.",
     lead: "Profesjonell foto og film for konferanser, messer og firmaevents.\nFå redigerte bilder klare til bruk allerede dagen etter",
@@ -176,8 +176,8 @@ export const no: Dictionary = {
     quote: "Når det er som travlest, er jeg allerede på plass. Når alle venter på høydepunktet, har jeg det allerede.",
     facts: [
       { value: "10+ år", caption: "Erfaring bak kameraet" },
-      { value: "Foto + film", caption: "Én partner for hele leveransen" },
-      { value: "Oslo", caption: "Base i Oslo, oppdrag i hele Norge" },
+      { value: "Ett team", caption: "Foto og film under ett tak" },
+      { value: "Oslo", caption: "Base i Oslo, oppdrag i Norge, Europa og resten av verden" },
     ],
     portraitCaption: "Kai Chen · Grunnlegger av Chen Media",
     cta: "Ta en prat med Kai",
