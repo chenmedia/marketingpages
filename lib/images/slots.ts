@@ -227,8 +227,9 @@ export const SLOTS: SlotDef[] = [
     group: "Forsiden, tjenester",
     label: "Tjenestekort 3, Digital markedsføring",
     ratio: "3:2",
-    // Matbilde i reklamestil, slik innhold for sosiale medier ser ut
-    ...fromImage(imageRef("via-vika", 1)),
+    // Via Vika, bentoboks ovenfra: matinnhold i reklamestil
+    fallback: "/portfolio/hospitality/via-vika-bento.webp",
+    fallbackAlt: "Bentoboks med sushi, laks, edamame og soyasaus sett ovenfra",
   },
 
   // Forsiden, leveranse
