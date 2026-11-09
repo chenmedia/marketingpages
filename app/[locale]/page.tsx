@@ -132,61 +132,79 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <PhotoTicker alt={dict.ticker.alt} locale={locale} />
 
       {/* Tjenester: foto, video og digital markedsføring (kommer), med sjekklister */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="text-center">
-          <SectionLabel number="02">{dict.services.label}</SectionLabel>
-          <h2 className="display mt-4 text-3xl sm:text-4xl">
-            {dict.services.heading}
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-smoke">
+      <section className="mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6">
+        {/* Overskrift venstre, ingress høyre: samme venstrekant som resten av siden */}
+        <div className="grid gap-x-12 gap-y-4 md:grid-cols-[1fr_1fr] md:items-end">
+          <div>
+            <SectionLabel number="02">{dict.services.label}</SectionLabel>
+            <h2 className="display mt-4 text-3xl sm:text-4xl">
+              {dict.services.heading}
+            </h2>
+          </div>
+          <p className="max-w-md text-base leading-relaxed text-pretty text-smoke md:justify-self-end">
             {dict.services.lead}
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        {/*
+          Mobil: kortene under hverandre. Nettbrett: bilde til venstre, tekst til
+          høyre. Desktop: tre kolonner som deler rader med grid-rows-subgrid, så
+          tekst, liste og lenke havner på samme høyde i alle tre. Radavstanden
+          er 0 på lg, ellers ville den arves inn i hvert kort.
+        */}
+        <div className="mt-12 grid gap-6 lg:grid-cols-3 lg:gap-y-0">
           {dict.services.cards.map((card, i) => (
             <article
               key={card.slug}
-              className="flex flex-col overflow-hidden rounded-lg border border-ink/10 bg-cream"
+              className="group relative flex flex-col rounded-2xl bg-shell p-2 transition-colors duration-300 hover:bg-bone/60 md:grid md:grid-cols-[5fr_7fr] md:grid-rows-[auto_auto_1fr] lg:row-span-4 lg:grid-cols-1 lg:grid-rows-subgrid"
             >
               <PlaceholderImage
                 slot={`tjeneste-${i + 1}`}
                 locale={locale}
                 label={card.title}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="aspect-[3/2] w-full"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 40vw, 33vw"
+                className="aspect-[3/2] w-full rounded-xl md:row-span-3 md:aspect-auto md:h-full md:min-h-80 lg:row-span-1 lg:aspect-[3/2] lg:h-auto lg:min-h-0 [&_img]:transition-transform [&_img]:duration-500 [&_img]:ease-out group-hover:[&_img]:scale-[1.03]"
               />
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="display text-xl">{card.title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-smoke">
+              <div className="px-4 pt-6 sm:px-5">
+                <p className="meta-label text-olive">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="display mt-2 text-2xl">{card.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-pretty text-smoke">
                   {card.body}
                 </p>
-                <ul className="mt-4 flex-1 space-y-2">
-                  {card.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm">
-                      <svg
-                        viewBox="0 0 12 12"
-                        className="mt-1 size-3 shrink-0"
-                        fill="none"
-                        aria-hidden
-                      >
-                        <path
-                          d="M2 6.5L4.5 9L10 3.5"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+              </div>
+              <ul className="mx-4 mt-6 space-y-2.5 border-t border-ink/10 pt-5 sm:mx-5">
+                {card.points.map((point) => (
+                  <li key={point} className="flex items-start gap-2.5 text-sm">
+                    <svg
+                      viewBox="0 0 12 12"
+                      className="mt-1 size-3 shrink-0 text-olive"
+                      fill="none"
+                      aria-hidden
+                    >
+                      <path
+                        d="M2 6.5L4.5 9L10 3.5"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto px-4 pb-5 pt-8 sm:px-5 md:mt-0 md:self-end">
+                {/* after-elementet strekker lenken over hele kortet, så alt er klikkbart */}
                 <Link
                   href={card.slug.startsWith("#") ? `${base}${card.slug}` : `${base}/${card.slug}`}
-                  className="meta-label mt-5 inline-block border-b-2 border-ink pb-1 transition-colors hover:text-smoke"
+                  className="meta-label inline-flex items-center gap-2 border-b-2 border-ink pb-1 outline-none after:absolute after:inset-0 after:rounded-2xl focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-ink"
                 >
-                  {card.linkLabel} →
+                  {card.linkLabel}
+                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
                 </Link>
               </div>
             </article>

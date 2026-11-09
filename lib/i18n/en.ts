@@ -57,7 +57,7 @@ export const en: Dictionary = {
     cards: [
       {
         title: "Photography",
-        body: "Images that lift your brand, product or event. From studio and campaigns to real estate, cars and sport.",
+        body: "Images that lift your brand, from studio and campaigns to events, real estate, cars and sport.",
         points: [
           "Campaign and studio photography",
           "Event photography",
@@ -71,7 +71,7 @@ export const en: Dictionary = {
       },
       {
         title: "Video production",
-        body: "We are building out our video offering step by step, and already take on projects from idea to final cut.",
+        body: "Film that tells your story, from concept and directing to the final cut with color and sound.",
         points: [
           "Campaign and brand films",
           "Event films",
@@ -86,7 +86,7 @@ export const en: Dictionary = {
       },
       {
         title: "Digital marketing",
-        body: "Content and channels that work together. We help with websites, newsletters, CRM and the strategy that ties it all together.",
+        body: "Content and channels that work together, from websites and newsletters to CRM and strategy.",
         points: [
           "Social media and content strategy",
           "Websites",

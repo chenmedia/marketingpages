@@ -57,7 +57,7 @@ export const no: Dictionary = {
     cards: [
       {
         title: "Fotografering",
-        body: "Bilder som løfter merkevaren, produktet eller arrangementet ditt. Fra studio og kampanje til eiendom, bil og sport.",
+        body: "Bilder som løfter merkevaren din, fra studio og kampanje til event, eiendom, bil og sport.",
         points: [
           "Kampanje- og studiofotografering",
           "Eventfotografering",
@@ -71,7 +71,7 @@ export const no: Dictionary = {
       },
       {
         title: "Videoproduksjon",
-        body: "Vi bygger ut videotilbudet steg for steg, og tar allerede oppdrag fra idé til ferdig klipp.",
+        body: "Film som forteller historien din, fra idé og regi til ferdig klipp med farger og lyd.",
         points: [
           "Kampanje- og merkevarefilm",
           "Eventfilm",
@@ -86,7 +86,7 @@ export const no: Dictionary = {
       },
       {
         title: "Digital markedsføring",
-        body: "Innhold og kanaler som jobber sammen. Vi hjelper med nettside, nyhetsbrev, CRM og strategien som binder det sammen.",
+        body: "Innhold og kanaler som jobber sammen, fra nettside og nyhetsbrev til CRM og strategi.",
         points: [
           "Sosiale medier og innholdsstrategi",
           "Nettside",
