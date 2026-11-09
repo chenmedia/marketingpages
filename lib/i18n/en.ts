@@ -202,6 +202,7 @@ export const en: Dictionary = {
         items: ["Event agencies and production companies", "Organisations and associations", "Cultural institutions"],
       },
     ],
+    cta: "Sound familiar? Get in touch",
   },
   contact: {
     label: "Contact",

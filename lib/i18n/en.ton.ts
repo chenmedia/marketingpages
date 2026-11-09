@@ -197,6 +197,7 @@ export const enTon: Dictionary = {
         ],
       },
     ],
+    cta: en.audience.cta,
   },
   contact: {
     label: "Contact",

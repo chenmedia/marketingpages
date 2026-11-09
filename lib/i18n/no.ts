@@ -202,6 +202,7 @@ export const no: Dictionary = {
         items: ["Eventbyråer og produksjonsselskap", "Organisasjoner og foreninger", "Kulturaktører"],
       },
     ],
+    cta: "Kjenner du deg igjen? Ta kontakt",
   },
   contact: {
     label: "Kontakt",

@@ -410,51 +410,61 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <ProcessTimeline dict={dict} />
       </div>
 
-      {/* Hvem er Chen Media for? */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="text-center">
-          <SectionLabel number="06">{dict.audience.label}</SectionLabel>
-          <h2 className="display mt-4 text-3xl sm:text-4xl">
-            {dict.audience.heading}
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-smoke">
-            {dict.audience.lead}
-          </p>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {dict.audience.groups.map((group, i) => (
-            <div key={group.title}>
-              <PlaceholderImage
-                slot={`publikum-${i + 1}`}
-                locale={locale}
-                label={group.title}
-                sizes="(max-width: 768px) 100vw, 25vw"
-                className="aspect-[4/3] w-full rounded-lg"
-              />
-              <h3 className="display mt-4 text-lg">{group.title}</h3>
-              <ul className="mt-3 space-y-1.5">
-                {group.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-smoke">
-                    <svg
-                      viewBox="0 0 12 12"
-                      className="mt-1 size-3 shrink-0"
-                      fill="none"
-                      aria-hidden
-                    >
-                      <path
-                        d="M2 6.5L4.5 9L10 3.5"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+      {/*
+        Hvem er Chen Media for? Overskriften står fast i venstre kolonne mens
+        de fire målgruppene scroller forbi på desktop. Undergruppene vises som
+        etiketter, ikke som enda en sjekkliste.
+      */}
+      <section className="mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28">
+              <SectionLabel number="06">{dict.audience.label}</SectionLabel>
+              <h2 className="display mt-4 text-3xl text-balance sm:text-4xl">
+                {dict.audience.heading}
+              </h2>
+              <p className="mt-5 max-w-sm text-base leading-relaxed text-pretty text-smoke">
+                {dict.audience.lead}
+              </p>
+              <Link
+                href={`${base}#kontakt`}
+                className="meta-label group mt-8 inline-flex items-center gap-2 border-b-2 border-ink pb-1 transition-colors hover:text-smoke focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+              >
+                {dict.audience.cta}
+                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
             </div>
-          ))}
+          </div>
+
+          <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:col-span-8">
+            {dict.audience.groups.map((group, i) => (
+              <li key={group.title}>
+                <PlaceholderImage
+                  slot={`publikum-${i + 1}`}
+                  locale={locale}
+                  label={group.title}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
+                  className="aspect-[4/3] w-full rounded-xl"
+                />
+                <p className="meta-label mt-5 tabular-nums text-olive">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="display mt-1.5 text-xl text-balance">{group.title}</h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-md bg-shell px-2.5 py-1.5 text-sm text-smoke"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

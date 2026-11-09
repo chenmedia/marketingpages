@@ -106,6 +106,8 @@ export interface Dictionary {
     heading: string;
     lead: string;
     groups: { title: string; items: string[] }[];
+    /** Lenke til kontaktskjemaet under overskriften */
+    cta: string;
   };
   contact: {
     label: string;

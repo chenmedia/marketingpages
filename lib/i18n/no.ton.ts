@@ -189,6 +189,7 @@ export const noTon: Dictionary = {
         ],
       },
     ],
+    cta: no.audience.cta,
   },
   contact: {
     label: "Kontakt",
