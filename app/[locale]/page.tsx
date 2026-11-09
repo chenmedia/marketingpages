@@ -95,8 +95,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </h1>
             {/* whitespace-pre-line: ingressen har et bevisst linjeskift mellom
                 de to setningene. Teksten brytes fortsatt fritt ellers.
-                Norsk har ingen ingress; knappene får da litt mer luft under
-                krusedullen. */}
+                Uten ingress får knappene litt mer luft under krusedullen. */}
             {dict.hero.lead && (
               <p className="mt-6 max-w-xl text-pretty whitespace-pre-line text-base leading-relaxed text-smoke sm:text-lg">
                 {dict.hero.lead}

@@ -39,12 +39,18 @@ export const en: Dictionary = {
   },
   hero: {
     badge: "Available in Norway, Europe and beyond",
-    title: "Your event, seen through the eyes of a",
-    titleAccent: "photographer.",
-    lead: "Photo and film for conferences, trade shows and corporate events.\nGet edited images ready to use the very next day.",
+    title: "Content that lifts",
+    titleAccent: [
+      "the event.",
+      "the brand.",
+      "the campaign.",
+      "the collection.",
+      "the property.",
+      "the performance.",
+    ],
     ctaPrimary: "Request a no obligation quote",
     ctaSecondary: "See the work",
-    clientsLabel: "A photographer/videographer, or a full team when your event calls for it.",
+    clientsLabel: "From one photographer or videographer to a full media team, as the job requires.",
     polaroidBadge: "10+ years of experience",
   },
   clients: {
