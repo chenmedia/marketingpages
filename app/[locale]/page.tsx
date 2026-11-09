@@ -56,6 +56,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     polaroids.map((p) => slotCaption(p.slot, p.caption))
   );
 
+  const { title, titleAccent } = dict.hero;
+  const titleFit =
+    typeof titleAccent === "string"
+      ? 1
+      : Math.min(1, 18 / Math.max(title.length, ...titleAccent.map((w) => w.length)));
+
   return (
     <>
       {/* Hero à la TON: tekst venstre, polaroid-stabel høyre */}
@@ -73,8 +79,18 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               store akkurat der kolonnen er smalest, og overskriften brekker i
               fire linjer med «øyne.» alene. 10.5cqw holder lengste linje på ~90%
               av kolonnen hele veien. text-balance jevner ut linjelengdene.
+
+              Med roterende ord står tittelen alene på første linje og kan ikke
+              brekke. 10.5cqw er tilpasset «Innhold som løfter» (18 tegn); en
+              lengre linje, som «Content that elevates», skaleres ned i samme
+              forhold så den fortsatt får plass.
             */}
-            <h1 className="display mt-6 text-[clamp(2rem,10.5cqw,4.5rem)] text-balance">
+            <h1
+              className="display mt-6 text-[clamp(2rem,10.5cqw,4.5rem)] text-balance"
+              style={titleFit < 1 ? {
+                fontSize: `clamp(${2 * titleFit}rem, ${10.5 * titleFit}cqw, ${4.5 * titleFit}rem)`,
+              } : undefined}
+            >
               {typeof dict.hero.titleAccent === "string" ? (
                 <>
                   {dict.hero.title}{" "}
