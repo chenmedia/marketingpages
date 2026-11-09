@@ -151,13 +151,15 @@ export const enTon: Dictionary = {
     body: [
       "For more than 14 years I've been photographing events, from small company parties to international trade shows in Copenhagen, Berlin and Amsterdam.",
       "I believe a great event deserves more than a folder full of photos. That's why I'm building Chen Media: a combination of professional photography and smart content tools that truly bring your event to life.",
-      "When the event is at its busiest, I'm already there. When everyone is waiting for the highlight, I've already captured it.",
     ],
+    quote: "When the event is at its busiest, I'm already there. When everyone is waiting for the highlight, I've already captured it.",
     facts: [
       { value: "2000+", caption: "Events" },
       { value: "14", caption: "Years of experience" },
       { value: "NO + EU", caption: "Locations" },
     ],
+    portraitCaption: en.about.portraitCaption,
+    cta: en.about.cta,
   },
   audience: {
     label: "Who we work for",

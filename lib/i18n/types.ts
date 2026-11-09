@@ -99,7 +99,13 @@ export interface Dictionary {
     label: string;
     heading: string;
     body: string[];
+    /** Den sterkeste setningen, vist som sitat under brødteksten */
+    quote: string;
     facts: { value: string; caption: string }[];
+    /** Bildetekst på portrettet */
+    portraitCaption: string;
+    /** Lenke til kontaktskjemaet */
+    cta: string;
   };
   audience: {
     label: string;

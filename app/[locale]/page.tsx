@@ -369,39 +369,70 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <LogoWall label={dict.clients.label} />
       </section>
 
-      {/* Om Kai */}
+      {/*
+        Om Kai. Portrettet får bildetekst, den sterkeste setningen løftes ut
+        som sitat, og seksjonen ender med en personlig vei til kontaktskjemaet.
+      */}
       <section id="om" className="scroll-mt-24 bg-shell">
-        <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-20 sm:px-6 md:grid-cols-[1fr_1.3fr]">
-          <PlaceholderImage
-            slot="om-portrett"
-            locale={locale}
-            label="Kai Chen, portrett"
-            sizes="(max-width: 768px) 100vw, 33vw"
-            className="aspect-[4/5] w-full max-w-sm rounded-lg"
-          />
-          <div>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-24 pt-20 sm:px-6 lg:grid-cols-12 lg:gap-16">
+          <figure className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
+            <PlaceholderImage
+              slot="om-portrett"
+              locale={locale}
+              label="Kai Chen, portrett"
+              sizes="(max-width: 1024px) 28rem, 40vw"
+              className="aspect-[4/5] w-full rounded-2xl"
+            />
+            <figcaption className="meta-label absolute bottom-3 left-3 right-3 w-fit rounded-full bg-ink/75 px-3 py-1.5 text-cream backdrop-blur-sm">
+              {dict.about.portraitCaption}
+            </figcaption>
+          </figure>
+
+          <div className="lg:col-span-7">
             <SectionLabel number="05">{dict.about.label}</SectionLabel>
-            <h2 className="display mt-4 text-3xl sm:text-4xl">
+            <h2 className="display mt-4 text-4xl text-balance sm:text-5xl">
               {dict.about.heading}
             </h2>
-            {dict.about.body.map((paragraph) => (
+            {dict.about.body.map((paragraph, i) => (
               <p
                 key={paragraph}
-                className="mt-5 max-w-xl text-base leading-relaxed text-smoke"
+                className={`max-w-xl leading-relaxed text-pretty ${
+                  i === 0 ? "mt-6 text-lg text-ink" : "mt-4 text-base text-smoke"
+                }`}
               >
                 {paragraph}
               </p>
             ))}
-            <dl className="mt-10 grid gap-6 sm:grid-cols-3">
+
+            <blockquote className="mt-8 max-w-xl border-l-2 border-ink pl-5">
+              <p className="text-xl font-semibold leading-snug tracking-tight text-balance sm:text-2xl">
+                {dict.about.quote}
+              </p>
+            </blockquote>
+
+            <dl className="mt-10 grid max-w-xl gap-4 sm:grid-cols-3 sm:gap-6">
               {dict.about.facts.map((fact) => (
-                <div key={fact.caption} className="border-t-2 border-ink pt-3">
-                  <dt className="display text-xl">{fact.value}</dt>
-                  <dd className="mt-1 text-xs leading-relaxed text-smoke">
+                <div
+                  key={fact.caption}
+                  className="flex items-baseline justify-between gap-6 border-t border-ink/15 pt-4 sm:block"
+                >
+                  <dt className="display shrink-0 text-2xl tabular-nums sm:text-3xl">{fact.value}</dt>
+                  <dd className="text-right text-sm leading-relaxed text-smoke sm:mt-1.5 sm:text-left">
                     {fact.caption}
                   </dd>
                 </div>
               ))}
             </dl>
+
+            <Link
+              href={`${base}#kontakt`}
+              className="meta-label group mt-10 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-cream transition duration-200 hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink active:scale-[0.98]"
+            >
+              {dict.about.cta}
+              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
           </div>
         </div>
       </section>

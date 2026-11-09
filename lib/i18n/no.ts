@@ -172,13 +172,15 @@ export const no: Dictionary = {
     body: [
       "Det er meg du møter bak kameraet. Bak meg står Chen Media AS, som gjør eventfoto og merkevarefoto for bedrifter og arrangører.",
       "Jeg mener et godt arrangement fortjener mer enn en mappe full av bilder. Derfor bygger jeg Chen Media rundt to ting samtidig: håndverket foran kamera, og innholdet dere sitter igjen med etterpå.",
-      "Når det er som travlest, er jeg allerede på plass. Når alle venter på høydepunktet, har jeg det allerede.",
     ],
+    quote: "Når det er som travlest, er jeg allerede på plass. Når alle venter på høydepunktet, har jeg det allerede.",
     facts: [
+      { value: "10+ år", caption: "Erfaring bak kameraet" },
       { value: "Foto + film", caption: "Én partner for hele leveransen" },
       { value: "Oslo", caption: "Base i Oslo, oppdrag i hele Norge" },
-      { value: "AS", caption: "Ryddige avtaler og fakturering" },
     ],
+    portraitCaption: "Kai Chen · Grunnlegger av Chen Media",
+    cta: "Ta en prat med Kai",
   },
   audience: {
     label: "Hvem vi jobber for",
