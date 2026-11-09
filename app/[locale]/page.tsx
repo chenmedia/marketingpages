@@ -84,7 +84,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </h1>
             {/* whitespace-pre-line: ingressen har et bevisst linjeskift mellom
                 de to setningene. Teksten brytes fortsatt fritt ellers. */}
-            <p className="mt-6 max-w-xl text-balance whitespace-pre-line text-base leading-relaxed text-smoke sm:text-lg">
+            <p className="mt-6 max-w-xl text-pretty whitespace-pre-line text-base leading-relaxed text-smoke sm:text-lg">
               {dict.hero.lead}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -121,7 +121,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                   </p>
                 </div>
               ))}
-              <p className="meta-label absolute -bottom-2 right-0 rotate-3 rounded-full bg-ink px-4 py-2 text-cream shadow-lg">
+              <p className="meta-label absolute -bottom-2 right-0 z-30 rotate-3 rounded-full bg-ink px-4 py-2 text-cream shadow-lg">
                 {dict.hero.polaroidBadge}
               </p>
             </div>
@@ -315,13 +315,17 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       {/* Arbeidet — kategorikort */}
       <section id="arbeid" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <SectionLabel number="04">{dict.work.label}</SectionLabel>
-        <h2 className="display mt-4 max-w-2xl text-3xl sm:text-4xl">
-          {dict.work.heading}
-        </h2>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-smoke">
-          {dict.work.lead}
-        </p>
+        <div className="grid gap-x-12 gap-y-4 md:grid-cols-2 md:items-end">
+          <div>
+            <SectionLabel number="04">{dict.work.label}</SectionLabel>
+            <h2 className="display mt-4 text-3xl text-balance sm:text-4xl">
+              {dict.work.heading}
+            </h2>
+          </div>
+          <p className="max-w-md text-base leading-relaxed text-pretty text-smoke md:justify-self-end">
+            {dict.work.lead}
+          </p>
+        </div>
         <div
           className={`mt-10 grid gap-6 sm:grid-cols-2 ${
             dict.work.cards.length % 4 === 0 ? "lg:grid-cols-4" : "md:grid-cols-3"

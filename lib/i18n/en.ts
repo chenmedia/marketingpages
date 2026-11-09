@@ -41,14 +41,14 @@ export const en: Dictionary = {
     badge: "Available in Norway, Europe and beyond",
     title: "Your event, seen through the eyes of a",
     titleAccent: "photographer.",
-    lead: "Photo and film for conferences, trade shows and corporate events.\nGet edited images ready to use the very next day",
+    lead: "Photo and film for conferences, trade shows and corporate events.\nGet edited images ready to use the very next day.",
     ctaPrimary: "Request a no obligation quote",
     ctaSecondary: "See the work",
     clientsLabel: "A photographer/videographer, or a full team when your event calls for it.",
     polaroidBadge: "10+ years of experience",
   },
   clients: {
-    label: "We work with a wide range of clients",
+    label: "Some of the clients we have worked for",
   },
   services: {
     label: "What we do",
@@ -121,11 +121,11 @@ export const en: Dictionary = {
   work: {
     label: "Our work",
     heading: "From big brands to small breakfast seminars",
-    lead: "Browse the work by event type, or see every project in one place.",
+    lead: "See the work by service, or every project in one place.",
     cards: [
-      { title: "Event photo", sub: "Snapchat · DNT · OBOS · JCP", slug: "fotografering" },
+      { title: "Photography", sub: "Snapchat · DNT · OBOS · JCP", slug: "fotografering" },
       {
-        title: "Event film",
+        title: "Video production",
         sub: "Optiver · Varner x Levi's · Nordisk Film Kino",
         slug: "videoproduksjon",
       },
@@ -270,6 +270,8 @@ export const en: Dictionary = {
     tagline: "Event photography and film for businesses",
     rights: "All rights reserved.",
     orgLabel: "Chen Media AS",
+    pagesLabel: "Pages",
+    location: "Based in Oslo. Working across Norway, Europe and beyond.",
   },
   filmPage: {
     kicker: "Event film",

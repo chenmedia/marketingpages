@@ -253,6 +253,8 @@ export const noTon: Dictionary = {
     tagline: "Eventfotografi og sosialt innhold",
     rights: "Alle rettigheter forbeholdt.",
     orgLabel: "Chen Media AS",
+    pagesLabel: no.footer.pagesLabel,
+    location: no.footer.location,
   },
   ticker: { alt: "Alene eller med et komplett innholdsteam" },
 };

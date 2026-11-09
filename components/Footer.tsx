@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { localeBase, type Dictionary, type Locale } from "@/lib/i18n";
+import { localeBase, localePath, type Dictionary, type Locale } from "@/lib/i18n";
 import { PHOTO_BASE_PATH, PHOTO_UI } from "@/lib/photography";
 import { VIDEO_BASE_PATH, VIDEO_UI } from "@/lib/video";
 import Logo from "./Logo";
@@ -12,12 +12,15 @@ export default function Footer({
   dict: Dictionary;
 }) {
   const base = localeBase(locale);
+  // Samme som Nav: ankre peker på forsiden, så de virker fra alle sider
+  const home = localePath(locale, "/");
   return (
     <footer className="bg-ink text-cream">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
         <div className="space-y-4">
           <Logo className="text-cream" />
           <p className="text-sm text-sand">{dict.footer.tagline}</p>
+          <p className="max-w-xs text-sm leading-relaxed text-sand">{dict.footer.location}</p>
         </div>
 
         <div className="space-y-2">
@@ -43,6 +46,25 @@ export default function Footer({
                 {VIDEO_UI.nav[locale]}
               </Link>
             </li>
+          </ul>
+        </div>
+
+        {/* Sidene som ellers bare finnes i menyen øverst */}
+        <div className="space-y-2">
+          <p className="meta-label text-sand">{dict.footer.pagesLabel}</p>
+          <ul className="space-y-1 text-sm">
+            {[
+              { href: `${base}/prosjekter`, label: dict.nav.projects },
+              { href: `${home}#om`, label: dict.nav.about },
+              { href: `${base}/nyheter`, label: dict.nav.news },
+              { href: `${home}#kontakt`, label: dict.nav.contact },
+            ].map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-butter">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

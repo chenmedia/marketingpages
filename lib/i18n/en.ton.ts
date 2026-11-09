@@ -261,6 +261,8 @@ export const enTon: Dictionary = {
     tagline: "Event Photography & Social Content",
     rights: "All rights reserved.",
     orgLabel: "Chen Media AS",
+    pagesLabel: en.footer.pagesLabel,
+    location: en.footer.location,
   },
   ticker: { alt: "Solo or with a complete content team" },
 };

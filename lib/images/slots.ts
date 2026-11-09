@@ -318,8 +318,8 @@ export const SLOTS: SlotDef[] = [
     group: "Forsiden, publikum",
     label: "Målgruppe 4, Byråer og organisasjoner",
     ratio: "4:3",
-    fallback: "/portfolio/event/ops-hero.webp",
-    fallbackAlt: "Oslo Proptech Summit sett ovenfra, med scene, skjermer og fullt atrium",
+    // Ikke ops-hero: det bildet er allerede polaroid 2 øverst på siden
+    ...fromImage(imageRef("snap-focus", 2)),
   },
 
   // Fotostripen

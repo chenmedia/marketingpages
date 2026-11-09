@@ -41,14 +41,14 @@ export const no: Dictionary = {
     badge: "Ledig i Norge, Europa og resten av verden",
     title: "Arrangementet ditt, sett gjennom fotografens",
     titleAccent: "øyne.",
-    lead: "Profesjonell foto og film for konferanser, messer og firmaevents.\nFå redigerte bilder klare til bruk allerede dagen etter",
+    lead: "Profesjonell foto og film for konferanser, messer og firmaevents.\nFå redigerte bilder klare til bruk allerede dagen etter.",
     ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",
     clientsLabel: "En fotograf/videograf, eller med et komplett team når arrangementet ditt krever det.",
     polaroidBadge: "10+ års erfaring",
   },
   clients: {
-    label: "Vi jobber med et bredt spekter av kunder",
+    label: "Noen av kundene vi har jobbet for",
   },
   services: {
     label: "Hva vi gjør",
@@ -121,11 +121,11 @@ export const no: Dictionary = {
   work: {
     label: "Arbeidet vårt",
     heading: "Fra store merkevarer til små frokostmøter",
-    lead: "Bla gjennom arbeidet etter type arrangement, eller se alle prosjektene samlet.",
+    lead: "Se arbeidet etter tjeneste, eller alle prosjektene samlet.",
     cards: [
-      { title: "Eventfoto", sub: "Snapchat · DNT · OBOS · JCP", slug: "fotografering" },
+      { title: "Fotografering", sub: "Snapchat · DNT · OBOS · JCP", slug: "fotografering" },
       {
-        title: "Eventfilm",
+        title: "Videoproduksjon",
         sub: "Optiver · Varner x Levi's · Nordisk Film Kino",
         slug: "videoproduksjon",
       },
@@ -270,6 +270,8 @@ export const no: Dictionary = {
     tagline: "Eventfoto og film for bedrifter",
     rights: "Alle rettigheter forbeholdt.",
     orgLabel: "Chen Media AS",
+    pagesLabel: "Sider",
+    location: "Base i Oslo. Oppdrag i Norge, Europa og resten av verden.",
   },
   filmPage: {
     kicker: "Eventfilm",
