@@ -277,6 +277,7 @@ export const no: Dictionary = {
     rights: "Alle rettigheter forbeholdt.",
     orgLabel: "Chen Media AS",
     pagesLabel: "Sider",
+    followLabel: "Følg oss",
     location: "Base i Oslo. Oppdrag i Norge, Europa og resten av verden.",
   },
   filmPage: {

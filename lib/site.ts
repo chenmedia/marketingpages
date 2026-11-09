@@ -30,3 +30,12 @@ export function alternatesFor(locale: Locale, path = "/") {
 
   return { canonical: localePath(locale, path), languages };
 }
+
+/*
+  Profilene våre på sosiale medier. Brukes i footeren og som sameAs i
+  strukturerte data, så søkemotorer kobler profilene til nettstedet.
+*/
+export const socialLinks = [
+  { name: "Instagram", href: "https://www.instagram.com/chenmediano/" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/24096100/" },
+] as const;

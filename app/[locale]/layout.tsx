@@ -3,7 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
-import { siteUrl } from "@/lib/site";
+import { siteUrl, socialLinks } from "@/lib/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StickyBar from "@/components/StickyBar";
@@ -61,6 +61,7 @@ export default async function LocaleLayout({
               url: "https://chenmedia.no",
               email: "kai@chenmedia.no",
               founder: { "@type": "Person", name: "Kai Chen" },
+              sameAs: socialLinks.map((social) => social.href),
               description:
                 locale === "no"
                   ? "Eventfoto og film for bedrifter. Chen Media dokumenterer konferanser, lanseringer og firmaevents i Norge, Europa og resten av verden."

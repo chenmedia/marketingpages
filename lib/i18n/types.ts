@@ -194,6 +194,8 @@ export interface Dictionary {
     orgLabel: string;
     /** Overskrift over sidelenkene */
     pagesLabel: string;
+    /** Overskrift over lenkene til sosiale medier */
+    followLabel: string;
     /** Hvor vi holder til, under slagordet */
     location: string;
   };

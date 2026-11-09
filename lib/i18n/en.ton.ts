@@ -262,6 +262,7 @@ export const enTon: Dictionary = {
     rights: "All rights reserved.",
     orgLabel: "Chen Media AS",
     pagesLabel: en.footer.pagesLabel,
+    followLabel: en.footer.followLabel,
     location: en.footer.location,
   },
   ticker: { alt: "Solo or with a complete content team" },

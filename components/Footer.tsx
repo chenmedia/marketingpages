@@ -2,7 +2,37 @@ import Link from "next/link";
 import { localeBase, localePath, type Dictionary, type Locale } from "@/lib/i18n";
 import { PHOTO_BASE_PATH, PHOTO_UI } from "@/lib/photography";
 import { VIDEO_BASE_PATH, VIDEO_UI } from "@/lib/video";
+import { socialLinks } from "@/lib/site";
 import Logo from "./Logo";
+
+/* Enkle strekikoner i samme farge som teksten. Navnet står ved siden av, så ikonet er dekorativt. */
+function SocialIcon({ name }: { name: (typeof socialLinks)[number]["name"] }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="size-4 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {name === "Instagram" ? (
+        <>
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+        </>
+      ) : (
+        <>
+          <rect x="3" y="3" width="18" height="18" rx="2.5" />
+          <path d="M8 10.5V16M8 7.75v.01M11.5 16v-5.5M11.5 13c0-1.5 1-2.5 2.25-2.5S16 11.25 16 12.75V16" />
+        </>
+      )}
+    </svg>
+  );
+}
 
 export default function Footer({
   locale,
@@ -31,6 +61,23 @@ export default function Footer({
           >
             kai@chenmedia.no
           </a>
+
+          <p className="meta-label pt-4 text-sand">{dict.footer.followLabel}</p>
+          <ul className="space-y-1.5 text-sm">
+            {socialLinks.map((social) => (
+              <li key={social.name}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 hover:text-butter"
+                >
+                  <SocialIcon name={social.name} />
+                  {social.name}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="space-y-2">
