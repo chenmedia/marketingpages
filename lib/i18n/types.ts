@@ -58,7 +58,11 @@ export interface Dictionary {
   hero: {
     badge: string;
     title: string;
-    titleAccent: string;
+    /**
+     * Aksentordet med krusedull under. En liste gir roterende ord, vist i
+     * rekkefølge på egen linje under title.
+     */
+    titleAccent: string | readonly string[];
     lead: string;
     ctaPrimary: string;
     ctaSecondary: string;

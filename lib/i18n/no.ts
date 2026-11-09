@@ -39,8 +39,15 @@ export const no: Dictionary = {
   },
   hero: {
     badge: "Ledig i Norge, Europa og resten av verden",
-    title: "Arrangementet ditt, sett gjennom fotografens",
-    titleAccent: "øyne.",
+    title: "Innhold som løfter",
+    titleAccent: [
+      "arrangementet.",
+      "merkevaren.",
+      "kampanjen.",
+      "kolleksjonen.",
+      "eiendommen.",
+      "prestasjonen.",
+    ],
     lead: "Profesjonell foto og film for konferanser, messer og firmaevents.\nFå redigerte bilder klare til bruk allerede dagen etter.",
     ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",

@@ -13,6 +13,7 @@ import ContactCTA from "@/components/ContactCTA";
 import CtaButton from "@/components/CtaButton";
 import LogoWall from "@/components/LogoWall";
 import Underline from "@/components/Underline";
+import RotatingWord from "@/components/RotatingWord";
 
 export async function generateMetadata({
   params,
@@ -74,12 +75,23 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               av kolonnen hele veien. text-balance jevner ut linjelengdene.
             */}
             <h1 className="display mt-6 text-[clamp(2rem,10.5cqw,4.5rem)] text-balance">
-              {dict.hero.title}{" "}
-              <span className="relative inline-block">
-                {dict.hero.titleAccent}
-                {/* Krusedullen under aksentordet, jf. TONs squiggle under «pro.» */}
-                <Underline className="absolute -bottom-4 left-0 h-3.5 w-full text-ink opacity-60" />
-              </span>
+              {typeof dict.hero.titleAccent === "string" ? (
+                <>
+                  {dict.hero.title}{" "}
+                  <span className="relative inline-block">
+                    {dict.hero.titleAccent}
+                    {/* Krusedullen under aksentordet, jf. TONs squiggle under «pro.» */}
+                    <Underline className="absolute -bottom-4 left-0 h-3.5 w-full text-ink opacity-60" />
+                  </span>
+                </>
+              ) : (
+                <>
+                  {/* Fast tekst på første linje, roterende ord alene på andre */}
+                  {dict.hero.title}
+                  <br />
+                  <RotatingWord words={dict.hero.titleAccent} />
+                </>
+              )}
             </h1>
             {/* whitespace-pre-line: ingressen har et bevisst linjeskift mellom
                 de to setningene. Teksten brytes fortsatt fritt ellers. */}
