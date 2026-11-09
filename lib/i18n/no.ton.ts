@@ -144,6 +144,7 @@ export const noTon: Dictionary = {
       },
     ],
     note: "",
+    cta: no.process.cta,
   },
   about: {
     label: "Fotografen",

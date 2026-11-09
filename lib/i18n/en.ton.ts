@@ -144,6 +144,7 @@ export const enTon: Dictionary = {
       },
     ],
     note: "",
+    cta: en.process.cta,
   },
   about: {
     label: "The photographer",

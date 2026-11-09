@@ -141,30 +141,36 @@ export const en: Dictionary = {
     steps: [
       {
         number: "01",
+        when: "When you get in touch",
         title: "Request",
         body: "Give us the date, venue and times. Then we'll tell you what we would do with it, and what it costs.",
         promise: "Kai replies personally within one business day",
       },
       {
         number: "02",
+        when: "About a month before",
         title: "Planning",
         body: "About a month ahead we go through your schedule and build a shot list of the moments, people and details that must be secured.",
         promise: "Shot list ready before the event",
       },
       {
         number: "03",
+        when: "Event day",
+        highlight: true,
         title: "On site",
         body: "We arrive in good time and are set up before the doors open. Then we document the event as it happens, without getting in its way.",
         promise: "Set up and ready before the first guest",
       },
       {
         number: "04",
+        when: "After the event",
         title: "Delivery and evaluation",
         body: "We select and edit the best of it, deliver in a private album you can easily share, and catch up for an evaluation the week after.",
         promise: "Delivery on time, every time",
       },
     ],
     note: "We never say goodbye. We say see you again.",
+    cta: "Start with step 01",
   },
   about: {
     label: "The photographer",

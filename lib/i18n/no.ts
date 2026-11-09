@@ -141,30 +141,36 @@ export const no: Dictionary = {
     steps: [
       {
         number: "01",
+        when: "Når du tar kontakt",
         title: "Forespørsel",
         body: "Gi oss dato, sted og tidspunkt. Så sier vi hva vi ville gjort med det, og hva det koster.",
         promise: "Kai svarer personlig innen én virkedag",
       },
       {
         number: "02",
+        when: "Ca. en måned før",
         title: "Planlegging",
         body: "Cirka en måned før går vi gjennom kjøreplanen og lager en shot list over øyeblikkene, personene og detaljene som må sikres.",
         promise: "Shot list på plass før arrangementet",
       },
       {
         number: "03",
+        when: "Arrangementsdagen",
+        highlight: true,
         title: "På stedet",
         body: "Vi er på plass i god tid, ferdig rigget før dørene åpner. Så dokumenterer vi arrangementet mens det skjer, uten å komme i veien for det.",
         promise: "Rigget og klar før første gjest",
       },
       {
         number: "04",
+        when: "Etter arrangementet",
         title: "Levering og evaluering",
         body: "Vi velger ut og redigerer det beste, leverer i et privat album dere enkelt kan dele videre, og tar en evaluering uken etter.",
         promise: "Levering til avtalt tid, hver gang",
       },
     ],
     note: "Det er aldri farvel hos oss. Det er på gjensyn.",
+    cta: "Start med steg 01",
   },
   about: {
     label: "Fotografen",
