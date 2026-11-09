@@ -212,64 +212,102 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </section>
 
-      {/* Mørk differensiator — «arrangementet lever videre» */}
+      {/*
+        Mørk differensiator: «arrangementet lever videre».
+
+        Bildene viser påstanden i teksten: ett oppdrag, levert i flere formater.
+        Formatrammene har ekte sideforhold (9:16, 16:9, A4) og samme høyde.
+        Kolonnebreddene er sideforholdet ganget med 16, så høyden blir lik
+        uten at noe må regnes ut i JavaScript.
+      */}
       <section className="bg-ink text-cream">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-2">
-          <div>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-24 pt-20 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:pb-28 lg:pt-24">
+          <div className="lg:col-span-5">
             <SectionLabel tone="light" number="03">
               {dict.liveOn.label}
             </SectionLabel>
-            <h2 className="display mt-4 text-2xl sm:text-3xl">
+            <h2 className="display mt-4 text-3xl text-balance sm:text-4xl">
               {dict.liveOn.heading}
             </h2>
-            {dict.liveOn.body.map((paragraph) => (
-              <p key={paragraph} className="mt-4 text-base leading-relaxed text-sand">
+            {dict.liveOn.body.map((paragraph, i) => (
+              <p
+                key={paragraph}
+                className={`mt-5 max-w-lg leading-relaxed text-pretty text-sand ${
+                  i === 0 ? "text-base sm:text-lg" : "text-base"
+                }`}
+              >
                 {paragraph}
               </p>
             ))}
-            <ul className="mt-6 space-y-2">
-              {dict.liveOn.points.map((point) => (
-                <li key={point} className="flex items-start gap-2 text-sm">
-                  <svg
-                    viewBox="0 0 12 12"
-                    className="mt-1 size-3 shrink-0"
-                    fill="none"
-                    aria-hidden
-                  >
-                    <path
-                      d="M2 6.5L4.5 9L10 3.5"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  {point}
+
+            {/* Leveransen som nummerert liste, ikke enda en sjekkliste */}
+            <ol className="mt-8 max-w-lg border-t border-cream/15">
+              {dict.liveOn.points.map((point, i) => (
+                <li
+                  key={point}
+                  className="flex items-baseline gap-5 border-b border-cream/15 py-4"
+                >
+                  <span className="meta-label tabular-nums text-sand">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-base">{point}</span>
                 </li>
               ))}
-            </ul>
-            <div className="mt-8">
+            </ol>
+
+            <div className="mt-10">
               <Link
                 href={`${base}#prosess`}
-                className="meta-label inline-block rounded-full border border-cream px-6 py-3 transition-colors hover:bg-cream hover:text-ink"
+                className="meta-label group inline-flex items-center gap-2 rounded-full border border-cream px-6 py-3 transition duration-200 hover:bg-cream hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream active:scale-[0.98]"
               >
-                {dict.liveOn.cta} →
+                {dict.liveOn.cta}
+                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             </div>
           </div>
-          <div className="space-y-4">
-            <PlaceholderImage
-              slot="leveranse-hoved"
-              locale={locale}
-              label="Leveranse, redigert utvalg"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="aspect-[4/3] w-full rounded-lg"
-            />
-            <div className="grid grid-cols-3 gap-4">
-              {/* Tre stående utsnitt av samme oppdrag: sosiale medier, web og trykk */}
-              <PlaceholderImage slot="leveranse-some" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
-              <PlaceholderImage slot="leveranse-web" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
-              <PlaceholderImage slot="leveranse-trykk" locale={locale} label="" sizes="17vw" className="aspect-[9/16] rounded-lg" />
+
+          <div className="lg:col-span-7">
+            <figure className="relative">
+              <PlaceholderImage
+                slot="leveranse-hoved"
+                locale={locale}
+                label="Leveranse, redigert utvalg"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className="aspect-[4/3] w-full rounded-2xl"
+              />
+              <figcaption className="meta-label absolute left-3 top-3 rounded-full bg-ink/75 px-3 py-1.5 text-cream backdrop-blur-sm">
+                {dict.liveOn.formatMain}
+              </figcaption>
+            </figure>
+
+            <div className="mt-4 grid grid-cols-[9fr_28.4fr_11.3fr] items-start gap-3 sm:gap-4">
+              {(
+                [
+                  { slot: "leveranse-some", aspect: "aspect-[9/16]" },
+                  { slot: "leveranse-web", aspect: "aspect-[16/9]" },
+                  { slot: "leveranse-trykk", aspect: "aspect-[1/1.414]" },
+                ] as const
+              ).map((frame, i) => (
+                <figure key={frame.slot} className="min-w-0">
+                  <PlaceholderImage
+                    slot={frame.slot}
+                    locale={locale}
+                    label=""
+                    sizes="(max-width: 1024px) 50vw, 30vw"
+                    className={`${frame.aspect} w-full rounded-lg`}
+                  />
+                  <figcaption className="mt-2.5 leading-tight">
+                    <span className="meta-label block [overflow-wrap:anywhere] text-cream">
+                      {dict.liveOn.formats[i]?.name}
+                    </span>
+                    <span className="meta-label mt-0.5 block tabular-nums text-sand">
+                      {dict.liveOn.formats[i]?.ratio}
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </div>
         </div>

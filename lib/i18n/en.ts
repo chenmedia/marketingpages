@@ -111,6 +111,12 @@ export const en: Dictionary = {
       "Delivery on time",
     ],
     cta: "How we work",
+    formatMain: "Edited selection",
+    formats: [
+      { name: "Social media", ratio: "9:16" },
+      { name: "Web", ratio: "16:9" },
+      { name: "Print", ratio: "A4" },
+    ],
   },
   work: {
     label: "Our work",

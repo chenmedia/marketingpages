@@ -77,6 +77,9 @@ export interface Dictionary {
     body: string[];
     points: string[];
     cta: string;
+    /** Merkelapp på hovedbildet og formatene under, i samme rekkefølge som bildeflatene */
+    formatMain: string;
+    formats: { name: string; ratio: string }[];
   };
   work: {
     label: string;

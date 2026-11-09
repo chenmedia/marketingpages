@@ -98,6 +98,8 @@ export const enTon: Dictionary = {
     ],
     points: ["AI analyses", "Writes posts", "7 posts · 3 platforms · 4 tones"],
     cta: "Learn more",
+    formatMain: en.liveOn.formatMain,
+    formats: en.liveOn.formats,
   },
   work: {
     label: "Our work",

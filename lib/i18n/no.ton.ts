@@ -98,6 +98,8 @@ export const noTon: Dictionary = {
     ],
     points: ["AI analyserer", "Skriver innlegg", "7 innlegg · 3 plattformer · 4 toner"],
     cta: "Les mer",
+    formatMain: no.liveOn.formatMain,
+    formats: no.liveOn.formats,
   },
   work: {
     label: "Arbeidet vårt",

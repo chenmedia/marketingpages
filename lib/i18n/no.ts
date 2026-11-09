@@ -111,6 +111,12 @@ export const no: Dictionary = {
       "Levering til avtalt tid",
     ],
     cta: "Slik jobber vi",
+    formatMain: "Redigert utvalg",
+    formats: [
+      { name: "Sosiale medier", ratio: "9:16" },
+      { name: "Web", ratio: "16:9" },
+      { name: "Trykk", ratio: "A4" },
+    ],
   },
   work: {
     label: "Arbeidet vårt",
