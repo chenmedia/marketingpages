@@ -207,26 +207,29 @@ export const SLOTS: SlotDef[] = [
   {
     slot: "tjeneste-1",
     group: "Forsiden, tjenester",
-    label: "Tjenestekort 1",
+    label: "Tjenestekort 1, Fotografering",
     ratio: "3:2",
-    fallback: photo.festivalLife,
-    fallbackAlt: "Gjester samlet på festivalområdet",
+    // Snap Focus i Vulkan Arena: scene, lys og publikum i ett bilde
+    ...fromImage(imageRef("snap-focus", 1)),
   },
   {
     slot: "tjeneste-2",
     group: "Forsiden, tjenester",
-    label: "Tjenestekort 2",
+    label: "Tjenestekort 2, Videoproduksjon",
     ratio: "3:2",
-    fallback: photo.lightshow,
-    fallbackAlt: "Publikum mot scenen mens lysstrålene står ut i salen",
+    // Bak kamera under et intervjuopptak: viser crewet i arbeid
+    fallback: "/portfolio/video/intervju-opptak.webp",
+    fallbackAlt: "Videokamera på stativ foran et intervju med tre personer i et opplyst studio",
+    fallbackFocal: [0.55, 0.6],
   },
   {
     slot: "tjeneste-3",
     group: "Forsiden, tjenester",
-    label: "Tjenestekort 3",
+    label: "Tjenestekort 3, Digital markedsføring",
     ratio: "3:2",
-    fallback: photo.ringnesImsdal,
-    fallbackAlt: "Produkt holdt fram foran publikum under en aktivering",
+    // Via Vika, bentoboks ovenfra: matinnhold i reklamestil
+    fallback: "/portfolio/hospitality/via-vika-bento.webp",
+    fallbackAlt: "Bentoboks med sushi, laks, edamame og soyasaus sett ovenfra",
   },
 
   // Forsiden, leveranse

@@ -27,8 +27,8 @@ export interface ServiceCard {
   body: string;
   points: string[];
   linkLabel: string;
-  slug: "fotografering" | "videoproduksjon" | "prosjekter";
-}
+  /** Undersiden kortet lenker til. «#kontakt» lenker til skjemaet på forsiden. */
+  slug: "fotografering" | "videoproduksjon" | "prosjekter" | "#kontakt";}
 
 export interface Dictionary {
   meta: {
