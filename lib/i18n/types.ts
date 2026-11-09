@@ -187,6 +187,10 @@ export interface Dictionary {
     tagline: string;
     rights: string;
     orgLabel: string;
+    /** Overskrift over sidelenkene */
+    pagesLabel: string;
+    /** Hvor vi holder til, under slagordet */
+    location: string;
   };
   filmPage: {
     kicker: string;

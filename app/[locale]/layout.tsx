@@ -78,8 +78,17 @@ export default async function LocaleLayout({
             }),
           }}
         />
+        {/* Første fokuserbare element: lar tastaturbrukere hoppe over menyen */}
+        <a
+          href="#innhold"
+          className="meta-label sr-only rounded-full bg-ink px-4 py-2 text-cream focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]"
+        >
+          {locale === "no" ? "Hopp til innhold" : "Skip to content"}
+        </a>
         <Nav locale={locale} dict={dict} />
-        <main className="flex-1">{children}</main>
+        <main id="innhold" tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </main>
         <Footer locale={locale} dict={dict} />
         <StickyBar dict={dict} />
       </body>

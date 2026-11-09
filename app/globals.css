@@ -149,3 +149,13 @@ details.faq summary .faq-mark {
 details.faq[open] summary .faq-mark {
   transform: rotate(45deg);
 }
+
+/*
+  Myk scrolling til ankre som #kontakt og #prosess. Slås av for dem som har
+  bedt om mindre bevegelse i operativsystemet.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
