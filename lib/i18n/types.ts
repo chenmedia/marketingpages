@@ -86,9 +86,25 @@ export interface Dictionary {
     body: string[];
     points: string[];
     cta: string;
-    /** Merkelapp på hovedbildet og formatene under, i samme rekkefølge som bildeflatene */
+    /** Merkelapp på utvalget øverst, og på de to små høydepunktene ved siden av */
     formatMain: string;
-    formats: { name: string; ratio: string }[];
+    highlight: string;
+    /** Story, nettsak og trykk, i den rekkefølgen. «when» er tidsmerkelappen. */
+    formats: { when: string; name: string }[];
+    /** Står under flatene: tidslinjen er et forslag, ikke et løfte */
+    timelineNote: string;
+    /** Teksten inne i telefonen, nettleseren og trykksaken */
+    mock: {
+      handle: string;
+      story: string;
+      siteName: string;
+      siteNav: string;
+      url: string;
+      articleKicker: string;
+      articleTitle: string;
+      printKicker: string;
+      printTitle: string;
+    };
   };
   work: {
     label: string;

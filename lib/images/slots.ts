@@ -197,37 +197,32 @@ export const SLOTS: SlotDef[] = [
   },
 
   // Forsiden, leveranse
+  /*
+    Hovedbildet går igjen i alle tre flatene under utvalget: story, nettsak og
+    trykk. Ett bilde, beskåret med samme fokuspunkt til 9:16, 16:9 og A4. Det
+    er hele poenget med seksjonen, så det må være et bilde som tåler alle tre,
+    helst én person på scenen med luft rundt.
+  */
   {
     slot: "leveranse-hoved",
     group: "Forsiden, leveranse",
-    label: "Hovedbilde",
-    ratio: "4:3",
-    fallback: photo.epicStage,
-    fallbackAlt: "Hele scenen og publikum i skumring",
+    label: "Hovedbilde (brukes også i story, nettsak og trykk)",
+    ratio: "16:9, beskjæres til 9:16 og A4",
+    ...fromImage(imageRef("obf", 2)),
   },
   {
-    slot: "leveranse-some",
+    slot: "leveranse-2",
     group: "Forsiden, leveranse",
-    label: "Utsnitt til sosiale medier",
-    ratio: "9:16",
-    fallback: photo.vocalist,
-    fallbackAlt: "Stående utsnitt av vokalist på scenen",
-  },
-  {
-    slot: "leveranse-web",
-    group: "Forsiden, leveranse",
-    label: "Utsnitt til web",
+    label: "Høydepunkt 2",
     ratio: "16:9",
-    fallback: photo.ringnesImsdal,
-    fallbackAlt: "Liggende utsnitt fra merkevareaktivering",
+    ...fromImage(imageRef("obf", 1)),
   },
   {
-    slot: "leveranse-trykk",
+    slot: "leveranse-3",
     group: "Forsiden, leveranse",
-    label: "Utsnitt til trykk",
-    ratio: "A4 (1:1,41)",
-    fallback: photo.lightshow,
-    fallbackAlt: "Stående utsnitt av lysshow over publikum",
+    label: "Høydepunkt 3",
+    ratio: "16:9",
+    ...fromImage(imageRef("obf", 4)),
   },
 
   // Forsiden, arbeidet vårt

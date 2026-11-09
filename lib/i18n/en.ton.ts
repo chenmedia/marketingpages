@@ -99,7 +99,10 @@ export const enTon: Dictionary = {
     points: ["AI analyses", "Writes posts", "7 posts · 3 platforms · 4 tones"],
     cta: "Learn more",
     formatMain: en.liveOn.formatMain,
+    highlight: en.liveOn.highlight,
     formats: en.liveOn.formats,
+    timelineNote: en.liveOn.timelineNote,
+    mock: en.liveOn.mock,
   },
   work: {
     label: "Our work",

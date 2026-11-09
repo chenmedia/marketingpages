@@ -14,6 +14,7 @@ import CtaButton from "@/components/CtaButton";
 import LogoWall from "@/components/LogoWall";
 import Underline from "@/components/Underline";
 import RotatingWord from "@/components/RotatingWord";
+import DeliverySurfaces from "@/components/DeliverySurfaces";
 
 export async function generateMetadata({
   params,
@@ -246,10 +247,8 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/*
         Mørk differensiator: «arrangementet lever videre».
 
-        Bildene viser påstanden i teksten: ett oppdrag, levert i flere formater.
-        Formatrammene har ekte sideforhold (9:16, 16:9, A4) og samme høyde.
-        Kolonnebreddene er sideforholdet ganget med 16, så høyden blir lik
-        uten at noe må regnes ut i JavaScript.
+        Bildene viser påstanden i teksten: ett redigert utvalg, og det samme
+        hovedbildet brukt videre i story, nettsak og trykk. Se DeliverySurfaces.
       */}
       <section className="bg-ink text-cream">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-24 pt-20 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:pb-28 lg:pt-24">
@@ -300,46 +299,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </div>
 
           <div className="lg:col-span-7">
-            <figure className="relative">
-              <PlaceholderImage
-                slot="leveranse-hoved"
-                locale={locale}
-                label="Leveranse, redigert utvalg"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="aspect-[4/3] w-full rounded-2xl"
-              />
-              <figcaption className="meta-label absolute left-3 top-3 rounded-full bg-ink/75 px-3 py-1.5 text-cream backdrop-blur-sm">
-                {dict.liveOn.formatMain}
-              </figcaption>
-            </figure>
-
-            <div className="mt-4 grid grid-cols-[9fr_28.4fr_11.3fr] items-start gap-3 sm:gap-4">
-              {(
-                [
-                  { slot: "leveranse-some", aspect: "aspect-[9/16]" },
-                  { slot: "leveranse-web", aspect: "aspect-[16/9]" },
-                  { slot: "leveranse-trykk", aspect: "aspect-[1/1.414]" },
-                ] as const
-              ).map((frame, i) => (
-                <figure key={frame.slot} className="min-w-0">
-                  <PlaceholderImage
-                    slot={frame.slot}
-                    locale={locale}
-                    label=""
-                    sizes="(max-width: 1024px) 50vw, 30vw"
-                    className={`${frame.aspect} w-full rounded-lg`}
-                  />
-                  <figcaption className="mt-2.5 leading-tight">
-                    <span className="meta-label block [overflow-wrap:anywhere] text-cream">
-                      {dict.liveOn.formats[i]?.name}
-                    </span>
-                    <span className="meta-label mt-0.5 block tabular-nums text-sand">
-                      {dict.liveOn.formats[i]?.ratio}
-                    </span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <DeliverySurfaces liveOn={dict.liveOn} locale={locale} />
           </div>
         </div>
       </section>

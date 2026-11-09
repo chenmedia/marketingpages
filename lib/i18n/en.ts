@@ -118,11 +118,25 @@ export const en: Dictionary = {
     ],
     cta: "How we work",
     formatMain: "Edited selection",
+    highlight: "Highlight",
     formats: [
-      { name: "Social media", ratio: "9:16" },
-      { name: "Web", ratio: "16:9" },
-      { name: "Print", ratio: "A4" },
+      { when: "Same evening", name: "Stories and reels" },
+      { when: "Next day", name: "News post and LinkedIn" },
+      { when: "Next quarter", name: "Report and print" },
     ],
+    timelineNote:
+      "Suggested timeline. We're used to delivering at whatever pace your production needs.",
+    mock: {
+      handle: "yourcompany",
+      story: "Packed room today",
+      siteName: "Your company",
+      siteNav: "News · About · Contact",
+      url: "yourcompany.com/news",
+      articleKicker: "News",
+      articleTitle: "What we took away from this year's conference",
+      printKicker: "Annual report",
+      printTitle: "A year of good meetings",
+    },
   },
   work: {
     label: "Our work",

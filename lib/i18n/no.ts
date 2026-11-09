@@ -118,11 +118,25 @@ export const no: Dictionary = {
     ],
     cta: "Slik jobber vi",
     formatMain: "Redigert utvalg",
+    highlight: "Høydepunkt",
     formats: [
-      { name: "Sosiale medier", ratio: "9:16" },
-      { name: "Web", ratio: "16:9" },
-      { name: "Trykk", ratio: "A4" },
+      { when: "Samme kveld", name: "Story og reels" },
+      { when: "Dagen etter", name: "Nettsak og LinkedIn" },
+      { when: "Neste kvartal", name: "Rapport og trykk" },
     ],
+    timelineNote:
+      "Forslag til tidslinje. Vi har erfaring med å levere i det tempoet produksjonen deres trenger.",
+    mock: {
+      handle: "dittfirma",
+      story: "Fullsatt sal i dag",
+      siteName: "Ditt firma",
+      siteNav: "Nyheter · Om oss · Kontakt",
+      url: "dittfirma.no/nyheter",
+      articleKicker: "Nyheter",
+      articleTitle: "Dette tok vi med oss fra årets konferanse",
+      printKicker: "Årsrapport",
+      printTitle: "Et år med gode møter",
+    },
   },
   work: {
     label: "Arbeidet vårt",
