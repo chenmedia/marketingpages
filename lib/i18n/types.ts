@@ -15,6 +15,10 @@ export interface ProcessStep {
   title: string;
   body: string;
   promise: string;
+  /** Når steget skjer, vist på tidslinjen. Hentes fra det brødteksten allerede lover. */
+  when?: string;
+  /** Markerer steget som høydepunktet på tidslinjen (arrangementsdagen) */
+  highlight?: boolean;
 }
 
 export interface FaqItem {
@@ -94,6 +98,8 @@ export interface Dictionary {
     lead: string;
     steps: ProcessStep[];
     note: string;
+    /** Knappen etter tidslinjen, til kontaktskjemaet */
+    cta: string;
   };
   about: {
     label: string;

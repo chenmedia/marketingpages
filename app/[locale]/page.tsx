@@ -438,7 +438,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       </section>
 
       <div id="prosess" className="scroll-mt-24">
-        <ProcessTimeline dict={dict} number="06" />
+        <ProcessTimeline dict={dict} number="06" ctaHref={`${base}#kontakt`} />
       </div>
 
       {/*
