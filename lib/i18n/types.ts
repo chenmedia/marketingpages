@@ -63,7 +63,8 @@ export interface Dictionary {
      * rekkefølge på egen linje under title.
      */
     titleAccent: string | readonly string[];
-    lead: string;
+    /** Ingressen under tittelen. Utelates der heroen skal stå uten. */
+    lead?: string;
     ctaPrimary: string;
     ctaSecondary: string;
     clientsLabel: string;

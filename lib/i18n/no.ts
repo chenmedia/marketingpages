@@ -48,10 +48,9 @@ export const no: Dictionary = {
       "eiendommen.",
       "prestasjonen.",
     ],
-    lead: "Profesjonell foto og film for konferanser, messer og firmaevents.\nFå redigerte bilder klare til bruk allerede dagen etter.",
     ctaPrimary: "Be om et uforpliktende tilbud",
     ctaSecondary: "Se arbeidet",
-    clientsLabel: "En fotograf/videograf, eller med et komplett team når arrangementet ditt krever det.",
+    clientsLabel: "Fra én fotograf eller videograf til et komplett medieteam, alt etter hva oppdraget krever.",
     polaroidBadge: "10+ års erfaring",
   },
   clients: {

@@ -94,11 +94,17 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               )}
             </h1>
             {/* whitespace-pre-line: ingressen har et bevisst linjeskift mellom
-                de to setningene. Teksten brytes fortsatt fritt ellers. */}
-            <p className="mt-6 max-w-xl text-pretty whitespace-pre-line text-base leading-relaxed text-smoke sm:text-lg">
-              {dict.hero.lead}
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+                de to setningene. Teksten brytes fortsatt fritt ellers.
+                Norsk har ingen ingress; knappene får da litt mer luft under
+                krusedullen. */}
+            {dict.hero.lead && (
+              <p className="mt-6 max-w-xl text-pretty whitespace-pre-line text-base leading-relaxed text-smoke sm:text-lg">
+                {dict.hero.lead}
+              </p>
+            )}
+            <div
+              className={`${dict.hero.lead ? "mt-8" : "mt-12"} flex flex-wrap items-center gap-4`}
+            >
               <CtaButton href={`${base}#kontakt`}>{dict.hero.ctaPrimary}</CtaButton>
               <CtaButton href={`${base}/prosjekter`} variant="outline">
                 {dict.hero.ctaSecondary}
