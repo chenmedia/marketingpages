@@ -22,9 +22,9 @@ Har en slot ingen rad i `site_images`, vises standardbildet fra `public/portfoli
 også når databasen er utilgjengelig. Derfor kan flatene fylles én og én, og nettsiden ser aldri
 tom ut. Samme grep som `getAgenda` og `getSiteStats`: aldri kast, fall tilbake.
 
-Standardbildene er alle fra ett oppdrag, KarpeWorld. Det er grunnen til at biblioteket finnes:
-tekstene lover konferanser og firmaevents. Etter hvert som slotene fylles, blir de bare et
-sikkerhetsnett, og de fleste kan da slettes fra repoet.
+Grunnbiblioteket er fra KarpeWorld, mens leveranseflaten på forsiden bruker en egen serie fra
+Oslo Business Forum 2026. Etter hvert som slotene fylles, blir begge deler bare et
+sikkerhetsnett, og de fleste filene kan da slettes fra repoet.
 
 ## Fokuspunkt
 

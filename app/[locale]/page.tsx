@@ -298,7 +298,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               </Link>
             </div>
           </div>
-
           <div className="lg:col-span-7">
             <figure className="relative">
               <PlaceholderImage

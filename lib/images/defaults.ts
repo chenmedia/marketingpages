@@ -2,10 +2,9 @@
   Standardbildene. Ligger i repoet under public/portfolio og vises til en
   bildeflate får sitt eget bilde fra databasen.
 
-  De er alle fra ett og samme oppdrag, KarpeWorld. Det er grunnen til at
-  bildebiblioteket finnes: nettsiden selger konferanser og firmaevents, mens
-  bildene viser en musikkfestival. Etter hvert som slotene fylles i
-  /admin/bilder, blir disse bare et sikkerhetsnett.
+  Grunnbiblioteket er fra KarpeWorld. Leveranseflaten på forsiden bruker en
+  egen Oslo Business Forum-serie lenger ned i filen. Etter hvert som slotene
+  fylles i /admin/bilder, blir begge deler bare et sikkerhetsnett.
 */
 export const photo = {
   lightshow: "/portfolio/karpeworld-karpe-lightshow.jpg",
@@ -16,6 +15,18 @@ export const photo = {
   festivalLife: "/portfolio/karpeworld-lifestyle-area.jpg",
   ringnesImsdal: "/portfolio/karpeworld-ringnes-imsdal.jpg",
   redbull: "/portfolio/karpeworld-redbull-shark.jpg",
+} as const;
+
+/*
+  Egen, sammenhengende serie for leveranseflaten på forsiden. Disse holdes
+  utenfor portfolioPhotos med vilje, slik at innføringen ikke endrer de
+  deterministiske fallback-bildene på nyheter og kundecase.
+*/
+export const obfPhoto = {
+  exhibition: "/portfolio/oslo-business-forum-exhibition.jpg",
+  branding: "/portfolio/oslo-business-forum-branding.jpg",
+  redCarpet: "/portfolio/oslo-business-forum-red-carpet.jpg",
+  entrance: "/portfolio/oslo-business-forum-entrance.jpg",
 } as const;
 
 export const portfolioPhotos = Object.values(photo);

@@ -1,4 +1,4 @@
-import { photo } from "@/lib/images/defaults";
+import { obfPhoto, photo } from "@/lib/images/defaults";
 import {
   HUB_IMAGES,
   PHOTO_CATEGORIES,
@@ -202,32 +202,32 @@ export const SLOTS: SlotDef[] = [
     group: "Forsiden, leveranse",
     label: "Hovedbilde",
     ratio: "4:3",
-    fallback: photo.epicStage,
-    fallbackAlt: "Hele scenen og publikum i skumring",
+    fallback: obfPhoto.exhibition,
+    fallbackAlt: "Lyst messeområde med Oslo Business Forum-profilering",
   },
   {
     slot: "leveranse-some",
     group: "Forsiden, leveranse",
     label: "Utsnitt til sosiale medier",
     ratio: "9:16",
-    fallback: photo.vocalist,
-    fallbackAlt: "Stående utsnitt av vokalist på scenen",
+    fallback: obfPhoto.branding,
+    fallbackAlt: "Navnebånd med Oslo Business Forum-profilering",
   },
   {
     slot: "leveranse-web",
     group: "Forsiden, leveranse",
     label: "Utsnitt til web",
     ratio: "16:9",
-    fallback: photo.ringnesImsdal,
-    fallbackAlt: "Liggende utsnitt fra merkevareaktivering",
+    fallback: obfPhoto.redCarpet,
+    fallbackAlt: "Gjester ankommer Oslo Business Forum langs den røde løperen",
   },
   {
     slot: "leveranse-trykk",
     group: "Forsiden, leveranse",
     label: "Utsnitt til trykk",
     ratio: "A4 (1:1,41)",
-    fallback: photo.lightshow,
-    fallbackAlt: "Stående utsnitt av lysshow over publikum",
+    fallback: obfPhoto.entrance,
+    fallbackAlt: "To gjester tar en selfie ved inngangen til Oslo Business Forum",
   },
 
   // Forsiden, arbeidet vårt
